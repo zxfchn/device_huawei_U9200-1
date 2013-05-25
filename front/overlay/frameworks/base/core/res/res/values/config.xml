@@ -145,7 +145,8 @@
         <item>10</item>
     </integer-array>
 
-    <!-- bool name="config_bluetooth_adapter_quick_switch">false</bool -->
+    <bool name="config_bluetooth_address_validation">false</bool>
+
     <integer name="config_deviceHardwareKeys">7</integer>
     <bool name="config_automatic_brightness_available">true</bool>
 
