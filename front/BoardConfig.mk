@@ -16,6 +16,9 @@
 # limitations under the License.
 #
 
+# inherit from the proprietary version
+-include vendor/huawei/front/BoardConfigVendor.mk
+
 # Camera
 USE_CAMERA_STUB := false
 BOARD_USES_TI_CAMERA_HAL := true
@@ -50,8 +53,6 @@ BOARD_USES_GENERIC_AUDIO := false
 #BOARD_HAVE_FM_RADIO := true
 #BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
-# inherit from the proprietary version
--include vendor/huawei/front/BoardConfigVendor.mk
 
 # Target arch settings
 TARGET_ARCH := arm

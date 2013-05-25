@@ -1,8 +1,13 @@
-# Inherit some common CM stuff.
+# Inherit device configuration for ALL front
+$(call inherit-product, device/huawei/front/device_front.mk)
+
+# Inherit some common CM stuff
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
+
+# Inherit device configuration for front gsm
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
-$(call inherit-product, device/huawei/front/device_front.mk)
+
 
 # Release name
 PRODUCT_RELEASE_NAME := front

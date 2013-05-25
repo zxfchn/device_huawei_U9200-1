@@ -1,8 +1,2 @@
 # SD card
-dev_mount sdcard /storage/sdcard0 auto /devices/platform/omap/omap_hsmmc.0/mmc_host/mmc1
-
-# USB storage device
-dev_mount usbdisk /storage/usbdisk auto /devices/platform/omap/musb-omap2430/musb-hdrc/usb1
-
-#dev_mount sdcard2 /storage/sdcard1 fuse
-#dev_mount sdcard2 /storage/sdcard1 auto /devices/platform/mmci-omap-hs.1/mmc_host/mmc0
+dev_mount sdcard /storage/sdcard auto /devices/platform/omap/omap_hsmmc.0/mmc_host/mmc1
