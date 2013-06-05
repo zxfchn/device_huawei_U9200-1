@@ -197,10 +197,11 @@ on post-fs-data
 
     # create basic filesystem structure
     mkdir /data/misc 01771 system misc
-    mkdir /data/misc/bluetoothd 0770 bluetooth bluetooth
     mkdir /data/misc/adb 02750 system shell
-    mkdir /data/misc/bluedroid 0770 bluetooth net_bt_stack
+    mkdir /data/misc/bluedroid 0770 bluetooth bluetooth
     mkdir /data/misc/bluetooth 0770 system system
+    # My change bluetooth from system
+    chown bluetooth bluetooth /data/misc/bluetooth
     mkdir /data/misc/keystore 0700 keystore keystore
     mkdir /data/misc/keychain 0771 system system
     mkdir /data/misc/sms 0770 system radio
@@ -340,7 +341,7 @@ on boot
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/backlight/lcd/brightness
     chown system system /sys/devices/platform/i2c_omap.4/i2c-4/4-0012/leds/button-backlight-tk/brightness
-	chown system system /sys/devices/platform/i2c_omap.2/i2c-2/2-0012/leds/button-backlight-tk/brightness
+    chown system system /sys/devices/platform/i2c_omap.2/i2c-2/2-0012/leds/button-backlight-tk/brightness
     chown system system /sys/devices/platform/TK-backlight/leds/button-backlight-tk/brightness
     chown system system /sys/class/leds/button-backlight-tk/brightness
     chown system system /sys/class/leds/button-backlight/brightness
@@ -447,8 +448,8 @@ on boot
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/state
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/gaugelog
         
-chown system system /dev/block/platform/omap/omap_hsmmc.1/by-name/oeminfo
-chmod 0660 /dev/block/platform/omap/omap_hsmmc.1/by-name/oeminfo
+    chown system system /dev/block/platform/omap/omap_hsmmc.1/by-name/oeminfo
+    chmod 0660 /dev/block/platform/omap/omap_hsmmc.1/by-name/oeminfo
 
 # Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
@@ -472,6 +473,8 @@ chmod 0660 /dev/block/platform/omap/omap_hsmmc.1/by-name/oeminfo
 
 # Set this property so surfaceflinger is not started by system_init
     setprop system_init.startsurfaceflinger 0
+    class_start core
+    class_start main
 
 # Run sysinit
     exec /system/bin/sysinit
@@ -585,13 +588,13 @@ service netd /system/bin/netd
 service debuggerd /system/bin/debuggerd
     class main
 
-
+# My. Add net_admin group
 service ril-daemon /system/bin/rild -l /system/lib/libxgold-ril.so -- -d /dev/xmd-tty0
     class main
     socket rild stream 660 root radio
     socket rild-debug stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw bluetooth log system
+    group radio cache inet misc audio sdcard_r sdcard_rw bluetooth log system net_admin
 
 service surfaceflinger /system/bin/surfaceflinger
     class main
@@ -682,10 +685,6 @@ service mdnsd /system/bin/mdnsd
     socket mdnsd stream 0660 mdnsr inet
     disabled
     oneshot
-
-
-
-
 
 
 on property:ro.service.systemstattool=true

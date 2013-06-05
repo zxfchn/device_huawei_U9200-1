@@ -19,4 +19,5 @@
 
 #define BTM_DEF_LOCAL_NAME   "Huawei D1"
 
+#define BTA_DISABLE_DELAY 1000 /* in milliseconds */
 #endif

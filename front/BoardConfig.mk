@@ -78,10 +78,14 @@ BOARD_USE_CUSTOM_LIBION := true
 
 # Kernel/Ramdisk
 BOARD_KERNEL_CMDLINE := console=ttyGS2,115200n8 mem=1G vmalloc=768M vram=16M omapfb.vram=0:8M omap_wdt.timer_margin=30 mmcparts=mmcblk0:p15(splash) androidboot.hardware=front
+#BOARD_KERNEL_CMDLINE := console=ttyGS2,115200n8 androidboot.console=ttyGS2 mem=1G vmalloc=768M omap_wdt.timer_margin=30 no_console_suspend vram=16M omapfb.vram=0:8M mmcparts=mmcblk0:p15(splash) androidboot.hardware=front
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_PREBUILT_KERNEL := device/huawei/front/kernel
 TARGET_PROVIDES_INIT_TARGET_RC := true
+
+#TARGET_KERNEL_SOURCE := kernel/huawei/front
+#TARGET_KERNEL_CONFIG := front_defconfig
 
 # EGL
 BOARD_EGL_CFG := device/huawei/front/egl.cfg
@@ -109,6 +113,8 @@ WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/front/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := device/huawei/front/bluetooth/vnd_front.txt
+BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 # Set 32 byte cache line to true
 ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true

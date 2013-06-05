@@ -77,12 +77,6 @@ persist.sys.powerup_reason=
 persist.sys.actualpoweron=true
 persist.sys.main_storage=sdcard0
 #
-hw.net.tcp.buffersize.default=4096,262140,523264,4096,49152,523264
-hw.net.tcp.buffersize.umts=4096,262140,523264,4096,49152,523264
-hw.net.tcp.buffersize.edge=4096,78840,105120,4096,49152,105120
-hw.net.tcp.buffersize.gprs=4096,26280,35040,4096,26280,35040
-hw.net.tcp.buffersize.hspa=4096,262140,523264,4096,49152,523264
-#
 windowsmgr.max_events_per_sec=150
 ro.max.fling_velocity=12000
 ro.min.fling_velocity=8000

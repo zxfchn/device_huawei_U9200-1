@@ -31,16 +31,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 PRODUCT_PACKAGES += \
         Camera
 
-# Audio Packages
-PRODUCT_PACKAGES += \
-	audio.a2dp.default \
-	audio.usb.default \
-	libtinyalsa \
-	tinycap \
-	tinymix \
-	tinyplay \
-	libaudioutils
-
 # PowerHAL
 PRODUCT_PACKAGES += \
 	power.front \
@@ -67,6 +57,7 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
 	$(LOCAL_PATH)/audio/es305img.bin:system/etc/es305img.bin \
 	$(LOCAL_PATH)/audio/huawei/audio/cm_front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf \
+	$(LOCAL_PATH)/audio/huawei/audio/cm_front_audio_config.conf:system/etc/huawei/audio/pac_front_audio_config.conf \
 	$(LOCAL_PATH)/audio/huawei/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
 	$(LOCAL_PATH)/audio/huawei/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf \
 	$(LOCAL_PATH)/audio/huawei/audio/U9500_audio_config.conf:system/etc/huawei/audio/U9500_audio_config.conf \
@@ -79,36 +70,12 @@ PRODUCT_COPY_FILES += \
 
 # BT
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
-	$(LOCAL_PATH)/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
 	$(LOCAL_PATH)/bluetooth/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd \
-	$(LOCAL_PATH)/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
-	$(LOCAL_PATH)/bluetooth/init.bcm.chip_off.sh:system/etc/bluetooth/init.bcm.chip_off.sh \
-	$(LOCAL_PATH)/bluetooth/init.bcm.chip_on.sh:system/etc/bluetooth/init.bcm.chip_on.sh \
-	$(LOCAL_PATH)/bluetooth/input.conf:system/etc/bluetooth/input.conf \
-	$(LOCAL_PATH)/bluetooth/network.conf:system/etc/bluetooth/network.conf
+	$(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # Vold
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab
-
-# Torch
-PRODUCT_PACKAGES += \
-        Torch
-
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
-
-# Common
-PRODUCT_PACKAGES += \
-	make_ext4fs \
-	setup_fs \
-	l2ping \
-	com.android.future.usb.accessory
 
 # Key maps
 PRODUCT_COPY_FILES += \
@@ -148,19 +115,55 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
 
+# Audio Packages
 PRODUCT_PACKAGES += \
-	librs_jni \
-	com.android.future.usb.accessory
+	audio.usb.default \
+	libtinyalsa \
+	tinycap \
+	tinymix \
+	tinyplay \
+	tinurec \
+	libaudioutils \
+	audio.a2dp.default
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	make_ext4fs \
 	e2fsck \
-	setup_fs
+	setup_fs \
+	libnetcmdiface
 
 #Lib Skia test
 PRODUCT_PACKAGES += \
 	SkLibTiJpeg_Test
+
+# Torch
+PRODUCT_PACKAGES += \
+        Torch
+
+# BT
+#PRODUCT_PACKAGES += \
+#    uim-sysfs \
+#    libbt-vendor
+
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+        LiveWallpapers \
+        LiveWallpapersPicker \
+        VisualizationWallpapers \
+        librs_jni
+
+# Common
+PRODUCT_PACKAGES += \
+	make_ext4fs \
+	setup_fs \
+	l2ping \
+	com.android.future.usb.accessory
+
+# My - тест
+PRODUCT_PACKAGES += \
+        mischelp \
+        libinvensense_mpl
 
 # for bugmailer
 PRODUCT_PACKAGES += send_bug
@@ -184,8 +187,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enable_bypass=1 \
 	ro.product.board=U9500 \
 	ro.product.locale.language=ru \
-	ro.product.locale.region=RU \
-	ro.com.android.dateformat=dd-MM-yyyy
+	ro.product.locale.region=RU
 
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += \
