@@ -5,3 +5,4 @@ ro.config.hw_flashless=true
 ro.config.hw_allow_ums_and_mtp=true
 ro.vold.umsdirtyratio=50
 ro.sf.lcd_density=290
+wifi.interface=wlan0

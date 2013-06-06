@@ -17,7 +17,7 @@
 #
 
 # overlay
-DEVICE_PACKAGE_OVERLAYS := device/huawei/front/overlay
+DEVICE_PACKAGE_OVERLAYS += device/huawei/front/overlay
 
 # vendor
 $(call inherit-product-if-exists, vendor/huawei/front/front-vendor.mk)
@@ -27,7 +27,7 @@ $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-#Camera
+# Camera
 PRODUCT_PACKAGES += \
         Camera
 
