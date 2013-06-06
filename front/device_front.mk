@@ -155,13 +155,8 @@ PRODUCT_PACKAGES += \
 
 # Common
 PRODUCT_PACKAGES += \
-	make_ext4fs \
-	setup_fs \
 	l2ping \
-	com.android.future.usb.accessory
-
-# My - тест
-PRODUCT_PACKAGES += \
+	com.android.future.usb.accessory \
         mischelp \
         libinvensense_mpl
 
