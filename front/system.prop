@@ -1,8 +1,15 @@
+# LSD DENSITY
+ro.sf.lcd_density=290
+
+# RIL
 audioril.lib=libhuawei-audio-ril.so
 ro.config.hw_addsettingsdbex=1
 ro.config.fm_type=libbcmfm_if
 ro.config.hw_flashless=true
+
+# MASS STORAGE
 ro.config.hw_allow_ums_and_mtp=true
 ro.vold.umsdirtyratio=50
-ro.sf.lcd_density=290
+
+#WiFi
 wifi.interface=wlan0
