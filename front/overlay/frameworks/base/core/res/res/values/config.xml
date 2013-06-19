@@ -19,13 +19,25 @@
 
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
+
 <resources>
+    <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
+
+    <!-- Default color for notification LED. -->
     <color name="config_defaultNotificationColor">#ff00ff00</color>
+
+    <!-- Default LED on time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOn">1000</integer>
+
+    <!-- Default LED off time for notification LED in milliseconds. -->
     <integer name="config_defaultNotificationLedOff">9000</integer>
+
+    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
+    <!-- Boolean indicating if restoring network selection should be skipped -->
+    <!-- The restoring is handled by modem if it is true -->
     <bool translatable="false" name="skip_restoring_network_selection">true</bool>
 
     <!-- If this is true, the screen will come on when you unplug usb/power/whatever. -->
@@ -61,7 +73,6 @@
          be empty.  An example would be "usb.*" -->
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"rndis\\d"</item>
-        <!-- item>"usb\\d"</item -->
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
@@ -116,21 +127,30 @@
     <!-- Close low battery warning when battery level reaches this value -->
     <integer name="config_lowBatteryCloseWarningLevel">10</integer>
 
-   <integer-array name="config_longPressVibePattern">
+    <!-- Vibrator pattern for feedback about a long screen/key press -->
+    <integer-array name="config_longPressVibePattern">
         <item>15</item>
     </integer-array>
+
+    <!-- Vibrator pattern for feedback about touching a virtual key -->
     <integer-array name="config_virtualKeyVibePattern">
         <item>15</item>
     </integer-array>
+
+    <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
     <integer-array name="config_keyboardTapVibePattern">
         <item>15</item>
     </integer-array>
+
+    <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
     <integer-array name="config_safeModeDisabledVibePattern">
         <item>0</item>
         <item>1</item>
         <item>20</item>
         <item>21</item>
     </integer-array>
+
+    <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
     <integer-array name="config_safeModeEnabledVibePattern">
         <item>0</item>
         <item>1</item>
@@ -139,6 +159,8 @@
         <item>500</item>
         <item>600</item>
     </integer-array>
+
+    <!-- Vibrator pattern for feedback about hitting a scroll barrier -->
     <integer-array name="config_scrollBarrierVibePattern">
         <item>0</item>
         <item>15</item>
@@ -146,11 +168,41 @@
         <item>10</item>
     </integer-array>
 
+    <!-- Boolean indicating if current platform need do one-time bluetooth address
+         re-validation -->
     <bool name="config_bluetooth_address_validation">false</bool>
 
+    <!-- remove assist key from hw keys rebinding menu -->
     <integer name="config_deviceHardwareKeys">7</integer>
+
+    <!-- Minimum screen brightness setting allowed by the power manager.
+         The user is forbidden from setting the brightness below this level. -->
+    <integer translatable="false" name="config_screenBrightnessSettingMinimum">15</integer>
+
+    <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
+         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
 
+    <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
+         The N entries of this array define N + 1 control points as follows:
+         (1-based arrays)
+
+         Point 1:            (0, value[1]):             lux <= 0
+         Point 2:     (level[1], value[2]):  0        < lux <= level[1]
+         Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
+         ...
+         Point N+1: (level[N], value[N+1]):  level[N] < lux
+
+         The control points must be strictly increasing.  Each control point
+         corresponds to an entry in the brightness backlight values arrays.
+         For example, if LUX == level[1] (first element of the levels array)
+         then the brightness will be determined by value[2] (second element
+         of the brightness values array).
+
+         Spline interpolation is used to determine the auto-brightness
+         backlight values for LUX levels between these control points.
+
+         Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
         <item>6</item>
         <item>10</item>
@@ -173,6 +225,12 @@
         <item>61440</item>
         <item>121200</item>
     </integer-array>
+
+    <!-- Array of output values for LCD backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
+         This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
         <item>40</item>
         <item>50</item>
@@ -196,6 +254,12 @@
         <item>245</item>
         <item>255</item>
     </integer-array>
+
+    <!-- Array of output values for button backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
+         This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
         <item>255</item>
         <item>255</item>
@@ -219,6 +283,12 @@
         <item>0</item>
         <item>0</item>
     </integer-array>
+
+    <!-- Array of output values for keyboard backlight corresponding to the LUX values
+         in the config_autoBrightnessLevels array.  This array should have size one greater
+         than the size of the config_autoBrightnessLevels array.
+         The brightness values must be between 0 and 255 and be non-decreasing.
+         This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
         <item>255</item>
         <item>255</item>
@@ -242,10 +312,4 @@
         <item>0</item>
         <item>0</item>
     </integer-array>
-
-    <integer translatable="false" name="config_screenBrightnessSettingMinimum">15</integer>
-
-    <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
-         autodetected from the Configuration. -->
-    <!-- bool name="config_showNavigationBar">false</bool -->
 </resources>
