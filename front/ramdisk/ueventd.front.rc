@@ -1,21 +1,34 @@
-#for PVR
-/dev/pvrsrvkm             0666   system     system
+# for PVR
+/dev/pvrsrvkm     0666   system     system
+
 #for DSSCOMP
-/dev/dsscomp              0660   system     system
-/dev/tiler                0666   system     system
-#for SYSLINK
-/dev/rpmsg-omx0           0660   drmrpc    drmrpc
-/dev/rpmsg-omx1           0660   drmrpc    drmrpc
-/dev/rproc_user           0660   drmrpc    drmrpc
-/dev/tf_driver            0660   drmrpc    drmrpc
-/dev/tf_ctrl              0660   drmrpc    drmrpc
-#for GCX
-/dev/gcioctl              0666   system     system
+/dev/dsscomp      0666   system     system
+/dev/tiler        0666   system     system
 
-/dev/akm8975_aot		  0660   system     system
-/dev/akm8975_dev      	  0660   system     system
+# for SYSLINK
+/dev/rpmsg-omx0   0660   drmrpc     drmrpc
+/dev/rpmsg-omx1   0660   drmrpc     drmrpc
+/dev/rproc_user   0660   drmrpc     drmrpc
+/dev/tf_driver    0660   drmrpc     drmrpc
+/dev/tf_ctrl      0660   drmrpc     drmrpc
 
-/dev/proximity		  0660   system     system
-/dev/light    	 	  0660   system     system
-#for lcd_tuning
-/dev/pri_lcd              0666   system     system
+# for GCX
+/dev/gcioctl      0666   system     system
+
+/dev/akm8975_aot  0660   system     system
+/dev/akm8975_dev  0660   system     system
+
+/dev/proximity    0660   system     system
+/dev/light        0660   system     system
+/dev/pri_lcd      0666   system     system
+
+# ShevT
+/dev/rfkill       0660   bluetooth  net_bt_admin
+/dev/ttyO1        0660   bluetooth  bluetooth
+/dev/uinput       0660   system     bluetooth
+
+# fuse
+/dev/fuse         0660   system     system
+
+# used by RIL and GPS
+/dev/ttyO0                0660   system     radio

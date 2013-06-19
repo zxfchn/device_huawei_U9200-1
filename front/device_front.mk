@@ -27,7 +27,7 @@ $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# Camera
+#Camera
 PRODUCT_PACKAGES += \
         Camera
 
@@ -35,22 +35,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	power.front \
 	hwcomposer.front \
-	audio.primary.front \
 	libion_ti
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/ramdisk/fstab.front:root/fstab.front \
-	$(LOCAL_PATH)/ramdisk/init:root/init \
 	$(LOCAL_PATH)/ramdisk/init.front.rc:root/init.front.rc \
 	$(LOCAL_PATH)/ramdisk/init.front.usb.rc:root/init.front.usb.rc \
-	$(LOCAL_PATH)/ramdisk/init.rc:root/init.rc \
-	$(LOCAL_PATH)/ramdisk/init.trace.rc:root/init.trace.rc \
-	$(LOCAL_PATH)/ramdisk/init.usb.rc:root/init.usb.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.front.rc:root/ueventd.front.rc \
-	$(LOCAL_PATH)/ramdisk/ueventd.rc:root/ueventd.rc
+	$(LOCAL_PATH)/ramdisk/ueventd.front.rc:root/ueventd.front.rc
 
-# Media / Audio -готово
+# Media / Audio
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
 	$(LOCAL_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
@@ -118,13 +112,14 @@ PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
 # Audio Packages
 PRODUCT_PACKAGES += \
 	audio.usb.default \
+	audio.primary.front \
+	audio.a2dp.default \
 	libtinyalsa \
 	tinycap \
 	tinymix \
 	tinyplay \
 	tinurec \
-	libaudioutils \
-	audio.a2dp.default
+	libaudioutils
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
@@ -143,7 +138,6 @@ PRODUCT_PACKAGES += \
 
 # BT
 #PRODUCT_PACKAGES += \
-#    uim-sysfs \
 #    libbt-vendor
 
 # Live Wallpapers
@@ -155,8 +149,8 @@ PRODUCT_PACKAGES += \
 
 # Common
 PRODUCT_PACKAGES += \
-	l2ping \
-	com.android.future.usb.accessory \
+        l2ping \
+        com.android.future.usb.accessory \
         mischelp \
         libinvensense_mpl
 
@@ -168,12 +162,12 @@ PRODUCT_COPY_FILES += \
 
 #Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
-	dalvik.vm.heapstartsize=32m \
+	dalvik.vm.heapstartsize=8m \
 	dalvik.vm.heapgrowthlimit=64m \
-	dalvik.vm.heapsize=384m \
-	dalvik.vm.heaputilization=0.25 \
-	dalvik.vm.heapidealfree=8388608 \
-	dalvik.vm.heapconcurrentstart=2097152 \
+	dalvik.vm.heapsize=256m \
+	dalvik.vm.heaputilization=0.75 \
+	dalvik.vm.heapminfree=2m \
+	dalvik.vm.heapmaxfree=8m \
 	dalvik.vm.lockprof.threshold=500 \
 	dalvik.vm.dexopt-flags=m=y \
 	dalvik.vm.verify_bytecode=false
@@ -184,11 +178,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.product.locale.language=ru \
 	ro.product.locale.region=RU
 
+# Set default USB interface
+#PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+#	persist.sys.usb.config=mtp,adb
+
 # adb has root
-ADDITIONAL_DEFAULT_PROPERTIES += \
+ADDITIONAL_DEFAULT_PROPERTIES := \
         ro.secure=0 \
         ro.allow.mock.location=1 \
-        persist.sys.usb.config=modem,nmea,mass_storage,adb,diag \
+        persist.sys.usb.config=mtp,mass_storage,adb \
         ro.adb.secure=0 \
         ro.debuggable=1
 
@@ -196,8 +194,9 @@ PRODUCT_CHARACTERISTICS := default
 
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-PRODUCT_AAPT_CONFIG := normal hdpi
-PRODUCT_AAPT_PREF_CONFIG := hdpi
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
+
 ###PRODUCT_LOCALES += en_US hdpi
 BOARD_WLAN_DEVICE_REV := bcm4330_b1
 WIFI_BAND             := 802_11_ABG
