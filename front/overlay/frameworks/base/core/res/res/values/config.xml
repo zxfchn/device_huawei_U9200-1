@@ -243,9 +243,9 @@
         <item>0</item>
     </integer-array>
 
-    <integer translatable="false" name="config_screenBrightnessSettingMinimum">20</integer>
+    <integer translatable="false" name="config_screenBrightnessSettingMinimum">15</integer>
 
     <!-- Whether a software navigation bar should be shown. NOTE: in the future this may be
          autodetected from the Configuration. -->
-    <bool name="config_showNavigationBar">false</bool>
+    <!-- bool name="config_showNavigationBar">false</bool -->
 </resources>
