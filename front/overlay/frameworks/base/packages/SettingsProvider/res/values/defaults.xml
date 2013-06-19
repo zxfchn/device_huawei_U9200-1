@@ -22,4 +22,13 @@
 
     <!-- Screen timeout default = 60 sec -->
     <integer name="def_screen_off_timeout">60000</integer>
+
+    <!-- Circle + Procent's -->
+    <integer name="def_battery_style">3</integer>
+
+    <!-- Enable notification counters in statusbar -->
+    <integer name="def_notif_count">1</integer>
+
+    <!-- Right QS pulldown -->
+    <integer name="def_qs_quick_pulldown">1</integer>
 </resources>
