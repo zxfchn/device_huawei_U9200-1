@@ -2,6 +2,7 @@
 # Copyright (C) 2012 The Android Open-Source Project
 # Copyright (C) 2012 mdeejay
 # Copyright (C) 2013 faust93
+# Copyright (C) 2013 ShevT
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -136,10 +137,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
         Torch
 
-# BT
-#PRODUCT_PACKAGES += \
-#    libbt-vendor
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
         LiveWallpapers \
@@ -177,10 +174,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.product.board=U9500 \
 	ro.product.locale.language=ru \
 	ro.product.locale.region=RU
-
-# Set default USB interface
-#PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-#	persist.sys.usb.config=mtp,adb
 
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES := \
