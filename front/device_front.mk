@@ -167,7 +167,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	dalvik.vm.heapmaxfree=8m \
 	dalvik.vm.lockprof.threshold=500 \
 	dalvik.vm.dexopt-flags=m=y \
-	dalvik.vm.verify_bytecode=false
+	dalvik.vm.verify_bytecode=false \
+        dalvik.vm.dexopt-data-only=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enable_bypass=1 \
