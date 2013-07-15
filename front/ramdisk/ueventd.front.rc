@@ -29,6 +29,3 @@
 
 # fuse
 /dev/fuse         0660   system     system
-
-# used by RIL and GPS
-/dev/ttyO0                0660   system     radio
