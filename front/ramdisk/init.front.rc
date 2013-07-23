@@ -7,11 +7,11 @@ on init
     export PATH /sbin:/vendor/bin:/system/sbin:/system/bin:/system/xbin
     export LD_LIBRARY_PATH /vendor/lib:/data/cust/lib:/system/lib:/data/datalib
 
-    export EXTERNAL_STORAGE /storage/sdcard
-
     mkdir /mnt 0775 root system
     mkdir /storage 0050 root sdcard_r
     mkdir /storage/sdcard 0000 system system
+
+    export EXTERNAL_STORAGE /storage/sdcard
 
     # for backwards compatibility
     symlink /storage/sdcard /sdcard
