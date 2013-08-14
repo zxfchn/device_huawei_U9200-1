@@ -73,6 +73,7 @@
          be empty.  An example would be "usb.*" -->
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"rndis\\d"</item>
+        <item>"usb\\d"</item> 
     </string-array>
 
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
@@ -167,6 +168,9 @@
         <item>10</item>
         <item>10</item>
     </integer-array>
+
+    <!-- CRT animation -->
+    <bool name="config_animateScreenLights">false</bool>
 
     <!-- Boolean indicating if current platform need do one-time bluetooth address
          re-validation -->

@@ -31,4 +31,6 @@
 
     <!-- Right QS pulldown -->
     <integer name="def_qs_quick_pulldown">1</integer>
+
+    <bool name="def_install_non_market_apps">true</bool>
 </resources>

@@ -1,5 +1,7 @@
 LOCAL_PATH:= $(call my-dir)
 
+ifeq ($(TARGET_DEVICE),front)
+
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := ion.c
 LOCAL_MODULE := libion_ti
@@ -21,3 +23,4 @@ LOCAL_MODULE_TAGS := optional tests
 LOCAL_SHARED_LIBRARIES := liblog
 include $(BUILD_EXECUTABLE)
 
+endif

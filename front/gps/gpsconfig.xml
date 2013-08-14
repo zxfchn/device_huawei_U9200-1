@@ -11,8 +11,7 @@
        acNvStoDir="/data/gps/"
        cLogEnabled="false"
        acLogDirectory="/data/gps/log/" 
-       
-       	   
+            	   
        arp-supl-enable="true"
        arp-supl-cap-msb="true"
        arp-supl-cap-msa="true"
@@ -20,7 +19,6 @@
        arp-supl-use-apn="false"
        acSuplServer="supl.google.com"
        SuplPort="7275"
-       tlsCertPath="/system/bin/gps.cer"
        ReAidingIntervalSec="1200"
        SuplUT1Seconds="20"
        SuplUT2Seconds="20"
@@ -39,7 +37,7 @@
        LbsTAC="10101222"
        LbsWlanEnable="false"
 	acNmeaOutName="/data/gps/gpspipe"  
-	ctrlPipe="/data/gps/glgpsctrl"
+	ctrlPipe="/data/gps/glgpsctrl"	
    />
   
   <hal 
@@ -62,7 +60,7 @@
   </gll>
   
   <gll_features
-	   EnableLowPowerEls="false"	  
+	   EnableLowPowerEls="false"
 	   EnableLowPowerPmm="true"	   
   />
 <job id="Periodic">

@@ -1,17 +1,36 @@
-# LSD DENSITY
+
+# LCD DENSITY
 ro.sf.lcd_density=290
 
 # RIL
 audioril.lib=libhuawei-audio-ril.so
-ro.config.hw_addsettingsdbex=1
-ro.config.fm_type=libbcmfm_if
-ro.config.hw_flashless=true
+modem.audio=1
 rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/xmd-tty0
+mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0
+ro.ril.enable.dtm=1
+ro.ril.gprsclass=12
+ro.ril.hsdpa.category=10
+ro.ril.hsupa.category=6
+ro.ril.hsxpa=2
+ro.config.hw_addsettingsdbex=1
+ro.config.hw_flashless=true
+ro.config.fm_type=libbcmfm_if
+
+# Default network type.
+# 0 => WCDMA preferred.
+ro.telephony.default_network=0
+
+# For HSDPA low throughput
+ro.ril.disable.power.collapse=1
+
+# Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
+ro.telephony.call_ring.multiple=0
 
 # MASS STORAGE
 ro.config.hw_allow_ums_and_mtp=true
 ro.vold.umsdirtyratio=50
+ro.config.internal_sdcard=yes
 
 # WiFi
 wifi.interface=wlan0
@@ -30,3 +49,46 @@ ro.opengles.version=131072
 # GPS
 ro.config.hw_gps=47511
 ro.allow.mock.location=1
+# For the default value of agps
+ro.ril.def.agps.mode=2
+
+ro.config.hw_dolby=true
+ro.config.hw_dolby_config=front
+dolby.audio.hdmi.channels=0
+
+ro.config.hw_battery_percent=true
+ro.config.hw_uninstall_dataapp=true
+ro.config.fast_dormancy = false
+com.ti.omap_enhancement=true
+com.ti.omap_enhancement_s3d=true
+keyguard.no_require_sim=true
+ro.config.switchPrimaryVolume=true
+ro.config.hw_GSensorOptimize=true
+ro.config.endstksession=true
+ro.config.hw_temperature_warn=true
+ro.config.hw_power_saving=true
+ro.config.hw_voicerecord=true
+ro.config.callwait_vibrator=true
+ro.config.callrecord.enabled=1
+ro.config.hw_support_ipcall=true
+ro.config.hw_ecclist_withcard=1+110,6+119,8+118
+ro.config.hw_ecclist_nocard=1+110,6+119,8+118
+persist.sys.actualpoweron=true
+ro.config.hw_proximitySensor=true
+ro.config.hw_globalEcc = true
+ro.config.helix_enable=true
+gsm.sim.num.pin2=3
+gsm.sim.num.puk2=10
+ro.config.hw_gcf_mms = true
+ro.kernel.android.checkjni = 0
+media.aac_51_output_enabled=true
+ro.hwui.disable_scissor_opt=true
+windowsmgr.max_events_per_sec=150
+ro.max.fling_velocity=12000
+ro.min.fling_velocity=8000
+media.stagefright.enable-player=true
+media.stagefright.enable-meta=true
+media.stagefright.enable-scan=false
+media.stagefright.enable-http=true
+profiler.force_disable_err_rpt=1
+profiler.force_disable_ulog=1

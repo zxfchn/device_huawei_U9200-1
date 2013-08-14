@@ -61,8 +61,9 @@ lib/libmm_osal.so
 lib/libOMX.TI.DUCATI1.MISC.SAMPLE.so
 lib/libdomx.so
 lib/libexif.so
-lib/libbluetoothd.so
 lib/libaudience.so
+lib/hw/audio.a2dp.default.so
+lib/hw/audio_policy.default.so
 lib/hw/audio.primary.default.so
 lib/hw/audio.hdmi.omap4.so
 lib/hw/sensors.omap4.so
@@ -104,6 +105,7 @@ etc/firmware/fmc_ch8_1283.2.bts
 etc/firmware/fm_rx_ch8_1283.2.bts
 etc/firmware/TIInit_7.2.31.bts
 etc/powervr.ini
+etc/es305img.bin
 xbin/hcitool
 xbin/hciconfig
 xbin/kfmapp
