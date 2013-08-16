@@ -183,7 +183,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enterprise_mode=1 \
     ro.product.locale.language=ru \
     ro.product.locale.region=RU \
-    ro.com.android.dateformat=MM-dd-yyyy
+    ro.com.android.dateformat=dd-MM-yyyy \
+    persist.sys.timezone=Europe/Moscow
 
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES := \
