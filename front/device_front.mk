@@ -93,9 +93,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
 
-# Applications
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/prebuilt/GApps_Install.apk:system/app/GApps_Install.apk
+# Themes
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/themes/miui5-v1.3_ru-signed.apk:system/app/miui5-v1.3_ru-signed.apk
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
