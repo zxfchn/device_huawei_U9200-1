@@ -190,7 +190,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ADDITIONAL_DEFAULT_PROPERTIES := \
     ro.secure=0 \
     ro.allow.mock.location=1 \
-    persist.sys.usb.config=modem,nmea,mass_storage,diag \
+    persist.sys.usb.config=mtp,mass_storage \
     ro.adb.secure=0 \
     ro.debuggable=1
 
