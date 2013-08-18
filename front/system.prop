@@ -94,5 +94,5 @@ profiler.force_disable_err_rpt=1
 profiler.force_disable_ulog=1
 
 # Themes
-#persist.sys.themeId=Miui v5
-#persist.sys.themePackageName=com.tung91.miui5
+persist.sys.themeId=Miui v5
+persist.sys.themePackageName=com.tung91.miui5
