@@ -53,14 +53,14 @@
        LogPriMask="LOG_INFO"
        LogFacMask="LOG_GLLAPI | LOG_NMEA | LOG_RAWDATA" 
        FrqPlan="FRQ_PLAN_26MHZ_2PPM_26MHZ_300PPB"   
-   RfType="GL_RF_4751_DANUBE_EXT_LNA"   
+   RfType="GL_RF_47511_BRCM_EXT_LNA"   
        WarmStandbyTimeout1Seconds="10"
        WarmStandbyTimeout2Seconds="15"
   >
   </gll>
   
   <gll_features
-	   EnableLowPowerEls="true"
+	   EnableLowPowerEls="false"
 	   EnableLowPowerPmm="true"	   
   />
 <job id="Periodic">
