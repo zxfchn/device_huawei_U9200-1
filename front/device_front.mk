@@ -95,7 +95,7 @@ PRODUCT_COPY_FILES += \
 
 # Themes
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/themes/miui5-v1.3_ru-signed.apk:system/app/miui5-v1.3_ru-signed.apk
+    $(LOCAL_PATH)/prebuilt/themes/miui5-v1.3_ru-signed.apk:system/app/miui5-theme_ru.apk
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
