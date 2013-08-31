@@ -69,9 +69,13 @@ PRODUCT_COPY_FILES += \
     device/huawei/front/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
     device/huawei/front/bluetooth/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd \
     device/huawei/front/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
+    device/huawei/front/bluetooth/did.conf:system/etc/bluetooth/did.conf \
     device/huawei/front/bluetooth/init.bcm.chip_off.sh:system/etc/bluetooth/init.bcm.chip_off.sh \
     device/huawei/front/bluetooth/init.bcm.chip_on.sh:system/etc/bluetooth/init.bcm.chip_on.sh \
     device/huawei/front/bluetooth/input.conf:system/etc/bluetooth/input.conf \
+    device/huawei/front/bluetooth/kill-bluetoothd.sh:system/etc/bluetooth/kill-bluetoothd.sh \
+    device/huawei/front/bluetooth/kill-btld.sh:system/etc/bluetooth/kill-btld.sh \
+    device/huawei/front/bluetooth/main.conf:system/etc/bluetooth/main.conf \
     device/huawei/front/bluetooth/network.conf:system/etc/bluetooth/network.conf
 
 # Vold
