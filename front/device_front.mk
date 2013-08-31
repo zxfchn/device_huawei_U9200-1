@@ -93,10 +93,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
 
-# Themes
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/themes/miui5-v1.3_ru-signed.apk:system/app/miui5-theme_ru.apk
-
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
