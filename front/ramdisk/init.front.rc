@@ -34,39 +34,17 @@ on init
     mkdir /factory 0775 radio radio
 
     # nvm
-    mkdir /modem
-    mkdir /modem/modem_image
-    mkdir /modem/nvm1
-    mkdir /modem/nvm2
+    mkdir /modem 0775 radio radio
+    mkdir /modem/modem_image 0775 radio radio
+    mkdir /modem/nvm1 0775 radio radio
+    mkdir /modem/nvm2 0775 radio radio
 
-    setprop ro.hwboottype boot_android
+#    setprop ro.hwboottype boot_android
 
 on fs
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
     setprop ro.crypto.umount_sd false
     mount_all /fstab.front
-
-    # nvm
-    mount rootfs rootfs / rw remount
-    mount ext4 /dev/block/platform/omap/omap_hsmmc.1/by-name/modemimage /modem/modem_image wait noatime nosuid nodev
-    mount ext4 /dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm1 /modem/nvm1 wait noatime nosuid nodev
-    mount ext4 /dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm2 /modem/nvm2 wait noatime nosuid nodev
-    #front add nvm1 nvm2 partition begin
-    #change for managing modem image begin
-    chmod 0660 /modem/modem_image/HWT6260.fls
-    chmod 0660 /modem/nvm1/calib.nvm
-    chmod 0660 /modem/nvm1/dynamic.nvm
-    chmod 0660 /modem/nvm1/static.nvm
-    chmod 0660 /modem/modem_image/HWT6260.fls.fls
-    chown radio radio /modem/nvm1
-    chown radio radio /modem/nvm2
-    chown radio radio /modem/modem_image
-    chown radio radio /modem/modem_image/HWT6260.fls
-    chown radio radio /modem/nvm1/calib.nvm
-    chown radio radio /modem/nvm1/dynamic.nvm
-    chown radio radio /modem/nvm1/static.nvm
-    chown radio radio /modem/modem_image/HWT6260.fls.fls
-    mount rootfs rootfs / ro remount
 
     # add symlink for nxp noise-supression
     #symlink /vendor/etc/nxp_front /data/nxp
@@ -87,6 +65,18 @@ on post-fs-data
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     chown wifi wifi /data/misc/wifi/p2p_supplicant.conf
     chmod 0660 /data/misc/wifi/p2p_supplicant.conf
+
+    # nvm
+    chmod 0660 /modem/modem_image/HWT6260.fls
+    chmod 0660 /modem/nvm1/calib.nvm
+    chmod 0660 /modem/nvm1/dynamic.nvm
+    chmod 0660 /modem/nvm1/static.nvm
+    chmod 0660 /modem/modem_image/HWT6260.fls.fls
+    chown radio radio /modem/modem_image/HWT6260.fls
+    chown radio radio /modem/nvm1/calib.nvm
+    chown radio radio /modem/nvm1/dynamic.nvm
+    chown radio radio /modem/nvm1/static.nvm
+    chown radio radio /modem/modem_image/HWT6260.fls.fls
 
     mkdir /data/smc 0770 drmrpc drmrpc
     chown drmrpc drmrpc /data/smc/counter.bin
@@ -551,14 +541,14 @@ service btld /system/bin/logwrapper /system/bin/btld -lpm 1 -hb 3000000 -snr 8
 on property:service.brcm.bt.soft_onoff=1
     start btld
 
-on property:service.brcm.bt.soft_onoff=0
-    stop btld
+#on property:service.brcm.bt.soft_onoff=0
+#    stop btld
 
 service bluetoothd /system/bin/logwrapper /system/bin/bluetoothd -d -n
     class main
     socket bluetooth stream 660 bluetooth bluetooth
     socket dbus_bluetooth stream 660 bluetooth bluetooth
-   group bluetooth net_bt_admin misc
+    group bluetooth net_bt_admin misc
     disabled
 
 service kbtld /system/bin/sh /system/etc/bluetooth/kill-btld.sh
