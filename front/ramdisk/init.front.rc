@@ -354,7 +354,6 @@ service dbus /system/bin/dbus-daemon --system --nofork
     user bluetooth
     group bluetooth net_bt_admin
 
-
 service akmd8975 /system/bin/akmd8975 -m 3
     class main
     user system
@@ -560,16 +559,6 @@ service kbtld /system/bin/sh /system/etc/bluetooth/kill-btld.sh
 service kbluetoothd /system/bin/sh /system/etc/bluetooth/kill-bluetoothd.sh
     user root
     group system bluetooth
-    disabled
-    oneshot
-
-service dhcpcd_brcm-pan /system/bin/dhcpcd -ABKL
-    class main
-    disabled
-    oneshot
-
-service iprenew_brcm-pan /system/bin/dhcpcd -n
-    class main
     disabled
     oneshot
 
