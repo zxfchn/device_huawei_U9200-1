@@ -117,6 +117,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
+# Feature live wallpaper
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
 
@@ -141,6 +142,10 @@ PRODUCT_PACKAGES += \
 #Lib Skia test
 PRODUCT_PACKAGES += \
     SkLibTiJpeg_Test
+
+# SGX540 is slower with the scissor optimization enabled
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.disable_scissor_opt=true
 
 # Torch
 PRODUCT_PACKAGES += \
@@ -197,7 +202,7 @@ ADDITIONAL_DEFAULT_PROPERTIES := \
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=JDQ39E
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=JDQ39E-ShevT
 
 PRODUCT_CHARACTERISTICS      := default
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
