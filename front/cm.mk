@@ -7,8 +7,6 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 # Inherit device configuration for front gsm
 $(call inherit-product, vendor/cm/config/gsm.mk)
 
-
-
 # Release name
 PRODUCT_RELEASE_NAME := front
 
@@ -19,9 +17,6 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
-
-#Set build fingerprint / ID / Product Name ect.
-#PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=front BUILD_FINGERPRINT="Huawei/front/front:4.2.2/JDQ39E/eng.s00219286.20130808.210507:user/release-keys" PRIVATE_BUILD_DESC="U9500-1V100R001CHNC00B605_SYSTEM"
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := front
