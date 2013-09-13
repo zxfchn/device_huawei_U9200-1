@@ -17,7 +17,6 @@
 # limitations under the License.
 #
 
-
 # vendor
 $(call inherit-product-if-exists, vendor/huawei/front/front-vendor.mk)
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
@@ -26,7 +25,6 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 # overlay
 DEVICE_PACKAGE_OVERLAYS += device/huawei/front/overlay
-
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -65,18 +63,17 @@ PRODUCT_COPY_FILES += \
 
 # BT
 PRODUCT_COPY_FILES += \
-    device/huawei/front/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
-    device/huawei/front/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf \
-    device/huawei/front/bluetooth/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd \
-    device/huawei/front/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
-    device/huawei/front/bluetooth/did.conf:system/etc/bluetooth/did.conf \
-    device/huawei/front/bluetooth/init.bcm.chip_off.sh:system/etc/bluetooth/init.bcm.chip_off.sh \
-    device/huawei/front/bluetooth/init.bcm.chip_on.sh:system/etc/bluetooth/init.bcm.chip_on.sh \
-    device/huawei/front/bluetooth/input.conf:system/etc/bluetooth/input.conf \
-    device/huawei/front/bluetooth/kill-bluetoothd.sh:system/etc/bluetooth/kill-bluetoothd.sh \
-    device/huawei/front/bluetooth/kill-btld.sh:system/etc/bluetooth/kill-btld.sh \
-    device/huawei/front/bluetooth/main.conf:system/etc/bluetooth/main.conf \
-    device/huawei/front/bluetooth/network.conf:system/etc/bluetooth/network.conf
+    $(LOCAL_PATH)/bluetooth/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd \
+    $(LOCAL_PATH)/bluetooth/audio.conf:system/etc/bluetooth/audio.conf \
+    $(LOCAL_PATH)/bluetooth/auto_pair_devlist.conf:system/etc/bluetooth/auto_pair_devlist.conf \
+    $(LOCAL_PATH)/bluetooth/blacklist.conf:system/etc/bluetooth/blacklist.conf \
+    $(LOCAL_PATH)/bluetooth/bt_did.conf:system/etc/bluetooth/bt_did.conf \
+    $(LOCAL_PATH)/bluetooth/bt_stack.conf:system/etc/bluetooth/bt_stack.conf \
+    $(LOCAL_PATH)/bluetooth/init.bcm.chip_off.sh:system/etc/bluetooth/init.bcm.chip_off.sh \
+    $(LOCAL_PATH)/bluetooth/init.bcm.chip_on.sh:system/etc/bluetooth/init.bcm.chip_on.sh \
+    $(LOCAL_PATH)/bluetooth/input.conf:system/etc/bluetooth/input.conf \
+    $(LOCAL_PATH)/bluetooth/main.conf:system/etc/bluetooth/main.conf \
+    $(LOCAL_PATH)/bluetooth/network.conf:system/etc/bluetooth/network.conf
 
 # Vold
 PRODUCT_COPY_FILES += \
@@ -99,6 +96,7 @@ PRODUCT_COPY_FILES += \
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
@@ -137,7 +135,8 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     e2fsck \
     setup_fs \
-    libnetcmdiface
+    libnetcmdiface \
+    static_busybox
 
 #Lib Skia test
 PRODUCT_PACKAGES += \
@@ -165,20 +164,8 @@ PRODUCT_PACKAGES += \
     mischelp \
     libinvensense_mpl
 
-# for bugmailer
-#PRODUCT_PACKAGES += send_bug
-#PRODUCT_COPY_FILES += \
-#    system/extras/bugmailer/bugmailer.sh:system/bin/bugmailer.sh \
-#    system/extras/bugmailer/send_bug:system/bin/send_bug
-
 #Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=64m \
-    dalvik.vm.heapsize=256m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=2m \
-    dalvik.vm.heapmaxfree=8m \
     dalvik.vm.heaputilization=0.75 \
     dalvik.vm.lockprof.threshold=500 \
     dalvik.vm.dexopt-flags=m=y \
@@ -195,7 +182,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 ADDITIONAL_DEFAULT_PROPERTIES := \
     ro.secure=0 \
     ro.allow.mock.location=1 \
-    persist.sys.usb.config=mtp \
+    persist.sys.usb.config=mtp,mass_storage \
     ro.adb.secure=0 \
     ro.debuggable=1
 
@@ -204,11 +191,10 @@ ADDITIONAL_DEFAULT_PROPERTIES := \
 # as well - does not crash
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=JDQ39E-ShevT
 
+# This device is xhdpi
 PRODUCT_CHARACTERISTICS      := default
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_TAGS                 += dalvik.gc.type-precise
 PRODUCT_AAPT_CONFIG          := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG     := xhdpi
 PRODUCT_LOCALES              += en_US xhdpi
-BOARD_WLAN_DEVICE_REV        := bcm4330_b1
-WIFI_BAND                    := 802_11_ABG

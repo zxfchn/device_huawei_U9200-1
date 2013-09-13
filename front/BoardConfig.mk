@@ -46,6 +46,7 @@ COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DOMAP_ENHANCEMENT_BURST_CAPTURE
 
 COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
 MR0_AUDIO_BLOB := true
+OMAP_ENHANCEMENT_MULTIGPU := true
 
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
@@ -69,6 +70,9 @@ TARGET_ARCH_VARIANT_FPU := neon
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
+# Platform
+TARGET_BOARD_OMAP_CPU := 4460
+
 #HWcomposer
 BOARD_USES_HWCOMPOSER := true
 TARGET_HAS_WAITFORVSYNC := true
@@ -84,7 +88,7 @@ TARGET_PREBUILT_KERNEL := device/huawei/front/kernel
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
 # EGL
-BOARD_EGL_CFG := device/huawei/front/egl.cfg
+BOARD_EGL_CFG := device/huawei/front/prebuilt/egl.cfg
 USE_OPENGL_RENDERER := true
 
 # Lights
@@ -96,6 +100,7 @@ TARGET_PROVIDES_POWERHAL := true
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION      := VER_0_8_X
+BOARD_WLAN_DEVICE_REV       := bcm4330_b1
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
 BOARD_HOSTAPD_DRIVER        := NL80211
 BOARD_HOSTAPD_PRIVATE_LIB   := lib_driver_cmd_bcmdhd
@@ -104,6 +109,8 @@ WIFI_DRIVER_FW_PATH_PARAM   := "/sys/module/bcmdhd/parameters/firmware_path"
 WIFI_DRIVER_FW_PATH_STA     := "/vendor/firmware/fw_bcmdhd.bin"
 WIFI_DRIVER_FW_PATH_P2P     := "/vendor/firmware/fw_bcmdhd_p2p.bin"
 WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
+WIFI_DRIVER_MODULE_NAME     := "dhd"
+WIFI_BAND                   := 802_11_ABG
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
