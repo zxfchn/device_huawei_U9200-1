@@ -35,6 +35,7 @@ ro.config.internal_sdcard=yes
 # WiFi
 wifi.interface=wlan0
 wifi.supplicant_scan_interval=15
+ro.wifi.country=GB
 
 # hardware info
 ro.device.chipset=TI OMAP 4460
