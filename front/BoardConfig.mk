@@ -44,15 +44,15 @@ USE_ALL_OPTIMIZED_STRING_FUNCS := true
 OMAP_ENHANCEMENT := true
 COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DOMAP_ENHANCEMENT_BURST_CAPTURE
 
+# Audio
+BOARD_USES_GENERIC_AUDIO := false
 COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
 MR0_AUDIO_BLOB := true
+
 OMAP_ENHANCEMENT_MULTIGPU := true
 
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-
-# Audio
-BOARD_USES_GENERIC_AUDIO := false
 
 # Target arch settings
 TARGET_ARCH := arm
