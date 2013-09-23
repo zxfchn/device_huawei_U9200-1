@@ -75,14 +75,12 @@ on post-fs-data
 
 on boot
     write /sys/module/block2mtd/parameters/block2mtd /dev/block/platform/omap/omap_hsmmc.1/by-name/nvme
+
     # Boost the CPU for 30 secs during boot
     write /sys/devices/system/cpu/cpufreq/interactive/boost_timeout 30000000
     write /sys/devices/system/cpu/cpu0/cpufreq/boost_cpufreq 1
-
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 350000
-    chown system system /sys/block/mmcblk0/queue/scheduler
-    chmod 0664 /sys/block/mmcblk0/queue/scheduler
 
     chmod 0444 /system/usr/keychars/omap4-keypad.kcm.bin
 
@@ -133,12 +131,6 @@ on boot
     chown system system /sys/bus/i2c/devices/1-006b/enable_charger
     chmod 0660 /sys/bus/i2c/devices/1-006b/calling_limit
     chown system system /sys/bus/i2c/devices/1-006b/calling_limit
-
-    # camera calibration - DCC folder permission
-#    chown media media /data/misc/camera
-#    chown media media /data/misc/camera/R12_MVEN001_LD1_ND0_IR0_SH0_FL0_SVEN001_DCCID43
-#    chown media media /data/misc/camera/R12_MVEN002_LD2_ND0_IR0_SH0_FL0_SVEN002_DCCID42
-#    chown media media /data/misc/camera/R8_MVEN002_LD2_ND0_IR0_SH0_FL1_SVEN003_DCCID1042
 
     chown radio radio /factory
     chmod 0775 /factory
@@ -479,18 +471,6 @@ service bluetoothd /system/bin/logwrapper /system/bin/bluetoothd -d -n
     socket dbus_bluetooth stream 660 bluetooth bluetooth
     group bluetooth net_bt_admin misc
     disabled
-
-#service kbtld /system/bin/sh /system/etc/bluetooth/kill-btld.sh
-#    user root
-#    group system bluetooth
-#    disabled
-#    oneshot
-
-#service kbluetoothd /system/bin/sh /system/etc/bluetooth/kill-bluetoothd.sh
-#    user root
-#    group system bluetooth
-#    disabled
-#    oneshot
 
 service gpsd /system/bin/glgps -c /system/etc/gpsconfig.xml
     class main
