@@ -18,8 +18,6 @@ on init
     # pri/sec storage
     export EXTERNAL_STORAGE /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
-#    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-#    export EMULATED_STORAGE_TARGET /storage/emulated
 
     mkdir /storage/sdcard0 0000 system system
 
@@ -45,9 +43,6 @@ on fs
     setprop ro.crypto.umount_sd false
     mount_all /fstab.front
 
-    # add symlink for nxp noise-supression
-    #symlink /vendor/etc/nxp_front /data/nxp
-
 service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
     class late_start
 
@@ -64,9 +59,6 @@ on post-fs-data
     chmod 0660 /data/misc/wifi/p2p_supplicant.conf
 
     mkdir /data/smc 0770 drmrpc drmrpc
-#    chown drmrpc drmrpc /data/smc/counter.bin
-#    chown drmrpc drmrpc /data/smc/storage.bin
-#    chown drmrpc drmrpc /data/smc/system.bin
 
     setprop vold.post_fs_data_done 1
 
@@ -82,30 +74,16 @@ on boot
 
     chmod 0444 /system/usr/keychars/omap4-keypad.kcm.bin
 
-    chown system system /dev/cpuctl/tasks
-    chmod 0777 /dev/cpuctl/tasks
-    write /dev/cpuctl/cpu.shares 1024
-
-    chown system system /dev/cpuctl/apps/tasks
-    chmod 0777 /dev/cpuctl/apps/tasks
-    write /dev/cpuctl/apps/cpu.shares 1024
-
-    chown system system /dev/cpuctl/apps/bg_non_interactive/tasks
-    chmod 0777 /dev/cpuctl/apps/bg_non_interactive/tasks
-    write /dev/cpuctl/apps/bg_non_interactive/cpu.shares 52
-
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chown system system /sys/devices/system/cpu/cpufreq/interactive/lpspeed_freq
     chown system system /sys/devices/system/cpu/cpufreq/interactive/lpspeed_enabled
     chown system system /sys/devices/omapdss/display0/cabc_mode
     chown system system /sys/module/pvrsrvkm/parameters/sgx_freq_restrict
 
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load
-
     # Boost the CPU for 30 secs during boot
     write /sys/devices/system/cpu/cpufreq/interactive/boost_timeout 30000000
     write /sys/devices/system/cpu/cpu0/cpufreq/boost_cpufreq 1
+
     #Max/Min CPU speed
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 350000
@@ -147,7 +125,6 @@ on boot
 
     # modify i2c node authority begin
     # Change permissions on the governor (this is for debug only)
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
     chmod 0664 /sys/kernel/debug/pm_debug/enable_off_mode
     chmod 0664 /sys/devices/system/cpu/cpu1/online
     chmod 0666 /proc/cmdline
@@ -164,8 +141,6 @@ on boot
 
     chown radio radio /factory
     chmod 0775 /factory
-    # add symlink for HDCP key
-#    symlink /factory/hdcp.keys /system/vendor/firmware/hdcp.keys
 
     # power up/down interface
     chmod 0777 /sys/class/rfkill/rfkill0/state
