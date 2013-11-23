@@ -44,7 +44,8 @@
              android:primary="false"
              android:emulated="true"
              android:allowMassStorage="true"
-             android:maxFileSize="4096" />
+             android:maxFileSize="4096"
+             android:mtpReserve="100" />
     <storage android:mountPoint="/storage/usb-ext"
              android:storageDescription="@string/storage_usb"
              android:primary="false"
