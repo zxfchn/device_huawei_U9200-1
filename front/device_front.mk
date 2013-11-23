@@ -30,13 +30,6 @@ DEVICE_PACKAGE_OVERLAYS += device/huawei/front/overlay
 PRODUCT_PACKAGES += \
     Camera
 
-# PowerHAL
-PRODUCT_PACKAGES += \
-    power.front \
-    libedid \
-    hwcomposer.front \
-    libion_ti
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/fstab.front:root/fstab.front \
@@ -117,6 +110,11 @@ PRODUCT_COPY_FILES += \
 # Feature live wallpaper
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
+
+# PowerHAL
+PRODUCT_PACKAGES += \
+    power.front \
+    hwcomposer.front
 
 # Audio Packages
 PRODUCT_PACKAGES += \
