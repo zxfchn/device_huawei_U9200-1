@@ -54,22 +54,32 @@ ro.allow.mock.location=1
 # For the default value of agps
 ro.ril.def.agps.mode=2
 
+# Audio
 ro.config.hw_dolby=true
 ro.config.hw_dolby_config=front
 dolby.audio.hdmi.channels=0
+ro.config.hw_voicerecord=true
+media.aac_51_output_enabled=true
 
+media.stagefright.enable-player=true
+media.stagefright.enable-meta=true
+media.stagefright.enable-scan=false
+media.stagefright.enable-http=true
+
+
+# Huawei
+com.ti.omap_enhancement=true
+com.ti.omap_enhancement_s3d=true
+ro.config.hw_GSensorOptimize=true
+ro.config.hw_power_saving=true
+ro.kernel.android.checkjni = 0
 ro.config.hw_battery_percent=true
 ro.config.hw_uninstall_dataapp=true
 ro.config.fast_dormancy = false
-com.ti.omap_enhancement=true
-com.ti.omap_enhancement_s3d=true
 keyguard.no_require_sim=true
 ro.config.switchPrimaryVolume=true
-ro.config.hw_GSensorOptimize=true
 ro.config.endstksession=true
 ro.config.hw_temperature_warn=true
-ro.config.hw_power_saving=true
-ro.config.hw_voicerecord=true
 ro.config.callwait_vibrator=true
 ro.config.callrecord.enabled=1
 ro.config.hw_support_ipcall=true
@@ -82,15 +92,9 @@ ro.config.helix_enable=true
 gsm.sim.num.pin2=3
 gsm.sim.num.puk2=10
 ro.config.hw_gcf_mms = true
-ro.kernel.android.checkjni = 0
-media.aac_51_output_enabled=true
 ro.hwui.disable_scissor_opt=true
 windowsmgr.max_events_per_sec=150
 ro.max.fling_velocity=12000
 ro.min.fling_velocity=8000
-media.stagefright.enable-player=true
-media.stagefright.enable-meta=true
-media.stagefright.enable-scan=false
-media.stagefright.enable-http=true
 profiler.force_disable_err_rpt=1
 profiler.force_disable_ulog=1
