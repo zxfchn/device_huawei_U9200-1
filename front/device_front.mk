@@ -86,6 +86,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
 
+# Utilities
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/utils/optimizedb:system/etc/utils/optimizedb
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
