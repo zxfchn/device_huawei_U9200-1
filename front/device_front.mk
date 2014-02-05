@@ -164,7 +164,8 @@ PRODUCT_PACKAGES += \
     l2ping \
     com.android.future.usb.accessory \
     mischelp \
-    libinvensense_mpl
+    libinvensense_mpl \
+    hcidump
 
 #Dalvik
 PRODUCT_PROPERTY_OVERRIDES += \
