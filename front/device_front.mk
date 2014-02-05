@@ -65,7 +65,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/bluetooth/init.bcm.chip_on.sh:system/etc/bluetooth/init.bcm.chip_on.sh \
     $(LOCAL_PATH)/bluetooth/input.conf:system/etc/bluetooth/input.conf \
     $(LOCAL_PATH)/bluetooth/main.conf:system/etc/bluetooth/main.conf \
-    $(LOCAL_PATH)/bluetooth/network.conf:system/etc/bluetooth/network.conf
+    $(LOCAL_PATH)/bluetooth/network.conf:system/etc/bluetooth/network.conf \
+    $(LOCAL_PATH)/bluetooth/auto_pairing.conf:system/etc/bluetooth/auto_pairing.conf
 
 # Vold
 PRODUCT_COPY_FILES += \
