@@ -143,6 +143,9 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Security
 BOARD_USES_SECURE_SERVICES := true
 
+# release
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := device/huawei/front/releasetools/front_ota_from_target_files
+
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 
