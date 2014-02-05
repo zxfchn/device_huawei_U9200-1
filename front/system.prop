@@ -60,6 +60,7 @@ ro.config.hw_dolby_config=front
 dolby.audio.hdmi.channels=0
 ro.config.hw_voicerecord=true
 media.aac_51_output_enabled=true
+ro.config.switchPrimaryVolume=true
 
 media.stagefright.enable-player=true
 media.stagefright.enable-meta=true
@@ -77,7 +78,6 @@ ro.config.hw_battery_percent=true
 ro.config.hw_uninstall_dataapp=true
 ro.config.fast_dormancy = false
 keyguard.no_require_sim=true
-ro.config.switchPrimaryVolume=true
 ro.config.endstksession=true
 ro.config.hw_temperature_warn=true
 ro.config.callwait_vibrator=true
