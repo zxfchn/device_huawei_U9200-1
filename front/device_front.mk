@@ -174,12 +174,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dexopt-flags=m=y \
     dalvik.vm.stack-trace-file=/data/anr/traces.txt
 
+# Regional
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enterprise_mode=1 \
     ro.product.locale.language=ru \
     ro.product.locale.region=RU \
     ro.com.android.dateformat=dd-MM-yyyy \
     persist.sys.timezone=Europe/Moscow
+
+# Default ringtones
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.ringtone=Plennica.mp3 \
+    ro.config.notification_sound=Car_Lock.ogg \
+    ro.config.alarm_alert=dream_is_over.ogg
 
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES := \
