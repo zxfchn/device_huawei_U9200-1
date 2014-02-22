@@ -17,25 +17,7 @@
  */
 -->
 <resources>
-    <!-- Set the automatic brightness mode on by default -->
     <bool name="def_screen_brightness_automatic_mode">true</bool>
-
-    <!-- Screen timeout default = 60 sec -->
+    <!-- Screen timeout default = 60 seconds -->
     <integer name="def_screen_off_timeout">60000</integer>
-
-    <!-- Circle + Percent -->
-    <integer name="def_battery_style">3</integer>
-
-    <!-- Enable notification counters in statusbar -->
-    <integer name="def_notif_count">1</integer>
-
-    <!-- Right QS pulldown -->
-    <integer name="def_qs_quick_pulldown">1</integer>
-
-    <fraction name="def_window_animation_scale">0%</fraction>
-    <fraction name="def_window_transition_scale">0%</fraction>
-
-    <bool name="def_install_non_market_apps">true</bool>
-
-    <bool name="def_wifi_on">false</bool>
 </resources>
