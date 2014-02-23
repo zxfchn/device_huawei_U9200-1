@@ -186,6 +186,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.secure=0
 
+# Here crashes gallery
+# if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
+# as well - does not crash
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=KOT49H-ShevT
+
 PRODUCT_CHARACTERISTICS := default
 #PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 #PRODUCT_TAGS += dalvik.gc.type-precise
@@ -194,4 +199,3 @@ PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += en_US hdpi
 BOARD_WLAN_DEVICE_REV := bcm4330_b1
 WIFI_BAND             := 802_11_ABG
-
