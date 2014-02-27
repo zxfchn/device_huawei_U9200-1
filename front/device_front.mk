@@ -194,9 +194,9 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # as well - does not crash
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=KOT49H-ShevT
 
+PRODUCT_TAGS                 += dalvik.gc.type-precise
 PRODUCT_CHARACTERISTICS := default
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=$(shell date +"%s")
-#PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_AAPT_CONFIG          := hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG     := xhdpi
 PRODUCT_LOCALES              += en_US xhdpi
