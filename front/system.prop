@@ -35,14 +35,6 @@ dolby.audio.hdmi.channels=0
 persist.sys.themeId=MIUI V5 edit
 persist.sys.themePackageName=com.tung91.miui5.edit
 
-# My
-# MASS STORAGE
-ro.vold.umsdirtyratio=50
-ro.sys.fw.bg_apps_limit = 20
-# GPU producer to CPU consumer not supported
-ro.bq.gpu_to_cpu_unsupported=1
-# End My
-
 ro.config.fm_type=libbcmfm_if
 ro.config.KeyPassToUser=true
 ro.config.incall_notify_mms=true
@@ -118,3 +110,6 @@ media.aac_51_output_enabled=true
 hwui.render_dirty_regions=true
 wifi.interface=wlan0
 persist.sys.root_access=3
+
+# Fast mass storage
+ro.vold.umsdirtyratio=50
