@@ -177,6 +177,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.adb.secure=0 \
     ro.debuggable=1
 
+# Theme
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/themes/MIUI_V5_v2.2_edit_6_apkcrypt.apk:system/app/MIUI_V5_v2.2_edit.apk
+
 # End My
 
 #PRODUCT_PROPERTY_OVERRIDES += \
