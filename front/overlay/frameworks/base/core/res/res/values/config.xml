@@ -242,6 +242,10 @@
         <item>0</item>
     </integer-array>
 
+    <!-- Minimum screen brightness setting allowed by the power manager.
+         The user is forbidden from setting the brightness below this level. -->
+    <integer translatable="false" name="config_screenBrightnessSettingMinimum">15</integer>
+
     <!-- Enable translucent lockscreen-->
     <bool name="config_enableLockScreenTranslucentDecor">true</bool>
 
