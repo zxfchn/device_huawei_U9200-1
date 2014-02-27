@@ -139,9 +139,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
 packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
 
-PRODUCT_PACKAGES += \
-	librs_jni
-
 #Lib Skia test
 PRODUCT_PACKAGES += \
 	SkLibTiJpeg_Test
