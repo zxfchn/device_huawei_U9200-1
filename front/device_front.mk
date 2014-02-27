@@ -46,7 +46,6 @@ PRODUCT_PACKAGES += \
 
 # PowerHAL
 PRODUCT_PACKAGES += \
-	audio.primary.front \
 	hwcomposer.front \
 	libedid \
 	libion_ti \
