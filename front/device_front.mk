@@ -33,32 +33,32 @@ DEVICE_PACKAGE_OVERLAYS := device/huawei/front/overlay
 
 # Audio Packages
 PRODUCT_PACKAGES += \
-	audio.a2dp.default \
-	audio.usb.default \
-	libtinyalsa \
-	tinycap \
-	tinymix \
-	tinyplay \
-	libaudioutils
+    audio.a2dp.default \
+    audio.usb.default \
+    libtinyalsa \
+    tinycap \
+    tinymix \
+    tinyplay \
+    libaudioutils
 
 PRODUCT_PACKAGES += \
     libnetcmdiface
 
 # PowerHAL
 PRODUCT_PACKAGES += \
-	hwcomposer.front \
-	libedid \
-	libion_ti \
-	libstagefrighthw \
-	smc_pa_ctrl \
-	tf_daemon
+    hwcomposer.front \
+    libedid \
+    libion_ti \
+    libstagefrighthw \
+    smc_pa_ctrl \
+    tf_daemon
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-	device/huawei/front/ramdisk/init.front.rc:root/init.front.rc \
-	device/huawei/front/ramdisk/init.front.usb.rc:root/init.front.usb.rc \
-	device/huawei/front/ramdisk/ueventd.front.rc:root/ueventd.front.rc \
-	device/huawei/front/ramdisk/fstab.front:root/fstab.front
+    $(LOCAL_PATH)/ramdisk/init.front.rc:root/init.front.rc \
+    $(LOCAL_PATH)/ramdisk/init.front.usb.rc:root/init.front.usb.rc \
+    $(LOCAL_PATH)/front/ramdisk/ueventd.front.rc:root/ueventd.front.rc \
+    $(LOCAL_PATH)/front/ramdisk/fstab.front:root/fstab.front
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
@@ -72,87 +72,87 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_COPY_FILES += \
-	device/huawei/front/gps/gps.conf:system/etc/gps.conf \
-	device/huawei/front/gps/gpsconfig.xml:system/etc/gpsconfig.xml
+    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/gps/gpsconfig.xml:system/etc/gpsconfig.xml
 
 # BT
 PRODUCT_COPY_FILES += \
-	device/huawei/front/config/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd \
-	device/huawei/front/config/init.bcm.chip_off.sh:system/etc/bluetooth/init.bcm.chip_off.sh \
-	device/huawei/front/config/init.bcm.chip_on.sh:system/etc/bluetooth/init.bcm.chip_on.sh
+    $(LOCAL_PATH)/config/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd \
+    $(LOCAL_PATH)/config/init.bcm.chip_off.sh:system/etc/bluetooth/init.bcm.chip_off.sh \
+    $(LOCAL_PATH)/config/init.bcm.chip_on.sh:system/etc/bluetooth/init.bcm.chip_on.sh
 
 # Wi-Fi
 PRODUCT_COPY_FILES += \
-	device/huawei/front/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
+    $(LOCAL_PATH)/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Torch
 PRODUCT_PACKAGES += \
-        Torch
+    Torch
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
-        LiveWallpapers \
-        LiveWallpapersPicker \
-        VisualizationWallpapers \
-        librs_jni
+    LiveWallpapers \
+    LiveWallpapersPicker \
+    VisualizationWallpapers \
+    librs_jni
 
 # Common
 PRODUCT_PACKAGES += \
-	make_ext4fs \
-	setup_fs \
-	e2fsck \
-	l2ping \
-	com.android.future.usb.accessory
+    make_ext4fs \
+    setup_fs \
+    e2fsck \
+    l2ping \
+    com.android.future.usb.accessory
 
 # Key maps
 PRODUCT_COPY_FILES += \
-	device/huawei/front/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
-	device/huawei/front/usr/omap4-keypad.kcm:system/usr/keychars/omap4-keypad.kcm \
-	device/huawei/front/usr/twl6030_pwrbutton.kl:system/usr/keylayout/twl6030_pwrbutton.kl
+    $(LOCAL_PATH)/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
+    $(LOCAL_PATH)/usr/omap4-keypad.kcm:system/usr/keychars/omap4-keypad.kcm \
+    $(LOCAL_PATH)/front/usr/twl6030_pwrbutton.kl:system/usr/keylayout/twl6030_pwrbutton.kl
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
-	device/huawei/front/usr/syn_tm12xx_ts_1.idc:system/usr/idc/syn_tm12xx_ts_1.idc \
-	device/huawei/front/usr/syn_tm12xx_ts_2.idc:system/usr/idc/syn_tm12xx_ts_2.idc
+    $(LOCAL_PATH)/usr/syn_tm12xx_ts_1.idc:system/usr/idc/syn_tm12xx_ts_1.idc \
+    $(LOCAL_PATH)/usr/syn_tm12xx_ts_2.idc:system/usr/idc/syn_tm12xx_ts_2.idc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
-	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-	frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
-	frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
-	frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
-	frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
-	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-	frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
-	frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
-	frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
-	frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
-	frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
-	frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
-	frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
-	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
-	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
+    frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+    frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+    frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+    frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
+    frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+    frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+    frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml \
+    frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+    frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+    frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
-packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
+    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
 
 #Lib Skia test
 PRODUCT_PACKAGES += \
-	SkLibTiJpeg_Test
+    SkLibTiJpeg_Test
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.setupwizard.enable_bypass=1 \
-	dalvik.vm.dexopt-flags=m=y
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.disable_scissor_opt=true \
+    ro.setupwizard.enable_bypass=1 \
+    dalvik.vm.dexopt-flags=m=y \
     persist.sys.root_access=3
+
+# SGX540 is slower with the scissor optimization enabled
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.hwui.disable_scissor_opt=true
 
 # Regional
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.setupwizard.enterprise_mode=1 \
     ro.product.locale.language=ru \
     ro.product.locale.region=RU \
     ro.com.android.dateformat=dd-MM-yyyy \
@@ -178,7 +178,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-	ro.secure=0
+    ro.secure=0
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
@@ -186,10 +186,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=KOT49H-ShevT
 
 PRODUCT_TAGS                 += dalvik.gc.type-precise
-PRODUCT_CHARACTERISTICS := default
+PRODUCT_CHARACTERISTICS      := default
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=$(shell date +"%s")
 PRODUCT_AAPT_CONFIG          := hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG     := xhdpi
 PRODUCT_LOCALES              += en_US xhdpi
-BOARD_WLAN_DEVICE_REV := bcm4330_b1
-WIFI_BAND             := 802_11_ABG
+BOARD_WLAN_DEVICE_REV        := bcm4330_b1
+WIFI_BAND                    := 802_11_ABG
