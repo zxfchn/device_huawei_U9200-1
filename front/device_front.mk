@@ -146,7 +146,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enable_bypass=1 \
 	dalvik.vm.dexopt-flags=m=y
 
-# My
 # Don't preload EGL drivers in Zygote at boot time
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.zygote.disable_gl_preload=true
@@ -175,7 +174,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/themes/MIUI_V5_v2.2_edit_6_apkcrypt.apk:system/app/MIUI_V5_v2.2_edit.apk
 
-# End My
+# GPU producer to CPU consumer not supported
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.bq.gpu_to_cpu_unsupported=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
