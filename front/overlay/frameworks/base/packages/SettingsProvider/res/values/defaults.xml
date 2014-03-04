@@ -30,4 +30,6 @@
 
     <!-- Enable notification counters in statusbar -->
     <integer name="def_notif_count">1</integer>
+
+    <fraction name="def_window_animation_scale">0%</fraction>
 </resources>
