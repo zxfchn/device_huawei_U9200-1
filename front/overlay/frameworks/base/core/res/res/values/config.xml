@@ -26,9 +26,11 @@
     <integer name="config_defaultNotificationLedOn">500</integer>
     <integer name="config_defaultNotificationLedOff">1000</integer>
     <bool name="config_intrusiveNotificationLed">true</bool>
- 
-<bool translatable="false" name="skip_restoring_network_selection">true</bool>
- 
+
+    <!-- Boolean indicating if restoring network selection should be skipped -->
+    <!-- The restoring is handled by modem if it is true -->
+    <bool translatable="false" name="skip_restoring_network_selection">true</bool>
+
     <!-- An Array of "[Connection name],[ConnectivityManager.TYPE_xxxx],
          [associated radio-type],[priority],[restoral-timer(ms)],[dependencyMet]  -->
     <!-- the 5th element "resore-time" indicates the number of milliseconds to delay
@@ -84,7 +86,6 @@
         <item>5</item>
         <item>7</item>
     </integer-array>
-
 
     <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
     <bool translatable="false" name="config_wifi_dual_band_support">true</bool>
@@ -157,12 +158,15 @@
         <item>12</item>
     </integer-array>
 
+    <!-- remove assist key from hw keys rebinding menu -->
     <integer name="config_deviceHardwareKeys">7</integer>
 
     <!-- Minimum screen brightness setting allowed by the power manager.
          The user is forbidden from setting the brightness below this level. -->
     <integer translatable="false" name="config_screenBrightnessSettingMinimum">15</integer>
 
+    <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
+         Software implementation will be used if config_hardware_auto_brightness_available is not set -->
     <bool name="config_automatic_brightness_available">true</bool>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
