@@ -62,14 +62,12 @@ PRODUCT_COPY_FILES += \
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
-	device/huawei/front/media/media_profiles.xml:system/etc/media_profiles.xml \
-	device/huawei/front/media/media_codecs.xml:system/etc/media_codecs.xml \
-	device/huawei/front/audio/audio_policy.conf:system/etc/audio_policy.conf \
-	device/huawei/front/audio/huawei/audio/cm_front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf \
-	device/huawei/front/audio/huawei/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
-	device/huawei/front/audio/huawei/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf \
-	device/huawei/front/audio/huawei/audio/U9500_audio_config.conf:system/etc/huawei/audio/U9500_audio_config.conf \
-	device/huawei/front/audio/huawei/audio/U9500_factory_audio_config.conf:system/etc/huawei/audio/U9500_factory_audio_config.conf
+    $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
+    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio/huawei/audio/cm_front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf \
+    $(LOCAL_PATH)/audio/huawei/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
+    $(LOCAL_PATH)/audio/huawei/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf
 
 # GPS
 PRODUCT_COPY_FILES += \
