@@ -95,9 +95,8 @@ bool use_sw_vsync()
     char board[PROPERTY_VALUE_MAX];
     bool rv = false;
     property_get("ro.product.board", board, "");
-    if ((strncmp("blaze", board, PROPERTY_VALUE_MAX) == 0) ||
-        (strncmp("panda5", board, PROPERTY_VALUE_MAX) == 0)) {
-        /* TODO: panda5 really should support h/w vsync */
+    if ((strncmp("front", board, PROPERTY_VALUE_MAX) == 0) ||
+        (strncmp("U9500", board, PROPERTY_VALUE_MAX) == 0)) {
         rv = true;
     } else {
         char value[PROPERTY_VALUE_MAX];
