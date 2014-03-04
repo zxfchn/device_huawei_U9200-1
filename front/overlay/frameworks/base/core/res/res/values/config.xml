@@ -160,6 +160,9 @@
     <integer name="config_deviceHardwareKeys">7</integer>
     <bool name="config_automatic_brightness_available">true</bool>
 
+    <!-- The attenuation in dB applied to the lock/unlock sounds. -->
+    <integer translatable="false" name="config_lockSoundVolumeDb">2</integer>
+
     <integer-array name="config_autoBrightnessLevels">
         <item>6</item>
         <item>10</item>
