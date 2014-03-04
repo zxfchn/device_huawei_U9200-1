@@ -57,8 +57,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/init.front.rc:root/init.front.rc \
     $(LOCAL_PATH)/ramdisk/init.front.usb.rc:root/init.front.usb.rc \
-    $(LOCAL_PATH)/front/ramdisk/ueventd.front.rc:root/ueventd.front.rc \
-    $(LOCAL_PATH)/front/ramdisk/fstab.front:root/fstab.front
+    $(LOCAL_PATH)/ramdisk/ueventd.front.rc:root/ueventd.front.rc \
+    $(LOCAL_PATH)/ramdisk/fstab.front:root/fstab.front
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
