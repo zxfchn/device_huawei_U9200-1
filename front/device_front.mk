@@ -146,10 +146,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enable_bypass=1 \
 	dalvik.vm.dexopt-flags=m=y
 
-# Don't preload EGL drivers in Zygote at boot time
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.zygote.disable_gl_preload=true
-
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.disable_scissor_opt=true \
     persist.sys.root_access=3
