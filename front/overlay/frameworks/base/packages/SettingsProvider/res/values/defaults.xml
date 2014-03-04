@@ -32,4 +32,6 @@
     <integer name="def_notif_count">1</integer>
 
     <fraction name="def_window_animation_scale">0%</fraction>
+
+    <bool name="def_install_non_market_apps">true</bool>
 </resources>
