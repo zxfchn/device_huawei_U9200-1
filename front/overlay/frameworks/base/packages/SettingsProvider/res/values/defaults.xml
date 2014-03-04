@@ -18,6 +18,13 @@
 -->
 <resources>
     <bool name="def_screen_brightness_automatic_mode">true</bool>
+
     <!-- Screen timeout default = 60 seconds -->
     <integer name="def_screen_off_timeout">60000</integer>
+
+    <!-- Default for Settings.System.STATUS_BAR_BATTERY -->
+    <integer name="def_battery_style">2</integer>
+
+    <!-- Default for Settings.System.STATUS_BAR_BATTERY_SHOW_PERCENT -->
+    <integer name="def_battery_show_percent">1</integer>
 </resources>
