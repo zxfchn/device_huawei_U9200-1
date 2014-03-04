@@ -1,0 +1,15 @@
+
+project system/vold/
+diff --git a/system/vold/Android.mk b/system/vold/Android.mk
+index d1488eb..a62ee1d 100644
+--- a/system/vold/Android.mk
++++ b/system/vold/Android.mk
+@@ -16,7 +16,7 @@ ifneq ($(TARGET_USE_CUSTOM_LUN_FILE_PATH),)
+ common_cflags += -DCUSTOM_LUN_FILE=\"$(TARGET_USE_CUSTOM_LUN_FILE_PATH)\"
+ endif
+ 
+-common_cflags += -Werror
++common_cflags += -Werror -Wno-error=unused-parameter
+ 
+ common_src_files := \
+ 	VolumeManager.cpp \
