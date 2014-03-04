@@ -177,8 +177,8 @@ PRODUCT_COPY_FILES += \
 
 # End My
 
-#PRODUCT_PROPERTY_OVERRIDES += \
-#	persist.sys.usb.config=mtp
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.usb.config=mtp
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.secure=0
