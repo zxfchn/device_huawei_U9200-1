@@ -144,8 +144,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.setupwizard.enable_bypass=1 \
-	dalvik.vm.dexopt-flags=m=y \
-	ro.product.board=U9500
+	dalvik.vm.dexopt-flags=m=y
 
 # My
 # Don't preload EGL drivers in Zygote at boot time
