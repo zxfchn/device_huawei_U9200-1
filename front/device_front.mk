@@ -67,7 +67,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bin/sysro:system/bin/sysro \
     $(LOCAL_PATH)/prebuilt/bin/sysrw:system/bin/sysrw \
     $(LOCAL_PATH)/prebuilt/etc/utils/optimizedb:system/etc/utils/optimizedb \
-    $(LOCAL_PATH)/prebuilt/etc/utils/optimizestorage:system/etc/utils/optimizestorage
+    $(LOCAL_PATH)/prebuilt/etc/utils/optimizestorage:system/etc/utils/optimizestorage \
+    $(LOCAL_PATH)/prebuilt/etc/init.d/10sysctl:system/etc/init.d/10sysctl \
+    $(LOCAL_PATH)/prebuilt/etc/sysctl:system/etc/sysctl \
+    $(LOCAL_PATH)/prebuilt/etc/sysctl.conf:system/etc/sysctl.conf
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
