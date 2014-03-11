@@ -60,6 +60,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ramdisk/ueventd.front.rc:root/ueventd.front.rc \
     $(LOCAL_PATH)/ramdisk/fstab.front:root/fstab.front
 
+# Utilities
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/bin/rootro:system/bin/rootro \
+    $(LOCAL_PATH)/prebuilt/bin/rootrw:system/bin/rootrw \
+    $(LOCAL_PATH)/prebuilt/bin/sysro:system/bin/sysro \
+    $(LOCAL_PATH)/prebuilt/bin/sysrw:system/bin/sysrw
+
 # Media / Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
