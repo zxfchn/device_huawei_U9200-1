@@ -65,7 +65,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/bin/rootro:system/bin/rootro \
     $(LOCAL_PATH)/prebuilt/bin/rootrw:system/bin/rootrw \
     $(LOCAL_PATH)/prebuilt/bin/sysro:system/bin/sysro \
-    $(LOCAL_PATH)/prebuilt/bin/sysrw:system/bin/sysrw
+    $(LOCAL_PATH)/prebuilt/bin/sysrw:system/bin/sysrw \
+    $(LOCAL_PATH)/prebuilt/etc/utils/optimizedb:system/etc/utils/optimizedb \
+    $(LOCAL_PATH)/prebuilt/etc/utils/optimizestorage:system/etc/utils/optimizestorage
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
