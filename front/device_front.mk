@@ -115,6 +115,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/usr/syn_tm12xx_ts_1.idc:system/usr/idc/syn_tm12xx_ts_1.idc \
     $(LOCAL_PATH)/usr/syn_tm12xx_ts_2.idc:system/usr/idc/syn_tm12xx_ts_2.idc
 
+# Replace Bootanimation
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
+
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
