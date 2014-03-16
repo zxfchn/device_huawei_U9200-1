@@ -39,8 +39,24 @@ index 3497662..1d69a95 100644
  TARGET_GLOBAL_CFLAGS += -Wno-unused-but-set-variable -fno-builtin-sin \
  			-fno-strict-volatile-bitfields
  endif
+diff --git a/build/core/dumpvar.mk b/build/core/dumpvar.mk
+index 716f281..32d724f 100644
+--- a/build/core/dumpvar.mk
++++ b/build/core/dumpvar.mk
+@@ -11,9 +11,9 @@ endif
+ 
+ # Add the ARM toolchain bin dir if it actually exists
+ ifeq ($(TARGET_ARCH),arm)
+-    ifneq ($(wildcard $(PWD)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_GCC_VERSION)/bin),)
++    ifneq ($(wildcard $(PWD)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/linaro-4.8/bin),)
+         # this should be copied to HOST_OUT_EXECUTABLES instead
+-        ABP:=$(ABP):$(PWD)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(TARGET_GCC_VERSION)/bin
++        ABP:=$(ABP):$(PWD)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/linaro-4.8/bin
+     endif
+     ifneq ($(wildcard $(PWD)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(TARGET_GCC_VERSION)/bin),)
+         # this should be copied to HOST_OUT_EXECUTABLES instead
 diff --git a/build/envsetup.sh b/build/envsetup.sh
-index 8c1bd41..c9e257a 100644
+index a5cc21c..7dccfdf 100644
 --- a/build/envsetup.sh
 +++ b/build/envsetup.sh
 @@ -153,7 +153,7 @@ function setpaths()
@@ -61,3 +77,24 @@ index 8c1bd41..c9e257a 100644
              if [ -d "$gccprebuiltdir/$toolchaindir" ]; then
                   export ARM_EABI_TOOLCHAIN="$gccprebuiltdir/$toolchaindir"
                   ARM_EABI_TOOLCHAIN_PATH=":$gccprebuiltdir/$toolchaindir"
+diff --git a/build/tools/adbs b/build/tools/adbs
+index 37c520c..09f3eba 100755
+--- a/build/tools/adbs
++++ b/build/tools/adbs
+@@ -141,14 +141,13 @@ def SetupToolsPath():
+   elif uname == "Linux":
+     uname = "linux-x86"
+   gcc_version = os.environ["TARGET_GCC_VERSION"]
+-  prefix = "./prebuilts/gcc/" + uname + "/arm/arm-linux-androideabi-" + \
+-           gcc_version + "/bin/"
++  prefix = "./prebuilts/gcc/" + uname + "/arm/linaro-4.8/bin/"
+   addr2line_cmd = prefix + "arm-linux-androideabi-addr2line"
+ 
+   if (not os.path.exists(addr2line_cmd)):
+     try:
+       prefix = os.environ['ANDROID_BUILD_TOP'] + "/prebuilts/gcc/" + \
+-               uname + "/arm/arm-linux-androideabi-" + gcc_version + "/bin/"
++               uname + "/arm/linaro-4.8/bin/"
+     except:
+       prefix = "";
+ 
