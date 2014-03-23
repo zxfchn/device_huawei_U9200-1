@@ -134,9 +134,9 @@ PRODUCT_COPY_FILES += \
 # Ghost Commander
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/app/GhostCommander_1.51.5b2.apk:system/app/GhostCommander_1.51.5b2.apk \
-    $(LOCAL_PATH)/prebuilt/app/GhostCommander-GoogleDrive_plugin_v1.00b2.apk:system/app/GhostCommander-GoogleDrive_plugin_v1.00b2.apk \
-    $(LOCAL_PATH)/prebuilt/app/GhostCommander-Samba_plugin_v1.31.1b3.apk:system/app/GhostCommander-Samba_plugin_v1.31.1b3.apk \
-    $(LOCAL_PATH)/prebuilt/app/GhostCommander-SFTP_plugin_v1.11b3.apk:system/app/GhostCommander-SFTP_plugin_v1.11b3.apk
+    $(LOCAL_PATH)/prebuilt/app/GhostCommander-GoogleDrive_plugin.apk:system/app/GhostCommander-GoogleDrive_plugin.apk \
+    $(LOCAL_PATH)/prebuilt/app/GhostCommander-Samba_plugin.apk:system/app/GhostCommander-Samba_plugin.apk \
+    $(LOCAL_PATH)/prebuilt/app/GhostCommander-SFTP_plugin.apk:system/app/GhostCommander-SFTP_plugin.apk
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
