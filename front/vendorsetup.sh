@@ -22,4 +22,9 @@
 
 add_lunch_combo cm_front-userdebug
 add_lunch_combo cm_front-eng
-sh device/huawei/front/patch/applypatch.sh
+
+if [ $PAC_FLAG = "1" ]; then
+    sh device/huawei/front/patch/pac/applypatch.sh
+else
+    sh device/huawei/front/patch/applypatch.sh
+fi
