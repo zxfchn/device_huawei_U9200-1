@@ -16,9 +16,6 @@ TARGET_BOOTANIMATION_USE_RGB565 := true
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 
-#Set build fingerprint / ID / Product Name ect.
-#PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=front BUILD_FINGERPRINT="Huawei/front/front:4.2.1:user/release-keys" PRIVATE_BUILD_DESC="U9500-1V100R001RUSC00B522_SYSTEM"
-
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := front
 PRODUCT_NAME := cm_front
