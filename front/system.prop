@@ -4,10 +4,6 @@ rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/xmd-tty0
 mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0
 ro.ril.enable.dtm=1
-ro.ril.gprsclass=12
-ro.ril.hsdpa.category=10
-ro.ril.hsupa.category=6
-ro.ril.hsxpa=2
 
 # Default network type.
 # 0 => WCDMA preferred.
@@ -46,7 +42,6 @@ ro.config.sim_hot_swap=true
 ro.config.bg_call_twinking=true
 ro.config.helix_a_enable=false
 ro.config.helix_b_enable=false
-#ro.config.helix_e_enable=true
 ro.config.doublehome=true
 ro.config.switchPrimaryVolume=true
 ro.config.CphsOnsEnabled=false
@@ -99,10 +94,6 @@ net.dns1=8.8.4.4
 net.dns2=8.8.8.8
 #
 ro.kernel.android.checkjni=0
-dalvik.vm.execution-mode=int:jit
-dalvik.vm.dexopt-data-only=1
-dalvik.vm.verify-bytecode=false
-dalvik.vm.dexopt-flags=v=a,o=v,m=y
 gsm.sim.num.pin2=3
 gsm.sim.num.puk2=10
 drm.service.enabled=false
