@@ -33,13 +33,19 @@ DEVICE_PACKAGE_OVERLAYS := device/huawei/front/overlay
 
 # Audio Packages
 PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    audio.usb.default \
     libtinyalsa \
     tinycap \
     tinymix \
     tinyplay \
     libaudioutils
+
+# Hardware HALs
+PRODUCT_PACKAGES += \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.policy.omap4 \
+    audio.hdmi.omap4 \
+    audio.primary.omap4
 
 PRODUCT_PACKAGES += \
     libnetcmdiface
