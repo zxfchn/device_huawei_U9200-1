@@ -55,9 +55,7 @@ PRODUCT_PACKAGES += \
     hwcomposer.front \
     libedid \
     libion_ti \
-    libstagefrighthw \
-    smc_pa_ctrl \
-    tf_daemon
+    libstagefrighthw
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -172,7 +170,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
-    dalvik.vm.dexopt-flags=m=y \
     persist.sys.root_access=3
 
 # SGX540 is slower with the scissor optimization enabled
