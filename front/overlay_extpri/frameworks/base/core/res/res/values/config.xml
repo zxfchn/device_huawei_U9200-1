@@ -74,7 +74,7 @@
          bluetooth interfaces.  If the device doesn't want to support tethering over bluetooth this
          should be empty. -->
     <string-array translatable="false" name="config_tether_bluetooth_regexs">
-        <item>"bnep\\d"</item>
+        <item>"bt-pan"</item>
     </string-array>
 
     <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
@@ -307,4 +307,10 @@
 
     <!-- The attenuation in dB applied to the lock/unlock sounds. -->
     <integer translatable="false" name="config_lockSoundVolumeDb">2</integer>
+
+    <!-- Disable lockscreen rotation -->
+    <bool name="config_enableLockScreenRotation">false</bool>
+
+    <!-- CRT animation -->
+    <bool name="config_animateScreenLights">true</bool>
 </resources>
