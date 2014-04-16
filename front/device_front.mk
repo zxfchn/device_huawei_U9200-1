@@ -93,11 +93,10 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/gps/gpsconfig.xml:system/etc/gpsconfig.xml
 
-# BT
+# Bluetooth configuration files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd \
-    $(LOCAL_PATH)/config/init.bcm.chip_off.sh:system/etc/bluetooth/init.bcm.chip_off.sh \
-    $(LOCAL_PATH)/config/init.bcm.chip_on.sh:system/etc/bluetooth/init.bcm.chip_on.sh
+    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
 
 # Wi-Fi
 PRODUCT_COPY_FILES += \
