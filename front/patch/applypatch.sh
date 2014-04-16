@@ -13,4 +13,5 @@ for patch in `ls $dir/*.patch` ; do
 	patch -p1 -N -i $patch -r - -d $top
 done
 
+echo Copy Linaro
 cp -r ../../linaro-4.8 $top/prebuilts/gcc/linux-x86/arm/

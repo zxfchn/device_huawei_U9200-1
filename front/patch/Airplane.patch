@@ -1,5 +1,4 @@
 
-
 project packages/services/Telephony/
 diff --git a/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java b/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
 index de1ecd5..98f8fe7 100644
