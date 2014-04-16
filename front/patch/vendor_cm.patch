@@ -1,10 +1,10 @@
 
 project vendor/cm/
 diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
-index 1653d4b..5f5583e 100644
+index b83b994..6d03800 100644
 --- a/vendor/cm/config/common.mk
 +++ b/vendor/cm/config/common.mk
-@@ -145,7 +148,6 @@ PRODUCT_PACKAGES += \
+@@ -141,7 +141,6 @@ PRODUCT_PACKAGES += \
      audio_effects.conf \
      CMWallpapers \
      Apollo \
@@ -12,7 +12,7 @@ index 1653d4b..5f5583e 100644
      LockClock \
      CMUpdater \
      CMFota \
-@@ -236,9 +238,9 @@ ifndef CM_BUILDTYPE
+@@ -232,9 +231,9 @@ ifndef CM_BUILDTYPE
  endif
  
  # Filter out random types, so it'll reset to UNOFFICIAL
