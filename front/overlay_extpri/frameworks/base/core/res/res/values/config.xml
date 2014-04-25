@@ -313,4 +313,7 @@
 
     <!-- CRT animation -->
     <bool name="config_animateScreenLights">false</bool>
+
+    <!-- Separate software navigation bar required on this device. -->
+    <bool translatable="false" name="config_showNavigationBar">false</bool>
 </resources>
