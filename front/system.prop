@@ -32,8 +32,6 @@ ro.config.KeyPassToUser=true
 ro.config.incall_notify_mms=true
 ro.config.endstksession=true
 ro.config.fast_dormancy=false
-ro.config.do_sdcard_upgrade=true
-ro.config.internal_sdcard=yes
 ro.config.sim_hot_swap=true
 ro.config.bg_call_twinking=true
 ro.config.helix_a_enable=false
@@ -71,9 +69,7 @@ ro.config.hw_remindBT=true
 #
 persist.sys.quickpoweron=normal
 persist.sys.animationstart=false
-persist.sys.powerup_reason=
 persist.sys.actualpoweron=true
-persist.sys.main_storage=sdcard0
 #
 hw.net.tcp.buffersize.default=4096,262140,523264,4096,49152,523264
 hw.net.tcp.buffersize.umts=4096,262140,523264,4096,49152,523264
