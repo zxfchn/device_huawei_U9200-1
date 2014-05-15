@@ -96,3 +96,5 @@ persist.sys.root_access=3
 
 # Fast mass storage
 ro.vold.umsdirtyratio=50
+
+ro.crypto.state=unencrypted
