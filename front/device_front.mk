@@ -197,10 +197,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.adb.secure=0 \
     ro.debuggable=1
 
-# GPU producer to CPU consumer not supported
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.bq.gpu_to_cpu_unsupported=1
-
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
