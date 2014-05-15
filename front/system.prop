@@ -91,7 +91,7 @@ gsm.sim.num.pin2=3
 gsm.sim.num.puk2=10
 drm.service.enabled=false
 media.aac_51_output_enabled=true
-hwui.render_dirty_regions=true
+hwui.render_dirty_regions=false
 wifi.interface=wlan0
 persist.sys.root_access=3
 
