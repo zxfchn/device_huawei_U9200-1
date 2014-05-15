@@ -21,11 +21,11 @@
      for different hardware and product builds. -->
 <resources>
 
-    <bool name="config_batterySdCardAccessibility">true</bool>
-    <color name="config_defaultNotificationColor">#ff00ff00</color>
-    <integer name="config_defaultNotificationLedOn">500</integer>
-    <integer name="config_defaultNotificationLedOff">1000</integer>
-    <bool name="config_intrusiveNotificationLed">true</bool>
+    <bool translatable="false" name="config_batterySdCardAccessibility">true</bool>
+    <color translatable="false" name="config_defaultNotificationColor">#ff00ff00</color>
+    <integer translatable="false" name="config_defaultNotificationLedOn">500</integer>
+    <integer translatable="false" name="config_defaultNotificationLedOff">1000</integer>
+    <bool translatable="false" name="config_intrusiveNotificationLed">true</bool>
 
     <!-- Boolean indicating if restoring network selection should be skipped -->
     <!-- The restoring is handled by modem if it is true -->
@@ -100,19 +100,19 @@
     <integer translatable="false" name="config_wifi_framework_scan_interval">0</integer>
 
     <!-- The VoiceMail default value is displayed to my own number if it is true -->
-    <bool name="config_telephony_use_own_number_for_voicemail">true</bool>
+    <bool translatable="false" name="config_telephony_use_own_number_for_voicemail">true</bool>
 
     <!-- Enables or disables fading edges when marquee is enabled in TextView. -->
-    <bool name="config_ui_enableFadingMarquee">false</bool>
+    <bool translatable="false" name="config_ui_enableFadingMarquee">false</bool>
 
     <!-- Display low battery warning when battery level dips to this value -->
-    <integer name="config_lowBatteryWarningLevel">5</integer>
+    <integer translatable="false" name="config_lowBatteryWarningLevel">5</integer>
 
     <!-- Close low battery warning when battery level reaches this value -->
-    <integer name="config_lowBatteryCloseWarningLevel">10</integer>
+    <integer translatable="false" name="config_lowBatteryCloseWarningLevel">10</integer>
 
     <!-- Vibrator pattern for feedback about a long screen/key press -->
-    <integer-array name="config_longPressVibePattern">
+    <integer-array translatable="false" name="config_longPressVibePattern">
         <item>0</item>
         <item>1</item>
         <item>15</item>
@@ -120,7 +120,7 @@
     </integer-array>
 
     <!-- Vibrator pattern for feedback about touching a virtual key -->
-    <integer-array name="config_virtualKeyVibePattern">
+    <integer-array translatable="false" name="config_virtualKeyVibePattern">
         <item>0</item>
         <item>10</item>
         <item>14</item>
@@ -128,12 +128,12 @@
     </integer-array>
 
     <!-- Vibrator pattern for a very short but reliable vibration for soft keyboard tap -->
-    <integer-array name="config_keyboardTapVibePattern">
+    <integer-array translatable="false" name="config_keyboardTapVibePattern">
         <item>20</item>
     </integer-array>
 
     <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
-    <integer-array name="config_safeModeDisabledVibePattern">
+    <integer-array translatable="false" name="config_safeModeDisabledVibePattern">
         <item>0</item>
         <item>1</item>
         <item>15</item>
@@ -141,7 +141,7 @@
     </integer-array>
 
     <!-- Vibrator pattern for feedback about booting with safe mode disabled -->
-    <integer-array name="config_safeModeEnabledVibePattern">
+    <integer-array translatable="false" name="config_safeModeEnabledVibePattern">
         <item>0</item>
         <item>1</item>
         <item>20</item>
@@ -151,7 +151,7 @@
     </integer-array>
 
     <!-- Vibrator pattern for feedback about hitting a scroll barrier -->
-    <integer-array name="config_scrollBarrierVibePattern">
+    <integer-array translatable="false" name="config_scrollBarrierVibePattern">
         <item>0</item>
         <item>15</item>
         <item>10</item>
@@ -167,7 +167,7 @@
 
     <!-- Flag indicating whether the we should enable the automatic brightness in Settings.
          Software implementation will be used if config_hardware_auto_brightness_available is not set -->
-    <bool name="config_automatic_brightness_available">true</bool>
+    <bool translatable="false" name="config_automatic_brightness_available">true</bool>
 
     <!-- Array of light sensor LUX values to define our levels for auto backlight brightness support.
          The N entries of this array define N + 1 control points as follows:
@@ -189,7 +189,7 @@
          backlight values for LUX levels between these control points.
 
          Must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLevels">
+    <integer-array translatable="false" name="config_autoBrightnessLevels">
         <item>6</item>
         <item>10</item>
         <item>15</item>
@@ -217,7 +217,7 @@
          than the size of the config_autoBrightnessLevels array.
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessLcdBacklightValues">
+    <integer-array translatable="false" name="config_autoBrightnessLcdBacklightValues">
         <item>40</item>
         <item>50</item>
         <item>60</item>
@@ -246,7 +246,7 @@
          than the size of the config_autoBrightnessLevels array.
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessButtonBacklightValues">
+    <integer-array translatable="false" name="config_autoBrightnessButtonBacklightValues">
         <item>255</item>
         <item>255</item>
         <item>255</item>
@@ -275,7 +275,7 @@
          than the size of the config_autoBrightnessLevels array.
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
-    <integer-array name="config_autoBrightnessKeyboardBacklightValues">
+    <integer-array translatable="false" name="config_autoBrightnessKeyboardBacklightValues">
         <item>255</item>
         <item>255</item>
         <item>255</item>
@@ -300,20 +300,17 @@
     </integer-array>
 
     <!-- Enable translucent lockscreen-->
-    <bool name="config_enableLockScreenTranslucentDecor">true</bool>
+    <bool translatable="false" name="config_enableLockScreenTranslucentDecor">true</bool>
 
     <!-- LED Flashlight -->
-    <bool name="config_enableTorch">true</bool>
+    <bool translatable="false" name="config_enableTorch">true</bool>
 
     <!-- The attenuation in dB applied to the lock/unlock sounds. -->
     <integer translatable="false" name="config_lockSoundVolumeDb">2</integer>
 
     <!-- Disable lockscreen rotation -->
-    <bool name="config_enableLockScreenRotation">false</bool>
+    <bool translatable="false" name="config_enableLockScreenRotation">false</bool>
 
     <!-- CRT animation -->
-    <bool name="config_animateScreenLights">false</bool>
-
-    <!-- Separate software navigation bar required on this device. -->
-    <bool translatable="false" name="config_showNavigationBar">false</bool>
+    <bool translatable="false" name="config_animateScreenLights">false</bool>
 </resources>
