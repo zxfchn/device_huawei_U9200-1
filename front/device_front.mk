@@ -190,12 +190,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.alarm_alert=dream_is_over.ogg
 
 # adb has root
-#ADDITIONAL_DEFAULT_PROPERTIES := \
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.secure=0 \
-    ro.allow.mock.location=1 \
+ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
-    ro.debuggable=1
+    ro.secure=1 \
+    ro.allow.mock.location=1 \
+    ro.debuggable=1 \
+    persist.service.adb.enable=1
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
