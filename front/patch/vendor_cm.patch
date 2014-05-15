@@ -26,7 +26,7 @@ index b83b994..6d03800 100644
  ifdef CM_BUILDTYPE
      ifneq ($(CM_BUILDTYPE), SNAPSHOT)
 diff --git a/vendor/cm/config/common_full.mk b/vendor/cm/config/common_full.mk
-index 2eccc56..77f9206 100644
+index ffdb2da..cbe1a2a 100644
 --- a/vendor/cm/config/common_full.mk
 +++ b/vendor/cm/config/common_full.mk
 @@ -2,7 +2,7 @@
@@ -38,8 +38,8 @@ index 2eccc56..77f9206 100644
  
  # Include CM audio files
  include vendor/cm/config/cm_audio.mk
-@@ -33,5 +33,5 @@ PRODUCT_PACKAGES += \
-     libvideoeditorplayer
+@@ -39,5 +39,5 @@ PRODUCT_PACKAGES += \
+     libnamparser
  
  # Extra tools in CM
 -PRODUCT_PACKAGES += \

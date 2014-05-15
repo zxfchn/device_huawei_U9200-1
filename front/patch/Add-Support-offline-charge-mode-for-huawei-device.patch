@@ -1,10 +1,10 @@
 
 project bootable/recovery/
 diff --git a/bootable/recovery/Android.mk b/bootable/recovery/Android.mk
-index 90f4d13..fe09a19 100644
+index 963a636..de8dd83 100644
 --- a/bootable/recovery/Android.mk
 +++ b/bootable/recovery/Android.mk
-@@ -65,7 +65,7 @@ BOARD_RECOVERY_CHAR_HEIGHT := $(shell echo $(BOARD_USE_CUSTOM_RECOVERY_FONT) | c
+@@ -72,7 +72,7 @@ BOARD_RECOVERY_CHAR_HEIGHT := $(shell echo $(BOARD_USE_CUSTOM_RECOVERY_FONT) | c
  
  LOCAL_CFLAGS += -DBOARD_RECOVERY_CHAR_WIDTH=$(BOARD_RECOVERY_CHAR_WIDTH) -DBOARD_RECOVERY_CHAR_HEIGHT=$(BOARD_RECOVERY_CHAR_HEIGHT)
  
@@ -14,7 +14,7 @@ index 90f4d13..fe09a19 100644
  $(foreach board_define,$(BOARD_RECOVERY_DEFINES), \
    $(if $($(board_define)), \
 diff --git a/bootable/recovery/recovery.c b/bootable/recovery/recovery.c
-index a56a8b6..955a460 100644
+index b394d5d..b9fb79a 100644
 --- a/bootable/recovery/recovery.c
 +++ b/bootable/recovery/recovery.c
 @@ -35,6 +35,7 @@
@@ -25,10 +25,10 @@ index a56a8b6..955a460 100644
  #include "install.h"
  #include "minui/minui.h"
  #include "minzip/DirUtil.h"
-@@ -158,6 +159,52 @@ fopen_path(const char *path, const char *mode) {
-     if (fp == NULL && path != COMMAND_FILE) LOGE("Can't open %s\n", path);
+@@ -158,6 +159,53 @@ fopen_path(const char *path, const char *mode) {
      return fp;
  }
+ 
 +#ifdef RECOVERY_CHARGEMODE
 +void handle_chargemode() {
 +    const char* filename = "/proc/cmdline";
@@ -65,20 +65,21 @@ index a56a8b6..955a460 100644
 +        close(fd);
 +    }
 +    close(fd);
-+	char * charge;
-+	charge = strstr(buffer, "charge_flag");
++        char * charge;
++        charge = strstr(buffer, "charge_flag");
 +    LOGI("=QIWU=Charge Flag: %c\n", charge[13]);
-+	if((int)charge[13] == 49 ){	
-+		LOGI("=QIWU=Charge Flag: %c", charge[13]);
-+		flag = 1;
++        if((int)charge[13] == 49 ){	
++            LOGI("=QIWU=Charge Flag: %c", charge[13]);
++            flag = 1;
 +    }
-+	return flag;
++        return flag;
 +}
 +#endif
- 
++
  // close a file, log an error if the error indicator is set
  static void
-@@ -996,6 +1043,11 @@ main(int argc, char **argv) {
+ check_and_fclose(FILE *fp, const char *name) {
+@@ -993,6 +1041,11 @@ main(int argc, char **argv) {
          }
          return busybox_driver(argc, argv);
      }
@@ -90,7 +91,7 @@ index a56a8b6..955a460 100644
      __system("/sbin/postrecoveryboot.sh");
  
      int is_user_initiated_recovery = 0;
-@@ -1006,6 +1058,15 @@ main(int argc, char **argv) {
+@@ -1003,6 +1056,15 @@ main(int argc, char **argv) {
      freopen(TEMPORARY_LOG_FILE, "a", stderr); setbuf(stderr, NULL);
      printf("Starting recovery on %s\n", ctime(&start));
  
@@ -106,15 +107,15 @@ index a56a8b6..955a460 100644
      device_ui_init(&ui_parameters);
      ui_init();
      ui_print(EXPAND(RECOVERY_VERSION)"\n");
-@@ -1185,7 +1246,10 @@ main(int argc, char **argv) {
- 
+@@ -1183,6 +1245,11 @@ main(int argc, char **argv) {
      return EXIT_SUCCESS;
  }
--
+ 
 +#ifdef RECOVERY_CHARGEMODE
-+	return 0;
++    return 0;
 +}
 +#endif
- int get_allow_toggle_display() {
-     return allow_display_toggle;
++
+ void set_perf_mode(int on) {
+     property_set("recovery.perf.mode", on ? "1" : "0");
  }
