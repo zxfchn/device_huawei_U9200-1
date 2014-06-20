@@ -1,10 +1,10 @@
 
 project system/core/
 diff --git a/system/core/rootdir/init.rc b/system/core/rootdir/init.rc
-index 9ae2f94..4d834f0 100644
+index 46598f5..fdf92eb 100644
 --- a/system/core/rootdir/init.rc
 +++ b/system/core/rootdir/init.rc
-@@ -464,8 +464,8 @@ service console /system/bin/sh
+@@ -478,8 +478,8 @@ service console /system/bin/sh
      group log
      seclabel u:r:shell:s0
  

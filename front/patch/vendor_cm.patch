@@ -1,32 +1,23 @@
 
 project vendor/cm/
 diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
-index b83b994..6d03800 100644
+index b64bd1f..75f6c98 100644
 --- a/vendor/cm/config/common.mk
 +++ b/vendor/cm/config/common.mk
-@@ -141,7 +141,6 @@ PRODUCT_PACKAGES += \
-     audio_effects.conf \
-     CMWallpapers \
-     Apollo \
--    CMFileManager \
-     LockClock \
-     CMUpdater \
-     CMFota \
-@@ -232,9 +231,9 @@ ifndef CM_BUILDTYPE
+@@ -238,11 +238,6 @@ ifndef CM_BUILDTYPE
+     endif
  endif
  
- # Filter out random types, so it'll reset to UNOFFICIAL
+-# Filter out random types, so it'll reset to UNOFFICIAL
 -ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(CM_BUILDTYPE)),)
 -    CM_BUILDTYPE :=
 -endif
-+#ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(CM_BUILDTYPE)),)
-+#    CM_BUILDTYPE :=
-+#endif
- 
+-
  ifdef CM_BUILDTYPE
      ifneq ($(CM_BUILDTYPE), SNAPSHOT)
+         ifdef CM_EXTRAVERSION
 diff --git a/vendor/cm/config/common_full.mk b/vendor/cm/config/common_full.mk
-index ffdb2da..cbe1a2a 100644
+index 9f51f80..e195959 100644
 --- a/vendor/cm/config/common_full.mk
 +++ b/vendor/cm/config/common_full.mk
 @@ -2,7 +2,7 @@
@@ -38,8 +29,8 @@ index ffdb2da..cbe1a2a 100644
  
  # Include CM audio files
  include vendor/cm/config/cm_audio.mk
-@@ -39,5 +39,5 @@ PRODUCT_PACKAGES += \
-     libnamparser
+@@ -32,5 +32,5 @@ PRODUCT_PACKAGES += \
+     libvideoeditorplayer
  
  # Extra tools in CM
 -PRODUCT_PACKAGES += \

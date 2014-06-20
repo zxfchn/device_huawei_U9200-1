@@ -1,7 +1,7 @@
 
 project frameworks/av/
 diff --git a/frameworks/av/media/libstagefright/AudioSource.cpp b/frameworks/av/media/libstagefright/AudioSource.cpp
-index 69442f7..d8a463f 100644
+index 2d63e6b..793ba6b 100644
 --- a/frameworks/av/media/libstagefright/AudioSource.cpp
 +++ b/frameworks/av/media/libstagefright/AudioSource.cpp
 @@ -75,7 +75,7 @@ AudioSource::AudioSource(
@@ -13,7 +13,7 @@ index 69442f7..d8a463f 100644
      CHECK(channelCount == 1 || channelCount == 2 || channelCount == 6);
  #else
      CHECK(channelCount == 1 || channelCount == 2);
-@@ -329,6 +329,14 @@ void AudioSource::rampVolume(
+@@ -322,6 +322,14 @@ void AudioSource::rampVolume(
              frame[0] = (frame[0] * fixedMultiplier) >> kShift;
              ++frame;
              ++startFrame;

@@ -1,16 +1,17 @@
 
 project build/
 diff --git a/build/core/Makefile b/build/core/Makefile
-index 75301a2..04ea25c 100644
+index d47c5b0..874cef3 100644
 --- a/build/core/Makefile
 +++ b/build/core/Makefile
-@@ -1383,7 +1382,9 @@ ifdef PRODUCT_EXTRA_RECOVERY_KEYS
+@@ -1386,7 +1385,9 @@ ifdef PRODUCT_EXTRA_RECOVERY_KEYS
  	$(hide) echo "extra_recovery_keys=$(PRODUCT_EXTRA_RECOVERY_KEYS)" >> $(zip_root)/META/misc_info.txt
  endif
  	$(hide) echo "mkbootimg_args=$(BOARD_MKBOOTIMG_ARGS)" >> $(zip_root)/META/misc_info.txt
+-	$(hide) echo "use_set_metadata=1" >> $(zip_root)/META/misc_info.txt
 +ifneq ($(USE_SET_METADATA),false)
- 	$(hide) echo "use_set_metadata=1" >> $(zip_root)/META/misc_info.txt
++ 	$(hide) echo "use_set_metadata=1" >> $(zip_root)/META/misc_info.txt
 +endif
+ 	$(hide) echo "multistage_support=1" >> $(zip_root)/META/misc_info.txt
  	$(hide) echo "update_rename_support=1" >> $(zip_root)/META/misc_info.txt
  	$(call generate-userimage-prop-dictionary, $(zip_root)/META/misc_info.txt)
- ifdef PRODUCT_DEFAULT_DEV_CERTIFICATE

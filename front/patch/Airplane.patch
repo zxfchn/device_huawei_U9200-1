@@ -1,7 +1,7 @@
 
 project packages/services/Telephony/
 diff --git a/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java b/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
-index 1ba9210..2ce64f2 100644
+index 78b8e42..cc18d46 100644
 --- a/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
 +++ b/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
 @@ -85,6 +85,10 @@ import org.codeaurora.ims.IImsServiceListener;
@@ -15,7 +15,7 @@ index 1ba9210..2ce64f2 100644
  /**
   * Global state for the telephony subsystem when running in the primary
   * phone process.
-@@ -1185,7 +1189,21 @@ public class PhoneGlobals extends ContextWrapper implements WiredHeadsetListener
+@@ -1186,7 +1190,21 @@ public class PhoneGlobals extends ContextWrapper implements WiredHeadsetListener
                  // enabled here implies airplane mode is OFF from above condition
                  SystemProperties.set(PROPERTY_AIRPLANE_MODE_ON, (enabled ? "0" : "1"));
  
