@@ -50,6 +50,8 @@ on init
     # add symlink for HDCP key
     symlink /factory/hdcp.keys /system/vendor/firmware/hdcp.keys
 
+    # Preload libjhead for camera
+    export LD_PRELOAD /system/lib/libjhead.so
 
 on post-fs-data
     mkdir /data/gps
@@ -173,15 +175,15 @@ on fs
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     restorecon /sys/class/rfkill/rfkill0/state
     restorecon /sys/class/rfkill/rfkill0/type
-    chown bluetooth net_bt_stack /dev/ttyO1
-    chmod 0660 /dev/ttyO1
     # change permissions for rfkill
     chmod 0666 /dev/rfkill
 
-#    chmod 0644 /proc/bluetooth/sleep/proto
-#    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
-#    chmod 0644 /proc/bluetooth/sleep/clkctrl
-#    chown bluetooth bluetooth /proc/bluetooth/sleep/clkctrl
+    chmod 0666 /proc/bluetooth/sleep/proto
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
+    chmod 0666 /proc/bluetooth/sleep/clkctrl
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/clkctrl
+    chmod 0666 /proc/bluetooth/sleep/btwrite
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
 
     # bluetooth MAC address programming
     chown bluetooth bluetooth ro.bt.bdaddr_path
@@ -315,7 +317,6 @@ on property:tf.enable=y
 # FUSE sdcard daemon for rich permissions (runs as media_rw)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
-    oneshot
 
 service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
