@@ -134,13 +134,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
 
-# Ghost Commander
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/app/com.ghostsq.commander.apk:system/app/com.ghostsq.commander.apk \
-    $(LOCAL_PATH)/prebuilt/app/GhostCommander-GoogleDrive_plugin.apk:system/app/GhostCommander-GoogleDrive_plugin.apk \
-    $(LOCAL_PATH)/prebuilt/app/GhostCommander-Samba_plugin.apk:system/app/GhostCommander-Samba_plugin.apk \
-    $(LOCAL_PATH)/prebuilt/app/com.ghostsq.commander.sftp.apk:system/app/com.ghostsq.commander.sftp.apk
-
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
