@@ -176,12 +176,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.com.android.dateformat=dd-MM-yyyy \
     persist.sys.timezone=Europe/Moscow
 
-# Default ringtones
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=Plennica.mp3 \
-    ro.config.notification_sound=Car_Lock.ogg \
-    ro.config.alarm_alert=dream_is_over.ogg
-
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
