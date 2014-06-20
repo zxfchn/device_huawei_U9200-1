@@ -31,7 +31,6 @@ ro.config.fm_type=libbcmfm_if
 ro.config.KeyPassToUser=true
 ro.config.incall_notify_mms=true
 ro.config.endstksession=true
-ro.config.fast_dormancy=false
 ro.config.sim_hot_swap=true
 ro.config.bg_call_twinking=true
 ro.config.helix_a_enable=false
@@ -99,3 +98,8 @@ persist.sys.root_access=3
 ro.vold.umsdirtyratio=50
 
 ro.crypto.state=unencrypted
+
+# dormancy
+ro.config.fast_dormancy=true
+ro.config.hw_fast_dormancy=1
+ro.ril.fast.dormancy.rule=1
