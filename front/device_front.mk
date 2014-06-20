@@ -193,7 +193,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=KVT49L-ShevT
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=KTU84M-ShevT
 
 PRODUCT_TAGS                 += dalvik.gc.type-precise
 PRODUCT_CHARACTERISTICS      := default
