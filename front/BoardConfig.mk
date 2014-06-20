@@ -184,6 +184,7 @@ TARGET_RECOVERY_INITRC := device/huawei/front/recovery/init.rc
 TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/front/recovery_kernel
 TARGET_RECOVERY_FSTAB := device/huawei/front/ramdisk/fstab.front
 RECOVERY_FSTAB_VERSION := 2
+TARGET_NO_SEPARATE_RECOVERY := true
 
 #TWRP
 #TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
