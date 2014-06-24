@@ -1,20 +1,20 @@
 
 project bootable/recovery/
 diff --git a/bootable/recovery/Android.mk b/bootable/recovery/Android.mk
-index 3a0d57a..16bf136 100644
+index 5406e7a..07a8562 100644
 --- a/bootable/recovery/Android.mk
 +++ b/bootable/recovery/Android.mk
-@@ -65,7 +65,7 @@ BOARD_RECOVERY_CHAR_HEIGHT := $(shell echo $(BOARD_USE_CUSTOM_RECOVERY_FONT) | c
+@@ -72,7 +72,7 @@ BOARD_RECOVERY_CHAR_HEIGHT := $(shell echo $(BOARD_USE_CUSTOM_RECOVERY_FONT) | c
  
  LOCAL_CFLAGS += -DBOARD_RECOVERY_CHAR_WIDTH=$(BOARD_RECOVERY_CHAR_WIDTH) -DBOARD_RECOVERY_CHAR_HEIGHT=$(BOARD_RECOVERY_CHAR_HEIGHT)
  
--BOARD_RECOVERY_DEFINES := BOARD_RECOVERY_SWIPE BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA
-+BOARD_RECOVERY_DEFINES := RECOVERY_CHARGEMODE BOARD_RECOVERY_SWIPE BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA
+-BOARD_RECOVERY_DEFINES := BOARD_RECOVERY_SWIPE BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA BOARD_RECOVERY_SWIPE_SWAPXY
++BOARD_RECOVERY_DEFINES := RECOVERY_CHARGEMODE BOARD_RECOVERY_SWIPE BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA BOARD_RECOVERY_SWIPE_SWAPXY
  
  $(foreach board_define,$(BOARD_RECOVERY_DEFINES), \
    $(if $($(board_define)), \
 diff --git a/bootable/recovery/recovery.c b/bootable/recovery/recovery.c
-index a56a8b6..955a460 100644
+index 3d399be..888049f 100644
 --- a/bootable/recovery/recovery.c
 +++ b/bootable/recovery/recovery.c
 @@ -35,6 +35,7 @@
@@ -25,10 +25,10 @@ index a56a8b6..955a460 100644
  #include "install.h"
  #include "minui/minui.h"
  #include "minzip/DirUtil.h"
-@@ -158,6 +159,52 @@ fopen_path(const char *path, const char *mode) {
-     if (fp == NULL && path != COMMAND_FILE) LOGE("Can't open %s\n", path);
+@@ -156,6 +157,53 @@ fopen_path(const char *path, const char *mode) {
      return fp;
  }
+ 
 +#ifdef RECOVERY_CHARGEMODE
 +void handle_chargemode() {
 +    const char* filename = "/proc/cmdline";
@@ -65,20 +65,21 @@ index a56a8b6..955a460 100644
 +        close(fd);
 +    }
 +    close(fd);
-+	char * charge;
-+	charge = strstr(buffer, "charge_flag");
++        char * charge;
++        charge = strstr(buffer, "charge_flag");
 +    LOGI("=QIWU=Charge Flag: %c\n", charge[13]);
-+	if((int)charge[13] == 49 ){	
-+		LOGI("=QIWU=Charge Flag: %c", charge[13]);
-+		flag = 1;
++        if((int)charge[13] == 49 ){	
++            LOGI("=QIWU=Charge Flag: %c", charge[13]);
++            flag = 1;
 +    }
-+	return flag;
++        return flag;
 +}
 +#endif
- 
++
  // close a file, log an error if the error indicator is set
  static void
-@@ -996,6 +1043,11 @@ main(int argc, char **argv) {
+ check_and_fclose(FILE *fp, const char *name) {
+@@ -996,6 +1044,11 @@ main(int argc, char **argv) {
          }
          return busybox_driver(argc, argv);
      }
@@ -90,7 +91,7 @@ index a56a8b6..955a460 100644
      __system("/sbin/postrecoveryboot.sh");
  
      int is_user_initiated_recovery = 0;
-@@ -1006,6 +1058,15 @@ main(int argc, char **argv) {
+@@ -1006,6 +1059,15 @@ main(int argc, char **argv) {
      freopen(TEMPORARY_LOG_FILE, "a", stderr); setbuf(stderr, NULL);
      printf("Starting recovery on %s\n", ctime(&start));
  
@@ -106,15 +107,15 @@ index a56a8b6..955a460 100644
      device_ui_init(&ui_parameters);
      ui_init();
      ui_print(EXPAND(RECOVERY_VERSION)"\n");
-@@ -1185,7 +1246,10 @@ main(int argc, char **argv) {
- 
+@@ -1185,6 +1247,11 @@ main(int argc, char **argv) {
      return EXIT_SUCCESS;
  }
--
+ 
 +#ifdef RECOVERY_CHARGEMODE
-+	return 0;
++    return 0;
 +}
 +#endif
- int get_allow_toggle_display() {
-     return allow_display_toggle;
++
+ void set_perf_mode(int on) {
+     property_set("recovery.perf.mode", on ? "1" : "0");
  }

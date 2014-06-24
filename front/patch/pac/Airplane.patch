@@ -1,7 +1,7 @@
 
 project packages/services/Telephony/
 diff --git a/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java b/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
-index 40f838f..e5f4d8e 100644
+index 68918d4..06f63b0 100644
 --- a/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
 +++ b/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
 @@ -23,6 +23,11 @@ import android.app.ProgressDialog;
@@ -16,7 +16,7 @@ index 40f838f..e5f4d8e 100644
  import android.content.ActivityNotFoundException;
  import android.content.BroadcastReceiver;
  import android.content.ComponentName;
-@@ -1035,7 +1040,18 @@ public class PhoneGlobals extends ContextWrapper implements WiredHeadsetListener
+@@ -1036,7 +1041,18 @@ public class PhoneGlobals extends ContextWrapper implements WiredHeadsetListener
              if (action.equals(Intent.ACTION_AIRPLANE_MODE_CHANGED)) {
                  boolean enabled = System.getInt(getContentResolver(),
                          System.AIRPLANE_MODE_ON, 0) == 0;

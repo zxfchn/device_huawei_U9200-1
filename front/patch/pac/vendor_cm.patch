@@ -1,7 +1,7 @@
 
 project vendor/cm/
 diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
-index b83b994..6d03800 100644
+index c97371a..78a8fc8 100644
 --- a/vendor/cm/config/common.mk
 +++ b/vendor/cm/config/common.mk
 @@ -141,7 +141,6 @@ PRODUCT_PACKAGES += \
@@ -12,7 +12,7 @@ index b83b994..6d03800 100644
      LockClock \
      CMUpdater \
      CMFota \
-@@ -232,9 +231,9 @@ ifndef CM_BUILDTYPE
+@@ -240,9 +239,9 @@ ifndef CM_BUILDTYPE
  endif
  
  # Filter out random types, so it'll reset to UNOFFICIAL
@@ -26,7 +26,7 @@ index b83b994..6d03800 100644
  ifdef CM_BUILDTYPE
      ifneq ($(CM_BUILDTYPE), SNAPSHOT)
 diff --git a/vendor/cm/config/common_full.mk b/vendor/cm/config/common_full.mk
-index 2eccc56..77f9206 100644
+index e580b4c..4535e0b 100644
 --- a/vendor/cm/config/common_full.mk
 +++ b/vendor/cm/config/common_full.mk
 @@ -2,7 +2,7 @@

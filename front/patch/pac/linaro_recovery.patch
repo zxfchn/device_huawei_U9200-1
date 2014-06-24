@@ -1,7 +1,7 @@
 
 project bootable/recovery/
-diff --git a/bootable/recovery/voldclient/Android.mk b/bootable/recovery/voldclient/Android.mk
-index b76d7be..6f97e81 100644
+diff --git a/ bootable/recovery/voldclient/Android.mk b/ bootable/recovery/voldclient/Android.mk
+index 0c3f505..908656a 100644
 --- a/bootable/recovery/voldclient/Android.mk
 +++ b/bootable/recovery/voldclient/Android.mk
 @@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
@@ -11,5 +11,5 @@ index b76d7be..6f97e81 100644
 -LOCAL_CFLAGS := -DMINIVOLD -Werror
 +LOCAL_CFLAGS := -DMINIVOLD -Werror -Wno-error=unused-parameter
  LOCAL_C_INCLUDES :=         	\
-     bootable/recovery       	\
+     $(LOCAL_PATH)/..       	\
      system/core/fs_mgr/include	\
