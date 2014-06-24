@@ -103,3 +103,6 @@ ro.crypto.state=unencrypted
 ro.config.fast_dormancy=true
 ro.config.hw_fast_dormancy=1
 ro.ril.fast.dormancy.rule=1
+
+# fix deaf microphone
+ro.config.dualmic=true
