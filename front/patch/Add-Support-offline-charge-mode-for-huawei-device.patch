@@ -14,7 +14,7 @@ index 5406e7a..07a8562 100644
  $(foreach board_define,$(BOARD_RECOVERY_DEFINES), \
    $(if $($(board_define)), \
 diff --git a/bootable/recovery/recovery.c b/bootable/recovery/recovery.c
-index baf688e..0a1a29a 100644
+index 3d399be..888049f 100644
 --- a/bootable/recovery/recovery.c
 +++ b/bootable/recovery/recovery.c
 @@ -35,6 +35,7 @@
@@ -25,7 +25,7 @@ index baf688e..0a1a29a 100644
  #include "install.h"
  #include "minui/minui.h"
  #include "minzip/DirUtil.h"
-@@ -158,6 +159,53 @@ fopen_path(const char *path, const char *mode) {
+@@ -156,6 +157,53 @@ fopen_path(const char *path, const char *mode) {
      return fp;
  }
  
@@ -79,7 +79,7 @@ index baf688e..0a1a29a 100644
  // close a file, log an error if the error indicator is set
  static void
  check_and_fclose(FILE *fp, const char *name) {
-@@ -991,6 +1039,11 @@ main(int argc, char **argv) {
+@@ -996,6 +1044,11 @@ main(int argc, char **argv) {
          }
          return busybox_driver(argc, argv);
      }
@@ -91,7 +91,7 @@ index baf688e..0a1a29a 100644
      __system("/sbin/postrecoveryboot.sh");
  
      int is_user_initiated_recovery = 0;
-@@ -1001,6 +1054,15 @@ main(int argc, char **argv) {
+@@ -1006,6 +1059,15 @@ main(int argc, char **argv) {
      freopen(TEMPORARY_LOG_FILE, "a", stderr); setbuf(stderr, NULL);
      printf("Starting recovery on %s\n", ctime(&start));
  
@@ -107,7 +107,7 @@ index baf688e..0a1a29a 100644
      device_ui_init(&ui_parameters);
      ui_init();
      ui_print(EXPAND(RECOVERY_VERSION)"\n");
-@@ -1181,6 +1243,11 @@ main(int argc, char **argv) {
+@@ -1185,6 +1247,11 @@ main(int argc, char **argv) {
      return EXIT_SUCCESS;
  }
  
