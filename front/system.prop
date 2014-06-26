@@ -9,6 +9,9 @@ ro.ril.enable.dtm=1
 # 0 => WCDMA preferred.
 ro.telephony.default_network=0
 
+# hsdpa+
+ro.config.hspap_hsdpa_open=1
+
 # For the default value of agps
 ro.ril.def.agps.mode=2
 
