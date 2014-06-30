@@ -172,21 +172,29 @@ on fs
 
     # power up/down interface
     # change permissions for Bluetooth/FM/GPS
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chmod 0660 /sys/class/rfkill/rfkill0/type
+    chmod 0666 /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
+    chmod 0666 /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
-    restorecon /sys/class/rfkill/rfkill0/state
-    restorecon /sys/class/rfkill/rfkill0/type
-    # change permissions for rfkill
-    chmod 0666 /dev/rfkill
-
     chmod 0666 /proc/bluetooth/sleep/proto
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
     chmod 0666 /proc/bluetooth/sleep/clkctrl
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/clkctrl
     chmod 0666 /proc/bluetooth/sleep/btwrite
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    chmod 0666 /proc/bluetooth/sleep/lpm
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    restorecon /proc/bluetooth/sleep/lpm
+    restorecon /proc/bluetooth/sleep/btwrite
+    chmod 0666 /proc/bluetooth/sleep/asleep
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/asleep
+    chmod 0666 /proc/bluetooth/sleep/btwake
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwake
+    chmod 0666 /proc/bluetooth/sleep/hostwake
+    chown bluetooth net_bt_stack /proc/bluetooth/sleep/hostwake
+
+    # change permissions for rfkill
+    chmod 0666 /dev/rfkill
 
     # bluetooth MAC address programming
     chown bluetooth bluetooth ro.bt.bdaddr_path

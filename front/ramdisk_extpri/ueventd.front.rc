@@ -63,5 +63,3 @@
 /modem/nvm2/*          0660  radio       radio
 
 /dev/bus/usb/*         0660  system      usb
-
-/dev/rfkill     0666    wifi    wifi
