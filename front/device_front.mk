@@ -93,8 +93,7 @@ PRODUCT_COPY_FILES += \
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd \
-    $(LOCAL_PATH)/bluetooth/bt_vendor.conf:system/etc/bluetooth/bt_vendor.conf
+    $(LOCAL_PATH)/config/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd
 
 # Wi-Fi
 PRODUCT_COPY_FILES += \
