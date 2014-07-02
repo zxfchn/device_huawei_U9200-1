@@ -180,9 +180,9 @@ on fs
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
     chmod 0666 /proc/bluetooth/sleep/clkctrl
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/clkctrl
-    chmod 0666 /proc/bluetooth/sleep/btwrite
+    chmod 0220 /proc/bluetooth/sleep/btwrite
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
-    chmod 0666 /proc/bluetooth/sleep/lpm
+    chmod 0220 /proc/bluetooth/sleep/lpm
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
     restorecon /proc/bluetooth/sleep/lpm
     restorecon /proc/bluetooth/sleep/btwrite
