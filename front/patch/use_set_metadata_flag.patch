@@ -1,7 +1,7 @@
 
-project build/
+roject build/
 diff --git a/build/core/Makefile b/build/core/Makefile
-index 4c6d26d..daeb4ad 100644
+index f478c8f..6aa8474 100644
 --- a/build/core/Makefile
 +++ b/build/core/Makefile
 @@ -1388,7 +1387,9 @@ ifdef PRODUCT_EXTRA_RECOVERY_KEYS
@@ -14,4 +14,4 @@ index 4c6d26d..daeb4ad 100644
 +endif
  	$(hide) echo "multistage_support=1" >> $(zip_root)/META/misc_info.txt
  	$(hide) echo "update_rename_support=1" >> $(zip_root)/META/misc_info.txt
- 	$(call generate-userimage-prop-dictionary, $(zip_root)/META/misc_info.txt)
+ 	$(hide) echo "ota_script_path=$(OTA_FROM_TARGET_SCRIPT)" >> $(zip_root)/META/misc_info.txt
