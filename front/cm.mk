@@ -7,9 +7,9 @@ $(call inherit-product, device/huawei/front/device_front.mk)
 # Release name
 PRODUCT_RELEASE_NAME := front
 
-# Preload bootanimation
-TARGET_BOOTANIMATION_PRELOAD := true
-TARGET_BOOTANIMATION_TEXTURE_CACHE := true
+# Bootanimation settings
+TARGET_BOOTANIMATION_PRELOAD := flase
+TARGET_BOOTANIMATION_TEXTURE_CACHE := false
 TARGET_BOOTANIMATION_USE_RGB565 := true
 
 # Boot animation
