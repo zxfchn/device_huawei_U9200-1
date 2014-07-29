@@ -1,10 +1,10 @@
 
 project frameworks/opt/telephony/
 diff --git a/frameworks/opt/telephony/src/java/com/android/internal/telephony/MccTable.java b/frameworks/opt/telephony/src/java/com/android/internal/telephony/MccTable.java
-index c00b4a4..d0b80f8 100644
+index a0c8349..0bcfc18 100644
 --- a/frameworks/opt/telephony/src/java/com/android/internal/telephony/MccTable.java
 +++ b/frameworks/opt/telephony/src/java/com/android/internal/telephony/MccTable.java
-@@ -204,37 +204,6 @@ public final class MccTable
+@@ -193,37 +193,6 @@ public final class MccTable
                  setTimezoneFromMccIfNeeded(context, mcc);
                  locale = getLocaleFromMcc(context, mcc);
              }
@@ -42,7 +42,7 @@ index c00b4a4..d0b80f8 100644
          }
      }
  
-@@ -364,21 +333,6 @@ public final class MccTable
+@@ -352,21 +321,6 @@ public final class MccTable
          return getLocaleForLanguageCountry(context, language, country);
      }
  

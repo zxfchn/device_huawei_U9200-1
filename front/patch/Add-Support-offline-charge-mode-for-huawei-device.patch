@@ -1,20 +1,20 @@
 
 project bootable/recovery/
 diff --git a/bootable/recovery/Android.mk b/bootable/recovery/Android.mk
-index b6d0b92..eab4a0c 100644
+index 6556e84..2657e7e 100644
 --- a/bootable/recovery/Android.mk
 +++ b/bootable/recovery/Android.mk
 @@ -79,7 +79,7 @@ BOARD_RECOVERY_CHAR_HEIGHT := $(shell echo $(BOARD_USE_CUSTOM_RECOVERY_FONT) | c
  
  LOCAL_CFLAGS += -DBOARD_RECOVERY_CHAR_WIDTH=$(BOARD_RECOVERY_CHAR_WIDTH) -DBOARD_RECOVERY_CHAR_HEIGHT=$(BOARD_RECOVERY_CHAR_HEIGHT)
  
--BOARD_RECOVERY_DEFINES := BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA
-+BOARD_RECOVERY_DEFINES := RECOVERY_CHARGEMODE BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA
+-BOARD_RECOVERY_DEFINES := BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA BOARD_RECOVERY_BLDRMSG_OFFSET
++BOARD_RECOVERY_DEFINES := RECOVERY_CHARGEMODE BOARD_HAS_NO_SELECT_BUTTON BOARD_UMS_LUNFILE BOARD_RECOVERY_ALWAYS_WIPES BOARD_RECOVERY_HANDLES_MOUNT BOARD_TOUCH_RECOVERY RECOVERY_EXTEND_NANDROID_MENU TARGET_USE_CUSTOM_LUN_FILE_PATH TARGET_DEVICE TARGET_RECOVERY_FSTAB BOARD_NATIVE_DUALBOOT BOARD_NATIVE_DUALBOOT_SINGLEDATA BOARD_RECOVERY_BLDRMSG_OFFSET
  
  ifndef BOARD_TOUCH_RECOVERY
  BOARD_RECOVERY_DEFINES += BOARD_RECOVERY_SWIPE BOARD_RECOVERY_SWIPE_SWAPXY
 diff --git a/bootable/recovery/recovery.c b/bootable/recovery/recovery.c
-index 62c3d3c..569a4ca 100644
+index 619049b..222331e 100644
 --- a/bootable/recovery/recovery.c
 +++ b/bootable/recovery/recovery.c
 @@ -35,6 +35,7 @@
@@ -25,7 +25,7 @@ index 62c3d3c..569a4ca 100644
  #include "install.h"
  #include "minui/minui.h"
  #include "minzip/DirUtil.h"
-@@ -154,6 +155,53 @@ fopen_path(const char *path, const char *mode) {
+@@ -155,6 +156,53 @@ fopen_path(const char *path, const char *mode) {
      return fp;
  }
  
@@ -79,7 +79,7 @@ index 62c3d3c..569a4ca 100644
  // close a file, log an error if the error indicator is set
  static void
  check_and_fclose(FILE *fp, const char *name) {
-@@ -994,6 +1042,11 @@ main(int argc, char **argv) {
+@@ -995,6 +1043,11 @@ main(int argc, char **argv) {
          }
          return busybox_driver(argc, argv);
      }
@@ -91,7 +91,7 @@ index 62c3d3c..569a4ca 100644
      __system("/sbin/postrecoveryboot.sh");
  
      int is_user_initiated_recovery = 0;
-@@ -1004,6 +1057,15 @@ main(int argc, char **argv) {
+@@ -1005,6 +1058,15 @@ main(int argc, char **argv) {
      freopen(TEMPORARY_LOG_FILE, "a", stderr); setbuf(stderr, NULL);
      printf("Starting recovery on %s\n", ctime(&start));
  
@@ -107,7 +107,7 @@ index 62c3d3c..569a4ca 100644
      device_ui_init(&ui_parameters);
      ui_init();
      ui_print(EXPAND(RECOVERY_VERSION)"\n");
-@@ -1183,6 +1245,11 @@ main(int argc, char **argv) {
+@@ -1188,6 +1250,11 @@ main(int argc, char **argv) {
      return EXIT_SUCCESS;
  }
  
