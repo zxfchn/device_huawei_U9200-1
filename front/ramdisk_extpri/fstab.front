@@ -6,7 +6,9 @@
 # INIT mount points
 /dev/block/platform/omap/omap_hsmmc.1/by-name/system    /system   ext4  noatime,noauto_da_alloc,nodiratime,barrier=0,ro    wait
 /dev/block/platform/omap/omap_hsmmc.1/by-name/cache     /cache    ext4  noatime,noauto_da_alloc,nosuid,nodev,nodiratime,journal_async_commit,errors=panic wait,check
+/dev/block/platform/omap/omap_hsmmc.1/by-name/cache     /cache    f2fs  flush_merge,noatime,inline_xattr,active_logs=4     wait
 /dev/block/platform/omap/omap_hsmmc.1/by-name/userdata  /data     ext4  noatime,noauto_da_alloc,nosuid,nodev,nodiratime,journal_async_commit,errors=panic wait,check,encryptable=footer,length=-16384
+/dev/block/platform/omap/omap_hsmmc.1/by-name/userdata  /data     f2fs  flush_merge,noatime,inline_xattr,active_logs=4                                    wait,encryptable=footer,length=-16384
 /dev/block/platform/omap/omap_hsmmc.1/by-name/cust      /cust     ext4  noatime,noauto_da_alloc,nodiratime,barrier=0,ro    wait
 /dev/block/platform/omap/omap_hsmmc.1/by-name/misc      /misc     emmc  defaults  defaults
 
