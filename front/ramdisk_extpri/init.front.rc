@@ -96,6 +96,9 @@ on fs
     setprop ro.crypto.fuse_sdcard true
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
+    # TIMER_SLACK
+    write /dev/cpuctl/apps/bg_non_interactive/timer_slack.min_slack_ns 100000000
+
     # ril control auto-suspend
     chmod 0660 /sys/bus/usb/devices/usb1/power/control
     chown radio radio /sys/bus/usb/devices/usb1/power/control
