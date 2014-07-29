@@ -118,6 +118,12 @@ PRODUCT_PACKAGES += \
     l2ping \
     com.android.future.usb.accessory
 
+# f2fs utilities
+PRODUCT_PACKAGES += \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs
+
 # Key maps
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
