@@ -56,10 +56,10 @@ index 716f281..32d724f 100644
      ifneq ($(wildcard $(PWD)/prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(TARGET_GCC_VERSION)/bin),)
          # this should be copied to HOST_OUT_EXECUTABLES instead
 diff --git a/build/envsetup.sh b/build/envsetup.sh
-index d83dbc4..5fbb924 100644
+index 16392c5..34cf767 100644
 --- a/build/envsetup.sh
 +++ b/build/envsetup.sh
-@@ -154,7 +154,7 @@ function setpaths()
+@@ -153,7 +153,7 @@ function setpaths()
      case $ARCH in
          x86) toolchaindir=x86/i686-linux-android-$targetgccversion/bin
              ;;
@@ -68,7 +68,7 @@ index d83dbc4..5fbb924 100644
              ;;
          mips) toolchaindir=mips/mipsel-linux-android-$targetgccversion/bin
              ;;
-@@ -170,7 +170,7 @@ function setpaths()
+@@ -169,7 +169,7 @@ function setpaths()
      unset ARM_EABI_TOOLCHAIN ARM_EABI_TOOLCHAIN_PATH
      case $ARCH in
          arm)

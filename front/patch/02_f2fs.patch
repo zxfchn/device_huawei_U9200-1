@@ -1,10 +1,10 @@
 
 project system/vold/
 diff --git a/system/vold/Android.mk b/system/vold/Android.mk
-index d1488eb..8fe3018 100644
+index 7037292..31f3542 100644
 --- a/system/vold/Android.mk
 +++ b/system/vold/Android.mk
-@@ -31,6 +31,7 @@ common_src_files := \
+@@ -35,6 +35,7 @@ common_src_files := \
  	Fat.cpp \
  	Ntfs.cpp \
  	Exfat.cpp \
@@ -211,7 +211,7 @@ index 0000000..edad53a
 +
 +#endif
 diff --git a/system/vold/Volume.cpp b/system/vold/Volume.cpp
-index 9bea78f..bb317aa 100644
+index 16bbb90..c6fb130 100644
 --- a/system/vold/Volume.cpp
 +++ b/system/vold/Volume.cpp
 @@ -51,6 +51,7 @@
@@ -222,7 +222,7 @@ index 9bea78f..bb317aa 100644
  #include "Process.h"
  #include "cryptfs.h"
  #include "VoldUtil.h"
-@@ -321,7 +322,9 @@ int Volume::formatVol(bool wipe, const char* fstype) {
+@@ -323,7 +324,9 @@ int Volume::formatVol(bool wipe, const char* fstype) {
          fstype2 = strdup("vfat");
      }
  
@@ -233,7 +233,7 @@ index 9bea78f..bb317aa 100644
          ret = Exfat::format(devicePath);
      } else if (strcmp(fstype2, "ext4") == 0) {
          ret = Ext4::format(devicePath, NULL);
-@@ -525,6 +528,21 @@ int Volume::mountVol() {
+@@ -527,6 +530,21 @@ int Volume::mountVol() {
                      continue;
                  }
  

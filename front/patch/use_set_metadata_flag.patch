@@ -1,7 +1,7 @@
 
 roject build/
 diff --git a/build/core/Makefile b/build/core/Makefile
-index f478c8f..6aa8474 100644
+index 48469f6..051bd15 100644
 --- a/build/core/Makefile
 +++ b/build/core/Makefile
 @@ -1388,7 +1387,9 @@ ifdef PRODUCT_EXTRA_RECOVERY_KEYS
