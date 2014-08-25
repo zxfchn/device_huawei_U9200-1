@@ -16,7 +16,7 @@ ro.config.hspap_hsdpa_open=1
 ro.ril.def.agps.mode=2
 
 # For HSDPA low throughput
-ro.ril.disable.power.collapse=1
+ro.ril.disable.power.collapse=0
 
 # Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
 ro.telephony.call_ring.multiple=0
