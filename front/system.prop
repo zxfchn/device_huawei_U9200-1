@@ -106,3 +106,5 @@ ro.config.dualmic=true
 
 # launcher always in memory
 ro.HOME_APP_ADJ=1
+
+pm.sleep_mode=1
