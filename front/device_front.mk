@@ -95,10 +95,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/config/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd
 
-# Wi-Fi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
-
 # Torch
 PRODUCT_PACKAGES += \
     Torch
@@ -208,3 +204,5 @@ PRODUCT_AAPT_PREF_CONFIG     := xhdpi
 PRODUCT_LOCALES              += en_US xhdpi
 BOARD_WLAN_DEVICE_REV        := bcm4330_b1
 WIFI_BAND                    := 802_11_ABG
+
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
