@@ -103,3 +103,6 @@ ro.ril.fast.dormancy.rule=1
 
 # fix deaf microphone
 ro.config.dualmic=true
+
+# launcher always in memory
+ro.HOME_APP_ADJ=1
