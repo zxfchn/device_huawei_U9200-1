@@ -94,12 +94,6 @@ on fs
     # TIMER_SLACK
     write /dev/cpuctl/apps/bg_non_interactive/timer_slack.min_slack_ns 100000000
 
-    # enable and setup UKSM
-    write /sys/kernel/mm/uksm/run 1
-    write /sys/kernel/mm/uksm/cpu_governor quiet
-    write /sys/kernel/mm/uksm/max_cpu_percentage 10
-    write /sys/kernel/mm/uksm/sleep_millisecs 500
-
     # ril control auto-suspend
     chmod 0660 /sys/bus/usb/devices/usb1/power/control
     chown radio radio /sys/bus/usb/devices/usb1/power/control
