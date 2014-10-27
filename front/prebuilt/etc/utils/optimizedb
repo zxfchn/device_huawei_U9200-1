@@ -1,11 +1,11 @@
 #!/system/bin/sh
-echo ====================================================
-echo ========== SQLite Databases Optimizing =============
-echo ====================================================
+echo ==============================================
+echo ======= SQLite Databases Optimizing ==========
+echo ==============================================
 for path in "/data/" "/sdcard/" "/extSdCard/";
 do
 echo
-echo ========== Optimizing Databases in $path =============
+echo ====== Optimizing Databases in $path =========
 echo
 
 for i in \
@@ -17,4 +17,4 @@ echo $i
 done;
 
 done;
-echo ========== DONE =============
+echo =================== DONE =====================

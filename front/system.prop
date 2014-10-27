@@ -4,23 +4,23 @@ rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/xmd-tty0
 mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0
 ro.ril.enable.dtm=1
-
+#
 # Default network type.
 # 0 => WCDMA preferred.
 ro.telephony.default_network=0
-
+#
 # hsdpa+
 ro.config.hspap_hsdpa_open=1
-
+#
 # For the default value of agps
 ro.ril.def.agps.mode=2
-
+#
 # For HSDPA low throughput
 ro.ril.disable.power.collapse=0
-
+#
 # Ril sends only one RIL_UNSOL_CALL_RING, so set call_ring.multiple to false
 ro.telephony.call_ring.multiple=0
-
+#
 # GPU producer to CPU consumer not supported
 ro.bq.gpu_to_cpu_unsupported=1
 #
@@ -29,7 +29,7 @@ modem.audio=1
 com.ti.omap_enhancement=true
 omap.enhancement=true
 dolby.audio.hdmi.channels=0
-
+#
 ro.config.fm_type=libbcmfm_if
 ro.config.KeyPassToUser=true
 ro.config.incall_notify_mms=true
@@ -55,17 +55,14 @@ ro.config.hw_isCustomize=true
 ro.config.hw_customizeType=1
 ro.config.hw_addsettingsdbex=1
 ro.config.hw_menu_unlockscreen=false
-ro.config.hw_ramSize=930504
 ro.config.hw_power_saving=true
 ro.config.hw_quickpoweron=true
 ro.config.hw_omacp=1
 ro.config.hw_voicerecord=true
 ro.config.hw_flashless=true
-ro.config.hw_poanimation=5000
 ro.config.hw_allow_ums_and_mtp=true
 ro.config.hw_dolby=true
 ro.config.hw_gps=47511
-ro.config.hw_pic_limit_size=50
 ro.config.hw_battery_percent=true
 ro.config.hw_uninstall_dataapp=true
 ro.config.hw_remindBT=true
@@ -74,15 +71,12 @@ persist.sys.quickpoweron=normal
 persist.sys.animationstart=false
 persist.sys.actualpoweron=true
 #
-windowsmgr.max_events_per_sec=150
-ro.max.fling_velocity=12000
-ro.min.fling_velocity=8000
+windowsmgr.max_events_per_sec=250
 profiler.force_disable_err_rpt=1
 profiler.force_disable_ulog=1
 net.dns1=8.8.4.4
 net.dns2=8.8.8.8
 #
-ro.kernel.android.checkjni=0
 gsm.sim.num.pin2=3
 gsm.sim.num.puk2=10
 drm.service.enabled=false
@@ -90,21 +84,14 @@ media.aac_51_output_enabled=true
 hwui.render_dirty_regions=false
 wifi.interface=wlan0
 persist.sys.root_access=3
-
+#
 # Fast mass storage
 ro.vold.umsdirtyratio=50
-
-ro.crypto.state=unencrypted
-
+#
 # dormancy
 ro.config.fast_dormancy=true
 ro.config.hw_fast_dormancy=1
 ro.ril.fast.dormancy.rule=1
-
+#
 # fix deaf microphone
 ro.config.dualmic=true
-
-# launcher always in memory
-ro.HOME_APP_ADJ=1
-
-pm.sleep_mode=1

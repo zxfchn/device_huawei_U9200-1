@@ -2,6 +2,7 @@
 # Copyright (C) 2012 The Android Open-Source Project
 # Copyright (C) 2012 mdeejay
 # Copyright (C) 2013 faust93
+# Copyright (C) 2013-2014 ShevT
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,14 +23,14 @@ $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-COMMON_PATH := device/huawei/front
+COMMON_FOLDER := device/huawei/front
 
 # This file includes all definitions that apply to ALL front devices, and
 # are also specific to front devices
 #
 # Everything in this directory will become public
 
-DEVICE_PACKAGE_OVERLAYS := device/huawei/front/overlay
+DEVICE_PACKAGE_OVERLAYS := $(COMMON_FOLDER)/overlay
 
 # Audio Packages
 PRODUCT_PACKAGES += \
@@ -57,43 +58,44 @@ PRODUCT_PACKAGES += \
     libion_ti \
     libstagefrighthw
 
+#symlinks
+PRODUCT_PACKAGES += \
+    libion.so
+
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/ramdisk/init.front.rc:root/init.front.rc \
-    $(LOCAL_PATH)/ramdisk/init.front.usb.rc:root/init.front.usb.rc \
-    $(LOCAL_PATH)/ramdisk/ueventd.front.rc:root/ueventd.front.rc \
-    $(LOCAL_PATH)/ramdisk/fstab.front:root/fstab.front
+    $(COMMON_FOLDER)/ramdisk/init.front.rc:root/init.front.rc \
+    $(COMMON_FOLDER)/ramdisk/init.front.usb.rc:root/init.front.usb.rc \
+    $(COMMON_FOLDER)/ramdisk/ueventd.front.rc:root/ueventd.front.rc \
+    $(COMMON_FOLDER)/ramdisk/fstab.front:root/fstab.front
 
 # Utilities
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/bin/rootro:system/bin/rootro \
-    $(LOCAL_PATH)/prebuilt/bin/rootrw:system/bin/rootrw \
-    $(LOCAL_PATH)/prebuilt/bin/sysro:system/bin/sysro \
-    $(LOCAL_PATH)/prebuilt/bin/sysrw:system/bin/sysrw \
-    $(LOCAL_PATH)/prebuilt/etc/utils/optimizedb:system/etc/utils/optimizedb \
-    $(LOCAL_PATH)/prebuilt/etc/utils/optimizestorage:system/etc/utils/optimizestorage \
-    $(LOCAL_PATH)/prebuilt/etc/init.d/10sysctl:system/etc/init.d/10sysctl \
-    $(LOCAL_PATH)/prebuilt/etc/sysctl:system/etc/sysctl \
-    $(LOCAL_PATH)/prebuilt/etc/sysctl.conf:system/etc/sysctl.conf
+    $(COMMON_FOLDER)/prebuilt/xbin/remount:system/xbin/remount \
+    $(COMMON_FOLDER)/prebuilt/etc/utils/optimizedb:system/etc/utils/optimizedb \
+    $(COMMON_FOLDER)/prebuilt/etc/utils/optimizestorage:system/etc/utils/optimizestorage \
+    $(COMMON_FOLDER)/prebuilt/etc/init.d/11frandom:system/etc/init.d/11frandom \
+    $(COMMON_FOLDER)/prebuilt/etc/init.d/10swapon:system/etc/init.d/10swapon
+
+# Tuning scripts
+PRODUCT_COPY_FILES += \
+    $(COMMON_FOLDER)/prebuilt/sbin/okernel1:root/sbin/okernel1 \
+    $(COMMON_FOLDER)/prebuilt/sbin/okernel2:root/sbin/okernel2
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/media/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/media/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/huawei/audio/cm_front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf \
-    $(LOCAL_PATH)/audio/huawei/audio/cm_front_audio_config.conf:system/etc/huawei/audio/pac_front_audio_config.conf \
-    $(LOCAL_PATH)/audio/huawei/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
-    $(LOCAL_PATH)/audio/huawei/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf
+    $(COMMON_FOLDER)/configs/media_profiles.xml:system/etc/media_profiles.xml \
+    $(COMMON_FOLDER)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_FOLDER)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
+    $(COMMON_FOLDER)/configs/audio/cm_front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf \
+    $(COMMON_FOLDER)/configs/audio/cm_front_audio_config.conf:system/etc/huawei/audio/pac_front_audio_config.conf \
+    $(COMMON_FOLDER)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
+    $(COMMON_FOLDER)/configs/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf
 
 # GPS
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/gps/gpsconfig.xml:system/etc/gpsconfig.xml
-
-# Bluetooth configuration files
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/config/BCM4330B1.hcd:system/etc/bluetooth/BCM4330B1.hcd
+    $(COMMON_FOLDER)/configs/gps.conf:system/etc/gps.conf \
+    $(COMMON_FOLDER)/configs/gpsconfig.xml:system/etc/gpsconfig.xml
 
 # Torch
 PRODUCT_PACKAGES += \
@@ -122,18 +124,18 @@ PRODUCT_PACKAGES += \
 
 # Key maps
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
-    $(LOCAL_PATH)/usr/omap4-keypad.kcm:system/usr/keychars/omap4-keypad.kcm \
-    $(LOCAL_PATH)/usr/twl6030_pwrbutton.kl:system/usr/keylayout/twl6030_pwrbutton.kl
+    $(COMMON_FOLDER)/configs/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
+    $(COMMON_FOLDER)/configs/usr/omap4-keypad.kcm:system/usr/keychars/omap4-keypad.kcm \
+    $(COMMON_FOLDER)/configs/usr/twl6030_pwrbutton.kl:system/usr/keylayout/twl6030_pwrbutton.kl
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/usr/syn_tm12xx_ts_1.idc:system/usr/idc/syn_tm12xx_ts_1.idc \
-    $(LOCAL_PATH)/usr/syn_tm12xx_ts_2.idc:system/usr/idc/syn_tm12xx_ts_2.idc
+    $(COMMON_FOLDER)/configs/usr/syn_tm12xx_ts_1.idc:system/usr/idc/syn_tm12xx_ts_1.idc \
+    $(COMMON_FOLDER)/configs/usr/syn_tm12xx_ts_2.idc:system/usr/idc/syn_tm12xx_ts_2.idc
 
 # Replace Bootanimation
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
+    $(COMMON_FOLDER)/prebuilt/media/bootanimation.zip:system/media/bootanimation.zip
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -164,7 +166,9 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
-    persist.sys.root_access=3
+    persist.sys.root_access=3 \
+    persist.adb.notify=0 \
+    ro.kernel.android.checkjni=0
 
 # SGX540 is slower with the scissor optimization enabled
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -185,17 +189,12 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.debuggable=1 \
     persist.service.adb.enable=1
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.usb.config=mtp
-
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=KTU84Q-ShevT
 
-PRODUCT_TAGS                 += dalvik.gc.type-precise
 PRODUCT_CHARACTERISTICS      := default
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=$(shell date +"%s")
 PRODUCT_AAPT_CONFIG          := hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG     := xhdpi
 PRODUCT_LOCALES              += en_US xhdpi

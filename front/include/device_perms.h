@@ -18,6 +18,7 @@
 #define DEVICE_PERMS_H
 
 #define PROPERTY_PERMS_APPEND \
-    { "service.media.",          AID_MEDIA,    0 },
+    { "service.media.",          AID_MEDIA,    0 }, \
+    { "persist.ril.",     AID_RADIO, 0 },
 
 #endif /* DEVICE_PERMS_H */

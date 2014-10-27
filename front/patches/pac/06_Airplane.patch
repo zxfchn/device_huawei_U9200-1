@@ -1,0 +1,45 @@
+
+project packages/services/Telephony/
+diff --git a/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java b/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
+index 8033ffe..deb5dd2 100644
+--- a/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
++++ b/packages/services/Telephony/src/com/android/phone/PhoneGlobals.java
+@@ -26,6 +26,11 @@ import android.app.ProgressDialog;
+ import android.app.TaskStackBuilder;
+ import android.bluetooth.BluetoothAdapter;
+ import android.bluetooth.IBluetoothHeadsetPhone;
++
++// Patch airplane
++import android.net.ConnectivityManager;
++//End Patch
++
+ import android.content.ActivityNotFoundException;
+ import android.content.BroadcastReceiver;
+ import android.content.ComponentName;
+@@ -1178,15 +1183,18 @@ public class PhoneGlobals extends ContextWrapper implements WiredHeadsetListener
+             if (action.equals(Intent.ACTION_AIRPLANE_MODE_CHANGED)) {
+                 boolean enabled = System.getInt(getContentResolver(),
+                         System.AIRPLANE_MODE_ON, 0) == 0;
+-
+-                // Set the airplane mode property for RIL to read on boot up
+-                // to know if the phone is in airplane mode so that RIL can
+-                // power down the ICC card.
+-                Log.d(LOG_TAG, "Setting property " + PROPERTY_AIRPLANE_MODE_ON);
+-                // enabled here implies airplane mode is OFF from above condition
+-                SystemProperties.set(PROPERTY_AIRPLANE_MODE_ON, (enabled ? "0" : "1"));
+-
++                // Patch. Airplane
++                ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
++                // End patch
+                 phone.setRadioPower(enabled);
++                // Patch. Airplane
++                if (enabled) {
++                    boolean dmode = cm.getMobileDataEnabled();
++                    cm.setMobileDataEnabled(false);
++                    cm.setMobileDataEnabled(true);
++                    cm.setMobileDataEnabled(dmode);
++                }
++                // End patch
+             } else if (action.equals(TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED)) {
+                 if (VDBG) Log.d(LOG_TAG, "mReceiver: ACTION_ANY_DATA_CONNECTION_STATE_CHANGED");
+                 if (VDBG) Log.d(LOG_TAG, "- state: " + intent.getStringExtra(PhoneConstants.STATE_KEY));

@@ -1,14 +1,13 @@
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 $(call inherit-product, vendor/cm/config/gsm.mk)
-
 $(call inherit-product, device/huawei/front/device_front.mk)
 
 # Release name
 PRODUCT_RELEASE_NAME := front
 
 # Bootanimation settings
-TARGET_BOOTANIMATION_PRELOAD := flase
+TARGET_BOOTANIMATION_PRELOAD := false
 TARGET_BOOTANIMATION_TEXTURE_CACHE := false
 TARGET_BOOTANIMATION_USE_RGB565 := true
 

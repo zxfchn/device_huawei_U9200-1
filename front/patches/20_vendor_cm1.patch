@@ -1,0 +1,47 @@
+
+project vendor/cm/
+diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
+index d32640c..851293f 100644
+--- a/vendor/cm/config/common.mk
++++ b/vendor/cm/config/common.mk
+@@ -168,7 +168,6 @@ PRODUCT_PACKAGES += \
+     mke2fs \
+     tune2fs \
+     bash \
+-    nano \
+     htop \
+     powertop \
+     lsof \
+@@ -246,11 +245,6 @@ ifndef CM_BUILDTYPE
+     endif
+ endif
+ 
+-# Filter out random types, so it'll reset to UNOFFICIAL
+-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(CM_BUILDTYPE)),)
+-    CM_BUILDTYPE :=
+-endif
+-
+ ifdef CM_BUILDTYPE
+     ifneq ($(CM_BUILDTYPE), SNAPSHOT)
+         ifdef CM_EXTRAVERSION
+diff --git a/vendor/cm/config/common_full.mk b/vendor/cm/config/common_full.mk
+index e580b4c..4535e0b 100644
+--- a/vendor/cm/config/common_full.mk
++++ b/vendor/cm/config/common_full.mk
+@@ -2,7 +2,7 @@
+ $(call inherit-product, vendor/cm/config/common.mk)
+ 
+ # Bring in all video files
+-$(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
++#$(call inherit-product, frameworks/base/data/videos/VideoPackage2.mk)
+ 
+ # Include CM audio files
+ include vendor/cm/config/cm_audio.mk
+@@ -33,5 +33,5 @@ PRODUCT_PACKAGES += \
+     libvideoeditorplayer
+ 
+ # Extra tools in CM
+-PRODUCT_PACKAGES += \
+-    vim
++#PRODUCT_PACKAGES += \
++#    vim

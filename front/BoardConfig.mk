@@ -2,6 +2,7 @@
 # Copyright (C) 2012 The CyanogenMod Project
 # Copyright (C) 2012 mdeejay
 # Copyright (C) 2013 faust93
+# Copyright (C) 2013-2014 ShevT
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,13 +17,17 @@
 # limitations under the License.
 #
 
+COMMON_FOLDER := device/huawei/front
+VENDOR_DIR := vendor/huawei/front/proprietary
+
 # Include path
-TARGET_SPECIFIC_HEADER_PATH := device/huawei/front/include
-PRODUCT_VENDOR_KERNEL_HEADERS := device/huawei/front/kernel-headers
+TARGET_SPECIFIC_HEADER_PATH := $(COMMON_FOLDER)/include
+PRODUCT_VENDOR_KERNEL_HEADERS := $(COMMON_FOLDER)/kernel-headers
 
 # Camera
 USE_CAMERA_STUB := false
 BOARD_USES_TI_CAMERA_HAL := true
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Target arch settings
 TARGET_ARCH := arm
@@ -41,16 +46,10 @@ TARGET_CPU_SMP := true
 # for old Recovery
 USE_SET_METADATA := false
 
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-
 # TI Enhancement Settings (Part 1)
 OMAP_ENHANCEMENT := true
 OMAP_ENHANCEMENT_MULTIGPU := true
 BOARD_USE_TI_ENHANCED_DOMX := true
-
-# Camera
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
@@ -67,11 +66,11 @@ BOARD_USES_HWCOMPOSER := true
 BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
 TARGET_HAS_WAITFORVSYNC := true
 
-# Setup custom omap4xxx defines
-BOARD_USE_CUSTOM_LIBION := true
-
 # No sync framework for this device...
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+
+# Setup custom omap4xxx defines
+BOARD_USE_CUSTOM_LIBION := true
 
 # TI Enhancement Settings (Part 2)
 ifdef BOARD_USE_TI_ENHANCED_DOMX
@@ -112,14 +111,25 @@ ifdef OMAP_ENHANCEMENT_MULTIGPU
 endif
 
 # Kernel/Ramdisk
-BOARD_KERNEL_CMDLINE := console=ttyGS2,115200n8 mem=1G vmalloc=768M vram=16M omapfb.vram=0:8M omap_wdt.timer_margin=30 mmcparts=mmcblk0:p15(splash) androidboot.hardware=front androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyGS2,115200n8 mem=1G vmalloc=768M omapfb.vram=0:8M omap_wdt.timer_margin=30 mmcparts=mmcblk0:p15(splash) androidboot.hardware=front androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_PREBUILT_KERNEL := device/huawei/front/kernel
+TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
 
 # EGL
-BOARD_EGL_CFG := device/huawei/front/egl.cfg
+BOARD_USES_HGL := true
 USE_OPENGL_RENDERER := true
+ENABLE_WEBGL := true
+
+# define to use all of the Linaro Cortex-A9 optimized string funcs,
+# instead of subset known to work on all machines
+USE_ALL_OPTIMIZED_STRING_FUNCS := true
+
+# Compatibility with pre-kitkat Sensor HALs
+SENSORS_NEED_SETRATE_ON_ENABLE := true
+
+# Customize the malloced address to be 16-byte aligned
+BOARD_MALLOC_ALIGNMENT := 16
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
@@ -141,14 +151,14 @@ WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/huawei/front/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/huawei/front/bluetooth/vnd_front.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_FOLDER)/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := $(COMMON_FOLDER)/bluetooth/vnd_front.txt
 
 # Set 32 byte cache line to true
 ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
 
 # RIL
-TARGET_PROVIDES_LIBRIL := vendor/huawei/front/proprietary/lib/libxgold-ril.so
+TARGET_PROVIDES_LIBRIL := $(VENDOR_DIR)/lib/libxgold-ril.so
 BOARD_RIL_NO_CELLINFOLIST := true
 
 # Vold
@@ -162,8 +172,9 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1342177280
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 2302672896
 BOARD_FLASH_BLOCK_SIZE := 4096
 
-# Security
+# Misc
 BOARD_USES_SECURE_SERVICES := true
+BOARD_NEEDS_CUTILS_LOG := true
 
 # Recovery
 RECOVERY_CHARGEMODE := true
@@ -172,9 +183,9 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun/file"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun/file"
-TARGET_RECOVERY_INITRC := device/huawei/front/recovery/init.rc
-TARGET_PREBUILT_RECOVERY_KERNEL := device/huawei/front/recovery_kernel
-TARGET_RECOVERY_FSTAB := device/huawei/front/ramdisk/fstab.front
+TARGET_RECOVERY_INITRC := $(COMMON_FOLDER)/recovery/init.rc
+TARGET_PREBUILT_RECOVERY_KERNEL := $(COMMON_FOLDER)/recovery/recovery_kernel
+TARGET_RECOVERY_FSTAB := $(COMMON_FOLDER)/ramdisk/fstab.front
 RECOVERY_FSTAB_VERSION := 2
 TARGET_NO_SEPARATE_RECOVERY := true
 

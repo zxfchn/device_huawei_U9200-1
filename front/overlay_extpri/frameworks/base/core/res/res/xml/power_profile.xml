@@ -19,20 +19,6 @@
         <value>3.0</value>
         <value>3.0</value>
     </array>
-    <array name="cpu.speeds">
-        <value>350000</value>
-        <value>700000</value>
-        <value>920000</value>
-        <value>1200000</value>
-    </array>
-    <item name="cpu.idle">7</item>
-    <item name="cpu.awake">20</item>
-    <array name="cpu.active">
-        <value>120</value>
-        <value>228</value>
-        <value>299</value>
-        <value>397</value>
-    </array>
     <item name="battery.capacity">1670</item>
     <item name="system.base.normal">8</item>
     <item name="system.base.smart">3</item>

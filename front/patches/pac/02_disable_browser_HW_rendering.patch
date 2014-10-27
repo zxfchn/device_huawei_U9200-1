@@ -1,0 +1,16 @@
+
+project external/chromium_org/
+diff --git a/external/chromium_org/android_webview/browser/in_process_view_renderer.cc b/external/chromium_org/android_webview/browser/in_process_view_renderer.cc
+index bcfa3b9..8c9e4bf 100644
+--- a/external/chromium_org/android_webview/browser/in_process_view_renderer.cc
++++ b/external/chromium_org/android_webview/browser/in_process_view_renderer.cc
+@@ -128,8 +128,7 @@ class ScopedPixelAccess {
+ };
+ 
+ bool HardwareEnabled() {
+-  static bool g_hw_enabled = !CommandLine::ForCurrentProcess()->HasSwitch(
+-      switches::kDisableWebViewGLMode);
++    static bool g_hw_enabled = false;
+   return g_hw_enabled;
+ }
+ 

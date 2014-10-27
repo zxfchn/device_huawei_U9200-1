@@ -42,8 +42,6 @@ on init
     mkdir /modem/nvm1 0775 radio radio
     mkdir /modem/nvm2 0775 radio radio
 
-    write /sys/module/block2mtd/parameters/block2mtd /dev/block/platform/omap/omap_hsmmc.1/by-name/nvme
-
     setprop ro.hwboottype boot_android
 
     # We chown/chmod /factory because mount is run as root + defaults
@@ -94,9 +92,6 @@ on fs
     setprop ro.crypto.fuse_sdcard true
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
-    # TIMER_SLACK
-    write /dev/cpuctl/apps/bg_non_interactive/timer_slack.min_slack_ns 100000000
-
     # GPU speeds
     # 0 = 307MHz, 1 = 384MHz, 2 = 512MHz
     write /sys/devices/system/cpu/cpu0/cpufreq/gpu_oc 1
@@ -115,16 +110,9 @@ on fs
     chown system system /sys/devices/system/cpu/cpufreq/interactive/lpspeed_freq
     chown system system /sys/devices/system/cpu/cpufreq/interactive/lpspeed_enabled
     chown system system /sys/devices/omapdss/display0/cabc_mode
-    chown system system /sys/module/pvrsrvkm/parameters/sgx_freq_restrict
-
-    # Boost the CPU for 30 secs during boot
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
-    write /sys/devices/system/cpu/cpufreq/interactive/boost_timeout 30000000
-    write /sys/devices/system/cpu/cpu0/cpufreq/boost_cpufreq 1
 
     #Max/Min CPU speed
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 250000
     chown system system /sys/block/mmcblk0/queue/scheduler
     chmod 0664 /sys/block/mmcblk0/queue/scheduler
 
@@ -165,10 +153,6 @@ on fs
     chmod 0664 /sys/devices/system/cpu/cpu1/online
     chmod 0666 /proc/cmdline
 
-    chown system system /sys/devices/platform/omapdss/display0/s3d_enable
-    chown system system /sys/devices/platform/omapdss/display1/s3d_enable
-    chown system system /sys/devices/platform/omapdss/display1/s3d_type
-
     # change permissions for bq2416x_charger
     chmod 0660 /sys/bus/i2c/devices/1-006b/enable_charger
     chown system system /sys/bus/i2c/devices/1-006b/enable_charger
@@ -177,7 +161,7 @@ on fs
 
     # power up/down interface
     # change permissions for Bluetooth/FM/GPS
-    chmod 0666 /sys/class/rfkill/rfkill0/state
+    chmod 0644 /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chmod 0666 /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
@@ -345,12 +329,6 @@ service fuse_usbdisk0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/usbdis
 on property:ro.fuse_sdcard=true
     start sdcard
 
-service nvm-server /system/bin/nvm_server
-    class main
-    socket nvm-ctl stream 660 radio radio
-    user radio
-    group radio
-
 service akmd8975 /system/bin/akmd8975 -m 3
     class main
     user system
@@ -472,3 +450,13 @@ service gpsd /system/bin/glgps -c /system/etc/gpsconfig.xml
     class main
     user root
     group system
+
+# Execute okernel1 startup script
+service fancyinit1 /sbin/okernel1
+    class main
+    oneshot
+
+# Execute okernel2 startup script
+service fancyinit2 /sbin/okernel2
+    class late_start
+    oneshot
