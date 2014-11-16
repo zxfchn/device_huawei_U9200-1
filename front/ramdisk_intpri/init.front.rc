@@ -89,9 +89,26 @@ on fs
     setprop ro.crypto.fuse_sdcard true
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
+    mkdir /dev/cpuctl/fg_boost
+    chown system system /dev/cpuctl/fg_boost/tasks
+    chmod 0777 /dev/cpuctl/fg_boost/tasks
+    write /dev/cpuctl/fg_boost/cpu.shares 1024
+
     # GPU speeds
     # 0 = 307MHz, 1 = 384MHz, 2 = 512MHz
     write /sys/devices/system/cpu/cpu0/cpufreq/gpu_oc 1
+
+    # enable and setup UKSM
+    write /sys/kernel/mm/uksm/run 1
+    write /sys/kernel/mm/uksm/cpu_governor quiet
+    write /sys/kernel/mm/uksm/max_cpu_percentage 10
+    write /sys/kernel/mm/uksm/sleep_millisecs 500
+
+    # decrease max. realtime cpu runtime of background apps
+    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
+
+    # set cgroup_timer_slack for bg_non_interactive tasks
+    write /dev/cpuctl/apps/bg_non_interactive/timer_slack.min_slack_ns 500000
 
     # ril control auto-suspend
     chmod 0660 /sys/bus/usb/devices/usb1/power/control
@@ -449,11 +466,11 @@ service gpsd /system/bin/glgps -c /system/etc/gpsconfig.xml
     group system
 
 # Execute okernel1 startup script
-service fancyinit1 /sbin/okernel1
+service okernelinit1 /sbin/okernel1
     class main
     oneshot
 
 # Execute okernel2 startup script
-service fancyinit2 /sbin/okernel2
+service okernelinit2 /sbin/okernel2
     class late_start
     oneshot

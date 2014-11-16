@@ -122,6 +122,11 @@ PRODUCT_PACKAGES += \
     fsck.f2fs \
     fibmap.f2fs
 
+# Fix timezone 2014i
+PRODUCT_COPY_FILES += \
+    $(COMMON_FOLDER)/prebuilt/icudt51l.dat:system/usr/icu/icudt51l.dat \
+    $(COMMON_FOLDER)/prebuilt/tzdata:/system/usr/share/zoneinfo/tzdata
+
 # Key maps
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/configs/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \

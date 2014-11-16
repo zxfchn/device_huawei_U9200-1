@@ -1,25 +1,24 @@
 
 project frameworks/base/
 diff --git a/frameworks/base/packages/SettingsProvider/res/values/defaults.xml b/frameworks/base/packages/SettingsProvider/res/values/defaults.xml
-index 9e6cc9d..09d740c 100644
+index 509ed1d..755d05a 100644
 --- a/frameworks/base/packages/SettingsProvider/res/values/defaults.xml
 +++ b/frameworks/base/packages/SettingsProvider/res/values/defaults.xml
-@@ -231,4 +231,10 @@
+@@ -238,4 +238,9 @@
+     <!-- Default value of Settings.System.ENABLE_PEOPLE_LOOKUP -->
+     <integer name="def_people_lookup">1</integer>
  
-     <!-- Default Blacklist values of Settings.System.HEADS_UP_NOTIFICATION -->
-     <string name="def_heads_up_notification_blacklist_values"></string>
-+
-+       <!-- Default for wifi country code: US(1~11)EU(1~13)JP(1~14) -->
++    <!-- Default for wifi country code: US(1~11)EU(1~13)JP(1~14) -->
 +    <add-resource name="wifi_country_code" type="string" />
 +
 +    <string name="wifi_country_code">JP</string>
 +
  </resources>
 diff --git a/frameworks/base/packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java b/frameworks/base/packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java
-index 4da1c4f..b0a668f 100644
+index 2ff2b5a..817b71e 100644
 --- a/frameworks/base/packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java
 +++ b/frameworks/base/packages/SettingsProvider/src/com/android/providers/settings/DatabaseHelper.java
-@@ -2317,6 +2317,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
+@@ -2331,6 +2331,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
              loadStringSetting(stmt, Settings.Global.AIRPLANE_MODE_TOGGLEABLE_RADIOS,
                      R.string.airplane_mode_toggleable_radios);
  

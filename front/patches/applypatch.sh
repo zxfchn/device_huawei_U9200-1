@@ -19,7 +19,7 @@ linarover=4.8
 
 echo ""
 echo "Проверяем наличие Linaro toolchain"
-if ! [ -d $top/prebuilts/gcc/linux-x86/arm/arm-eabi-$linarover-linaro ] ; then
+if ! [ -d $top/prebuilts/gcc/linux-x86/arm/linaro-$linarover ] ; then
     echo "Linaro нету. Делаем ссылки..."
     ln -s ../../../../../../linaro-$linarover $top/prebuilts/gcc/linux-x86/arm/linaro-$linarover
 fi

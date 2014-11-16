@@ -1,11 +1,8 @@
 #!/system/bin/sh
 
-# decrease max. realtime cpu runtime of background apps
-echo 90 > /dev/cpuctl/apps/bg_non_interactive/cpu.shares
-echo 500000 > /dev/cpuctl/apps/bg_non_interactive/cpu.rt_runtime_us
+if [ `uname -r | grep "ok"` ] ; then
 
 # move uksm daemon to bg_non_interactive task group
 echo $(pgrep uksmd) > /dev/cpuctl/apps/bg_non_interactive/tasks
 
-# set cgroup_timer_slack for bg_non_interactive tasks
-echo 50000000 > /dev/cpuctl/apps/bg_non_interactive/timer_slack.min_slack_ns
+fi

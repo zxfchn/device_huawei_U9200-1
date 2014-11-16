@@ -1,10 +1,10 @@
 
 roject build/
 diff --git a/build/core/Makefile b/build/core/Makefile
-index 36d0ef3..a4a5a47 100644
+index 312a3c1..a837286 100644
 --- a/build/core/Makefile
 +++ b/build/core/Makefile
-@@ -1391,7 +1390,9 @@ ifdef PRODUCT_EXTRA_RECOVERY_KEYS
+@@ -1405,7 +1404,9 @@ ifdef PRODUCT_EXTRA_RECOVERY_KEYS
  	$(hide) echo "extra_recovery_keys=$(PRODUCT_EXTRA_RECOVERY_KEYS)" >> $(zip_root)/META/misc_info.txt
  endif
  	$(hide) echo "mkbootimg_args=$(BOARD_MKBOOTIMG_ARGS)" >> $(zip_root)/META/misc_info.txt
