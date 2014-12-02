@@ -60,12 +60,10 @@ ro.config.hw_quickpoweron=true
 ro.config.hw_omacp=1
 ro.config.hw_voicerecord=true
 ro.config.hw_flashless=true
-ro.config.hw_allow_ums_and_mtp=true
 ro.config.hw_dolby=true
 ro.config.hw_gps=47511
 ro.config.hw_battery_percent=true
 ro.config.hw_uninstall_dataapp=true
-ro.config.hw_remindBT=true
 #
 persist.sys.quickpoweron=normal
 persist.sys.animationstart=false
@@ -85,9 +83,6 @@ hwui.render_dirty_regions=false
 wifi.interface=wlan0
 persist.sys.root_access=3
 #
-# Fast mass storage
-ro.vold.umsdirtyratio=50
-#
 # dormancy
 ro.config.fast_dormancy=true
 ro.config.hw_fast_dormancy=1
@@ -95,3 +90,9 @@ ro.ril.fast.dormancy.rule=1
 #
 # fix deaf microphone
 ro.config.dualmic=true
+#
+# Fast mass storage
+ro.vold.umsdirtyratio=50
+#
+# Default storage
+persist.sys.main_storage=sdcard0
