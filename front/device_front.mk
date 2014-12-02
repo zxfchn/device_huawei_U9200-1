@@ -189,10 +189,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
-    ro.secure=1 \
+    ro.secure=0 \
     ro.allow.mock.location=1 \
-    ro.debuggable=1 \
-    persist.service.adb.enable=1
+    ro.debuggable=1
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
