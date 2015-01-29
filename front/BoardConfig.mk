@@ -138,6 +138,9 @@ TARGET_PROVIDES_LIBLIGHTS := true
 # PowerHAL
 TARGET_PROVIDES_POWERHAL := true
 
+# Use a small subset of system fonts to keep image size lower
+SMALLER_FONT_FOOTPRINT := true
+
 # Wifi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := NL80211
 WPA_SUPPLICANT_VERSION      := VER_0_8_X

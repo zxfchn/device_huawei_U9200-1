@@ -1,0 +1,24 @@
+
+project external/noto-fonts/
+diff --git a/external/noto-fonts/Android.mk b/external/noto-fonts/Android.mk
+index 4bc06fc..982cf5e 100644
+--- a/external/noto-fonts/Android.mk
++++ b/external/noto-fonts/Android.mk
+@@ -17,8 +17,6 @@
+ 
+ LOCAL_PATH := $(call my-dir)
+ 
+-ifneq ($(SMALLER_FONT_FOOTPRINT),true)
+-
+ include $(CLEAR_VARS)
+ LOCAL_MODULE := NotoColorEmoji.ttf
+ LOCAL_SRC_FILES := $(LOCAL_MODULE)
+@@ -27,6 +25,8 @@ LOCAL_MODULE_TAGS := optional
+ LOCAL_MODULE_PATH := $(TARGET_OUT)/fonts
+ include $(BUILD_PREBUILT)
+ 
++ifneq ($(SMALLER_FONT_FOOTPRINT),true)
++
+ include $(CLEAR_VARS)
+ LOCAL_MODULE := NotoSansMalayalam-Regular.ttf
+ LOCAL_SRC_FILES := $(LOCAL_MODULE)
