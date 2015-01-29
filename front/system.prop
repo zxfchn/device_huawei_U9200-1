@@ -85,6 +85,7 @@ wifi.interface=wlan0
 persist.sys.root_access=3
 #
 # dormancy
+ro.telephony.call_ring.delay=200
 ro.config.fast_dormancy=true
 ro.config.hw_fast_dormancy=1
 ro.ril.fast.dormancy.rule=1
