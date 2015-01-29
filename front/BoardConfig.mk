@@ -120,7 +120,6 @@ TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
 BOARD_USES_HGL := true
 BOARD_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
-ENABLE_WEBGL := true
 
 # define to use all of the Linaro Cortex-A9 optimized string funcs,
 # instead of subset known to work on all machines
