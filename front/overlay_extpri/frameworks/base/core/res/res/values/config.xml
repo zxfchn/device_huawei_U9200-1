@@ -331,9 +331,6 @@
     <!-- Separate software navigation bar required on this device. -->
     <bool translatable="false" name="config_showNavigationBar">false</bool>
 
-    <!-- Boolean indicating if current platform supports BLE peripheral mode -->
-    <bool translatable="false" name="config_bluetooth_le_peripheral_mode_supported">true</bool>
-
     <!-- Flag indicating whether the surface flinger is inefficient
          at performing a blur.  Used by parts of the UI to turn off
          the blur effect where it isn't worth the performance hit. -->
