@@ -116,6 +116,9 @@ on fs
     # set cgroup_timer_slack for bg_non_interactive tasks
     write /dev/cpuctl/apps/bg_non_interactive/timer_slack.min_slack_ns 500000
 
+    # start pvr
+    start pvrsrvinit
+
     # ril control auto-suspend
     chmod 0660 /sys/bus/usb/devices/usb1/power/control
     chown radio radio /sys/bus/usb/devices/usb1/power/control
@@ -312,6 +315,7 @@ service pvrsrvinit /vendor/bin/pvrsrvinit
     user root
     group root
     oneshot
+    disabled
 
 # create filesystems if necessary
 service setup_fs /system/bin/setup_fs \
