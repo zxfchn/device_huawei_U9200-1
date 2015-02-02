@@ -173,7 +173,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.root_access=3 \
     persist.adb.notify=0 \
     ro.kernel.android.checkjni=0 \
-    sensor.loop.minms=0
+    sensor.loop.minms=0 \
+    ro.sys.fw.bg_apps_limit = 20
 
 # SGX540 is slower with the scissor optimization enabled
 PRODUCT_PROPERTY_OVERRIDES += \
