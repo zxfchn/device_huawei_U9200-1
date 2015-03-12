@@ -112,7 +112,6 @@ ifdef OMAP_ENHANCEMENT_MULTIGPU
 endif
 
 # Kernel/Ramdisk
-BOARD_KERNEL_CMDLINE := console=ttyGS2,115200n8 mem=1G vmalloc=768M omapfb.vram=0:8M omap_wdt.timer_margin=30 mmcparts=mmcblk0:p15(splash) androidboot.hardware=front androidboot.selinux=permissive
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
