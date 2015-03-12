@@ -221,6 +221,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.media.use-awesome=true \
     media.stagefright.use-awesome=true
 
+# Enable AAC 5.1 output
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.aac_51_output_enabled=true
+
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
