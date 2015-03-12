@@ -34,4 +34,3 @@ LOCAL_MODULE := ion_ti_test2
 LOCAL_MODULE_TAGS := optional tests
 LOCAL_SHARED_LIBRARIES := liblog
 include $(BUILD_EXECUTABLE)
-
