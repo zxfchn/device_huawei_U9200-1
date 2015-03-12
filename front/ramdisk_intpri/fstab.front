@@ -12,6 +12,9 @@
 /dev/block/platform/omap/omap_hsmmc.1/by-name/cust      /cust     ext4  noatime,noauto_da_alloc,nodiratime,barrier=0,ro                                   wait
 /dev/block/platform/omap/omap_hsmmc.1/by-name/misc      /misc     emmc  defaults  defaults
 
+# zRAM
+/dev/block/zram0                                          none         swap  defaults  zramsize=134217728
+
 # Recovery only
 /dev/block/platform/omap/omap_hsmmc.1/by-name/boot        /boot        emmc defaults recoveryonly
 /dev/block/platform/omap/omap_hsmmc.1/by-name/bootloader  /bootloader  emmc defaults recoveryonly

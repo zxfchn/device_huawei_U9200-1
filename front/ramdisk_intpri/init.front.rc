@@ -89,6 +89,9 @@ on fs
     mount ext4 /dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm1 /modem/nvm1 wait noatime nosuid nodev
     mount ext4 /dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm2 /modem/nvm2 wait noatime nosuid nodev
 
+    # zRAM
+    swapon_all /fstab.front
+
     setprop ro.crypto.fuse_sdcard true
     setprop ro.crypto.tmpfs_options size=128m,mode=0771,uid=1000,gid=1000
 
@@ -112,6 +115,14 @@ on fs
     write /sys/kernel/mm/uksm/cpu_governor quiet
     write /sys/kernel/mm/uksm/max_cpu_percentage 10
     write /sys/kernel/mm/uksm/sleep_millisecs 500
+
+    # By default, the Linux kernel swaps in 8 pages of memory at a time.
+    # When using ZRAM, the incremental cost of reading 1 page at a time is
+    # negligible and may help in case the device is under extreme memory pressure.
+    write /proc/sys/vm/page-cluster 0
+
+    # lower swappiness when using swap
+    write /proc/sys/vm/swappiness 10
 
     # decrease max. realtime cpu runtime of background apps
     write /dev/cpuctl/bg_non_interactive/cpu.shares 52
