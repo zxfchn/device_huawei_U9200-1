@@ -4,23 +4,21 @@
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
 # INIT mount points
-/dev/block/platform/omap/omap_hsmmc.1/by-name/system    /system   ext4  noatime,noauto_da_alloc,nodiratime,barrier=0,ro                                   wait
-/dev/block/platform/omap/omap_hsmmc.1/by-name/cache     /cache    ext4  noatime,noauto_da_alloc,nosuid,nodev,nodiratime,journal_async_commit,errors=panic wait,check
-/dev/block/platform/omap/omap_hsmmc.1/by-name/cache     /cache    f2fs  discard,nosuid,nodev,noatime,nodiratime,inline_xattr,rw                           wait,check
-/dev/block/platform/omap/omap_hsmmc.1/by-name/userdata  /data     ext4  noatime,noauto_da_alloc,nosuid,nodev,nodiratime,journal_async_commit,errors=panic wait,check,encryptable=footer,length=-16384
-/dev/block/platform/omap/omap_hsmmc.1/by-name/userdata  /data     f2fs  discard,nosuid,nodev,noatime,nodiratime,inline_xattr,rw                           wait,check,nonremovable,encryptable=footer,length=-16384
-/dev/block/platform/omap/omap_hsmmc.1/by-name/cust      /cust     ext4  noatime,noauto_da_alloc,nodiratime,barrier=0,ro                                   wait
-/dev/block/platform/omap/omap_hsmmc.1/by-name/misc      /misc     emmc  defaults  defaults
+/dev/block/platform/omap/omap_hsmmc.1/by-name/system      /system      ext4  noatime,noauto_da_alloc,nodiratime,barrier=0,ro                                   wait
+/dev/block/platform/omap/omap_hsmmc.1/by-name/cache       /cache       ext4  noatime,noauto_da_alloc,nosuid,nodev,nodiratime,journal_async_commit,errors=panic wait,check
+/dev/block/platform/omap/omap_hsmmc.1/by-name/cache       /cache       f2fs  discard,nosuid,nodev,noatime,nodiratime,inline_xattr,rw                           wait,check
+/dev/block/platform/omap/omap_hsmmc.1/by-name/userdata    /data        ext4  noatime,noauto_da_alloc,nosuid,nodev,nodiratime,journal_async_commit,errors=panic wait,check,encryptable=footer,length=-16384
+/dev/block/platform/omap/omap_hsmmc.1/by-name/userdata    /data        f2fs  discard,nosuid,nodev,noatime,nodiratime,inline_xattr,rw                           wait,check,nonremovable,encryptable=footer,length=-16384
+/dev/block/platform/omap/omap_hsmmc.1/by-name/cust        /cust        ext4  noatime,noauto_da_alloc,nodiratime,barrier=0                                      wait,check
+/dev/block/platform/omap/omap_hsmmc.1/by-name/misc        /misc        emmc  defaults  defaults
+/dev/block/platform/omap/omap_hsmmc.1/by-name/boot        /boot        emmc  defaults  defaults
+/dev/block/platform/omap/omap_hsmmc.1/by-name/bootloader  /bootloader  emmc  defaults  defaults
+/dev/block/platform/omap/omap_hsmmc.1/by-name/recovery    /recovery    emmc  defaults  defaults
+/dev/block/platform/omap/omap_hsmmc.1/by-name/xloader     /xloader     emmc  defaults  defaults
 
 # zRAM
 /dev/block/zram0                                          none         swap  defaults  zramsize=134217728
 
-# Recovery only
-/dev/block/platform/omap/omap_hsmmc.1/by-name/boot        /boot        emmc defaults recoveryonly
-/dev/block/platform/omap/omap_hsmmc.1/by-name/bootloader  /bootloader  emmc defaults recoveryonly
-/dev/block/platform/omap/omap_hsmmc.1/by-name/recovery    /recovery    emmc defaults recoveryonly
-/dev/block/platform/omap/omap_hsmmc.1/by-name/xloader     /xloader     emmc defaults recoveryonly
-
 # VOLD mount points
-/devices/platform/omap/omap_hsmmc.0/mmc_host/mmc1         auto     auto      defaults  voldmanaged=sdcard1:auto,noemulatedsd
-/devices/platform/omap/musb-omap2430/musb-hdrc/usb1       auto     auto      defaults  voldmanaged=usbdisk0:auto
+/devices/platform/omap/omap_hsmmc.0/mmc_host/mmc1         auto         auto  defaults  voldmanaged=sdcard1:auto,noemulatedsd
+/devices/platform/omap/musb-omap2430/musb-hdrc/usb1       auto         auto  defaults  voldmanaged=usbdisk0:auto
