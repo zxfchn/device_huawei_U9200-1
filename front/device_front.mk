@@ -73,8 +73,7 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/prebuilt/xbin/remount:system/xbin/remount \
     $(COMMON_FOLDER)/prebuilt/etc/utils/optimizedb:system/etc/utils/optimizedb \
     $(COMMON_FOLDER)/prebuilt/etc/utils/optimizestorage:system/etc/utils/optimizestorage \
-    $(COMMON_FOLDER)/prebuilt/etc/init.d/11frandom:system/etc/init.d/11frandom \
-    $(COMMON_FOLDER)/prebuilt/etc/init.d/10swapon:system/etc/init.d/10swapon
+    $(COMMON_FOLDER)/prebuilt/etc/init.d/11frandom:system/etc/init.d/11frandom
 
 # Tuning scripts
 PRODUCT_COPY_FILES += \

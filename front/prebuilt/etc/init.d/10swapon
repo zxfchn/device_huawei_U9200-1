@@ -1,8 +1,0 @@
-#!/system/bin/sh
-
-PART_FILE="/dev/block/mmcblk1p2"
-
-if [ -e $PART_FILE ]; then
-    swapon $PART_FILE
-    echo "60" > /proc/sys/vm/swappiness
-fi
