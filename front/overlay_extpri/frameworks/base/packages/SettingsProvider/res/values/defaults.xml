@@ -17,6 +17,7 @@
  */
 -->
 <resources>
+
     <bool name="def_screen_brightness_automatic_mode">true</bool>
 
     <!-- Screen timeout default = 60 seconds -->
@@ -34,4 +35,5 @@
     <bool name="def_install_non_market_apps">true</bool>
 
     <bool name="def_wifi_on">false</bool>
+
 </resources>
