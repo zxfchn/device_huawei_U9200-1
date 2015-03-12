@@ -14,7 +14,4 @@
 # limitations under the License.
 #
 
-# AOSP specific
-ifneq ($(TARGET_PRODUCT),full_$(TARGET_BOOTLOADER_BOARD_NAME))
 include $(call all-subdir-makefiles)
-endif
