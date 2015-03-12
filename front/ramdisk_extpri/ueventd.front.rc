@@ -49,8 +49,6 @@
 # change permissions for ION driver
 /dev/ion               0777  root        root
 
-/dev/audience_es305    0666  media       media
-
 # change permissions for mtd device
 /dev/mtd/mtd0          0660  media       media
 
