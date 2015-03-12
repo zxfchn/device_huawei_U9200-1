@@ -57,7 +57,7 @@ PRODUCT_PACKAGES += \
     libion_ti \
     libstagefrighthw
 
-#symlinks
+# Symlinks
 PRODUCT_PACKAGES += \
     libion.so
 
@@ -205,12 +205,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heaptargetutilization=0.75 \
     dalvik.vm.heapminfree=2m \
     dalvik.vm.heapmaxfree=8m \
-    dalvik.vm.debug.alloc=0 \
     dalvik.vm.execution-mode=int:jit \
-    dalvik.vm.lockprof.threshold=500 \
-    dalvik.vm.dexopt-flags=m=y \
-    dalvik.vm.stack-trace-file=/data/anr/traces.txt \
-    persist.sys.dalvik.multithread=true
+    dalvik.vm.dexopt-flags=v=n,o=v \
+    dalvik.vm.stack-trace-file=/data/anr/traces.txt
 
 # Allow dexopting system apps to /cache and not /data
 PRODUCT_PROPERTY_OVERRIDES += \
