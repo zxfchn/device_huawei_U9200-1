@@ -112,8 +112,8 @@ on fs
 
     # enable and setup UKSM
     write /sys/kernel/mm/uksm/run 1
-    write /sys/kernel/mm/uksm/cpu_governor quiet
-    write /sys/kernel/mm/uksm/max_cpu_percentage 10
+    write /sys/kernel/mm/uksm/cpu_governor low
+    write /sys/kernel/mm/uksm/max_cpu_percentage 25
     write /sys/kernel/mm/uksm/sleep_millisecs 500
 
     # By default, the Linux kernel swaps in 8 pages of memory at a time.
