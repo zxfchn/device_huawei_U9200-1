@@ -499,11 +499,6 @@ service okernelinit1 /sbin/okernel1
     class main
     oneshot
 
-# Execute okernel2 startup script
-service okernelinit2 /sbin/okernel2
-    class late_start
-    oneshot
-
 # CyanogenMod Performance Profiles
 # Powersave
 on property:sys.perf.profile=0

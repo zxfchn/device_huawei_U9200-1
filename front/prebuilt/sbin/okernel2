@@ -1,8 +1,0 @@
-#!/system/bin/sh
-
-if [ `uname -r | grep "ok"` ] ; then
-
-# move uksm daemon to bg_non_interactive task group
-echo $(pgrep uksmd) > /dev/cpuctl/apps/bg_non_interactive/tasks
-
-fi
