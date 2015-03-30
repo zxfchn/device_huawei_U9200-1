@@ -164,6 +164,9 @@ ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
 TARGET_PROVIDES_LIBRIL := $(VENDOR_DIR)/lib/libxgold-ril.so
 BOARD_RIL_NO_CELLINFOLIST := true
 
+# IPV6
+USE_IPV6_ROUTE := true
+
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun/file"
 
