@@ -17,10 +17,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product-if-exists, vendor/huawei/front/front-vendor.mk)
-$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 COMMON_FOLDER := device/huawei/front
 
@@ -43,9 +40,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
-    audio.policy.omap4 \
-    audio.hdmi.omap4 \
-    audio.primary.omap4
+    audio.primary.omap4 \
+    gralloc.omap4.so
 
 PRODUCT_PACKAGES += \
     libnetcmdiface
@@ -77,8 +73,7 @@ PRODUCT_COPY_FILES += \
 
 # Tuning scripts
 PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/prebuilt/sbin/okernel1:root/sbin/okernel1 \
-    $(COMMON_FOLDER)/prebuilt/sbin/okernel2:root/sbin/okernel2
+    $(COMMON_FOLDER)/prebuilt/sbin/okernel1:root/sbin/okernel1
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
@@ -145,6 +140,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+    frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
@@ -171,9 +167,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
     persist.sys.root_access=3 \
     persist.adb.notify=0 \
-    ro.kernel.android.checkjni=0 \
-    sensor.loop.minms=0 \
-    ro.sys.fw.bg_apps_limit = 20 \
     persist.call_recording.enabled=1
 
 # SGX540 is slower with the scissor optimization enabled
@@ -192,46 +185,25 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0 \
     ro.allow.mock.location=1 \
-    ro.debuggable=1
-
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
-# Dalvik settings
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapstartsize=8m \
-    dalvik.vm.heapgrowthlimit=64m \
-    dalvik.vm.heapsize=256m \
-    dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=2m \
-    dalvik.vm.heapmaxfree=8m \
-    dalvik.vm.execution-mode=int:jit \
-    dalvik.vm.dexopt-flags=v=n,o=v \
-    dalvik.vm.stack-trace-file=/data/anr/traces.txt
-
-# Allow dexopting system apps to /cache and not /data
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.dalvik.vm.dexopttocache=1
-
-# Use awesome player for now
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.media.use-awesome=true \
-    media.stagefright.use-awesome=true
-
-# Enable AAC 5.1 output
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.aac_51_output_enabled=true
+    ro.debuggable=1 \
+    persist.sys.usb.config=mtp
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=KTU84Q-ShevT
 
+# we have enough storage space to hold precise GC data
+PRODUCT_TAGS += dalvik.gc.type-precise
+
 PRODUCT_CHARACTERISTICS      := default
-PRODUCT_AAPT_CONFIG          := hdpi xhdpi
+PRODUCT_AAPT_CONFIG          := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG     := xhdpi
-PRODUCT_LOCALES              += en_US xhdpi
 BOARD_WLAN_DEVICE_REV        := bcm4330_b1
 WIFI_BAND                    := 802_11_ABG
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+#$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
