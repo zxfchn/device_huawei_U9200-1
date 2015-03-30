@@ -31,7 +31,6 @@
 
 #include "hal_public.h"
 #include "rgz_2d.h"
-#include "display.h"
 
 struct ext_transform {
     uint8_t rotation : 3;          /* 90-degree clockwise rotations */
@@ -104,7 +103,6 @@ struct counts {
     uint32_t NV12;
     uint32_t dockable;
     uint32_t protected;
-    uint32_t framebuffer;
 #ifdef OMAP_ENHANCEMENT_S3D
     uint32_t s3d;
 #endif
@@ -173,7 +171,6 @@ struct omap_hwc_device {
     struct ion_handle *ion_handles[2];
     bool use_sw_vsync;
 
-    display_t *displays[MAX_DISPLAYS];
 };
 typedef struct omap_hwc_device omap_hwc_device_t;
 

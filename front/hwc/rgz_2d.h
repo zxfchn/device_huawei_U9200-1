@@ -55,9 +55,7 @@ struct rgz_in_hwc {
     int flags;
     int layerno;
     hwc_layer_1_t *layers;
-#ifdef OMAP_ENHANCEMENT_HWC_EXTENDED_API
     hwc_layer_extended_t *extlayers;
-#endif
     struct bvsurfgeom *dstgeom;
 };
 
@@ -68,11 +66,9 @@ typedef struct rgz_in_params {
     } data;
 } rgz_in_params_t;
 
-#ifdef OMAP_ENHANCEMENT_HWC_EXTENDED_API
 typedef struct rgz_ext_layer_list {
     hwc_layer_extended_t layers[RGZ_INPUT_MAXLAYERS];
 } rgz_ext_layer_list_t;
-#endif
 
 /*
  * Validate whether the HWC layers can be rendered

@@ -44,7 +44,6 @@
 #include <ion_ti/ion.h>
 
 #include "hwc_dev.h"
-#include "display.h"
 #include "dock_image.h"
 #include "sw_vsync.h"
 
@@ -62,14 +61,6 @@
 #define NUM_NONSCALING_OVERLAYS 1
 #define NUM_EXT_DISPLAY_BACK_BUFFERS 2
 #define ASPECT_RATIO_TOLERANCE 0.02f
-
-/* copied from: KK bionic/libc/kernel/common/linux/fb.h */
-#ifndef FB_FLAG_RATIO_4_3
-#define FB_FLAG_RATIO_4_3 64
-#endif
-#ifndef FB_FLAG_RATIO_16_9
-#define FB_FLAG_RATIO_16_9 128
-#endif
 
 /* used by property settings */
 enum {
@@ -95,9 +86,7 @@ static bool debug = false;
 static bool debugpost2 = false;
 static bool debugblt = false;
 static rgz_t grgz;
-#ifdef OMAP_ENHANCEMENT_HWC_EXTENDED_API
 static rgz_ext_layer_list_t grgz_ext_layer_list;
-#endif
 static struct bvsurfgeom gscrngeom;
 
 static void showfps(void)
@@ -795,9 +784,6 @@ static bool is_valid_layer(omap_hwc_device_t *hwc_dev, hwc_layer_1_t *layer, IMG
     if ((layer->flags & HWC_SKIP_LAYER) || !handle)
         return false;
 
-    if (layer->compositionType == HWC_FRAMEBUFFER_TARGET)
-        return false;
-
     if (!is_valid_format(handle->iFormat))
         return false;
 
@@ -855,7 +841,7 @@ static int set_best_hdmi_mode(omap_hwc_device_t *hwc_dev, uint32_t xres, uint32_
     int dis_ix = hwc_dev->on_tv ? 0 : 1;
     struct _qdis {
         struct dsscomp_display_info dis;
-        struct dsscomp_videomode modedb[MAX_DISPLAY_CONFIGS];
+        struct dsscomp_videomode modedb[32];
     } d = { .dis = { .ix = dis_ix } };
     omap_hwc_ext_t *ext = &hwc_dev->ext;
 
@@ -983,12 +969,7 @@ static void gather_layer_statistics(omap_hwc_device_t *hwc_dev, hwc_display_cont
         uint32_t s3d_layout_type = get_s3d_layout_type(layer);
 #endif
 
-        if (layer->compositionType == HWC_FRAMEBUFFER_TARGET) {
-            num->framebuffer++;
-            num->composited_layers--;
-        } else {
-            layer->compositionType = HWC_FRAMEBUFFER;
-        }
+        layer->compositionType = HWC_FRAMEBUFFER;
 
         if (is_valid_layer(hwc_dev, layer, handle)) {
 #ifdef OMAP_ENHANCEMENT_S3D
@@ -1398,9 +1379,6 @@ static void check_sync_fds(size_t numDisplays, hwc_display_contents_1_t** displa
     unsigned int i, j;
     for (i = 0; i < numDisplays; i++) {
         hwc_display_contents_1_t* list = displays[i];
-        if (!list)
-            continue;
-
         if (list->retireFenceFd >= 0) {
             ALOGW("retireFenceFd[%u] was %d", i, list->retireFenceFd);
             list->retireFenceFd = -1;
@@ -1449,7 +1427,6 @@ static bool blit_layers(omap_hwc_device_t *hwc_dev, hwc_display_contents_1_t *li
             break;
     }
 
-#ifdef OMAP_ENHANCEMENT_HWC_EXTENDED_API
     /*
      * Request the layer identities to SurfaceFlinger, first figure out if the
      * operation is supported
@@ -1461,9 +1438,8 @@ static bool blit_layers(omap_hwc_device_t *hwc_dev, hwc_display_contents_1_t *li
     /* Check if we have enough space in the extended layer list */
     if ((sizeof(hwc_layer_extended_t) * list->numHwLayers) > sizeof(grgz_ext_layer_list))
         goto err_out;
-#endif
+
     uint32_t i;
-#ifdef OMAP_ENHANCEMENT_HWC_EXTENDED_API
     for (i = 0; i < list->numHwLayers; i++) {
         hwc_layer_extended_t *ext_layer = &grgz_ext_layer_list.layers[i];
         ext_layer->idx = i;
@@ -1471,7 +1447,6 @@ static bool blit_layers(omap_hwc_device_t *hwc_dev, hwc_display_contents_1_t *li
             (void **) &ext_layer, sizeof(hwc_layer_extended_t)) != 0)
             goto err_out;
     }
-#endif
 
     rgz_in_params_t in = {
         .op = rgz_in_op,
@@ -1479,9 +1454,7 @@ static bool blit_layers(omap_hwc_device_t *hwc_dev, hwc_display_contents_1_t *li
             .hwc = {
                 .dstgeom = &gscrngeom,
                 .layers = list->hwLayers,
-#ifdef OMAP_ENHANCEMENT_HWC_EXTENDED_API
                 .extlayers = grgz_ext_layer_list.layers,
-#endif
                 .layerno = list->numHwLayers
             }
         }
@@ -1988,26 +1961,10 @@ static int hwc_set(struct hwc_composer_device_1 *dev,
         // screen off. no shall not call eglSwapBuffers() in that case.
 
         if (hwc_dev->use_sgx) {
-            if (hwc_dev->base.common.version <= HWC_DEVICE_API_VERSION_1_0) {
-                if (!eglSwapBuffers((EGLDisplay)dpy, (EGLSurface)sur)) {
-                    ALOGE("eglSwapBuffers error");
-                    err = HWC_EGL_ERROR;
-                    goto err_out;
-                }
-            } else {
-                if (list) {
-                    if (hwc_dev->counts.framebuffer) {
-                        /* Layer with HWC_FRAMEBUFFER_TARGET should be last in the list. The buffer handle
-                         * is updated by SurfaceFlinger after prepare() call, so FB slot has to be updated
-                         * in set().
-                         */
-                        hwc_dev->buffers[0] = list->hwLayers[list->numHwLayers - 1].handle;
-                    } else {
-                        ALOGE("No buffer is provided for GL composition");
-                        err = -EFAULT;
-                        goto err_out;
-                    }
-                }
+            if (!eglSwapBuffers((EGLDisplay)dpy, (EGLSurface)sur)) {
+                ALOGE("eglSwapBuffers error");
+                err = HWC_EGL_ERROR;
+                goto err_out;
             }
         }
 
@@ -2122,7 +2079,6 @@ static int hwc_device_close(hw_device_t* device)
 
         /* pthread will get killed when parent process exits */
         pthread_mutex_destroy(&hwc_dev->lock);
-        free_displays(hwc_dev);
         free(hwc_dev);
     }
 
@@ -2500,17 +2456,6 @@ static int hwc_blank(struct hwc_composer_device_1 *dev, int dpy, int blank)
     return 0;
 }
 
-static int hwc_getDisplayConfigs(struct hwc_composer_device_1* dev, int disp, uint32_t* configs, size_t* numConfigs)
-{
-    return get_display_configs((omap_hwc_device_t *)dev, disp, configs, numConfigs);
-}
-
-static int hwc_getDisplayAttributes(struct hwc_composer_device_1* dev, int disp,
-                                    uint32_t config, const uint32_t* attributes, int32_t* values)
-{
-    return get_display_attributes((omap_hwc_device_t *)dev, disp, config, attributes, values);
-}
-
 static int hwc_device_open(const hw_module_t* module, const char* name, hw_device_t** device)
 {
     omap_hwc_module_t *hwc_mod = (omap_hwc_module_t *)module;
@@ -2555,8 +2500,6 @@ static int hwc_device_open(const hw_module_t* module, const char* name, hw_devic
     hwc_dev->base.blank = hwc_blank;
     hwc_dev->base.dump = hwc_dump;
     hwc_dev->base.registerProcs = hwc_registerProcs;
-    hwc_dev->base.getDisplayConfigs = hwc_getDisplayConfigs;
-    hwc_dev->base.getDisplayAttributes = hwc_getDisplayAttributes;
     hwc_dev->base.query = hwc_query;
 
     hwc_dev->fb_dev = hwc_mod->fb_dev;
@@ -2594,9 +2537,12 @@ static int hwc_device_open(const hw_module_t* module, const char* name, hw_devic
         goto done;
     }
 
-    err = init_primary_display(hwc_dev);
-    if (err)
+    ret = ioctl(hwc_dev->dsscomp_fd, DSSCIOC_QUERY_DISPLAY, &hwc_dev->fb_dis);
+    if (ret) {
+        ALOGE("failed to get display info (%d): %m", errno);
+        err = -errno;
         goto done;
+    }
 
     hwc_dev->ion_fd = ion_open();
     if (hwc_dev->ion_fd < 0) {
@@ -2730,7 +2676,6 @@ done:
             close(hwc_dev->fb_fd);
         pthread_mutex_destroy(&hwc_dev->lock);
         free(hwc_dev->buffers);
-        free_displays(hwc_dev);
         free(hwc_dev);
     }
 
