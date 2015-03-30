@@ -63,5 +63,5 @@
 /dev/bus/usb/*         0660  system      usb
 
 # frandom permissions
-/dev/frandom           0444  root        root
-/dev/erandom           0444  root        root
+/dev/frandom           0666  root        root
+/dev/erandom           0666  root        root
