@@ -40,11 +40,13 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_VARIANT := cortex-a9
 TARGET_ARCH_VARIANT_FPU := neon
-TARGET_FPU_VARIANT := neon-fp16
 TARGET_CPU_SMP := true
 
-# for old Recovery
 USE_SET_METADATA := false
+
+ARCH_ARM_HAVE_TLS_REGISTER := true
+
+ARCH_ARM_HIGH_OPTIMIZATION := true
 
 # TI Enhancement Settings (Part 1)
 OMAP_ENHANCEMENT := true
@@ -62,22 +64,26 @@ COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB -DNEEDS_VECTORIMPL_SYMBOLS
 # FM
 BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
-BUILD_FM_RADIO := true
 
 #HWcomposer
 BOARD_USES_HWCOMPOSER := true
-BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
-TARGET_HAS_WAITFORVSYNC := true
+#BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
+
+# set if the target supports FBIO_WAITFORVSYNC
+#TARGET_HAS_WAITFORVSYNC := true
 
 # No sync framework for this device...
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
+
+# Force the screenshot path to CPU consumer
+COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
 # Setup custom omap4xxx defines
 BOARD_USE_CUSTOM_LIBION := true
 
 # TI Enhancement Settings (Part 2)
 ifdef BOARD_USE_TI_ENHANCED_DOMX
-#    BOARD_USE_TI_DUCATI_H264_PROFILE := true
+    BOARD_USE_TI_DUCATI_H264_PROFILE := true
     COMMON_GLOBAL_CFLAGS += -DENHANCED_DOMX
     ENHANCED_DOMX := true
 else
@@ -85,7 +91,7 @@ else
 endif
 
 ifdef OMAP_ENHANCEMENT
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DTARGET_OMAP4 -DFORCE_SCREENSHOT_CPU_PATH
+    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DTARGET_OMAP4
 endif
 
 ifdef OMAP_ENHANCEMENT_BURST_CAPTURE
@@ -120,18 +126,20 @@ TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
 
 # EGL
 BOARD_EGL_CFG := $(COMMON_FOLDER)/configs/egl.cfg
-BOARD_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
 
 # define to use all of the Linaro Cortex-A9 optimized string funcs,
 # instead of subset known to work on all machines
 USE_ALL_OPTIMIZED_STRING_FUNCS := true
 
+ENABLE_WEBGL := true
+
 # Compatibility with pre-kitkat Sensor HALs
 SENSORS_NEED_SETRATE_ON_ENABLE := true
 
 # Customize the malloced address to be 16-byte aligned
 BOARD_MALLOC_ALIGNMENT := 16
+TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9)$(call cc-option,-mcpu=cortex-a9)
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
@@ -159,9 +167,6 @@ BOARD_HAVE_BLUETOOTH_BCM := true
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(COMMON_FOLDER)/bluetooth
 BOARD_BLUEDROID_VENDOR_CONF := $(COMMON_FOLDER)/bluetooth/vnd_front.txt
 
-# Set 32 byte cache line to true
-ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true
-
 # RIL
 TARGET_PROVIDES_LIBRIL := $(VENDOR_DIR)/lib/libxgold-ril.so
 BOARD_RIL_NO_CELLINFOLIST := true
@@ -181,9 +186,8 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 939524096
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6329188352
 BOARD_FLASH_BLOCK_SIZE := 4096
 
-# Misc
+# Security
 BOARD_USES_SECURE_SERVICES := true
-BOARD_NEEDS_CUTILS_LOG := true
 
 # Recovery
 RECOVERY_CHARGEMODE := true
