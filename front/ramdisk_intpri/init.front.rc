@@ -1,7 +1,6 @@
 import init.front.usb.rc
 
 on early-init
-    mount debugfs debugfs /sys/kernel/debug
     mkdir /storage 0666 system sdcard_r
 
 on init
@@ -35,6 +34,8 @@ on init
     symlink /storage/usbdisk0 /usbdisk
     symlink /storage/usbdisk0 /mnt/usbdisk
 
+    mkdir /cust
+
     mkdir /factory 0775 radio radio
 
     # nvm
@@ -42,6 +43,10 @@ on init
     mkdir /modem/modem_image 0775 radio radio
     mkdir /modem/nvm1 0775 radio radio
     mkdir /modem/nvm2 0775 radio radio
+
+    # KSM
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
 
     setprop ro.hwboottype boot_android
 
@@ -77,11 +82,8 @@ on post-fs-data
     chown system system /sys/class/android_usb/android0/f_mass_storage/lun/file
     chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
 
-on early-boot
-    # set RLIMIT_MEMLOCK to 64MB
-    setrlimit 8 67108864 67108864
-
 on boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
     chmod 0666 /dev/pvrsrvkm
 
     # Prevents permission denied error for telephony
@@ -118,12 +120,6 @@ on fs
     # 0 = 307MHz, 1 = 384MHz, 2 = 512MHz
     write /sys/devices/system/cpu/cpu0/cpufreq/gpu_oc 1
 
-    # enable and setup UKSM
-    write /sys/kernel/mm/uksm/run 1
-    write /sys/kernel/mm/uksm/cpu_governor low
-    write /sys/kernel/mm/uksm/max_cpu_percentage 25
-    write /sys/kernel/mm/uksm/sleep_millisecs 500
-
     # By default, the Linux kernel swaps in 8 pages of memory at a time.
     # When using ZRAM, the incremental cost of reading 1 page at a time is
     # negligible and may help in case the device is under extreme memory pressure.
@@ -132,11 +128,21 @@ on fs
     # lower swappiness when using swap
     write /proc/sys/vm/swappiness 10
 
+    # Flash storage isn't a good entropy source, and only causes locking
+    # overhead in the kernel. Turn it off.
+    write /sys/block/mmcblk0/queue/add_random 0
+    write /sys/block/mmcblk1/queue/add_random 0
+
+    # To prevent out of order acknowledgements from making
+    # connection tracking to treat them as not belonging to
+    # the connection they belong to.
+    # Otherwise, a weird issue happens in which some long
+    # connections on high-throughput links get dropped when
+    # an ack packet comes out of order
+    write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
+
     # decrease max. realtime cpu runtime of background apps
     write /dev/cpuctl/bg_non_interactive/cpu.shares 52
-
-    # set cgroup_timer_slack for bg_non_interactive tasks
-    write /dev/cpuctl/apps/bg_non_interactive/timer_slack.min_slack_ns 500000
 
     # start pvr
     start pvrsrvinit
@@ -365,7 +371,7 @@ on property:tf.enable=y
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
     class late_start
 
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 /mnt/media_rw/sdcard1 /storage/sdcard1
     class late_start
     disabled
 
