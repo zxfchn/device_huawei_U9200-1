@@ -34,6 +34,4 @@
 
     <bool name="def_install_non_market_apps">true</bool>
 
-    <bool name="def_wifi_on">false</bool>
-
 </resources>
