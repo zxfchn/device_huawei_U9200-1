@@ -45,3 +45,5 @@ ro.vold.umsdirtyratio=50
 #
 # Default storage
 persist.sys.main_storage=sdcard0
+# FM
+ro.config.fm_type=libbcmfm_if
