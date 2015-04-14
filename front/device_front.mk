@@ -188,6 +188,13 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.debuggable=1 \
     persist.sys.usb.config=mtp
 
+# dalvik
+PRODUCT_PROPERTY_OVERRIDES += \
+    dalvik.vm.execution-mode=int:jit \
+    dalvik.vm.dexopt-data-only=1 \
+    dalvik.vm.verify-bytecode=false \
+    dalvik.vm.dexopt-flags=v=a,o=v,m=y
+
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
