@@ -187,6 +187,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.verify-bytecode=false \
     dalvik.vm.dexopt-flags=v=a,o=v,m=y
 
+# Memory management
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.ksm.default=1
+
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
