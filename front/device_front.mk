@@ -40,7 +40,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
-    audio.primary.omap4 \
     gralloc.omap4.so
 
 PRODUCT_PACKAGES += \
