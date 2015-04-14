@@ -83,7 +83,9 @@ BOARD_USE_CUSTOM_LIBION := true
 
 # TI Enhancement Settings (Part 2)
 ifdef BOARD_USE_TI_ENHANCED_DOMX
-    BOARD_USE_TI_DUCATI_H264_PROFILE := true
+#   Fix h264 sound/video sync
+    BOARD_USE_TI_DUCATI_H264_PROFILE := false
+
     COMMON_GLOBAL_CFLAGS += -DENHANCED_DOMX
     ENHANCED_DOMX := true
 else
