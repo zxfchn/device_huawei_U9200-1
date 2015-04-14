@@ -1,7 +1,7 @@
 
 project system/core/
 diff --git a/system/core/rootdir/init.rc b/system/core/rootdir/init.rc
-index d3c9e08..4419e50 100644
+index d3c9e08..10f161d 100644
 --- a/system/core/rootdir/init.rc
 +++ b/system/core/rootdir/init.rc
 @@ -117,6 +117,7 @@ loglevel 3
@@ -12,3 +12,12 @@ index d3c9e08..4419e50 100644
      chown system system /dev/cpuctl/tasks
      chmod 0660 /dev/cpuctl/tasks
      write /dev/cpuctl/cpu.shares 1024
+@@ -549,7 +550,7 @@ service drm /system/bin/drmserver
+ service media /system/bin/mediaserver
+     class main
+     user media
+-    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc qcom_diag mediadrm nvram ccci radio
++    group audio camera inet net_bt net_bt_admin net_bw_acct drmrpc qcom_diag mediadrm
+     ioprio rt 4
+ 
+ service bootanim /system/bin/bootanimation

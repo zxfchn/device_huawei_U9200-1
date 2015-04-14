@@ -1,7 +1,7 @@
 
 project vendor/cm/
 diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
-index 8fce1d2..b353c2e 100644
+index 0cfd358..ca52ba3 100644
 --- a/vendor/cm/config/common.mk
 +++ b/vendor/cm/config/common.mk
 @@ -168,7 +168,6 @@ PRODUCT_PACKAGES += \
@@ -12,21 +12,16 @@ index 8fce1d2..b353c2e 100644
      htop \
      powertop \
      lsof \
-@@ -219,10 +218,11 @@ PRODUCT_PACKAGES += \
- # Terminal Emulator
- PRODUCT_COPY_FILES +=  \
-     vendor/cm/proprietary/Term.apk:system/app/Term.apk \
--    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm4.so:system/lib/libjackpal-androidterm4.so
-+    vendor/cm/proprietary/lib/armeabi/libjackpal-androidterm5.so:system/lib/libjackpal-androidterm5.so \
-+    vendor/cm/proprietary/lib/armeabi/libjackpal-termexec2.so:system/lib/libjackpal-termexec2.so
- 
- PRODUCT_PROPERTY_OVERRIDES += \
--    persist.sys.root_access=1
-+    persist.sys.root_access=3
+@@ -227,7 +226,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
  else
  
  PRODUCT_PROPERTY_OVERRIDES += \
-@@ -246,11 +246,6 @@ ifndef CM_BUILDTYPE
+-    persist.sys.root_access=0
++    persist.sys.root_access=3
+ 
+ endif
+ 
+@@ -247,11 +246,6 @@ ifndef CM_BUILDTYPE
      endif
  endif
  
