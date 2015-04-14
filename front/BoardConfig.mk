@@ -27,6 +27,7 @@ PRODUCT_VENDOR_KERNEL_HEADERS := $(COMMON_FOLDER)/kernel-headers
 # Camera
 USE_CAMERA_STUB := false
 BOARD_USES_TI_CAMERA_HAL := true
+COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
 # Target arch settings
 TARGET_ARCH := arm
@@ -46,8 +47,6 @@ USE_SET_METADATA := false
 
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-ARCH_ARM_HIGH_OPTIMIZATION := true
-
 # TI Enhancement Settings (Part 1)
 OMAP_ENHANCEMENT := true
 OMAP_ENHANCEMENT_MULTIGPU := true
@@ -55,11 +54,8 @@ BOARD_USE_TI_ENHANCED_DOMX := true
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
-BOARD_USES_ALSA_AUDIO := true
-BUILD_WITH_ALSA_UTILS := true
-TARGET_PROVIDES_LIBAUDIO := true
-BOARD_HAVE_PRE_KITKAT_AUDIO_BLOB := true
-COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB -DNEEDS_VECTORIMPL_SYMBOLS
+MR0_AUDIO_BLOB := true
+COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
 
 # FM
 BOARD_HAVE_FM_RADIO := true
@@ -67,10 +63,10 @@ BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 
 #HWcomposer
 BOARD_USES_HWCOMPOSER := true
-#BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
-
+BOARD_USE_CUSTOM_HWC := true
+BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
 # set if the target supports FBIO_WAITFORVSYNC
-#TARGET_HAS_WAITFORVSYNC := true
+TARGET_HAS_WAITFORVSYNC := true
 
 # No sync framework for this device...
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
@@ -130,18 +126,8 @@ TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
 BOARD_EGL_CFG := $(COMMON_FOLDER)/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 
-# define to use all of the Linaro Cortex-A9 optimized string funcs,
-# instead of subset known to work on all machines
-USE_ALL_OPTIMIZED_STRING_FUNCS := true
-
-ENABLE_WEBGL := true
-
 # Compatibility with pre-kitkat Sensor HALs
 SENSORS_NEED_SETRATE_ON_ENABLE := true
-
-# Customize the malloced address to be 16-byte aligned
-BOARD_MALLOC_ALIGNMENT := 16
-TARGET_EXTRA_CFLAGS := $(call cc-option,-mtune=cortex-a9)$(call cc-option,-mcpu=cortex-a9)
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
