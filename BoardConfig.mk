@@ -183,6 +183,9 @@ BUILD_FM_RADIO := true
 # Needed for RIL
 TARGET_NEEDS_BIONIC_MD5 := true
 
+# PIE
+TARGET_ENABLE_NON_PIE_SUPPORT := true
+
 # IPV6
 USE_IPV6_ROUTE := true
 
