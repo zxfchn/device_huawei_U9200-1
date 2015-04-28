@@ -184,14 +184,28 @@ on fs
     chown radio radio /sys/devices/platform/xmm_boot/power
     chmod 0660 /sys/devices/platform/xmm_boot/cp_shutdown
     chown radio radio /sys/devices/platform/xmm_boot/cp_shutdown
-
     chmod 0660 /sys/devices/platform/xmm_boot/flashless
     chmod 0660 /sys/devices/platform/xmm_boot/hsimode
     chmod 0660 /sys/devices/platform/xmm_boot/hsi_drvmode
-
     chown radio radio /sys/devices/platform/xmm_boot/flashless
     chown radio radio /sys/devices/platform/xmm_boot/hsimode
     chown radio radio /sys/devices/platform/xmm_boot/hsi_drvmode
+
+    chmod 0660 /modem/modem_image/HWT6260.fls
+    chmod 0660 /modem/nvm1/calib.nvm
+    chmod 0660 /modem/nvm1/dynamic.nvm
+    chmod 0660 /modem/nvm1/static.nvm
+    chmod 0660 /modem/modem_image/HWT6260.fls.fls
+
+    chown radio radio /modem/nvm1
+    chown radio radio /modem/nvm2
+    chown radio radio /modem/modem_image
+    chown radio radio /modem/modem_image/HWT6260.fls
+    chown radio radio /modem/nvm1/calib.nvm
+    chown radio radio /modem/nvm1/dynamic.nvm
+    chown radio radio /modem/nvm1/static.nvm
+    chown radio radio /modem/modem_image/HWT6260.fls.fls
+
     chown system system /sys/bus/i2c/drivers/cma3000_accl/4-001c
     chown system system /sys/bus/i2c/drivers/cma3000_accl/4-001c/enable
     chown system system /sys/bus/i2c/drivers/cma3000_accl/4-001c/delay
