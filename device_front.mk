@@ -67,10 +67,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libion.so
 
-# FM - test 2 linr
-PRODUCT_PACKAGES += \
-    kfmapp
-
 # Ramdisk
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/ramdisk/init.front.rc:root/init.front.rc \
@@ -189,10 +185,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.adb.notify=0 \
     persist.call_recording.enabled=1
 
-# SGX540 is slower with the scissor optimization enabled
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    ro.hwui.disable_scissor_opt=true
-
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
@@ -215,13 +207,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
 
-# Regional
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.product.locale.language=ru \
-    ro.product.locale.region=RU \
-    ro.com.android.dateformat=dd-MM-yyyy \
-    persist.sys.timezone=Europe/Moscow
-
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
@@ -230,9 +215,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-#BOARD_WLAN_DEVICE_REV        := bcm4330_b1
-#PRODUCT_LOCALES              += ru_RU xhdpi
-
 $(call inherit-product-if-exists, vendor/huawei/front/front-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
