@@ -136,9 +136,7 @@ PRODUCT_PACKAGES += \
 # Network tools
 PRODUCT_PACKAGES += \
     libpcap \
-    tcpdump \
-    libnetcmdiface \
-    l2ping
+    tcpdump
 
 # Key maps
 PRODUCT_COPY_FILES += \
