@@ -32,17 +32,17 @@
 /dev/xmd-tty1          0660  radio       radio
 /dev/xmd-tty2          0660  radio       radio
 /dev/xmd-tty3          0660  radio       radio
-/dev/xmd-tty4          0660  system       radio
+/dev/xmd-tty4          0660  radio       radio
 /dev/xmd-tty5          0660  system      system
 /dev/xmd-tty6          0660  system      system
 /dev/xmd-tty7          0660  radio       radio
 /dev/xmd-tty8          0660  media       media
 /dev/xmd-tty9          0660  radio       radio
 /dev/xmd-tty10         0660  radio       radio
-/dev/xmd-tty11         0660  system       radio
+/dev/xmd-tty11         0660  radio       radio
 
-/dev/ttyO0             0660  system      radio
-/dev/xmd-boot0         0660  system       radio
+/dev/ttyO0             0660  media       media
+/dev/xmd-boot0         0660  radio       radio
 
 /dev/nve0              0660  system      system
 
