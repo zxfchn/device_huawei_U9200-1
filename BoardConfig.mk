@@ -133,7 +133,6 @@ endif
 # Kernel/Ramdisk
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-#TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
 TARGET_KERNEL_CONFIG := front_defconfig
 TARGET_KERNEL_SOURCE := kernel/huawei/front
 
