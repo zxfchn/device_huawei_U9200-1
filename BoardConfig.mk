@@ -140,9 +140,6 @@ TARGET_KERNEL_SOURCE := kernel/huawei/front
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc
 
-# Enable dex-preoptimization to speed up first boot sequence
-WITH_DEXPREOPT := true
-
 # EGL
 USE_OPENGL_RENDERER := true
 
