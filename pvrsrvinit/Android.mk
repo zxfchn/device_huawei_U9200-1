@@ -3,7 +3,7 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 LOCAL_SRC_FILES := pvrsrvinit.c
-LOCAL_LDFLAGS := -L vendor/huawei/front/proprietary/vendor/lib
+LOCAL_LDFLAGS := -L vendor/huawei/viva/proprietary/vendor/lib
 LOCAL_LDLIBS := -lsrv_init_SGX540_120 -lsrv_um_SGX540_120
 LOCAL_MODULE_PATH := $(TARGET_OUT)/bin/
 LOCAL_MODULE := pvrsrvinit
@@ -29,5 +29,6 @@ $(LOCAL_BUILT_MODULE):
 	$(hide) mkdir -p $(dir $(SYMLINK))
 	$(hide) rm -rf $@
 	$(hide) rm -rf $(SYMLINK)
+
 	$(hide) ln -sf $(PVR_FILE) $(SYMLINK)
 	$(hide) touch $@

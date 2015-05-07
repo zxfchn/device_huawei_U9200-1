@@ -1,13 +1,13 @@
 # Inherit some common CM stuff.
-$(call inherit-product, device/huawei/front/device_front.mk)
+$(call inherit-product, device/huawei/viva/device_front.mk)
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := front
-PRODUCT_NAME := cm_front
-PRODUCT_RELEASE_NAME := U9500
+PRODUCT_DEVICE := viva
+PRODUCT_NAME := cm_viva
+PRODUCT_RELEASE_NAME := U9200
 PRODUCT_BRAND := Huawei
-PRODUCT_MODEL := U9500
+PRODUCT_MODEL := U9200
 PRODUCT_MANUFACTURER := Huawei
 
 #ifneq ($(CM_BUILDTYPE),UNOFFICIAL)

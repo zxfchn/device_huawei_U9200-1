@@ -5,7 +5,7 @@ if [ "x$SYSDIR" = "x" ]; then
 echo "You must specify system directory as first argument";
 exit
 fi
-BASE=../../../vendor/huawei/front/proprietary
+BASE=../../../vendor/huawei/viva/proprietary
 rm -rf $BASE/*
 
 for FILE in `cat proprietary-files.txt`; do

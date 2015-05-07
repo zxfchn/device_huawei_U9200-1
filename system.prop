@@ -1,6 +1,6 @@
 #
 # Modem
-ro.config.hw_flashless=true
+#ro.config.hw_flashless=true
 ro.telephony.ril_class=RIL
 rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/xmd-tty0
@@ -29,7 +29,7 @@ ro.bq.gpu_to_cpu_unsupported=1
 #
 dolby.audio.hdmi.channels=0
 #
-ro.sf.lcd_density=320
+ro.sf.lcd_density=240
 ro.opengles.version=131072
 #
 ro.config.hw_proximitySensor=true

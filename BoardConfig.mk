@@ -17,15 +17,15 @@
 # limitations under the License.
 #
 
-COMMON_FOLDER := device/huawei/front
-VENDOR_DIR := vendor/huawei/front/proprietary
+COMMON_FOLDER := device/huawei/viva
+VENDOR_DIR := vendor/huawei/viva/proprietary
 
 # Include path
 TARGET_SPECIFIC_HEADER_PATH := $(COMMON_FOLDER)/include
 PRODUCT_VENDOR_KERNEL_HEADERS := $(COMMON_FOLDER)/kernel-headers
 
 # inherit from the proprietary version
--include vendor/huawei/front/BoardConfigVendor.mk
+-include vendor/huawei/viva/BoardConfigVendor.mk
 
 # Camera
 USE_CAMERA_STUB := false
@@ -36,7 +36,7 @@ COMMON_GLOBAL_CFLAGS += \
 
 # Target arch settings
 TARGET_BOARD_PLATFORM := omap4
-TARGET_BOOTLOADER_BOARD_NAME := front
+TARGET_BOOTLOADER_BOARD_NAME := viva
 TARGET_BOARD_OMAP_CPU := 4460
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
@@ -134,7 +134,7 @@ endif
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_CONFIG := front_defconfig
-TARGET_KERNEL_SOURCE := kernel/huawei/front
+TARGET_KERNEL_SOURCE := kernel/huawei/viva
 
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc

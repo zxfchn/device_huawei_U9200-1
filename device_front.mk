@@ -21,7 +21,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 #$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-COMMON_FOLDER := device/huawei/front
+COMMON_FOLDER := device/huawei/viva
 
 PRODUCT_CHARACTERISTICS := default
 DEVICE_PACKAGE_OVERLAYS := $(COMMON_FOLDER)/overlay
@@ -136,7 +136,9 @@ PRODUCT_PACKAGES += \
 # Network tools
 PRODUCT_PACKAGES += \
     libpcap \
-    tcpdump
+    tcpdump \
+    libnetcmdiface \
+    l2ping
 
 # Key maps
 PRODUCT_COPY_FILES += \
@@ -205,10 +207,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
 
-# Camera
-PRODUCT_PROPERTY_OVERRIDES += \
-    camera2.portability.force_api=1
-
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
 # as well - does not crash
@@ -217,5 +215,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-$(call inherit-product-if-exists, vendor/huawei/front/front-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/viva/front-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
