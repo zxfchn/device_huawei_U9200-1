@@ -36,7 +36,8 @@ PRODUCT_PACKAGES += \
     tinycap \
     tinymix \
     tinyplay \
-    libaudioutils
+    libaudioutils \
+    audio.r_submix.default
 
 # Hardware HALs
 PRODUCT_PACKAGES += \
