@@ -90,10 +90,10 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(COMMON_FOLDER)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(COMMON_FOLDER)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(COMMON_FOLDER)/configs/audio/cm_front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf \
-    $(COMMON_FOLDER)/configs/audio/cm_front_audio_config.conf:system/etc/huawei/audio/pac_front_audio_config.conf \
-    $(COMMON_FOLDER)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
-    $(COMMON_FOLDER)/configs/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf
+    $(COMMON_FOLDER)/configs/audio/cm_viva_audio_config.conf:system/etc/huawei/audio/cm_viva_audio_config.conf \
+    $(COMMON_FOLDER)/configs/audio/cm_viva_audio_config.conf:system/etc/huawei/audio/pac_viva_audio_config.conf \
+    $(COMMON_FOLDER)/configs/audio/viva_audio_config.conf:system/etc/huawei/audio/viva_audio_config.conf \
+    $(COMMON_FOLDER)/configs/audio/viva_factory_audio_config.conf:system/etc/huawei/audio/viva_factory_audio_config.conf
 
 # GPS
 PRODUCT_COPY_FILES += \
