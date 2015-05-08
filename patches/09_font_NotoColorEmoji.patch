@@ -1,0 +1,16 @@
+
+project external/noto-fonts/
+diff --git a/external/noto-fonts/Android.mk b/external/noto-fonts/Android.mk
+index 6726db3..fe894f5 100644
+--- a/external/noto-fonts/Android.mk
++++ b/external/noto-fonts/Android.mk
+@@ -25,7 +25,8 @@ font_src_files += \
+     NotoSerif-Regular.ttf \
+     NotoSerif-Bold.ttf \
+     NotoSerif-Italic.ttf \
+-    NotoSerif-BoldItalic.ttf
++    NotoSerif-BoldItalic.ttf \
++    NotoColorEmoji.ttf
+ 
+ #############################################################################
+ # The following fonts are only included in EXTENDED_FONT_FOOTPRINT builds
