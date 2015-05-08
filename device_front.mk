@@ -57,7 +57,8 @@ PRODUCT_PACKAGES += \
     tf_daemon \
     libtf_crypto_sst \
     pvrsrvinit \
-    libPVRScopeServices.so
+    libPVRScopeServices.so \
+    libstagefrighthw
 
 # Needed for gralloc
 PRODUCT_PACKAGES += \
