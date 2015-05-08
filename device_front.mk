@@ -115,10 +115,6 @@ PRODUCT_PACKAGES += \
     wpa_supplicant \
     wpa_supplicant.conf \
 
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
-
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapers \
