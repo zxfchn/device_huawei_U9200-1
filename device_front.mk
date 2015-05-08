@@ -18,7 +18,7 @@
 #
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-#$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
+#$(call inherit-product, hardware/ti/omap4/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 COMMON_FOLDER := device/huawei/viva
@@ -36,7 +36,8 @@ PRODUCT_PACKAGES += \
     tinycap \
     tinymix \
     tinyplay \
-    libaudioutils
+    libaudioutils \
+    audio.r_submix.default
 
 # Hardware HALs
 PRODUCT_PACKAGES += \
@@ -57,7 +58,8 @@ PRODUCT_PACKAGES += \
     tf_daemon \
     libtf_crypto_sst \
     pvrsrvinit \
-    libPVRScopeServices.so
+    libPVRScopeServices.so \
+    libstagefrighthw
 
 # Needed for gralloc
 PRODUCT_PACKAGES += \
@@ -114,10 +116,6 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf \
-
-# Torch
-PRODUCT_PACKAGES += \
-    Torch
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -207,10 +205,28 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
 
+<<<<<<< HEAD
+=======
+# Newer camera API isn't supported.
+PRODUCT_PROPERTY_OVERRIDES += \
+    camera2.portability.force_api=1
+
+# Use awesome player for now
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.media.use-awesome=true \
+    media.stagefright.use-awesome=true
+
+# Default to the Speex resampler, if it exists.
+# - This allows for playback of just about any sample rate as the Speex resampler doesn't
+#   have the in <= out*2 restriction, and is of a higher quality than the default resampler.
+PRODUCT_PROPERTY_OVERRIDES += \
+    af.resampler.quality=8
+
+>>>>>>> upstream/cm-12.1
 # Here crashes gallery
-# if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellry crashshshsh
+# if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh
 # as well - does not crash
-#PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=KTU84Q-ShevT
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=LMY47V-ShevT
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

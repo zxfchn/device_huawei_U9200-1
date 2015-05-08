@@ -34,5 +34,5 @@
         <value>299</value>
         <value>397</value>
     </array>
-    <item name="battery.capacity">0</item>
+    <item name="battery.capacity">1800</item>
 </device>
