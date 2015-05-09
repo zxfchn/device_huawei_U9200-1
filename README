@@ -1,1 +1,2 @@
-For U9500 the radio does not work. The problem with loading the firmware of the modem (ICMDownload_App)
+This vendor tree used in conjunction with device tree from my git and Shev_T`s kernel (https://github.com/ShevT/android_kernel_d1_p1)
+lets you build CyanogenMod 12.1 Android 5.1 Lollipop ROM for Huawei Ascend P1 and P1XL (u9200 and u9200e)
