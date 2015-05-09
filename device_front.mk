@@ -228,5 +228,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=LMY47V-ShevT
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-$(call inherit-product-if-exists, vendor/huawei/viva/front-vendor.mk)
+$(call inherit-product-if-exists, vendor/huawei/viva/viva-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
