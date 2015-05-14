@@ -27,7 +27,7 @@ ro.ril.def.agps.mode=2
 # GPU producer to CPU consumer not supported
 ro.bq.gpu_to_cpu_unsupported=1
 #
-dolby.audio.hdmi.channels=0
+#dolby.audio.hdmi.channels=0
 #
 ro.sf.lcd_density=320
 ro.opengles.version=131072
