@@ -1,14 +1,14 @@
 
 project packages/apps/Camera2/
 diff --git a/packages/apps/Camera2/Android.mk b/packages/apps/Camera2/Android.mk
-index 5f44e39..8659e0a 100644
+index 5f44e39..24c7737 100644
 --- a/packages/apps/Camera2/Android.mk
 +++ b/packages/apps/Camera2/Android.mk
 @@ -26,6 +26,8 @@ LOCAL_AAPT_FLAGS := \
  
  LOCAL_PACKAGE_NAME := Camera2
  
-+LOCAL_CERTIFICATE := platform
++LOCAL_PRIVILEGED_MODULE := true
 +
  #LOCAL_SDK_VERSION := current
  
@@ -37,7 +37,7 @@ index 25e449c..b243438 100644
 +  <string name="pref_camera_storage_title">Хранилище</string>
  </resources>
 diff --git a/packages/apps/Camera2/res/values/cm_strings.xml b/packages/apps/Camera2/res/values/cm_strings.xml
-index a42f411..15a3d82 100644
+index a42f411..be628f8 100644
 --- a/packages/apps/Camera2/res/values/cm_strings.xml
 +++ b/packages/apps/Camera2/res/values/cm_strings.xml
 @@ -19,4 +19,6 @@
@@ -45,7 +45,7 @@ index a42f411..15a3d82 100644
      <!-- More Settings screen, max brightness title -->
      <string name="pref_camera_max_brightness_title">Bright screen</string>
 +    <!-- More Settings screen, storage title -->
-+    <string name="pref_camera_storage_title">Storage</string>
++    <string name="pref_camera_storage_title">Storage location</string>
  </resources>
 diff --git a/packages/apps/Camera2/res/xml/camera_preferences.xml b/packages/apps/Camera2/res/xml/camera_preferences.xml
 index 3474d2c..a15c616 100644
@@ -64,7 +64,7 @@ index 3474d2c..a15c616 100644
    <PreferenceScreen
        android:key="pref_category_advanced"
 diff --git a/packages/apps/Camera2/src/com/android/camera/CameraActivity.java b/packages/apps/Camera2/src/com/android/camera/CameraActivity.java
-index f96d634..f3593b4 100644
+index f96d634..5a5b937 100644
 --- a/packages/apps/Camera2/src/com/android/camera/CameraActivity.java
 +++ b/packages/apps/Camera2/src/com/android/camera/CameraActivity.java
 @@ -45,10 +45,14 @@ import android.nfc.NfcEvent;
@@ -104,8 +104,8 @@ index f96d634..f3593b4 100644
              initPowerShutter();
          } else if (key.equals(Keys.KEY_MAX_BRIGHTNESS)) {
              initMaxBrightness();
-+        } else if ( key.equals(Keys.KEY_STORAGE)) {
-+            if ( setStoragePath () ) {
++        } else if (key.equals(Keys.KEY_STORAGE)) {
++            if (setStoragePath()) {
 +                updateStorageSpaceAndHint(null);
 +            }
          }
@@ -131,7 +131,7 @@ index f96d634..f3593b4 100644
          });
          mMotionManager = getServices().getMotionManager();
 +
-+        syncStorageSettings ();
++        syncStorageSettings();
      }
  
      /**
@@ -148,19 +148,20 @@ index f96d634..f3593b4 100644
          if (mSecureCamera) {
              unregisterReceiver(mShutdownReceiver);
          }
-+        if ( mStorageManager != null ) {
-+            mStorageManager.unregisterListener ( mStorageEventListener );
++        if (mStorageManager != null) {
++            mStorageManager.unregisterListener(mStorageEventListener);
 +        }
          mSettingsManager.removeAllListeners();
          mCameraController.removeCallbackReceiver();
          mCameraController.setCameraExceptionHandler(null);
-@@ -2908,4 +2919,77 @@ public class CameraActivity extends QuickActivity
+@@ -2908,4 +2919,80 @@ public class CameraActivity extends QuickActivity
          boolean showDetails = (type == LocalData.LOCAL_IMAGE) || (type == LocalData.LOCAL_VIDEO);
          detailsMenuItem.setVisible(showDetails);
      }
 +
-+    protected boolean setStoragePath () {
-+        String storagePath = mSettingsManager.getString(SettingsManager.SCOPE_GLOBAL, Keys.KEY_STORAGE);
++    protected boolean setStoragePath() {
++        String storagePath = mSettingsManager.getString(SettingsManager.SCOPE_GLOBAL,
++                Keys.KEY_STORAGE);
 +        Storage.setRoot(storagePath);
 +        if (storagePath.equals(mStoragePath)) {
 +            return false;
@@ -168,7 +169,7 @@ index f96d634..f3593b4 100644
 +        mStoragePath = storagePath;
 +
 +        // Sync the swipe preview with the right path
-+        if ( mDataAdapter != null) {
++        if (mDataAdapter != null) {
 +            mDataAdapter.flush();
 +            if (!mSecureCamera) {
 +                mDataAdapter.requestLoad(new Callback<Void>() {
@@ -187,16 +188,16 @@ index f96d634..f3593b4 100644
 +        return true;
 +    }
 +
-+    protected void syncStorageSettings () {
-+        if ( mStorageManager == null ) {
++    protected void syncStorageSettings() {
++        if (mStorageManager == null) {
 +            mStorageManager = (StorageManager) getSystemService(Context.STORAGE_SERVICE);
-+            mStorageManager.registerListener ( mStorageEventListener );
++            mStorageManager.registerListener(mStorageEventListener);
 +        }
 +        StorageVolume[] volumes = mStorageManager.getVolumeList();
 +        List<String> values = new ArrayList<String>(volumes.length);
 +        List<StorageVolume> mountedVolumes = new ArrayList<StorageVolume>(volumes.length);
 +
-+        //Find all mounted volumes
++        // Find all mounted volumes
 +        String defaultValue = Environment.getExternalStorageDirectory().toString();
 +        for (int i = 0; i < volumes.length; i++) {
 +            StorageVolume v = volumes[i];
@@ -208,18 +209,20 @@ index f96d634..f3593b4 100644
 +                }
 +            }
 +        }
-+        SettingsUtil.setMountedStorageVolumes ( mountedVolumes );
++        SettingsUtil.setMountedStorageVolumes(mountedVolumes);
 +
-+        mSettingsManager.setDefaults(Keys.KEY_STORAGE, defaultValue, values.toArray(new String[values.size()]));
++        mSettingsManager.setDefaults(Keys.KEY_STORAGE, defaultValue,
++                values.toArray(new String[values.size()]));
 +
-+        //Check if current volume is mounted. If not, restore the default storage path.
++        // Check if current volume is mounted. If not, restore the default storage path.
 +        try {
-+            mSettingsManager.getIndexOfCurrentValue ( SettingsManager.SCOPE_GLOBAL, Keys.KEY_STORAGE );
-+        } catch ( IllegalStateException e ) {
-+            mSettingsManager.setToDefault ( SettingsManager.SCOPE_GLOBAL, Keys.KEY_STORAGE );
++            mSettingsManager.getIndexOfCurrentValue(SettingsManager.SCOPE_GLOBAL,
++                    Keys.KEY_STORAGE);
++        } catch (IllegalStateException e) {
++            mSettingsManager.setToDefault(SettingsManager.SCOPE_GLOBAL, Keys.KEY_STORAGE);
 +        }
 +
-+        if ( setStoragePath () ) {
++        if (setStoragePath()) {
 +            updateStorageSpaceAndHint(null);
 +        }
 +    }
@@ -233,7 +236,7 @@ index f96d634..f3593b4 100644
 +    };
  }
 diff --git a/packages/apps/Camera2/src/com/android/camera/Storage.java b/packages/apps/Camera2/src/com/android/camera/Storage.java
-index d4a1790..cd7b034 100644
+index d4a1790..b7d79fe 100644
 --- a/packages/apps/Camera2/src/com/android/camera/Storage.java
 +++ b/packages/apps/Camera2/src/com/android/camera/Storage.java
 @@ -41,13 +41,8 @@ import java.util.UUID;
@@ -264,8 +267,8 @@ index d4a1790..cd7b034 100644
          new HashMap<Uri, Integer>();
 +    private static String sRoot = Environment.getExternalStorageDirectory().toString();
 +
-+    public static void setRoot ( String root ) {
-+        if ( !root.equals(sRoot) ) {
++    public static void setRoot(String root) {
++        if (!root.equals(sRoot)) {
 +            sSessionsToContentUris.clear();
 +            sContentUrisToSessions.clear();
 +            sSessionsToPlaceholderBytes.clear();
@@ -277,7 +280,7 @@ index d4a1790..cd7b034 100644
  
      /**
       * Save the image with default JPEG MIME type and add it to the MediaStore.
-@@ -329,9 +337,26 @@ public class Storage {
+@@ -329,7 +337,23 @@ public class Storage {
      }
  
      private static String generateFilepath(String title) {
@@ -295,17 +298,14 @@ index d4a1790..cd7b034 100644
 +
 +    public static String generateBucketId() {
 +        return String.valueOf(generateBucketIdInt());
-     }
- 
-+    public static int generateBucketIdInt() {
-+        return generateDirectory().toLowerCase().hashCode();
 +    }
 +
-+
++    public static int generateBucketIdInt() {
++        return generateDirectory().toLowerCase().hashCode();
+     }
+ 
      /**
-      * Returns the jpeg bytes for a placeholder session
-      *
-@@ -394,7 +419,8 @@ public class Storage {
+@@ -394,7 +418,8 @@ public class Storage {
      }
  
      public static long getAvailableSpace() {
@@ -315,12 +315,11 @@ index d4a1790..cd7b034 100644
          Log.d(TAG, "External storage state=" + state);
          if (Environment.MEDIA_CHECKING.equals(state)) {
              return PREPARING;
-@@ -403,14 +429,14 @@ public class Storage {
+@@ -403,14 +428,13 @@ public class Storage {
              return UNAVAILABLE;
          }
  
 -        File dir = new File(DIRECTORY);
-+
          dir.mkdirs();
          if (!dir.isDirectory() || !dir.canWrite()) {
              return UNAVAILABLE;
@@ -332,7 +331,7 @@ index d4a1790..cd7b034 100644
              return stat.getAvailableBlocks() * (long) stat.getBlockSize();
          } catch (Exception e) {
              Log.i(TAG, "Fail to access external storage", e);
-@@ -423,7 +449,7 @@ public class Storage {
+@@ -423,7 +447,7 @@ public class Storage {
       * imported. This is a temporary fix for bug#1655552.
       */
      public static void ensureOSXCompatible() {
@@ -377,7 +376,7 @@ index 83399e6..873f9c9 100644
          Cursor cursor = contentResolver.query(contentUri, projection,
                  selection, selectionArgs, orderBy);
 diff --git a/packages/apps/Camera2/src/com/android/camera/settings/CameraSettingsActivity.java b/packages/apps/Camera2/src/com/android/camera/settings/CameraSettingsActivity.java
-index bb30b11..d77b038 100644
+index bb30b11..9380fcd 100644
 --- a/packages/apps/Camera2/src/com/android/camera/settings/CameraSettingsActivity.java
 +++ b/packages/apps/Camera2/src/com/android/camera/settings/CameraSettingsActivity.java
 @@ -23,6 +23,7 @@ import android.content.Intent;
@@ -402,27 +401,27 @@ index bb30b11..d77b038 100644
              loadSizes();
  
 +            // Load storage volumes
-+            loadStorageVolumeList ();
++            loadStorageVolumeList();
 +
              // Make sure to hide settings for cameras that don't exist on this
              // device.
              setVisibilities();
-@@ -148,6 +154,15 @@ public class CameraSettingsActivity extends FragmentActivity {
-             final PreferenceScreen advancedScreen =
+@@ -149,6 +155,15 @@ public class CameraSettingsActivity extends FragmentActivity {
                  (PreferenceScreen) findPreference(PREF_CATEGORY_ADVANCED);
              setPreferenceScreenIntent(advancedScreen);
-+                          
+ 
 +            // Fill Storage preference
 +            final Preference storagePreference = findPreference(Keys.KEY_STORAGE);
-+            if ( mStorageVolumes == null ) {
++            if (mStorageVolumes == null) {
 +                getPreferenceScreen().removePreference(storagePreference);
 +            } else {
 +                setEntries(storagePreference);
 +                setSummary(storagePreference);
 +            }
- 
++
              getPreferenceScreen().getSharedPreferences()
                      .registerOnSharedPreferenceChangeListener(this);
+         }
 @@ -299,6 +314,8 @@ public class CameraSettingsActivity extends FragmentActivity {
                  setEntriesForSelection(mVideoQualitiesBack, listPreference);
              } else if (listPreference.getKey().equals(Keys.KEY_VIDEO_QUALITY_FRONT)) {
@@ -436,7 +435,7 @@ index bb30b11..d77b038 100644
          }
  
          /**
-+         * Sets the entries for the given list preference.
++         * Sets the entries for the storage list preference.
 +         *
 +         * @param storageVolumes The storage volumes.
 +         * @param preference The preference to set the entries for.
@@ -461,17 +460,16 @@ index bb30b11..d77b038 100644
           * Sets the summary for the given list preference.
           *
           * @param oldPictureSizes The old selected picture sizes for small medium and large
-@@ -456,6 +495,15 @@ public class CameraSettingsActivity extends FragmentActivity {
+@@ -456,6 +495,14 @@ public class CameraSettingsActivity extends FragmentActivity {
              }
          }
  
-+
-+        private void loadStorageVolumeList() {  
-+            mStorageVolumes = SettingsUtil.getMountedStorageVolumes ();
-+            if ( mStorageVolumes.size() < 2 ) {
-+                //remove it
++        private void loadStorageVolumeList() {
++            mStorageVolumes = SettingsUtil.getMountedStorageVolumes();
++            if (mStorageVolumes.size() < 2) {
++                // Remove storage preference
 +                mStorageVolumes = null;
-+            }                 
++            }
 +        }
 +
          /**
@@ -510,21 +508,8 @@ index 8c1f276..ea15d65 100644
      }
  
      /** Helper functions for some defined keys. */
-diff --git a/packages/apps/Camera2/src/com/android/camera/settings/SettingsManager.java b/packages/apps/Camera2/src/com/android/camera/settings/SettingsManager.java
-index 6d90832..2ebfd8d 100644
---- a/packages/apps/Camera2/src/com/android/camera/settings/SettingsManager.java
-+++ b/packages/apps/Camera2/src/com/android/camera/settings/SettingsManager.java
-@@ -148,7 +148,7 @@ public class SettingsManager {
-         /**
-          * Called every time a SharedPreference has been changed.
-          */
--	public void onSettingChanged(SettingsManager settingsManager, String key);
-+        public void onSettingChanged(SettingsManager settingsManager, String key);
-     }
- 
-     private OnSharedPreferenceChangeListener getSharedPreferenceListener(
 diff --git a/packages/apps/Camera2/src/com/android/camera/settings/SettingsUtil.java b/packages/apps/Camera2/src/com/android/camera/settings/SettingsUtil.java
-index acf8921..067f8da 100644
+index acf8921..a5de91a 100644
 --- a/packages/apps/Camera2/src/com/android/camera/settings/SettingsUtil.java
 +++ b/packages/apps/Camera2/src/com/android/camera/settings/SettingsUtil.java
 @@ -21,6 +21,7 @@ import android.content.Context;
@@ -535,18 +520,17 @@ index acf8921..067f8da 100644
  import android.util.SparseArray;
  
  import com.android.camera.debug.Log;
-@@ -497,6 +498,17 @@ public class SettingsUtil {
+@@ -497,6 +498,16 @@ public class SettingsUtil {
          return -1;
      }
  
-+
 +    private static List<StorageVolume> sMountedStorageVolumes;
 +
-+    public static void setMountedStorageVolumes ( List<StorageVolume> volumes ) {
++    public static void setMountedStorageVolumes(List<StorageVolume> volumes) {
 +        sMountedStorageVolumes = volumes;
 +    }
 +
-+    public static List<StorageVolume> getMountedStorageVolumes () {
++    public static List<StorageVolume> getMountedStorageVolumes() {
 +        return sMountedStorageVolumes;
 +    }
 +
