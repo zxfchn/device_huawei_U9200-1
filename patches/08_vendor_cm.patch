@@ -1,10 +1,10 @@
 
 project vendor/cm/
 diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
-index c3c13a8..b586b6c 100644
+index af6f8e4..3dcb507 100644
 --- a/vendor/cm/config/common.mk
 +++ b/vendor/cm/config/common.mk
-@@ -163,7 +163,6 @@ PRODUCT_PACKAGES += \
+@@ -169,7 +169,6 @@ PRODUCT_PACKAGES += \
      mke2fs \
      tune2fs \
      bash \
@@ -12,7 +12,7 @@ index c3c13a8..b586b6c 100644
      htop \
      powertop \
      lsof \
-@@ -211,7 +210,7 @@ PRODUCT_PACKAGES += \
+@@ -217,7 +216,7 @@ PRODUCT_PACKAGES += \
  endif
  
  PRODUCT_PROPERTY_OVERRIDES += \
@@ -21,7 +21,7 @@ index c3c13a8..b586b6c 100644
  
  PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
  
-@@ -229,11 +228,6 @@ ifndef CM_BUILDTYPE
+@@ -235,11 +234,6 @@ ifndef CM_BUILDTYPE
      endif
  endif
  
