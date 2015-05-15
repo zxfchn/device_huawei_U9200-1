@@ -94,7 +94,7 @@ PRODUCT_PACKAGES += \
     hostapd_default.conf \
     libwpa_client \
     wpa_supplicant \
-    wpa_supplicant.conf \
+    wpa_supplicant.conf
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
