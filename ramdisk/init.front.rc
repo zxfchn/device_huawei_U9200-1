@@ -57,7 +57,7 @@ on init
     symlink /factory/hdcp.keys /system/vendor/firmware/hdcp.keys
 
     # Preload libjhead for camera
-    export LD_PRELOAD /system/lib/libjhead.so
+    #export LD_PRELOAD /system/lib/libjhead.so
 
 on post-fs-data
     mkdir /data/gps

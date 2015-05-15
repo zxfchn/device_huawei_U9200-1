@@ -12,31 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ifeq ($(TARGET_BOOTLOADER_BOARD_NAME),front)
-
 LOCAL_PATH := $(call my-dir)
 
-#Creating Gralloc SymLink
-include $(CLEAR_VARS)
-
-LOCAL_MODULE := gralloc.omap4.so
-LOCAL_MODULE_TAGS := optional
-LOCAL_MODULE_CLASS := FAKE
-
-include $(BUILD_SYSTEM)/base_rules.mk
-
-$(LOCAL_BUILT_MODULE): GRALLOC_FILE := gralloc.omap4460.so
-$(LOCAL_BUILT_MODULE): SYMLINK := $(TARGET_OUT_VENDOR)/lib/hw/$(LOCAL_MODULE)
-$(LOCAL_BUILT_MODULE): $(LOCAL_PATH)/Android.mk
-$(LOCAL_BUILT_MODULE):
-	$(hide) echo "Symlink: $(SYMLINK) -> $(GRALLOC_FILE)"
-	$(hide) mkdir -p $(dir $@)
-	$(hide) mkdir -p $(dir $(SYMLINK))
-	$(hide) rm -rf $@
-	$(hide) rm -rf $(SYMLINK)
-	$(hide) ln -sf $(GRALLOC_FILE) $(SYMLINK)
-	$(hide) touch $@
-
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
+ifeq ($(TARGET_DEVICE),front)
+    include $(call all-makefiles-under,$(LOCAL_PATH))
 endif
