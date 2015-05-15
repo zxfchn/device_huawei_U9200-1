@@ -31,31 +31,23 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Audio Packages
 PRODUCT_PACKAGES += \
-    libtinyalsa \
     tinycap \
     tinymix \
     tinyplay \
-    libaudioutils \
-    audio.r_submix.default
+    libtinyalsa \
+    libaudioutils
 
 # Hardware HALs
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
+    audio.r_submix.default \
     gralloc.omap4.so
 
 # HALs
 PRODUCT_PACKAGES += \
     power.front \
     camera.omap4
-
-# Compatiblity for older binaries
-PRODUCT_PACKAGES += \
-    libcorkscrew
-
-# Symlinks
-PRODUCT_PACKAGES += \
-    libion.so
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
