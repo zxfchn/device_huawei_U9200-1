@@ -17,8 +17,7 @@
 # limitations under the License.
 #
 
-$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
-#$(call inherit-product, hardware/ti/omap4/omap4.mk)
+$(call inherit-product, hardware/ti/omap4/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 COMMON_FOLDER := device/huawei/viva
@@ -32,42 +31,23 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Audio Packages
 PRODUCT_PACKAGES += \
-    libtinyalsa \
     tinycap \
     tinymix \
     tinyplay \
-    libaudioutils \
-    audio.r_submix.default
+    libtinyalsa \
+    libaudioutils
 
 # Hardware HALs
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
+    audio.r_submix.default \
     gralloc.omap4.so
 
-# PowerHAL
+# HALs
 PRODUCT_PACKAGES += \
-    hwcomposer.front \
-    libedid \
-    power.front
-
-# TI OMAP4
-PRODUCT_PACKAGES += \
-    libion_ti \
-    smc_pa_ctrl \
-    tf_daemon \
-    libtf_crypto_sst \
-    pvrsrvinit \
-    libPVRScopeServices.so \
-    libstagefrighthw
-
-# Needed for gralloc
-PRODUCT_PACKAGES += \
-    libcorkscrew
-
-# Symlinks
-PRODUCT_PACKAGES += \
-    libion.so
+    power.front \
+    camera.omap4
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -114,7 +94,7 @@ PRODUCT_PACKAGES += \
     hostapd_default.conf \
     libwpa_client \
     wpa_supplicant \
-    wpa_supplicant.conf \
+    wpa_supplicant.conf
 
 # Live Wallpapers
 PRODUCT_PACKAGES += \
@@ -152,7 +132,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
-    frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
@@ -171,10 +150,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
-
-#Lib Skia test
-PRODUCT_PACKAGES += \
-    SkLibTiJpeg_Test
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
@@ -208,16 +183,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
 
-# Use awesome player for now
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.media.use-awesome=true \
-    media.stagefright.use-awesome=true
-
-# Default to the Speex resampler, if it exists.
-# - This allows for playback of just about any sample rate as the Speex resampler doesn't
-#   have the in <= out*2 restriction, and is of a higher quality than the default resampler.
-PRODUCT_PROPERTY_OVERRIDES += \
-    af.resampler.quality=8
+    ro.hwui.disable_scissor_opt=true \
+    debug.hwui.render_dirty_regions=false
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh

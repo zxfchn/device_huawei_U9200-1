@@ -20,115 +20,50 @@
 COMMON_FOLDER := device/huawei/viva
 VENDOR_DIR := vendor/huawei/viva/proprietary
 
-# Include path
-TARGET_SPECIFIC_HEADER_PATH := $(COMMON_FOLDER)/include
-PRODUCT_VENDOR_KERNEL_HEADERS := $(COMMON_FOLDER)/kernel-headers
+# inherit from omap4
+-include hardware/ti/omap4/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/huawei/viva/BoardConfigVendor.mk
 
 # Camera
+TI_CAMERAHAL_USES_LEGACY_DOMX_DCC := true
+TI_CAMERAHAL_MAX_CAMERAS_SUPPORTED := 2
+#TI_CAMERAHAL_DEBUG_ENABLED := true
 USE_CAMERA_STUB := false
-BOARD_USES_TI_CAMERA_HAL := true
-COMMON_GLOBAL_CFLAGS += \
-    -DREFBASE_JB_MR1_COMPAT_SYMBOLS \
-    -DNEEDS_VECTORIMPL_SYMBOLS
+MOTOROLA_CAMERA := true
+CAMERAHAL_CFLAGS += -DMOTOROLA_CAMERA
+BOARD_USE_MOTOROLA_DOMX_ENHANCEMENTS := true
+COMMON_GLOBAL_CFLAGS += -DBOARD_USE_MOTOROLA_DOMX_ENHANCEMENTS
 
-# Target arch settings
-TARGET_BOARD_PLATFORM := omap4
-TARGET_BOOTLOADER_BOARD_NAME := viva
+# Processor
 TARGET_BOARD_OMAP_CPU := 4460
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
-TARGET_CPU_VARIANT := cortex-a9
-ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a9 -mfpu=neon -mfloat-abi=softfp
+
+TARGET_BOOTLOADER_BOARD_NAME := viva
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-
-# TI Enhancement Settings (Part 1)
-OMAP_ENHANCEMENT := true
-OMAP_ENHANCEMENT_MULTIGPU := true
-BOARD_USE_TI_ENHANCED_DOMX := true
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
 MR0_AUDIO_BLOB := true
 COMMON_GLOBAL_CFLAGS += -DMR0_AUDIO_BLOB
+ICS_AUDIO_BLOB := true
+COMMON_GLOBAL_CFLAGS += -DICS_AUDIO_BLOB
 USE_LEGACY_AUDIO_POLICY := 1
 
-#HWcomposer
-BOARD_USES_HWCOMPOSER := true
-BOARD_USE_CUSTOM_HWC := true
-BOARD_USE_SYSFS_VSYNC_NOTIFICATION := true
 # set if the target supports FBIO_WAITFORVSYNC
 TARGET_HAS_WAITFORVSYNC := true
 
-# No sync framework for this device...
-TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
-
-# Force the screenshot path to CPU consumer
-COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
-
-# Setup custom omap4xxx defines
-BOARD_USE_CUSTOM_LIBION := true
-
 # External SGX Module
 SGX_MODULES:
-	make clean -C $(COMMON_FOLDER)/pvr-source/eurasiacon/build/linux2/omap4430_android
+	make clean -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android
 	cp $(TARGET_KERNEL_SOURCE)/drivers/video/omap2/omapfb/omapfb.h $(KERNEL_OUT)/drivers/video/omap2/omapfb/omapfb.h
-	make -j8 -C $(COMMON_FOLDER)/pvr-source/eurasiacon/build/linux2/omap4430_android ARCH=arm KERNEL_CROSS_COMPILE=arm-eabi- CROSS_COMPILE=arm-eabi- KERNELDIR=$(KERNEL_OUT) TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=540 PLATFORM_VERSION=4.0
+	make -j8 -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android ARCH=arm KERNEL_CROSS_COMPILE=arm-eabi- CROSS_COMPILE=arm-eabi- KERNELDIR=$(KERNEL_OUT) TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=540 PLATFORM_VERSION=4.0
 	mv $(KERNEL_OUT)/../../target/kbuild/pvrsrvkm_sgx540_120.ko $(KERNEL_MODULES_OUT)
 	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/pvrsrvkm_sgx540_120.ko
 
 TARGET_KERNEL_MODULES += SGX_MODULES
-
-TARGET_TI_HWC_HDMI_DISABLED := true
-
-# TI Enhancement Settings (Part 2)
-ifdef BOARD_USE_TI_ENHANCED_DOMX
-#   Fix h264 sound/video sync
-    BOARD_USE_TI_DUCATI_H264_PROFILE := false
-
-    COMMON_GLOBAL_CFLAGS += -DENHANCED_DOMX
-    ENHANCED_DOMX := true
-else
-    DOMX_PATH := hardware/ti/omap4xxx/domx
-endif
-
-ifdef OMAP_ENHANCEMENT
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DTARGET_OMAP4
-endif
-
-ifdef OMAP_ENHANCEMENT_BURST_CAPTURE
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_BURST_CAPTURE
-endif
-
-ifdef OMAP_ENHANCEMENT_S3D
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_S3D
-endif
-
-ifdef OMAP_ENHANCEMENT_CPCAM
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_CPCAM
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/sdk_addon/ti_omap_addon.mk
-endif
-
-ifdef OMAP_ENHANCEMENT_VTC
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_VTC
-endif
-
-ifdef USE_ITTIAM_AAC
-    COMMON_GLOBAL_CFLAGS += -DUSE_ITTIAM_AAC
-endif
-
-ifdef OMAP_ENHANCEMENT_MULTIGPU
-    COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT_MULTIGPU
-endif
 
 # Kernel/Ramdisk
 BOARD_KERNEL_BASE := 0x80000000
@@ -138,9 +73,6 @@ TARGET_KERNEL_SOURCE := kernel/huawei/viva
 
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc
-
-# EGL
-USE_OPENGL_RENDERER := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
@@ -177,9 +109,6 @@ BUILD_FM_RADIO := true
 # PIE
 TARGET_ENABLE_NON_PIE_SUPPORT := true
 
-# IPV6
-USE_IPV6_ROUTE := true
-
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun/file"
 
@@ -195,9 +124,6 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 
 # Disable journaling on system.img to save space
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
-
-# Security
-BOARD_USES_SECURE_SERVICES := true
 
 # Recovery
 RECOVERY_CHARGEMODE := true
