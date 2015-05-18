@@ -26,7 +26,7 @@ PRODUCT_CHARACTERISTICS := default
 DEVICE_PACKAGE_OVERLAYS := $(COMMON_FOLDER)/overlay
 
 # Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 # Audio Packages
@@ -35,7 +35,8 @@ PRODUCT_PACKAGES += \
     tinymix \
     tinyplay \
     libtinyalsa \
-    libaudioutils
+    libaudioutils \
+    audio.primary.omap4
 
 # Hardware HALs
 PRODUCT_PACKAGES += \
@@ -81,12 +82,6 @@ PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/configs/gps.conf:system/etc/gps.conf \
     $(COMMON_FOLDER)/configs/gpsconfig.xml:system/etc/gpsconfig.xml
 
-# Wifi
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/configs/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
-
 # WiFi
 PRODUCT_PACKAGES += \
     dhcpcd.conf \
@@ -95,13 +90,6 @@ PRODUCT_PACKAGES += \
     libwpa_client \
     wpa_supplicant \
     wpa_supplicant.conf
-
-# Live Wallpapers
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    VisualizationWallpapers \
-    librs_jni
 
 # Common
 PRODUCT_PACKAGES += \
@@ -147,9 +135,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
-
-PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
@@ -199,3 +184,4 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 
 $(call inherit-product-if-exists, vendor/huawei/viva/viva-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
