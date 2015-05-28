@@ -1,10 +1,10 @@
 
 project packages/apps/Camera2/
 diff --git a/packages/apps/Camera2/Android.mk b/packages/apps/Camera2/Android.mk
-index 5f44e39..24c7737 100644
+index 7ea4282..17525f0 100644
 --- a/packages/apps/Camera2/Android.mk
 +++ b/packages/apps/Camera2/Android.mk
-@@ -26,6 +26,8 @@ LOCAL_AAPT_FLAGS := \
+@@ -32,6 +32,8 @@ LOCAL_AAPT_FLAGS := \
  
  LOCAL_PACKAGE_NAME := Camera2
  
@@ -64,7 +64,7 @@ index 3474d2c..a15c616 100644
    <PreferenceScreen
        android:key="pref_category_advanced"
 diff --git a/packages/apps/Camera2/src/com/android/camera/CameraActivity.java b/packages/apps/Camera2/src/com/android/camera/CameraActivity.java
-index f96d634..5a5b937 100644
+index e9056d2..4467cdd 100644
 --- a/packages/apps/Camera2/src/com/android/camera/CameraActivity.java
 +++ b/packages/apps/Camera2/src/com/android/camera/CameraActivity.java
 @@ -45,10 +45,14 @@ import android.nfc.NfcEvent;
@@ -82,7 +82,7 @@ index f96d634..5a5b937 100644
  import android.provider.MediaStore;
  import android.provider.Settings;
  import android.text.TextUtils;
-@@ -167,6 +171,8 @@ public class CameraActivity extends QuickActivity
+@@ -168,6 +172,8 @@ public class CameraActivity extends QuickActivity
              "android.media.action.STILL_IMAGE_CAMERA_SECURE";
      public static final String ACTION_IMAGE_CAPTURE_SECURE =
              "android.media.action.IMAGE_CAPTURE_SECURE";
@@ -91,7 +91,7 @@ index f96d634..5a5b937 100644
  
      // The intent extra for camera from secure lock screen. True if the gallery
      // should only show newly captured pictures. sSecureAlbumId does not
-@@ -219,6 +225,8 @@ public class CameraActivity extends QuickActivity
+@@ -221,6 +227,8 @@ public class CameraActivity extends QuickActivity
      private Intent mResultDataForTesting;
      private OnScreenHint mStorageHint;
      private final Object mStorageSpaceLock = new Object();
@@ -100,7 +100,7 @@ index f96d634..5a5b937 100644
      private long mStorageSpaceBytes = Storage.LOW_STORAGE_THRESHOLD_BYTES;
      private boolean mAutoRotateScreen;
      private boolean mSecureCamera;
-@@ -577,6 +585,10 @@ public class CameraActivity extends QuickActivity
+@@ -580,6 +588,10 @@ public class CameraActivity extends QuickActivity
              initPowerShutter();
          } else if (key.equals(Keys.KEY_MAX_BRIGHTNESS)) {
              initMaxBrightness();
@@ -111,7 +111,7 @@ index f96d634..5a5b937 100644
          }
      }
  
-@@ -1523,14 +1535,6 @@ public class CameraActivity extends QuickActivity
+@@ -1529,14 +1541,6 @@ public class CameraActivity extends QuickActivity
  
          if (!mSecureCamera) {
              mFilmstripController.setDataAdapter(mDataAdapter);
@@ -126,7 +126,7 @@ index f96d634..5a5b937 100644
          } else {
              // Put a lock placeholder as the last image by setting its date to
              // 0.
-@@ -1583,6 +1587,8 @@ public class CameraActivity extends QuickActivity
+@@ -1589,6 +1593,8 @@ public class CameraActivity extends QuickActivity
              }
          });
          mMotionManager = getServices().getMotionManager();
@@ -135,7 +135,7 @@ index f96d634..5a5b937 100644
      }
  
      /**
-@@ -1749,6 +1755,8 @@ public class CameraActivity extends QuickActivity
+@@ -1755,6 +1761,8 @@ public class CameraActivity extends QuickActivity
          Log.v(TAG, "Build info: " + Build.DISPLAY);
  
          mPaused = false;
@@ -144,7 +144,7 @@ index f96d634..5a5b937 100644
          updateStorageSpaceAndHint(null);
  
          mLastLayoutOrientation = getResources().getConfiguration().orientation;
-@@ -1936,6 +1944,9 @@ public class CameraActivity extends QuickActivity
+@@ -1942,6 +1950,9 @@ public class CameraActivity extends QuickActivity
          if (mSecureCamera) {
              unregisterReceiver(mShutdownReceiver);
          }
@@ -154,7 +154,7 @@ index f96d634..5a5b937 100644
          mSettingsManager.removeAllListeners();
          mCameraController.removeCallbackReceiver();
          mCameraController.setCameraExceptionHandler(null);
-@@ -2908,4 +2919,80 @@ public class CameraActivity extends QuickActivity
+@@ -2915,4 +2926,80 @@ public class CameraActivity extends QuickActivity
          boolean showDetails = (type == LocalData.LOCAL_IMAGE) || (type == LocalData.LOCAL_VIDEO);
          detailsMenuItem.setVisible(showDetails);
      }
