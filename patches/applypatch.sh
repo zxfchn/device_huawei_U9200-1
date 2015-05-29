@@ -8,7 +8,7 @@
 dir=`cd $(dirname $0) && pwd`
 top=$dir/../../../..
 
-if [ $IS_RR = 1 ] ; then
+if [ "$IS_RR" = "1" ]; then
     echo "*** This ResurrectionRemix ***"
     for patch in `ls $dir/RR/*.patch` ; do
         echo ""
