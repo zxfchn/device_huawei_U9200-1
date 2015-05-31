@@ -47,3 +47,5 @@ ro.vold.umsdirtyratio=50
 persist.sys.main_storage=sdcard0
 # FM
 ro.config.fm_type=libbcmfm_if
+# OTG
+persist.sys.isUsbOtgEnabled=true
