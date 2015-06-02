@@ -104,6 +104,9 @@ BOARD_HAVE_FM_RADIO := true
 BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
 BUILD_FM_RADIO := true
 
+# PIE
+TARGET_ENABLE_NON_PIE_SUPPORT := true
+
 # Vold
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun/file"
 
