@@ -100,6 +100,11 @@ PRODUCT_PACKAGES += \
     libpcap \
     tcpdump
 
+# IPv6 tethering
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes
+
 # Key maps
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/configs/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
