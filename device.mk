@@ -103,6 +103,11 @@ PRODUCT_PACKAGES += \
     libnetcmdiface \
     l2ping
 
+# IPv6 tethering
+PRODUCT_PACKAGES += \
+    ebtables \
+    ethertypes
+
 # Key maps
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/configs/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
@@ -173,9 +178,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh
 # as well - does not crash
-#PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=LMY47V-ShevT
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=cm_viva
-#ADDITIONAL_DEFAULT_PROPERTIES += ro.build.display.id=cm_viva
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

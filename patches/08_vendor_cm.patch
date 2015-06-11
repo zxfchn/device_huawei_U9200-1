@@ -1,10 +1,10 @@
 
 project vendor/cm/
 diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
-index af6f8e4..3dcb507 100644
+index cfd735d..5b8ba9d 100644
 --- a/vendor/cm/config/common.mk
 +++ b/vendor/cm/config/common.mk
-@@ -169,7 +169,6 @@ PRODUCT_PACKAGES += \
+@@ -168,7 +168,6 @@ PRODUCT_PACKAGES += \
      mke2fs \
      tune2fs \
      bash \
@@ -12,7 +12,7 @@ index af6f8e4..3dcb507 100644
      htop \
      powertop \
      lsof \
-@@ -217,7 +216,7 @@ PRODUCT_PACKAGES += \
+@@ -216,7 +215,7 @@ PRODUCT_PACKAGES += \
  endif
  
  PRODUCT_PROPERTY_OVERRIDES += \
@@ -21,7 +21,7 @@ index af6f8e4..3dcb507 100644
  
  PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
  
-@@ -235,11 +234,6 @@ ifndef CM_BUILDTYPE
+@@ -234,11 +233,6 @@ ifndef CM_BUILDTYPE
      endif
  endif
  
@@ -34,10 +34,10 @@ index af6f8e4..3dcb507 100644
      ifneq ($(CM_BUILDTYPE), SNAPSHOT)
          ifdef CM_EXTRAVERSION
 diff --git a/vendor/cm/config/common_full.mk b/vendor/cm/config/common_full.mk
-index 4d60e5e..40661dd 100644
+index 14eadc7..199b929 100644
 --- a/vendor/cm/config/common_full.mk
 +++ b/vendor/cm/config/common_full.mk
-@@ -23,6 +23,5 @@ PRODUCT_PACKAGES += \
+@@ -20,6 +20,5 @@ PRODUCT_PACKAGES += \
  
  # Extra tools in CM
  PRODUCT_PACKAGES += \
