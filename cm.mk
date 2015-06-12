@@ -1,6 +1,6 @@
 # boot animation
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
+TARGET_SCREEN_HEIGHT := 960
+TARGET_SCREEN_WIDTH := 540
 
 # Inherit some common CM stuff.
 $(call inherit-product, device/huawei/viva/device.mk)

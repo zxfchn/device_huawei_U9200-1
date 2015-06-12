@@ -134,3 +134,6 @@ TARGET_PREBUILT_RECOVERY_KERNEL := $(COMMON_FOLDER)/recovery/recovery_kernel
 TARGET_RECOVERY_FSTAB := $(COMMON_FOLDER)/rootdir/fstab.front
 RECOVERY_FSTAB_VERSION := 2
 TARGET_NO_SEPARATE_RECOVERY := true
+
+#Enable dex-preoptimization
+WITH_DEXPREOPT := true
