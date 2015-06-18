@@ -156,6 +156,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.dex2oat-flags=--no-watch-dog \
     dalvik.vm.image-dex2oat-filter=speed
 
+# The number of background processes
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.max_starting_bg=8 \
+    ro.sys.fw.bg_apps_limit=16
+
 # Memory management
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ksm.default=1
