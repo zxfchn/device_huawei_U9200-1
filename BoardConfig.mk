@@ -39,6 +39,9 @@ BOARD_EGL_WORKAROUND_BUG_10194508 := true
 # results in no cursors (mouse or otherwise) displayed on the screen.
 TARGET_DISABLE_CURSOR_LAYER := true
 
+# Use FBIOPAN_DISPLAY instead of FBIOPUT_VSCREENINFO to refresh the display.
+TARGET_USE_PAN_DISPLAY := true
+
 # Platform
 TARGET_BOARD_OMAP_CPU := 4460
 TARGET_BOOTLOADER_BOARD_NAME := front
