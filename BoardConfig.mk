@@ -35,13 +35,12 @@ USE_CAMERA_STUB := false
 # We need BGRA_8888, instead of Android's now-default RGBA_8888.
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
-# Processor
+# Platform
 TARGET_BOARD_OMAP_CPU := 4460
-
 TARGET_BOOTLOADER_BOARD_NAME := front
-
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
+TARGET_FPU_VARIANT := neon-fp16
 
 # Webkit
 ENABLE_WEBGL := true
