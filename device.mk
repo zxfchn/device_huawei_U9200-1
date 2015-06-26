@@ -183,9 +183,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     debug.vfr.enable=0
 
+# Avoids retrying for an EGL config w/o EGL_SWAP_BEHAVIOR_PRESERVED
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.render_dirty_regions=false
+
+# SGX540 is slower with the scissor optimization enabled
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.disable_scissor_opt=true \
-    debug.hwui.render_dirty_regions=false
+
+# Default to the Speex resampler, if it exists.
+# - This allows for playback of just about any sample rate as the Speex resampler doesn't
+#   have the in <= out*2 restriction, and is of a higher quality than the default resampler.
+PRODUCT_PROPERTY_OVERRIDES := \
+    af.resampler.quality=8
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh
