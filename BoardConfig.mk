@@ -45,6 +45,10 @@ TARGET_USE_PAN_DISPLAY := true
 # Apply the compass filter
 BOARD_INVENSENSE_APPLY_COMPASS_NOISE_FILTER := true
 
+# Option to omit using intra macroblock refresh mode
+# http://review.cyanogenmod.org/#/c/95665/
+BOARD_NO_INTRA_MACROBLOCK_MODE_SUPPORT := true
+
 # Platform
 TARGET_BOARD_OMAP_CPU := 4460
 TARGET_BOOTLOADER_BOARD_NAME := front
