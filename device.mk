@@ -193,7 +193,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Default to the Speex resampler, if it exists.
 # - This allows for playback of just about any sample rate as the Speex resampler doesn't
 #   have the in <= out*2 restriction, and is of a higher quality than the default resampler.
-PRODUCT_PROPERTY_OVERRIDES := \
+PRODUCT_PROPERTY_OVERRIDES += \
     af.resampler.quality=8
 
 # Here crashes gallery
