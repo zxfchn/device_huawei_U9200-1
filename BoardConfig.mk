@@ -91,7 +91,6 @@ MALLOC_IMPL := dlmalloc
 
 # Enable dex-preoptimization to speed up first boot sequence
 WITH_DEXPREOPT := true
-WITH_DEXPREOPT_PIC := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
@@ -156,6 +155,3 @@ TARGET_PREBUILT_RECOVERY_KERNEL := $(COMMON_FOLDER)/recovery/recovery_kernel
 TARGET_RECOVERY_FSTAB := $(COMMON_FOLDER)/rootdir/fstab.front
 RECOVERY_FSTAB_VERSION := 2
 TARGET_NO_SEPARATE_RECOVERY := true
-
-#Enable dex-preoptimization
-WITH_DEXPREOPT := true
