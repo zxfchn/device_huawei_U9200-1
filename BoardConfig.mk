@@ -31,18 +31,35 @@ TI_CAMERAHAL_USES_LEGACY_DOMX_DCC := true
 TI_CAMERAHAL_MAX_CAMERAS_SUPPORTED := 2
 #TI_CAMERAHAL_DEBUG_ENABLED := true
 USE_CAMERA_STUB := false
-MOTOROLA_CAMERA := true
-CAMERAHAL_CFLAGS += -DMOTOROLA_CAMERA
-BOARD_USE_MOTOROLA_DOMX_ENHANCEMENTS := true
-COMMON_GLOBAL_CFLAGS += -DBOARD_USE_MOTOROLA_DOMX_ENHANCEMENTS
 
-# Processor
-TARGET_BOARD_OMAP_CPU := 4460
+# We need BGRA_8888, instead of Android's now-default RGBA_8888.
+BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 TARGET_BOOTLOADER_BOARD_NAME := viva
 
+# We don't support cursor layers, which when attempting to use them,
+# results in no cursors (mouse or otherwise) displayed on the screen.
+TARGET_DISABLE_CURSOR_LAYER := true
+
+# Use FBIOPAN_DISPLAY instead of FBIOPUT_VSCREENINFO to refresh the display.
+TARGET_USE_PAN_DISPLAY := true
+
+# Apply the compass filter
+BOARD_INVENSENSE_APPLY_COMPASS_NOISE_FILTER := true
+
+# Option to omit using intra macroblock refresh mode
+# http://review.cyanogenmod.org/#/c/95665/
+BOARD_NO_INTRA_MACROBLOCK_MODE_SUPPORT := true
+
+# Platform
+TARGET_BOARD_OMAP_CPU := 4460
+TARGET_BOOTLOADER_BOARD_NAME := front
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
+TARGET_FPU_VARIANT := neon-fp16
+
+# Webkit
+ENABLE_WEBGL := true
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
@@ -71,6 +88,10 @@ TARGET_KERNEL_SOURCE := kernel/huawei/viva
 
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc
+
+# Enable dex-preoptimization to speed up first boot sequence
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_PIC := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
@@ -114,7 +135,8 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun/fi
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
+# default 8388608. Oversize to 9388608. Fix recovery compiling.
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 9388608
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 939524096
 # 6329204736 - 16384 <encryption footer>
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6329188352

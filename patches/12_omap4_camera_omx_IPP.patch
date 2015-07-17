@@ -1,0 +1,18 @@
+
+project hardware/ti/omap4/
+diff --git a/hardware/ti/omap4/camera/OMXCameraAdapter/OMXDefaults.cpp b/hardware/ti/omap4/camera/OMXCameraAdapter/OMXDefaults.cpp
+index 80805b2..b0252c3 100644
+--- a/hardware/ti/omap4/camera/OMXCameraAdapter/OMXDefaults.cpp
++++ b/hardware/ti/omap4/camera/OMXCameraAdapter/OMXDefaults.cpp
+@@ -40,11 +40,7 @@ const char OMXCameraAdapter::DEFAULT_EXPOSURE_MODE[] = "auto";
+ const char OMXCameraAdapter::DEFAULT_FLASH_MODE[] = "off";
+ const char OMXCameraAdapter::DEFAULT_FOCUS_MODE_PREFERRED[] = "auto";
+ const char OMXCameraAdapter::DEFAULT_FOCUS_MODE[] = "infinity";
+-#ifndef MOTOROLA_CAMERA
+-const char OMXCameraAdapter::DEFAULT_IPP[] = "ldc-nsf";
+-#else
+ const char OMXCameraAdapter::DEFAULT_IPP[] = "off";
+-#endif
+ const char OMXCameraAdapter::DEFAULT_ISO_MODE[] = "auto";
+ const char OMXCameraAdapter::DEFAULT_JPEG_QUALITY[] = "95";
+ const char OMXCameraAdapter::DEFAULT_THUMBNAIL_QUALITY[] = "60";

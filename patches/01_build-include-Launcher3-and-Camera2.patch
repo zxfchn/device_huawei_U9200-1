@@ -1,0 +1,36 @@
+
+project build/
+diff --git a/build/target/product/core.mk b/build/target/product/core.mk
+index a871780..64e0cb8 100644
+--- a/build/target/product/core.mk
++++ b/build/target/product/core.mk
+@@ -26,6 +26,7 @@ PRODUCT_PACKAGES += \
+     Calculator \
+     Calendar \
+     CalendarProvider \
++    Camera2 \
+     CaptivePortalLogin \
+     CertInstaller \
+     Contacts \
+@@ -39,7 +40,7 @@ PRODUCT_PACKAGES += \
+     InputDevices \
+     KeyChain \
+     Keyguard \
+-    Launcher2 \
++    Launcher3 \
+     ManagedProvisioning \
+     PicoTts \
+     PacProcessor \
+diff --git a/build/target/product/sdk_base.mk b/build/target/product/sdk_base.mk
+index 451c0b7..ec888e1 100644
+--- a/build/target/product/sdk_base.mk
++++ b/build/target/product/sdk_base.mk
+@@ -27,7 +27,7 @@ PRODUCT_PACKAGES := \
+ 	Fallback \
+ 	Gallery \
+ 	GestureBuilder \
+-	LegacyCamera \
++	Camera2 \
+ 	librs_jni \
+ 	libwnndict \
+ 	libWnnEngDic \

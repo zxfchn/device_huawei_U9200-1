@@ -23,7 +23,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 COMMON_FOLDER := device/huawei/viva
 
 PRODUCT_CHARACTERISTICS := default
-DEVICE_PACKAGE_OVERLAYS := $(COMMON_FOLDER)/overlay
+DEVICE_PACKAGE_OVERLAYS += $(COMMON_FOLDER)/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
@@ -66,8 +66,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
+    $(COMMON_FOLDER)/configs/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     $(COMMON_FOLDER)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(COMMON_FOLDER)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(COMMON_FOLDER)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
@@ -153,11 +152,22 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.debuggable=1 \
     persist.sys.usb.config=mtp
 
-# dalvik
+# Art Settings
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.execution-mode=int:jit \
-    dalvik.vm.dexopt-data-only=1 \
-    dalvik.vm.verify-bytecode=false
+    dalvik.vm.dex2oat-filter=balanced \
+    dalvik.vm.dex2oat-flags=--no-watch-dog \
+    dalvik.vm.image-dex2oat-filter=speed
+
+# The number of background processes
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.max_starting_bg=8 \
+    ro.sys.fw.bg_apps_limit=16
+
+# Low-RAM optimizations
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.low_ram=true \
+    persist.sys.force_highendgfx=true \
+    config.disable_atlas=true
 
 # Memory management
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -171,9 +181,23 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
 
+# Disable VFR support for encoders
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.vfr.enable=0
+
+# Avoids retrying for an EGL config w/o EGL_SWAP_BEHAVIOR_PRESERVED
+PRODUCT_PROPERTY_OVERRIDES += \
+    debug.hwui.render_dirty_regions=false
+
+# SGX540 is slower with the scissor optimization enabled
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.disable_scissor_opt=true \
-    debug.hwui.render_dirty_regions=false
+
+# Default to the Speex resampler, if it exists.
+# - This allows for playback of just about any sample rate as the Speex resampler doesn't
+#   have the in <= out*2 restriction, and is of a higher quality than the default resampler.
+PRODUCT_PROPERTY_OVERRIDES += \
+    af.resampler.quality=8
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh
