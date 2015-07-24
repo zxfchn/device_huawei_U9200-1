@@ -16,6 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 COMMON_FOLDER := device/huawei/front
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
