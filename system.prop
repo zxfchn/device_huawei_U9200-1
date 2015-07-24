@@ -15,10 +15,14 @@ modem.audio=1
 #
 # Default network type.
 # 0 => WCDMA preferred.
-ro.telephony.default_network=0
+# 2 => WCDMA only
+ro.telephony.default_network=2
 #
 # hsdpa+
 ro.config.hspap_hsdpa_open=1
+ro.ril.hsxpa=2
+ro.ril.gprsclass=10
+ro.ril.hsdpa.category=14
 #
 # GPS
 ro.config.hw_gps=47511
