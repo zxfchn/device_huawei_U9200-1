@@ -149,12 +149,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.debuggable=1 \
     persist.sys.usb.config=mtp
 
-# Art Settings
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-filter=balanced \
-    dalvik.vm.dex2oat-flags=--no-watch-dog \
-    dalvik.vm.image-dex2oat-filter=speed
-
 # The number of background processes
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.max_starting_bg=8 \
