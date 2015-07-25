@@ -16,11 +16,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+COMMON_FOLDER := device/huawei/viva
+
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+# Kernel and modules
+PRODUCT_COPY_FILES += \
+    $(LOCAL_KERNEL):kernel \
+    $(COMMON_FOLDER)/prebuilt/pvrsrvkm_sgx540_120.ko:system/lib/modules/pvrsrvkm_sgx540_120.ko
 
 $(call inherit-product, hardware/ti/omap4/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
-
-COMMON_FOLDER := device/huawei/viva
 
 PRODUCT_CHARACTERISTICS := default
 DEVICE_PACKAGE_OVERLAYS += $(COMMON_FOLDER)/overlay
@@ -151,12 +161,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.allow.mock.location=1 \
     ro.debuggable=1 \
     persist.sys.usb.config=mtp
-
-# Art Settings
-PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.dex2oat-filter=balanced \
-    dalvik.vm.dex2oat-flags=--no-watch-dog \
-    dalvik.vm.image-dex2oat-filter=speed
 
 # The number of background processes
 PRODUCT_PROPERTY_OVERRIDES += \

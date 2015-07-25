@@ -70,21 +70,14 @@ BUILD_AUDIO_HW_WRAPPER := true
 # set if the target supports FBIO_WAITFORVSYNC
 TARGET_HAS_WAITFORVSYNC := true
 
-# External SGX Module
-SGX_MODULES:
-	make clean -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android
-	cp $(TARGET_KERNEL_SOURCE)/drivers/video/omap2/omapfb/omapfb.h $(KERNEL_OUT)/drivers/video/omap2/omapfb/omapfb.h
-	make -j8 -C $(HARDWARE_TI_OMAP4_BASE)/pvr-source/eurasiacon/build/linux2/omap4430_android ARCH=arm KERNEL_CROSS_COMPILE=arm-eabi- CROSS_COMPILE=arm-eabi- KERNELDIR=$(KERNEL_OUT) TARGET_PRODUCT="blaze_tablet" BUILD=release TARGET_SGX=540 PLATFORM_VERSION=4.0
-	mv $(KERNEL_OUT)/../../target/kbuild/pvrsrvkm_sgx540_120.ko $(KERNEL_MODULES_OUT)
-	$(ARM_EABI_TOOLCHAIN)/arm-eabi-strip --strip-unneeded $(KERNEL_MODULES_OUT)/pvrsrvkm_sgx540_120.ko
-
-TARGET_KERNEL_MODULES += SGX_MODULES
-
 # Kernel/Ramdisk
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
-TARGET_KERNEL_CONFIG := front_defconfig
-TARGET_KERNEL_SOURCE := kernel/huawei/viva
+
+#TARGET_KERNEL_CONFIG := front_defconfig
+#TARGET_KERNEL_SOURCE := kernel/huawei/viva
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9.4-a9/bin/
+TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
 
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc
@@ -134,8 +127,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/class/android_usb/f_mass_storage/lun/fi
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
-# default 8388608. Oversize to 9388608. Fix recovery compiling.
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 9388608
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 939524096
 # 6329204736 - 16384 <encryption footer>
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6329188352
