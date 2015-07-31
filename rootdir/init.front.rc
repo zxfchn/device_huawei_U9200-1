@@ -120,7 +120,7 @@ on fs
     write /proc/sys/vm/page-cluster 0
 
     # lower swappiness when using swap
-    write /proc/sys/vm/swappiness 10
+    write /proc/sys/vm/swappiness 5
 
     # Flash storage isn't a good entropy source, and only causes locking
     # overhead in the kernel. Turn it off.
