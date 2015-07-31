@@ -4,11 +4,6 @@ on early-init
     mkdir /storage 0666 system sdcard_r
 
 on init
-
-    # Disable SELinux
-    setenforce 0
-    setprop ro.boot.selinux 0
-
     # Set permissions for persist partition
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage 0550 system sdcard_r
