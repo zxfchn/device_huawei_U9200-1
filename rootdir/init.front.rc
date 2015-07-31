@@ -4,11 +4,6 @@ on early-init
     mkdir /storage 0666 system sdcard_r
 
 on init
-
-    # Disable SELinux
-    setenforce 0
-    setprop ro.boot.selinux 0
-
     # Set permissions for persist partition
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage 0550 system sdcard_r
@@ -125,7 +120,7 @@ on fs
     write /proc/sys/vm/page-cluster 0
 
     # lower swappiness when using swap
-    write /proc/sys/vm/swappiness 10
+    write /proc/sys/vm/swappiness 5
 
     # Flash storage isn't a good entropy source, and only causes locking
     # overhead in the kernel. Turn it off.
@@ -159,7 +154,9 @@ on fs
 
     # CPU permissions
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
     chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 350000
     chown system system /sys/devices/system/cpu/cpufreq/interactive/lpspeed_freq
     chown system system /sys/devices/system/cpu/cpufreq/interactive/lpspeed_enabled
 
