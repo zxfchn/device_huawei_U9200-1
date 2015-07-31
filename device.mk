@@ -162,7 +162,8 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.secure=0 \
     ro.allow.mock.location=1 \
     ro.debuggable=1 \
-    persist.sys.usb.config=mtp
+    persist.sys.usb.config=mtp \
+    ro.selinux=permissive
 
 # The number of background processes
 PRODUCT_PROPERTY_OVERRIDES += \
