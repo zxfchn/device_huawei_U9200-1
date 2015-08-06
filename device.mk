@@ -172,12 +172,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Low-RAM optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.low_ram=true \
-    persist.sys.force_highendgfx=true \
-    config.disable_atlas=true
+    dalvik.vm.jit.codecachesize=0
 
 # Memory management
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ksm.default=1
+
+# Force transparent status bar and lock screen
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.force_highendgfx=true
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
