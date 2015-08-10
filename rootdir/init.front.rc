@@ -349,12 +349,6 @@ on fs
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/state
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/gaugelog
 
-    # H264 Encoder Profile setting
-    # 1 - Base Profile
-    # 2 - Main Profile
-    # 8 - High Profile
-    setprop video.h264enc.profile 2
-
 service pvrsrvinit /system/bin/pvrsrvinit
     class core
     user root
