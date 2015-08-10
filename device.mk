@@ -151,7 +151,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
-    persist.sys.root_access=3 \
     persist.adb.notify=0 \
     persist.call_recording.enabled=1
 
@@ -160,6 +159,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0 \
     ro.allow.mock.location=1 \
+    persist.sys.root_access=3 \
     ro.debuggable=1 \
     persist.sys.usb.config=mtp \
     ro.selinux=permissive
