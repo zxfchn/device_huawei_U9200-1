@@ -47,10 +47,6 @@ TARGET_USE_PAN_DISPLAY := true
 # Apply the compass filter
 BOARD_INVENSENSE_APPLY_COMPASS_NOISE_FILTER := true
 
-# Option to omit using intra macroblock refresh mode
-# http://review.cyanogenmod.org/#/c/95665/
-BOARD_NO_INTRA_MACROBLOCK_MODE_SUPPORT := true
-
 # Platform
 TARGET_BOARD_OMAP_CPU := 4460
 TARGET_BOOTLOADER_BOARD_NAME := front
@@ -66,6 +62,14 @@ BOARD_USES_GENERIC_AUDIO := false
 USE_LEGACY_AUDIO_POLICY := 1
 CONVERT_AUDIO_DEVICES := true
 BUILD_AUDIO_HW_WRAPPER := true
+
+# Graphics
+BOARD_EGL_CFG := $(COMMON_FOLDER)/configs/egl.cfg
+USE_OPENGL_RENDERER := true
+# As in the kernel (2)
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 2
+
+BOARD_USE_TI_DUCATI_H264_PROFILE := true
 
 # set if the target supports FBIO_WAITFORVSYNC
 TARGET_HAS_WAITFORVSYNC := true

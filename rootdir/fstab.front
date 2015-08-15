@@ -21,5 +21,5 @@
 /dev/block/zram0                                          none         swap  defaults  zramsize=67108864
 
 # VOLD mount points
-/devices/platform/omap/omap_hsmmc.0/mmc_host/mmc1         auto         auto  defaults  voldmanaged=sdcard1:auto,noemulatedsd
-/devices/platform/omap/musb-omap2430/musb-hdrc/usb1       auto         auto  defaults  voldmanaged=usbdisk:auto
+/devices/platform/omap/omap_hsmmc.0/mmc_host/mmc1*        auto         auto  defaults  voldmanaged=sdcard1:auto,noemulatedsd
+/devices/platform/omap/musb-omap2430/musb-hdrc/usb1*      auto         auto  defaults  voldmanaged=usbdisk:auto

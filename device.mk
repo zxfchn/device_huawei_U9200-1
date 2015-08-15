@@ -72,7 +72,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    $(COMMON_FOLDER)/configs/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     $(COMMON_FOLDER)/configs/media_profiles.xml:system/etc/media_profiles.xml \
     $(COMMON_FOLDER)/configs/media_codecs.xml:system/etc/media_codecs.xml \
     $(COMMON_FOLDER)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
@@ -152,7 +151,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.setupwizard.enable_bypass=1 \
-    persist.sys.root_access=3 \
     persist.adb.notify=0 \
     persist.call_recording.enabled=1
 
@@ -161,6 +159,7 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
     ro.secure=0 \
     ro.allow.mock.location=1 \
+    persist.sys.root_access=3 \
     ro.debuggable=1 \
     persist.sys.usb.config=mtp \
     ro.selinux=permissive
@@ -173,12 +172,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Low-RAM optimizations
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.low_ram=true \
-    persist.sys.force_highendgfx=true \
-    config.disable_atlas=true
+    dalvik.vm.jit.codecachesize=0
 
 # Memory management
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ksm.default=1
+
+# Force transparent status bar and lock screen
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.force_highendgfx=true
 
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -199,12 +201,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # SGX540 is slower with the scissor optimization enabled
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.disable_scissor_opt=true \
-
-# Default to the Speex resampler, if it exists.
-# - This allows for playback of just about any sample rate as the Speex resampler doesn't
-#   have the in <= out*2 restriction, and is of a higher quality than the default resampler.
-PRODUCT_PROPERTY_OVERRIDES += \
-    af.resampler.quality=8
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh
