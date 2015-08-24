@@ -55,6 +55,9 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_FPU_VARIANT := neon-fp16
 
+# For RIL
+TARGET_NEEDS_BIONIC_MD5 := true
+
 # Webkit
 ENABLE_WEBGL := true
 
@@ -80,7 +83,7 @@ BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 #TARGET_KERNEL_CONFIG := front_defconfig
 #TARGET_KERNEL_SOURCE := kernel/huawei/front
-#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9.4-a9/bin/
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9/bin/
 TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
 
 # Use dlmalloc
