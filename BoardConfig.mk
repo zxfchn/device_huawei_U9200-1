@@ -85,7 +85,7 @@ BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 
 #TARGET_KERNEL_CONFIG := front_defconfig
-<<<<<<< HEAD
+
 #TARGET_KERNEL_SOURCE := kernel/huawei/viva
 #KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9/bin/
 
