@@ -32,6 +32,9 @@ TI_CAMERAHAL_MAX_CAMERAS_SUPPORTED := 2
 #TI_CAMERAHAL_DEBUG_ENABLED := true
 USE_CAMERA_STUB := false
 
+# OMX buffer reallocate
+BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
+
 # We need BGRA_8888, instead of Android's now-default RGBA_8888.
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
@@ -53,6 +56,9 @@ TARGET_BOOTLOADER_BOARD_NAME := front
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 TARGET_FPU_VARIANT := neon-fp16
+
+# For RIL
+TARGET_NEEDS_BIONIC_MD5 := true
 
 # Webkit
 ENABLE_WEBGL := true
@@ -79,8 +85,10 @@ BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_PAGESIZE := 2048
 
 #TARGET_KERNEL_CONFIG := front_defconfig
+<<<<<<< HEAD
 #TARGET_KERNEL_SOURCE := kernel/huawei/viva
-#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9.4-a9/bin/
+#KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9/bin/
+
 TARGET_PREBUILT_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
 
 # Use dlmalloc
