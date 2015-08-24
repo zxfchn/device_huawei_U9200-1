@@ -32,6 +32,9 @@ TI_CAMERAHAL_MAX_CAMERAS_SUPPORTED := 2
 #TI_CAMERAHAL_DEBUG_ENABLED := true
 USE_CAMERA_STUB := false
 
+# OMX buffer reallocate
+BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
+
 # We need BGRA_8888, instead of Android's now-default RGBA_8888.
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
