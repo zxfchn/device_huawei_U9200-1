@@ -168,10 +168,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.max_starting_bg=8 \
     ro.sys.fw.bg_apps_limit=16
 
-# Memory management
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ksm.default=1
-
 # Force transparent status bar and lock screen
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.force_highendgfx=true
