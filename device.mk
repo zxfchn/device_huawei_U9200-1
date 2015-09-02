@@ -195,11 +195,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # SGX540 is slower with the scissor optimization enabled
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.disable_scissor_opt=true \
+    ro.hwui.disable_scissor_opt=true
 
 # Disable JIT (Low Ram Device)
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.jit.codecachesize=0
+    dalvik.vm.jit.codecachesize=0 \
+    ro.config.low_ram=true
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh
