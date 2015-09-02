@@ -72,10 +72,6 @@ on post-fs-data
     chown system system /sys/class/android_usb/android0/f_mass_storage/lun/file
     chmod 0660 /sys/class/android_usb/android0/f_mass_storage/lun/file
 
-on early-boot
-    # set RLIMIT_MEMLOCK to 64MB
-    setrlimit 8 67108864 67108864
-
 on boot
     mount debugfs /sys/kernel/debug /sys/kernel/debug
     chmod 0666 /dev/pvrsrvkm
@@ -120,8 +116,7 @@ on fs
     write /proc/sys/vm/page-cluster 0
 
     # lower swappiness when using swap
-    write /proc/sys/vm/swappiness 15
-     write /proc/sys/vm/vfs_cache_pressure 150
+    write /proc/sys/vm/swappiness 10
 
     # Flash storage isn't a good entropy source, and only causes locking
     # overhead in the kernel. Turn it off.
@@ -135,9 +130,6 @@ on fs
     # connections on high-throughput links get dropped when
     # an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
-
-    # decrease max. realtime cpu runtime of background apps
-    write /dev/cpuctl/bg_non_interactive/cpu.shares 52
 
     # pvr module
     insmod /system/lib/modules/pvrsrvkm_sgx540_120.ko
@@ -519,7 +511,7 @@ on property:sys.perf.profile=0
 # Balanced
 on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 250000
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 350000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
