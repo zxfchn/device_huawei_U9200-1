@@ -1,7 +1,7 @@
 
 project frameworks/av/
 diff --git a/frameworks/av/media/libstagefright/ACodec.cpp b/frameworks/av/media/libstagefright/ACodec.cpp
-index 0150eb3..53b0dfd 100644
+index a110eae..c2010c5 100644
 --- a/frameworks/av/media/libstagefright/ACodec.cpp
 +++ b/frameworks/av/media/libstagefright/ACodec.cpp
 @@ -98,6 +98,10 @@
@@ -15,7 +15,7 @@ index 0150eb3..53b0dfd 100644
  #ifdef ENABLE_AV_ENHANCEMENTS
  #include <QCMediaDefs.h>
  #include <ExtendedUtils.h>
-@@ -4970,6 +4974,14 @@ bool ACodec::BaseState::onOMXFillBufferDone(
+@@ -4971,6 +4976,14 @@ bool ACodec::BaseState::onOMXFillBufferDone(
  
              reply->setInt32("buffer-id", info->mBufferID);
  
