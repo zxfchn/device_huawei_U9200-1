@@ -19,17 +19,6 @@
 
 COMMON_FOLDER := device/huawei/front
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-# Kernel and modules
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
-    $(COMMON_FOLDER)/prebuilt/pvrsrvkm_sgx540_120.ko:system/lib/modules/pvrsrvkm_sgx540_120.ko
-
 $(call inherit-product, hardware/ti/omap4/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
