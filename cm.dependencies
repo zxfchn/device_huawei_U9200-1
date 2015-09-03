@@ -1,0 +1,20 @@
+[
+    {
+        "remote": "github",
+        "repository": "ShevT/android_kernel_d1_p1",
+        "revision": "cm-12.1",
+        "target_path": "kernel/huawei/front"
+    },
+    {
+        "remote": "github",
+        "repository": "ShevT/android_hardware_ti_omap4",
+        "revision": "cm-12.1",
+        "target_path": "hardware/ti/omap4_front"
+    },
+    {
+        "remote": "github",
+        "repository": "ShevT/vendor_huawei_U9500",
+        "revision": "cm-12.1",
+        "target_path": "vendor/huawei/front"
+    }
+]

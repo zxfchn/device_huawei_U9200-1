@@ -1,7 +1,7 @@
 
 project vendor/cm/
 diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
-index 07bfa2e..3d5ae22 100644
+index 002c5e2..abd1d49 100644
 --- a/vendor/cm/config/common.mk
 +++ b/vendor/cm/config/common.mk
 @@ -106,10 +106,6 @@ PRODUCT_COPY_FILES += \
@@ -33,10 +33,10 @@ index 07bfa2e..3d5ae22 100644
  PRODUCT_PACKAGE_OVERLAYS += vendor/cm/overlay/common
  
 diff --git a/vendor/cm/config/common_full.mk b/vendor/cm/config/common_full.mk
-index 14eadc7..199b929 100644
+index cbe34d5..bb01a9b 100644
 --- a/vendor/cm/config/common_full.mk
 +++ b/vendor/cm/config/common_full.mk
-@@ -20,6 +20,5 @@ PRODUCT_PACKAGES += \
+@@ -21,6 +21,5 @@ PRODUCT_PACKAGES += \
  
  # Extra tools in CM
  PRODUCT_PACKAGES += \
@@ -44,7 +44,7 @@ index 14eadc7..199b929 100644
      zip \
      unrar
 diff --git a/vendor/cm/overlay/common/frameworks/base/core/res/res/values/config.xml b/vendor/cm/overlay/common/frameworks/base/core/res/res/values/config.xml
-index 80ed09a..924efc3 100644
+index e944075..0b2cbcb 100644
 --- a/vendor/cm/overlay/common/frameworks/base/core/res/res/values/config.xml
 +++ b/vendor/cm/overlay/common/frameworks/base/core/res/res/values/config.xml
 @@ -23,7 +23,6 @@

@@ -18,18 +18,7 @@
 #
 COMMON_FOLDER := device/huawei/viva
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := $(COMMON_FOLDER)/prebuilt/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-# Kernel and modules
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel \
-    $(COMMON_FOLDER)/prebuilt/pvrsrvkm_sgx540_120.ko:system/lib/modules/pvrsrvkm_sgx540_120.ko
-
-$(call inherit-product, hardware/ti/omap4/omap4.mk)
+$(call inherit-product, hardware/ti/omap4_front/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 PRODUCT_CHARACTERISTICS := default
@@ -169,10 +158,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.max_starting_bg=8 \
     ro.sys.fw.bg_apps_limit=16
 
-# Memory management
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.ksm.default=1
-
 # Force transparent status bar and lock screen
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.force_highendgfx=true
@@ -201,6 +186,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.jit.codecachesize=0 \
     ro.config.low_ram=true
+
+# Disabling strict mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.strictmode.visual=0 \
+    persist.sys.strictmode.disable=1
 
 # Here crashes gallery
 # if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh
