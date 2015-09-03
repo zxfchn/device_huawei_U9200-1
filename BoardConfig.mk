@@ -21,7 +21,7 @@ COMMON_FOLDER := device/huawei/front
 VENDOR_DIR := vendor/huawei/front/proprietary
 
 # inherit from omap4
--include hardware/ti/omap4/BoardConfigCommon.mk
+-include hardware/ti/omap4_front/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/huawei/front/BoardConfigVendor.mk

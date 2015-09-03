@@ -9,7 +9,7 @@
         "remote": "github",
         "repository": "ShevT/android_hardware_ti_omap4",
         "revision": "cm-12.1",
-        "target_path": "hardware/ti/omap4"
+        "target_path": "hardware/ti/omap4_front"
     },
     {
         "remote": "github",
