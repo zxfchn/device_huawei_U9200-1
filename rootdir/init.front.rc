@@ -387,6 +387,9 @@ service smc_pa /system/bin/smc_pa_ctrl \
     group root
     oneshot
 
+service charger /charger
+    class charger
+
 # Create data directory and start service
 on property:tf.enable=y
     mkdir /data/tf
@@ -498,6 +501,9 @@ service gpsd /system/bin/glgps -c /system/etc/gpsconfig.xml
     class main
     user root
     group system
+
+on charger
+    mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/system /system ro
 
 # CyanogenMod Performance Profiles
 # Powersave

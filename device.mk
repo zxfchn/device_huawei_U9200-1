@@ -106,6 +106,10 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
 
+# Charging mode
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # Key maps
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/configs/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
