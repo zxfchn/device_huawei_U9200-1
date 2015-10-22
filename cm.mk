@@ -1,6 +1,7 @@
 # boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
+TARGET_CONTINUOUS_SPLASH_ENABLED := true
 
 # Inherit some common CM stuff.
 $(call inherit-product, device/huawei/front/device.mk)
