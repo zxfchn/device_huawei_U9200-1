@@ -46,7 +46,7 @@ char const*const LCD_FILE
         = "/sys/class/backlight/lcd/brightness";
 char const*const KEYBOARD_FILE
         = "/sys/class/leds/button-backlight-tk/brightness";
-        
+
 /*RGB file descriptors */
 char const*const RED_LED_FILE
         = "/sys/class/leds/red/brightness";
@@ -66,7 +66,7 @@ char const*const BLUE_DELAY_ON_FILE
         = "/sys/class/leds/blue/delay_on";
 char const*const BLUE_DELAY_OFF_FILE
         = "/sys/class/leds/blue/delay_off";
-        
+
 void init_globals(void)
 {
     // init the mutex
@@ -119,7 +119,7 @@ static int
 set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
-    
+
     int err = 0;
     int brightness = rgb_to_brightness(state);
 
@@ -149,7 +149,6 @@ set_light_buttons(struct light_device_t* dev,
     pthread_mutex_unlock(&g_lock);
 
     return err;
-
 }
 
 static int
@@ -173,7 +172,7 @@ set_light_locked(struct light_device_t* dev,
             offMS = 0;
             break;
     }
-    
+
     write_int(RED_DELAY_ON_FILE, 0);
     write_int(RED_DELAY_OFF_FILE, 0);
     write_int(GREEN_DELAY_ON_FILE, 0);
@@ -275,7 +274,6 @@ close_lights(struct light_device_t *dev)
     return 0;
 }
 
-
 /******************************************************************************/
 static int open_lights(const struct hw_module_t* module, char const* name,
         struct hw_device_t** device)
@@ -321,7 +319,6 @@ static int open_lights(const struct hw_module_t* module, char const* name,
     return 0;
 }
 
-
 static struct hw_module_methods_t lights_module_methods = {
     .open =  open_lights,
 };
@@ -334,8 +331,4 @@ struct hw_module_t HAL_MODULE_INFO_SYM = {
     .name = "OMAP4 lights Module",
     .author = "Google, Inc.",
     .methods = &lights_module_methods,
-}; 
- 
- 
- 
- 
+};
