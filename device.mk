@@ -107,6 +107,10 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes
 
+# Charging mode
+PRODUCT_PACKAGES += \
+    charger_res_images
+
 # Key maps
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/configs/usr/omap4-keypad.kl:system/usr/keylayout/omap4-keypad.kl \
@@ -153,15 +157,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.sys.usb.config=mtp \
     ro.selinux=permissive
 
-# The number of background processes
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.max_starting_bg=8 \
-    ro.sys.fw.bg_apps_limit=16
-
-# Force transparent status bar and lock screen
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.force_highendgfx=true
-
 # Enable AAC 5.1 output
 PRODUCT_PROPERTY_OVERRIDES += \
     media.aac_51_output_enabled=true
@@ -182,10 +177,14 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.disable_scissor_opt=true
 
-# Disable JIT (Low Ram Device)
-PRODUCT_PROPERTY_OVERRIDES += \
+# Low-RAM optimizations
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.config.low_ram=true \
+    persist.sys.force_highendgfx=true \
     dalvik.vm.jit.codecachesize=0 \
-    ro.config.low_ram=true
+    config.disable_atlas=true \
+    ro.config.max_starting_bg=8 \
+    ro.sys.fw.bg_apps_limit=16
 
 # Disabling strict mode
 PRODUCT_PROPERTY_OVERRIDES += \
