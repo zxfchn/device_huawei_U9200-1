@@ -44,8 +44,7 @@ PRODUCT_PACKAGES += \
     audio.r_submix.default \
     audio.primary.omap4 \
     gralloc.omap4.so \
-    camera.omap4 \
-    lights.omap4
+    camera.omap4
 
 # Init scripts
 PRODUCT_COPY_FILES += \
