@@ -416,11 +416,6 @@ service akmd8975 /system/bin/akmd8975 -m 3
     user system
     oneshot
 
-service atcmdserver /system/bin/atcmdserver
-    class main
-    user root
-    oneshot
-
 service nvm-server /system/bin/nvm_server
     class main
     socket nvm-ctl stream 660 radio radio
