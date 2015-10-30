@@ -44,7 +44,7 @@ PRODUCT_PACKAGES += \
     audio.primary.omap4 \
     gralloc.omap4.so \
     camera.omap4 \
-    lights.omap4
+    memtrack.omap4
 
 # Init scripts
 PRODUCT_COPY_FILES += \
@@ -142,24 +142,16 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.setupwizard.enable_bypass=1 \
-    persist.adb.notify=0 \
-    persist.call_recording.enabled=1
-
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
+    persist.adb.notify=0 \
     ro.secure=0 \
     ro.allow.mock.location=1 \
     persist.sys.root_access=3 \
     ro.debuggable=1 \
     persist.sys.usb.config=mtp \
     ro.selinux=permissive
-
-# Enable AAC 5.1 output
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.aac_51_output_enabled=true
 
 # Newer camera API isn't supported.
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -185,17 +177,6 @@ ADDITIONAL_BUILD_PROPERTIES += \
     config.disable_atlas=true \
     ro.config.max_starting_bg=8 \
     ro.sys.fw.bg_apps_limit=16
-
-# Disabling strict mode
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.strictmode.visual=0 \
-    persist.sys.strictmode.disable=1
-
-# Here crashes gallery
-# if ro.build.display.id is such "cm_front-userdebug 4.2.2 JDQ39E eng.shev.20130805.153138 test-keys" then gellery/camera crashshshsh
-# as well - does not crash
-
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_DISPLAY_ID=cm_viva
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise

@@ -38,10 +38,10 @@ on init
     mkdir /factory 0775 radio radio
 
     # nvm
-    mkdir /modem 0775 radio radio
-    mkdir /modem/modem_image 0775 radio radio
-    mkdir /modem/nvm1 0775 radio radio
-    mkdir /modem/nvm2 0775 radio radio
+    mkdir /modem 0775 system radio
+    mkdir /modem/modem_image 0775 system radio
+    mkdir /modem/nvm1 0775 system radio
+    mkdir /modem/nvm2 0775 system radio
 
     # KSM
     write /sys/kernel/mm/ksm/pages_to_scan 100
@@ -181,29 +181,29 @@ on fs
     chmod 0660 /modem/nvm1/static.nvm
     chmod 0660 /modem/modem_image/HWT6260.fls.fls
 
-    chown radio radio /modem/nvm1
-    chown radio radio /modem/nvm2
-    chown radio radio /modem/modem_image
-    chown radio radio /modem/modem_image/HWT6260.fls
-    chown radio radio /modem/nvm1/calib.nvm
-    chown radio radio /modem/nvm1/dynamic.nvm
-    chown radio radio /modem/nvm1/static.nvm
-    chown radio radio /modem/modem_image/HWT6260.fls.fls
+    chown system radio /modem/nvm1
+    chown system radio /modem/nvm2
+    chown system radio /modem/modem_image
+    chown system radio /modem/modem_image/HWT6260.fls
+    chown system radio /modem/nvm1/calib.nvm
+    chown system radio /modem/nvm1/dynamic.nvm
+    chown system radio /modem/nvm1/static.nvm
+    chown system radio /modem/modem_image/HWT6260.fls.fls
 
     chmod 0664 /sys/devices/platform/xmm_boot/state
     chmod 0660 /sys/devices/platform/xmm_boot/io
     chmod 0660 /sys/devices/platform/xmm_boot/power
-    chown radio radio /sys/devices/platform/xmm_boot/state
-    chown radio radio /sys/devices/platform/xmm_boot/io
-    chown radio radio /sys/devices/platform/xmm_boot/power
+    chown system radio /sys/devices/platform/xmm_boot/state
+    chown system radio /sys/devices/platform/xmm_boot/io
+    chown system radio /sys/devices/platform/xmm_boot/power
     chmod 0660 /sys/devices/platform/xmm_boot/cp_shutdown
-    chown radio radio /sys/devices/platform/xmm_boot/cp_shutdown
+    chown system radio /sys/devices/platform/xmm_boot/cp_shutdown
     chmod 0660 /sys/devices/platform/xmm_boot/flashless
     chmod 0660 /sys/devices/platform/xmm_boot/hsimode
     chmod 0660 /sys/devices/platform/xmm_boot/hsi_drvmode
-    chown radio radio /sys/devices/platform/xmm_boot/flashless
-    chown radio radio /sys/devices/platform/xmm_boot/hsimode
-    chown radio radio /sys/devices/platform/xmm_boot/hsi_drvmode
+    chown system radio /sys/devices/platform/xmm_boot/flashless
+    chown system radio /sys/devices/platform/xmm_boot/hsimode
+    chown system radio /sys/devices/platform/xmm_boot/hsi_drvmode
 
     chown system system /sys/bus/i2c/drivers/cma3000_accl/4-001c
     chown system system /sys/bus/i2c/drivers/cma3000_accl/4-001c/enable
@@ -415,17 +415,6 @@ service akmd8975 /system/bin/akmd8975 -m 3
     class main
     user system
     oneshot
-
-service atcmdserver /system/bin/atcmdserver
-    class main
-    user root
-    oneshot
-
-service nvm-server /system/bin/nvm_server
-    class main
-    socket nvm-ctl stream 660 radio radio
-    user radio
-    group radio
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \

@@ -4,7 +4,6 @@
 ro.telephony.ril_class=RIL
 rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/xmd-tty0
-mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0
 ro.ril.enable.dtm=1
 gsm.sim.num.pin2=3
 gsm.sim.num.puk2=10
@@ -30,8 +29,8 @@ ring.delay=1
 telephony.lteOnGsmDevice=0
 ro.use_data_netmgrd=false
 persist.data.netmgrd.qos.enable=false
-# Power
-pm.sleep_mode=1
+persist.radio.add_power_save=1
+persist.radio.apm_sim_not_pwdn=1
 ro.ril.disable.power.collapse=0
 #
 # GPS
@@ -63,3 +62,8 @@ ro.config.fm_type=libbcmfm_if
 #
 # OTG
 persist.sys.isUsbOtgEnabled=true
+#
+ro.config.hw_globalEcc = true
+#
+# Call recording
+persist.call_recording.enabled=1
