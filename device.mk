@@ -156,10 +156,6 @@ ADDITIONAL_DEFAULT_PROPERTIES += \
     persist.sys.usb.config=mtp \
     ro.selinux=permissive
 
-# Enable AAC 5.1 output
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.aac_51_output_enabled=true
-
 # Newer camera API isn't supported.
 PRODUCT_PROPERTY_OVERRIDES += \
     camera2.portability.force_api=1
