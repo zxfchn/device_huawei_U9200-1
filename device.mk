@@ -141,14 +141,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.setupwizard.enable_bypass=1 \
-    persist.adb.notify=0 \
-    persist.call_recording.enabled=1
-
 # adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.adb.secure=0 \
+    persist.adb.notify=0 \
     ro.secure=0 \
     ro.allow.mock.location=1 \
     persist.sys.root_access=3 \
@@ -180,11 +176,6 @@ ADDITIONAL_BUILD_PROPERTIES += \
     config.disable_atlas=true \
     ro.config.max_starting_bg=8 \
     ro.sys.fw.bg_apps_limit=16
-
-# Disabling strict mode
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.strictmode.visual=0 \
-    persist.sys.strictmode.disable=1
 
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
