@@ -4,7 +4,6 @@ ro.config.hw_flashless=true
 ro.telephony.ril_class=RIL
 rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/xmd-tty0
-mobiledata.interfaces=pdp0,wlan0,gprs,ppp0,rmnet0
 ro.ril.enable.dtm=1
 gsm.sim.num.pin2=3
 gsm.sim.num.puk2=10
