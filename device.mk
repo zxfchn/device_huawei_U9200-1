@@ -141,14 +141,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
 
-# adb has root
 ADDITIONAL_DEFAULT_PROPERTIES += \
-    ro.adb.secure=0 \
-    persist.adb.notify=0 \
-    ro.secure=0 \
     ro.allow.mock.location=1 \
-    persist.sys.root_access=3 \
-    ro.debuggable=1 \
     persist.sys.usb.config=mtp \
     ro.selinux=permissive
 
