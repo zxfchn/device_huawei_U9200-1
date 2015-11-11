@@ -180,6 +180,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.visual=0 \
     persist.sys.strictmode.disable=1
 
-$(call inherit-product-if-exists, vendor/huawei/front/front-vendor.mk)
+$(call inherit-product, vendor/huawei/front/front-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+$(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
