@@ -107,6 +107,7 @@ TARGET_PROVIDES_LIBLIGHTS := true
 
 # PowerHAL
 TARGET_PROVIDES_POWERHAL := true
+TARGET_POWERHAL_VARIANT := power.front
 
 # Use a small subset of system fonts to keep image size lower
 SMALLER_FONT_FOOTPRINT := true

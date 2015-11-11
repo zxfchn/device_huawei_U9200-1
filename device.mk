@@ -45,7 +45,8 @@ PRODUCT_PACKAGES += \
     audio.primary.omap4 \
     gralloc.omap4.so \
     camera.omap4 \
-    memtrack.omap4
+    memtrack.omap4 \
+    power.front
 
 # Init scripts
 PRODUCT_COPY_FILES += \
