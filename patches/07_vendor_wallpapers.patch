@@ -1,0 +1,30 @@
+
+project vendor/cm/
+diff --git a/vendor/cm/config/common_full.mk b/vendor/cm/config/common_full.mk
+index 5d12550..e07d88e 100644
+--- a/vendor/cm/config/common_full.mk
++++ b/vendor/cm/config/common_full.mk
+@@ -4,23 +4,8 @@ $(call inherit-product, vendor/cm/config/common.mk)
+ # Include CM audio files
+ include vendor/cm/config/cm_audio.mk
+ 
+-# Optional CM packages
+-PRODUCT_PACKAGES += \
+-    Galaxy4 \
+-    HoloSpiralWallpaper \
+-    LiveWallpapers \
+-    LiveWallpapersPicker \
+-    MagicSmokeWallpapers \
+-    NoiseField \
+-    PhaseBeam \
+-    VisualizationWallpapers \
+-    PhotoTable \
+-    SoundRecorder \
+-    PhotoPhase
+-
+ # Extra tools in CM
+ PRODUCT_PACKAGES += \
+-    vim \
+     zip \
+     unrar \
+     curl
