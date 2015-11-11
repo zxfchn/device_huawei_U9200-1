@@ -83,6 +83,9 @@ on boot
     write /sys/bus/usb/devices/usb2/power/autosuspend_delay_ms 0
 
 on property:sys.boot_completed=1
+    # set default GPU freq
+    write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 384000000
+
     # By default, the Linux kernel swaps in 8 pages of memory at a time.
     # When using ZRAM, the incremental cost of reading 1 page at a time is
     # negligible and may help in case the device is under extreme memory pressure.
@@ -148,14 +151,6 @@ on fs
 
     chmod 0444 /system/usr/keychars/omap4-keypad.kcm.bin
 
-    # CPU permissions
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
-    chown system system /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 350000
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/lpspeed_freq
-    chown system system /sys/devices/system/cpu/cpufreq/interactive/lpspeed_enabled
-
     # Video permissions
     chown system system /sys/devices/omapdss/display0/cabc_mode
     chown system system /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit
@@ -167,8 +162,6 @@ on fs
     chmod 0664 /sys/block/mmcblk0/queue/scheduler
     chown system system /sys/block/mmcblk1/queue/scheduler
     chmod 0664 /sys/block/mmcblk1/queue/scheduler
-    write /sys/block/mmcblk0/queue/scheduler bfq
-    write /sys/block/mmcblk1/queue/scheduler bfq
 
     # Change the permissions for flashless download app
     chmod 0660 /sys/devices/virtual/usbswitch/usbsw/swstate
@@ -498,8 +491,6 @@ on charger
 # Powersave
 on property:sys.perf.profile=0
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 250000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 700000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor powersave
     write /sys/block/mmcblk0/queue/scheduler sioplus
@@ -509,8 +500,6 @@ on property:sys.perf.profile=0
 # Balanced
 on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 350000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1200000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
     write /sys/block/mmcblk0/queue/scheduler bfq
@@ -520,8 +509,6 @@ on property:sys.perf.profile=1
 # Performance
 on property:sys.perf.profile=2
     write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 350000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1500000
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor smartassV2
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor smartassV2
     write /sys/block/mmcblk0/queue/scheduler bfq
