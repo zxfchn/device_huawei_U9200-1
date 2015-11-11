@@ -49,7 +49,6 @@ ro.config.hw_proximitySensor=true
 ro.config.hw_GSensorOptimize=true
 #
 wifi.interface=wlan0
-wlan.wfd.hdcp=disable
 #
 # fix deaf microphone
 ro.config.dualmic=true
