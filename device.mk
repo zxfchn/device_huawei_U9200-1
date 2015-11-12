@@ -63,8 +63,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    $(COMMON_FOLDER)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    $(COMMON_FOLDER)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_FOLDER)/configs/media/media_profiles.xml:system/etc/media_profiles.xml \
+    $(COMMON_FOLDER)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
     $(COMMON_FOLDER)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
     $(COMMON_FOLDER)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf \
     $(COMMON_FOLDER)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
@@ -72,8 +72,8 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/configs/gps.conf:system/etc/gps.conf \
-    $(COMMON_FOLDER)/configs/gpsconfig.xml:system/etc/gpsconfig.xml
+    $(COMMON_FOLDER)/configs/gps/gps.conf:system/etc/gps.conf \
+    $(COMMON_FOLDER)/configs/gps/gpsconfig.xml:system/etc/gpsconfig.xml
 
 # WiFi
 PRODUCT_PACKAGES += \
