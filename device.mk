@@ -44,7 +44,8 @@ PRODUCT_PACKAGES += \
     audio.primary.omap4 \
     gralloc.omap4.so \
     camera.omap4 \
-    memtrack.omap4
+    memtrack.omap4 \
+    power.front
 
 # Init scripts
 PRODUCT_COPY_FILES += \
@@ -61,17 +62,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    $(COMMON_FOLDER)/configs/media_profiles.xml:system/etc/media_profiles.xml \
-    $(COMMON_FOLDER)/configs/media_codecs.xml:system/etc/media_codecs.xml \
+    $(COMMON_FOLDER)/configs/media/media_profiles.xml:system/etc/media_profiles.xml \
+    $(COMMON_FOLDER)/configs/media/media_codecs.xml:system/etc/media_codecs.xml \
     $(COMMON_FOLDER)/configs/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(COMMON_FOLDER)/configs/audio/cm_viva_audio_config.conf:system/etc/huawei/audio/cm_viva_audio_config.conf \
+    $(COMMON_FOLDER)/configs/audio/viva_audio_config.conf:system/etc/huawei/audio/cm_viva_audio_config.conf \
     $(COMMON_FOLDER)/configs/audio/viva_audio_config.conf:system/etc/huawei/audio/viva_audio_config.conf \
     $(COMMON_FOLDER)/configs/audio/viva_factory_audio_config.conf:system/etc/huawei/audio/viva_factory_audio_config.conf
 
 # GPS
 PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/configs/gps.conf:system/etc/gps.conf \
-    $(COMMON_FOLDER)/configs/gpsconfig.xml:system/etc/gpsconfig.xml
+    $(COMMON_FOLDER)/configs/gps/gps.conf:system/etc/gps.conf \
+    $(COMMON_FOLDER)/configs/gps/gpsconfig.xml:system/etc/gpsconfig.xml
 
 # WiFi
 PRODUCT_PACKAGES += \
@@ -175,6 +176,12 @@ ADDITIONAL_BUILD_PROPERTIES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
+
+# Disabling strict mode
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.strictmode.visual=0 \
+    persist.sys.strictmode.disable=1
+
 $(call inherit-product-if-exists, vendor/huawei/viva/viva-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-$(call inherit-product-if-exists, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
+$(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)

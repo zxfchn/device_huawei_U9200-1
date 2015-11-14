@@ -16,15 +16,3 @@ index 3ad692a..0356beb 100644
  ifdef CM_BUILDTYPE
      ifneq ($(CM_BUILDTYPE), SNAPSHOT)
          ifdef CM_EXTRAVERSION
-diff --git a/vendor/cm/config/common_full.mk b/vendor/cm/config/common_full.mk
-index 5d12550..530b433 100644
---- a/vendor/cm/config/common_full.mk
-+++ b/vendor/cm/config/common_full.mk
-@@ -20,7 +20,6 @@ PRODUCT_PACKAGES += \
- 
- # Extra tools in CM
- PRODUCT_PACKAGES += \
--    vim \
-     zip \
-     unrar \
-     curl

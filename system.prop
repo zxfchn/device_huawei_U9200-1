@@ -33,6 +33,9 @@ persist.radio.add_power_save=1
 persist.radio.apm_sim_not_pwdn=1
 ro.ril.disable.power.collapse=0
 #
+# Huawei RIL
+ro.config.hw_gcf_mms = true
+#
 # GPS
 ro.config.hw_gps=47511
 ro.ril.def.agps.mode=2
@@ -49,7 +52,6 @@ ro.config.hw_proximitySensor=true
 ro.config.hw_GSensorOptimize=true
 #
 wifi.interface=wlan0
-wlan.wfd.hdcp=disable
 #
 # fix deaf microphone
 ro.config.dualmic=true

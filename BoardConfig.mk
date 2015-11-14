@@ -71,6 +71,7 @@ BUILD_AUDIO_HW_WRAPPER := true
 AUDIO_FEATURE_DEEP_BUFFER_RINGTONE := true
 
 # Graphics
+BOARD_EGL_CFG := $(COMMON_FOLDER)/configs/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 # As in the kernel (2)
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 2
@@ -110,6 +111,7 @@ TARGET_PROVIDES_LIBLIGHTS := true
 
 # PowerHAL
 TARGET_PROVIDES_POWERHAL := true
+TARGET_POWERHAL_VARIANT := power.front
 
 # Use a small subset of system fonts to keep image size lower
 SMALLER_FONT_FOOTPRINT := true
