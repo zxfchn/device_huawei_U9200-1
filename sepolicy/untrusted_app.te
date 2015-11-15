@@ -1,0 +1,7 @@
+allow untrusted_app toolbox_exec:file {execute_no_trans getattr execute read open};
+allow untrusted_app alarm_device:chr_file write;
+allow untrusted_app bluetooth_data_file:dir getattr;
+allow untrusted_app hosts_data_file:file { read getattr open };
+allow untrusted_app radio_data_file:dir getattr;
+allow untrusted_app system_app_data_file:dir getattr;
+allow untrusted_app unlabeled:dir search;

@@ -155,6 +155,30 @@ BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 # Force SeLinux into permissive mode
 COMMON_GLOBAL_CFLAGS += -DFORCE_SELINUX_PERMISSIVE
 
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    $(COMMON_FOLDER)/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    akmd8975.te \
+    bluetooth.te \
+    device.te \
+    domain.te \
+    file.te \
+    file_contexts \
+    gpsd.te \
+    init.te \
+    mediaserver.te \
+    pvrsrvinit.te \
+    rild.te \
+    setup_fs.te \
+    smc_pa.te \
+    system_server.te \
+    uim_sysfs.te \
+    untrusted_app.te \
+    wpa_supplicant.te \
+    zygote.te
+
 # Recovery
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := $(COMMON_FOLDER)/rootdir/fstab.front
