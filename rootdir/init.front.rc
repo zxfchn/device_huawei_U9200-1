@@ -341,30 +341,24 @@ service setup_fs /system/bin/setup_fs \
         group root
         oneshot
 
-###################################################
-# MSHIELD SMC Daemon - component required to store persistent data coming
-#   from the SMC PA to the device persistent storage
-###################################################
-service tf_daemon /system/bin/tf_daemon -storageDir /data/tf -d
-    disabled
-    class main
-    user root
-    group shell
-    oneshot
+service tf_daemon /system/bin/tf_daemon \
+        -d -c /vendor/etc/smc_normal_world_android_cfg.ini
+        class main
+        user drmrpc
+        group drmrpc
 
-###################################################
-# MSHIELD SMC PA Control - installs the SMC PA into the Secure Environment
-###################################################
-service smc_pa /system/bin/smc_pa_ctrl \
-    -c /vendor/etc/smc_normal_world_android_cfg.ini \
-    start /vendor/firmware/smc_pa.ift
-    class core
-    user root
-    group root
-    oneshot
+service smc_pa_wvdrm /system/bin/smc_pa_ctrl \
+        -c /vendor/etc/smc_normal_world_android_cfg.ini \
+        start /vendor/firmware/smc_pa_wvdrm.ift
+        class core
+        user drmrpc
+        group drmrpc
+        oneshot
 
-service charger /charger
+service battery_charger /sbin/healthd -c
     class charger
+    critical
+    seclabel u:r:healthd:s0
 
 # Create data directory and start service
 on property:tf.enable=y

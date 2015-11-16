@@ -109,10 +109,6 @@ WITH_DEXPREOPT := true
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
-# PowerHAL
-TARGET_PROVIDES_POWERHAL := true
-TARGET_POWERHAL_VARIANT := power.front
-
 # Use a small subset of system fonts to keep image size lower
 SMALLER_FONT_FOOTPRINT := true
 
@@ -159,8 +155,29 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Disable journaling on system.img to save space
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 
-# Force SeLinux into permissive mode
-COMMON_GLOBAL_CFLAGS += -DFORCE_SELINUX_PERMISSIVE
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    $(COMMON_FOLDER)/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    akmd8975.te \
+    bluetooth.te \
+    device.te \
+    domain.te \
+    file.te \
+    file_contexts \
+    gpsd.te \
+    init.te \
+    mediaserver.te \
+    pvrsrvinit.te \
+    rild.te \
+    setup_fs.te \
+    smc_pa.te \
+    system_server.te \
+    uim_sysfs.te \
+    untrusted_app.te \
+    wpa_supplicant.te \
+    zygote.te
 
 # Recovery
 RECOVERY_FSTAB_VERSION := 2

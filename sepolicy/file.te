@@ -1,0 +1,4 @@
+type toolbox_exec, exec_type, file_type;
+
+# ducati
+type firmware_ducati, file_type;

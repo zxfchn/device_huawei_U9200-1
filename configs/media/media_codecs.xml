@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="utf-8" ?><!-- Copyright (C) 2012 The Android Open Source Project
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright (C) 2012 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -96,12 +97,6 @@ Only the three quirks included above are recognized at this point:
         </MediaCodec>
 
         <MediaCodec name="OMX.TI.DUCATI1.VIDEO.H264E" type="video/avc" >
-            <Quirk name="requires-allocate-on-input-ports" />
-            <Quirk name="requires-allocate-on-output-ports" />
-        </MediaCodec>
-
-        <MediaCodec name="OMX.ITTIAM.AAC.encode" >
-            <Type name="audio/mp4a-latm" />
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
         </MediaCodec>
@@ -204,4 +199,3 @@ Only the three quirks included above are recognized at this point:
     <!-- STARGO: end Netflix hack -->
     <Include href="media_codecs_ffmpeg.xml" />
 </MediaCodecs>
-
