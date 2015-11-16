@@ -152,9 +152,6 @@ BOARD_FLASH_BLOCK_SIZE := 4096
 # Disable journaling on system.img to save space
 BOARD_SYSTEMIMAGE_JOURNAL_SIZE := 0
 
-# Force SeLinux into permissive mode
-COMMON_GLOBAL_CFLAGS += -DFORCE_SELINUX_PERMISSIVE
-
 # SELinux
 BOARD_SEPOLICY_DIRS += \
     $(COMMON_FOLDER)/sepolicy

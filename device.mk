@@ -144,8 +144,7 @@ PRODUCT_COPY_FILES += \
 
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.allow.mock.location=1 \
-    persist.sys.usb.config=mtp \
-    ro.selinux=permissive
+    persist.sys.usb.config=mtp
 
 # Newer camera API isn't supported.
 PRODUCT_PROPERTY_OVERRIDES += \
