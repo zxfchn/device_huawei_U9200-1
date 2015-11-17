@@ -3,3 +3,4 @@ allow mediaserver debugfs:file read;
 allow mediaserver device:dir { read open };
 allow mediaserver system_prop:property_service set;
 allow mediaserver system_server:unix_stream_socket { read write };
+allow mediaserver gps_device:chr_file { read write ioctl open };

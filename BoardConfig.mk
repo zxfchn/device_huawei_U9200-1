@@ -174,7 +174,9 @@ BOARD_SEPOLICY_UNION += \
     uim_sysfs.te \
     untrusted_app.te \
     wpa_supplicant.te \
-    zygote.te
+    zygote.te \
+    imcdownload_app.te \
+    injection_nv.te
 
 # Recovery
 RECOVERY_FSTAB_VERSION := 2
