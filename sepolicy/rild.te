@@ -7,4 +7,10 @@ allow rild block_device:dir search;
 
 allow rild sysfs:file write;
 allow rild unlabeled:dir getattr;
+allow rild unlabeled:dir search;
 allow rild unlabeled:file { read write getattr open };
+
+allow rild imcdownload_app_exec:file { read getattr open execute execute_no_trans ioctl };
+allow rild injection_nv_exec:file { read getattr open execute execute_no_trans ioctl };
+
+#allow rild device:chr_file { read write ioctl open };
