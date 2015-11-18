@@ -325,6 +325,8 @@ on fs
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/state
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/gaugelog
 
+    write /sys/class/backlight/lcd/brightness 126
+
 service pvrsrvinit /system/bin/pvrsrvinit
     class core
     user root
