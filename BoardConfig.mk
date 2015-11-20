@@ -35,9 +35,6 @@ USE_CAMERA_STUB := false
 # OMX buffer reallocate
 BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
 
-# We need BGRA_8888, instead of Android's now-default RGBA_8888.
-BOARD_EGL_WORKAROUND_BUG_10194508 := true
-
 # Apply the compass filter
 BOARD_INVENSENSE_APPLY_COMPASS_NOISE_FILTER := true
 
