@@ -2,6 +2,7 @@
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
+TARGET_BOOTANIMATION_HALF_RES := true
 
 # Inherit some common CM stuff.
 $(call inherit-product, device/huawei/front/device.mk)
