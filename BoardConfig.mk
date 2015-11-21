@@ -35,27 +35,14 @@ USE_CAMERA_STUB := false
 # OMX buffer reallocate
 BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
 
-# We need BGRA_8888, instead of Android's now-default RGBA_8888.
-BOARD_EGL_WORKAROUND_BUG_10194508 := true
-
-TARGET_BOOTLOADER_BOARD_NAME := viva
-
-# We don't support cursor layers, which when attempting to use them,
-# results in no cursors (mouse or otherwise) displayed on the screen.
-TARGET_DISABLE_CURSOR_LAYER := true
-
-# Use FBIOPAN_DISPLAY instead of FBIOPUT_VSCREENINFO to refresh the display.
-TARGET_USE_PAN_DISPLAY := true
-
 # Apply the compass filter
 BOARD_INVENSENSE_APPLY_COMPASS_NOISE_FILTER := true
 
 # Platform
 TARGET_BOARD_OMAP_CPU := 4460
-TARGET_BOOTLOADER_BOARD_NAME := front
+TARGET_BOOTLOADER_BOARD_NAME := viva
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_FPU_VARIANT := neon-fp16
 
 # For RIL
 TARGET_NEEDS_BIONIC_MD5 := true
@@ -164,10 +151,13 @@ BOARD_SEPOLICY_UNION += \
     bluetooth.te \
     device.te \
     domain.te \
-    file.te \
     file_contexts \
+    file.te \
+    genfs_contexts \
     gpsd.te \
+    imcdownload_app.te \
     init.te \
+    injection_nv.te \
     mediaserver.te \
     pvrsrvinit.te \
     rild.te \
@@ -177,9 +167,7 @@ BOARD_SEPOLICY_UNION += \
     uim_sysfs.te \
     untrusted_app.te \
     wpa_supplicant.te \
-    zygote.te \
-    imcdownload_app.te \
-    injection_nv.te
+    zygote.te
 
 # Recovery
 RECOVERY_FSTAB_VERSION := 2

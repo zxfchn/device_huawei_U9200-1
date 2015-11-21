@@ -1,12 +1,9 @@
 import init.front.usb.rc
 
-on early-init
-    mkdir /storage 0666 system sdcard_r
-
 on init
     # Set permissions for persist partition
     mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage 0550 system sdcard_r
+    mkdir /storage 0551 system sdcard_r
     mkdir /storage/emulated 0555 root root
 
     #External storage directories
@@ -81,6 +78,7 @@ on boot
     # autosuspend root hubs immediatly after attached devices
     write /sys/bus/usb/devices/usb1/power/autosuspend_delay_ms 0
     write /sys/bus/usb/devices/usb2/power/autosuspend_delay_ms 0
+    restorecon /proc/bluetooth/sleep/btwrite
 
 on property:sys.boot_completed=1
     # set default GPU freq
@@ -215,9 +213,9 @@ on fs
     chmod 0666 /proc/bluetooth/sleep/clkctrl
     chown bluetooth net_bt_stack /proc/bluetooth/sleep/clkctrl
     chmod 0220 /proc/bluetooth/sleep/btwrite
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/btwrite
+    chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
     chmod 0220 /proc/bluetooth/sleep/lpm
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/lpm
+    chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
     restorecon /proc/bluetooth/sleep/lpm
     restorecon /proc/bluetooth/sleep/btwrite
     chmod 0666 /proc/bluetooth/sleep/asleep
@@ -324,6 +322,8 @@ on fs
     #battery
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/state
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/gaugelog
+
+    write /sys/class/backlight/lcd/brightness 126
 
 service pvrsrvinit /system/bin/pvrsrvinit
     class core

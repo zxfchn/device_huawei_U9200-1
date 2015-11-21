@@ -1,6 +1,9 @@
 /dev/akm8975_aot                u:object_r:sensors_device:s0
 /dev/akm8975_dev                u:object_r:sensors_device:s0
 
+# Wireless
+/dev/rfkill                     u:object_r:rfkill_device:s0
+
 # rild
 /modem/modem_image/HWT6260*     u:object_r:radio_data_file:s0
 /modem/nvm1/*                   u:object_r:radio_data_file:s0
@@ -17,11 +20,14 @@
 /dev/ttyGS2                     u:object_r:console_device:s0
 
 /dev/audience_es305             u:object_r:audio_device:s0
+/dev/ttyO0                      u:object_r:audio_device:s0
 
 # GPS
-/dev/ttyO0                      u:object_r:gps_device:s0
+/dev/ttyO3                      u:object_r:gps_device:s0
 /data/gps/*                     u:object_r:gps_data_file:s0
+/data/system/gps(/.*)?          u:object_r:gps_data_file:s0
 /system/lib/hw/gps.omap4.so     u:object_r:gps_data_file:s0
+/system/bin/glgps               u:object_r:gpsd_exec:s0
 
 # BT
 /dev/ttyO1                      u:object_r:hci_attach_dev:s0
@@ -38,5 +44,4 @@
 
 /system/bin/IMCdownload_App     u:object_r:imcdownload_app_exec:s0
 /system/bin/Injection_nv        u:object_r:injection_nv_exec:s0
-
 

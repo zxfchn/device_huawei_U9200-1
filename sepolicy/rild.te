@@ -13,4 +13,5 @@ allow rild unlabeled:file { read write getattr open };
 allow rild imcdownload_app_exec:file { read getattr open execute execute_no_trans ioctl };
 allow rild injection_nv_exec:file { read getattr open execute execute_no_trans ioctl };
 
-#allow rild device:chr_file { read write ioctl open };
+allow rild gpsd:dir search;
+allow rild gpsd:file r_file_perms;
