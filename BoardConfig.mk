@@ -84,6 +84,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_CONFIG := front_defconfig
 TARGET_KERNEL_SOURCE := kernel/huawei/front
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9/bin/
+#BOARD_KERNEL_CMDLINE += enforcing=0 androidboot.selinux=permissive
 
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc
@@ -150,10 +151,13 @@ BOARD_SEPOLICY_UNION += \
     bluetooth.te \
     device.te \
     domain.te \
-    file.te \
     file_contexts \
+    file.te \
+    genfs_contexts \
     gpsd.te \
+    imcdownload_app.te \
     init.te \
+    injection_nv.te \
     mediaserver.te \
     pvrsrvinit.te \
     rild.te \
@@ -163,9 +167,7 @@ BOARD_SEPOLICY_UNION += \
     uim_sysfs.te \
     untrusted_app.te \
     wpa_supplicant.te \
-    zygote.te \
-    imcdownload_app.te \
-    injection_nv.te
+    zygote.te
 
 # Recovery
 RECOVERY_FSTAB_VERSION := 2

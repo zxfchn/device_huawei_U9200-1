@@ -1,3 +1,1 @@
-allow bluetooth default_prop:property_service set;
-allow bluetooth sysfs_bluetooth_writable:dir search;
-allow bluetooth sysfs:file { write read };
+allow bluetooth sysfs:file write;
