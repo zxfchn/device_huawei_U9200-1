@@ -179,6 +179,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.visual=0 \
     persist.sys.strictmode.disable=1
 
+# Use awesome player for now
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.media.use-awesome=true \
+    media.stagefright.use-awesome=true
+
 $(call inherit-product, vendor/huawei/front/front-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
