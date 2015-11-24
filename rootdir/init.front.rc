@@ -47,8 +47,8 @@ on init
     setprop ro.hwboottype boot_android
 
 on post-fs-data
-    mkdir /data/gps
-    chown root system /data/gps
+    mkdir /data/gps 771 gps system
+    chown gps system /data/gps
 
     mkdir /data/media 0770 media_rw media_rw
 
@@ -204,14 +204,14 @@ on fs
 
     # power up/down interface
     # change permissions for Bluetooth/FM/GPS
-    chmod 0644 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /sys/class/rfkill/rfkill0/state
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chmod 0666 /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chmod 0666 /proc/bluetooth/sleep/proto
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/proto
+    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
     chmod 0666 /proc/bluetooth/sleep/clkctrl
-    chown bluetooth net_bt_stack /proc/bluetooth/sleep/clkctrl
+    chown bluetooth bluetooth /proc/bluetooth/sleep/clkctrl
     chmod 0220 /proc/bluetooth/sleep/btwrite
     chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
     chmod 0220 /proc/bluetooth/sleep/lpm
@@ -459,7 +459,7 @@ service iprenew_eth0 /system/bin/dhcpcd -n
 service gpsd /system/bin/glgps -c /system/etc/gpsconfig.xml
     class main
     user root
-    group system
+    group system inet net_raw sdcard_rw
 
 on charger
     mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/system /system ro
