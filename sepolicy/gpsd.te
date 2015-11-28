@@ -5,9 +5,7 @@ binder_call(gpsd, system_server)
 binder_use(gpsd)
 
 file_type_auto_trans(gpsd, system_data_file, gps_data_file);
-
 unix_socket_connect(gpsd, rild, rild)
-
 allow gpsd self:capability net_raw;
-
 allow gpsd self:process execmem;
+#allow gpsd self:capability { fowner dac_override };
