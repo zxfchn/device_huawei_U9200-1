@@ -18,9 +18,9 @@
 /dev/block/platform/omap/omap_hsmmc.1/by-name/xloader     /xloader     emmc  defaults  defaults
 
 # Radio
-/dev/block/platform/omap/omap_hsmmc.1/by-name/modemimage  /modem/modem_image ext4  noatime,nosuid,nodev,nomblk_io_submit            wait
-/dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm1   /modem/nvm1        ext4  noatime,nosuid,nodev,nomblk_io_submit            wait
-/dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm2   /modem/nvm2        ext4  noatime,nosuid,nodev,nomblk_io_submit            wait
+#/dev/block/platform/omap/omap_hsmmc.1/by-name/modemimage  /modem/modem_image ext4  noatime,nosuid,nodev,nomblk_io_submit            wait
+#/dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm1   /modem/nvm1        ext4  noatime,nosuid,nodev,nomblk_io_submit            wait
+#/dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm2   /modem/nvm2        ext4  noatime,nosuid,nodev,nomblk_io_submit            wait
 
 # zRAM
 /dev/block/zram0                                          none         swap  defaults  zramsize=67108864
