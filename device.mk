@@ -26,7 +26,7 @@ DEVICE_PACKAGE_OVERLAYS += $(COMMON_FOLDER)/overlay
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
+PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # Audio Packages
 PRODUCT_PACKAGES += \
@@ -187,5 +187,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.use-awesome=true
 
 $(call inherit-product, vendor/huawei/viva/viva-vendor.mk)
-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
