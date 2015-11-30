@@ -89,10 +89,6 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9/bin/
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc
 
-# Enable dex-preoptimization to speed up first boot sequence
-WITH_DEXPREOPT := true
-WITH_DEXPREOPT_PIC := true
-
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
