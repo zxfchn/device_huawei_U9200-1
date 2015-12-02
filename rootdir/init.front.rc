@@ -322,6 +322,12 @@ on fs
 
     write /sys/class/backlight/lcd/brightness 126
 
+   # access to frame buffers and corresponding overlays
+   chown system system /sys/devices/platform/omapfb/graphics/fb0/overlays
+   chown system system /sys/devices/platform/omapfb/graphics/fb1/overlays
+   # Give TCMD write access to graphic fb0 file for hdmi rendering path setting on ICS
+   chmod 0660 /sys/devices/platform/omapfb/graphics/fb0/overlays
+
 service pvrsrvinit /system/bin/pvrsrvinit
     class core
     user root
