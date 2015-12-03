@@ -97,6 +97,10 @@ PRODUCT_PACKAGES += \
     optimizedb \
     optimizestorage
 
+# Post init script
+PRODUCT_PACKAGES += \
+    post-init.sh
+
 # Network tools
 PRODUCT_PACKAGES += \
     libpcap \

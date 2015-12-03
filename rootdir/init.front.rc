@@ -328,6 +328,8 @@ on fs
    # Give TCMD write access to graphic fb0 file for hdmi rendering path setting on ICS
    chmod 0660 /sys/devices/platform/omapfb/graphics/fb0/overlays
 
+    start postinit
+
 service pvrsrvinit /system/bin/pvrsrvinit
     class core
     user root
@@ -463,6 +465,12 @@ service gpsd /system/bin/glgps -c /system/etc/gpsconfig.xml
     class main
     user root
     group system inet net_raw sdcard_rw
+
+service postinit /sbin/post-init.sh
+    class main
+    user root
+    disabled
+    oneshot
 
 on charger
     mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/system /system ro
