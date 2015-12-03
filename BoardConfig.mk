@@ -156,6 +156,7 @@ BOARD_SEPOLICY_UNION += \
     imcdownload_app.te \
     init.te \
     injection_nv.te \
+    kernel.te \
     mediaserver.te \
     pvrsrvinit.te \
     rild.te \
