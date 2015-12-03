@@ -57,7 +57,7 @@ PRODUCT_COPY_FILES += \
 
 # init.d
 PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/prebuilt/etc/init.d/11frandom:system/etc/init.d/11frandom
+    $(COMMON_FOLDER)/utilities/init.d/11frandom:system/etc/init.d/11frandom
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
