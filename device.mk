@@ -56,7 +56,7 @@ PRODUCT_COPY_FILES += \
 
 # init.d
 PRODUCT_COPY_FILES += \
-    $(COMMON_FOLDER)/prebuilt/etc/init.d/11frandom:system/etc/init.d/11frandom
+    $(COMMON_FOLDER)/utilities/init.d/11frandom:system/etc/init.d/11frandom
 
 # Media / Audio
 PRODUCT_COPY_FILES += \
@@ -95,6 +95,10 @@ PRODUCT_PACKAGES += \
     remount \
     optimizedb \
     optimizestorage
+
+# Post init script
+PRODUCT_PACKAGES += \
+    post-init.sh
 
 # Network tools
 PRODUCT_PACKAGES += \

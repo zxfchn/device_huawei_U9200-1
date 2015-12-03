@@ -43,6 +43,8 @@ TARGET_BOARD_OMAP_CPU := 4460
 TARGET_BOOTLOADER_BOARD_NAME := viva
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_VFP := true
 
 # For RIL
 TARGET_NEEDS_BIONIC_MD5 := true
@@ -89,9 +91,6 @@ KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../linaro-4.9/bin/
 
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc
-
-# Enable dex-preoptimization to speed up first boot sequence
-#WITH_DEXPREOPT := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
@@ -158,6 +157,7 @@ BOARD_SEPOLICY_UNION += \
     imcdownload_app.te \
     init.te \
     injection_nv.te \
+    kernel.te \
     mediaserver.te \
     pvrsrvinit.te \
     rild.te \

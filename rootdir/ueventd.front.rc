@@ -65,3 +65,6 @@
 # frandom permissions
 /dev/frandom           0666  root        root
 /dev/erandom           0666  root        root
+
+/dev/graphics/fb0      0660  system      system
+/dev/graphics/fb1      0660  system      system
