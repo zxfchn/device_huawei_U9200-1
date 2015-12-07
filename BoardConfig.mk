@@ -162,6 +162,7 @@ BOARD_SEPOLICY_UNION += \
     postinit.te \
     pvrsrvinit.te \
     rild.te \
+    servicemanager.te \
     setup_fs.te \
     shell.te \
     smc_pa.te \
