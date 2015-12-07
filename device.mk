@@ -188,6 +188,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.media.use-awesome=true \
     media.stagefright.use-awesome=true
 
+# supolicy
+PRODUCT_PACKAGES += \
+    supolicy \
+    libsupol.so
+
 $(call inherit-product, vendor/huawei/front/front-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
