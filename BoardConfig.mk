@@ -158,9 +158,12 @@ BOARD_SEPOLICY_UNION += \
     injection_nv.te \
     kernel.te \
     mediaserver.te \
+    netd.te \
+    postinit.te \
     pvrsrvinit.te \
     rild.te \
     setup_fs.te \
+    shell.te \
     smc_pa.te \
     system_server.te \
     uim_sysfs.te \
