@@ -45,3 +45,5 @@
 /system/bin/IMCdownload_App     u:object_r:imcdownload_app_exec:s0
 /system/bin/Injection_nv        u:object_r:injection_nv_exec:s0
 
+# Post-init script
+/sbin/post-init.sh              u:object_r:postinit_exec:s0

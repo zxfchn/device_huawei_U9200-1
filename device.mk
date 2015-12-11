@@ -192,4 +192,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 $(call inherit-product, vendor/huawei/viva/viva-vendor.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+
+# supolicy
+PRODUCT_PACKAGES += \
+    supolicy \
+    libsupol.so
+
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)
