@@ -359,6 +359,7 @@ service tf_daemon /system/bin/tf_daemon \
         class main
         user drmrpc
         group drmrpc
+        disabled
 
 service smc_pa_wvdrm /system/bin/smc_pa_ctrl \
         -c /vendor/etc/smc_normal_world_android_cfg.ini \
@@ -367,6 +368,7 @@ service smc_pa_wvdrm /system/bin/smc_pa_ctrl \
         user drmrpc
         group drmrpc
         oneshot
+        disabled
 
 service battery_charger /sbin/healthd -c
     class charger
