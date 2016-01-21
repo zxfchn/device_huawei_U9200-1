@@ -26,6 +26,8 @@ VENDOR_DIR := vendor/huawei/front/proprietary
 # inherit from the proprietary version
 -include vendor/huawei/front/BoardConfigVendor.mk
 
+BOARD_HARDWARE_CLASS := $(OMAP4_NEXT_FOLDER)/cmhw/
+
 # Camera
 TI_CAMERAHAL_USES_LEGACY_DOMX_DCC := true
 TI_CAMERAHAL_MAX_CAMERAS_SUPPORTED := 2
