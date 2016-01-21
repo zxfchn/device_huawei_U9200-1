@@ -164,16 +164,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # SGX540 is slower with the scissor optimization enabled
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hwui.disable_scissor_opt=true \
+    ro.hwui.disable_scissor_opt=true
 
 # Low-RAM optimizations
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.config.low_ram=true \
-    persist.sys.force_highendgfx=true \
     dalvik.vm.jit.codecachesize=0 \
+    persist.sys.force_highendgfx=true \
     config.disable_atlas=true \
     ro.config.max_starting_bg=8 \
-    ro.sys.fw.bg_apps_limit=16
+    ro.sys.fw.bg_apps_limit=16 \
+    dalvik.vm.dex2oat-flags=--no-watch-dog
 
 # Disabling strict mode
 PRODUCT_PROPERTY_OVERRIDES += \
