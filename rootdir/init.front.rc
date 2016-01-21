@@ -89,8 +89,8 @@ on property:sys.boot_completed=1
     # negligible and may help in case the device is under extreme memory pressure.
     write /proc/sys/vm/page-cluster 0
 
-    # lower swappiness when using swap
-    write /proc/sys/vm/swappiness 10
+    # swappiness when using swap
+    write /proc/sys/vm/swappiness 100
 
     # Mount zRAM
     swapon_all /fstab.front
