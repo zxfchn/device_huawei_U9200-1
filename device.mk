@@ -176,6 +176,9 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.sys.fw.bg_apps_limit=16 \
     dalvik.vm.dex2oat-flags=--no-watch-dog
 
+ADDITIONAL_BUILD_PROPERTIES += \
+    ro.com.android.dataroaming=false
+
 # Disabling strict mode
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.visual=0 \
