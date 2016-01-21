@@ -35,10 +35,10 @@ on init
     mkdir /factory 0775 radio radio
 
     # nvm
-    mkdir /modem 0775 system radio
-    mkdir /modem/modem_image 0775 system radio
-    mkdir /modem/nvm1 0775 system radio
-    mkdir /modem/nvm2 0775 system radio
+    mkdir /modem 0775 radio radio
+    mkdir /modem/modem_image 0775 radio radio
+    mkdir /modem/nvm1 0775 radio radio
+    mkdir /modem/nvm2 0775 radio radio
 
     # KSM
     write /sys/kernel/mm/ksm/pages_to_scan 100
@@ -109,9 +109,6 @@ on fs
     chmod 0777 /dev/cpuctl/fg_boost/tasks
     write /dev/cpuctl/fg_boost/cpu.shares 1024
 
-    # change permissions for gamma settings
-    chmod 0666 /sys/devices/platform/omapdss/manager0/gamma
-
     # Audience
     chown media media /dev/audience_es305
 
@@ -130,10 +127,110 @@ on fs
     chmod 0444 /system/usr/keychars/omap4-keypad.kcm.bin
 
     # Video permissions
+    chmod 0660 /sys/devices/platform/omapdss/overlay0/zorder
+    chown system system /sys/devices/platform/omapdss/overlay0/zorder
+    # change permissions for display CABC mode
+    chmod 0660 /sys/devices/omapdss/display0/cabc_mode
     chown system system /sys/devices/omapdss/display0/cabc_mode
+    # change permissions for overlay managers and display devices
+    chmod 0660 /sys/devices/platform/omapdss/display0/enabled
+    chmod 0660 /sys/devices/platform/omapdss/display1/enabled
+    chmod 0660 /sys/devices/platform/omapdss/display2/enabled
+    chmod 0660 /sys/devices/platform/omapdss/display3/enabled
+    chmod 0660 /sys/devices/platform/omapdss/display0/name
+    chmod 0660 /sys/devices/platform/omapdss/display1/name
+    chmod 0660 /sys/devices/platform/omapdss/display2/name
+    chmod 0660 /sys/devices/platform/omapdss/display3/name
+    chmod 0660 /sys/devices/platform/omapdss/overlay0/manager
+    chmod 0660 /sys/devices/platform/omapdss/overlay1/manager
+    chmod 0660 /sys/devices/platform/omapdss/overlay2/manager
+    chmod 0660 /sys/devices/platform/omapdss/overlay3/manager
+    chmod 0660 /sys/devices/platform/omapdss/overlay0/zorder
+    chmod 0660 /sys/devices/platform/omapdss/overlay1/zorder
+    chmod 0660 /sys/devices/platform/omapdss/overlay2/zorder
+    chmod 0660 /sys/devices/platform/omapdss/overlay3/zorder
+    chown system system /sys/devices/platform/omapdss/display0/enabled
+    chown system system /sys/devices/platform/omapdss/display1/enabled
+    chown system system /sys/devices/platform/omapdss/display2/enabled
+    chown system system /sys/devices/platform/omapdss/display3/enabled
+    chown system system /sys/devices/platform/omapdss/display0/name
+    chown system system /sys/devices/platform/omapdss/display1/name
+    chown system system /sys/devices/platform/omapdss/display2/name
+    chown system system /sys/devices/platform/omapdss/display3/name
+    chown system system /sys/devices/platform/omapdss/overlay0/manager
+    chown system system /sys/devices/platform/omapdss/overlay1/manager
+    chown system system /sys/devices/platform/omapdss/overlay2/manager
+    chown system system /sys/devices/platform/omapdss/overlay3/manager
+    chown system system /sys/devices/platform/omapdss/overlay0/zorder
+    chown system system /sys/devices/platform/omapdss/overlay1/zorder
+    chown system system /sys/devices/platform/omapdss/overlay2/zorder
+    chown system system /sys/devices/platform/omapdss/overlay3/zorder
+    # access to frame buffers and corresponding overlays
+    chown system system /sys/devices/platform/omapfb/graphics/fb0/overlays
+    chown system system /sys/devices/platform/omapfb/graphics/fb1/overlays
+    chown system system /sys/devices/platform/omapfb/graphics/fb2/overlays
+    # Give TCMD write access to graphic fb0 file for hdmi rendering path setting on ICS
+    chmod 0660 /sys/devices/platform/omapfb/graphics/fb0/overlays
+    # change permissions for manager tranparency parameters
+    chmod 0660 /sys/devices/platform/omapdss/manager0/name
+    chmod 0660 /sys/devices/platform/omapdss/manager0/display
+    chmod 0660 /sys/devices/platform/omapdss/manager0/trans_key_value
+    chmod 0660 /sys/devices/platform/omapdss/manager0/trans_key_type
+    chmod 0660 /sys/devices/platform/omapdss/manager0/trans_key_enabled
+    chmod 0660 /sys/devices/platform/omapdss/manager1/name
+    chmod 0660 /sys/devices/platform/omapdss/manager1/display
+    chmod 0660 /sys/devices/platform/omapdss/manager1/trans_key_value
+    chmod 0660 /sys/devices/platform/omapdss/manager1/trans_key_type
+    chmod 0660 /sys/devices/platform/omapdss/manager1/trans_key_enabled
+    chmod 0660 /sys/devices/platform/omapdss/manager2/name
+    chmod 0660 /sys/devices/platform/omapdss/manager2/display
+    chmod 0660 /sys/devices/platform/omapdss/manager2/trans_key_value
+    chmod 0660 /sys/devices/platform/omapdss/manager2/trans_key_type
+    chmod 0660 /sys/devices/platform/omapdss/manager2/trans_key_enabled
+    chmod 0660 /sys/devices/platform/omapdss/overlay0/enabled
+    chmod 0660 /sys/devices/platform/omapdss/overlay1/enabled
+    chmod 0660 /sys/devices/platform/omapdss/overlay2/enabled
+    chmod 0660 /sys/devices/platform/omapdss/overlay3/enabled
+    chown system system /sys/devices/platform/omapdss/manager0/name
+    chown system system /sys/devices/platform/omapdss/manager0/display
+    chown system system /sys/devices/platform/omapdss/manager0/trans_key_value
+    chown system system /sys/devices/platform/omapdss/manager0/trans_key_type
+    chown system system /sys/devices/platform/omapdss/manager0/trans_key_enabled
+    chown system system /sys/devices/platform/omapdss/manager1/name
+    chown system system /sys/devices/platform/omapdss/manager1/display
+    chown system system /sys/devices/platform/omapdss/manager1/trans_key_value
+    chown system system /sys/devices/platform/omapdss/manager1/trans_key_type
+    chown system system /sys/devices/platform/omapdss/manager1/trans_key_enabled
+    chown system system /sys/devices/platform/omapdss/manager2/name
+    chown system system /sys/devices/platform/omapdss/manager2/display
+    chown system system /sys/devices/platform/omapdss/manager2/trans_key_value
+    chown system system /sys/devices/platform/omapdss/manager2/trans_key_type
+    chown system system /sys/devices/platform/omapdss/manager2/trans_key_enabled
+    chown system system /sys/devices/platform/omapdss/overlay0/enabled
+    chown system system /sys/devices/platform/omapdss/overlay1/enabled
+    chown system system /sys/devices/platform/omapdss/overlay2/enabled
+    chown system system /sys/devices/platform/omapdss/overlay3/enabled
+    # change permissions for display timings to get the resolutions
+    chmod 0660 /sys/devices/platform/omapdss/display0/timings
+    chmod 0660 /sys/devices/platform/omapdss/display1/timings
+    chmod 0660 /sys/devices/platform/omapdss/display2/timings
+    chmod 0660 /sys/devices/platform/omapdss/display3/timings
+    chown system system /sys/devices/platform/omapdss/display0/timings
+    chown system system /sys/devices/platform/omapdss/display1/timings
+    chown system system /sys/devices/platform/omapdss/display2/timings
+    chown system system /sys/devices/platform/omapdss/display3/timings
+    # change permissions for gamma settings
+    chmod 0666 /sys/devices/platform/omapdss/manager0/gamma
+    # Change permission of secret_off to allow system access
+    chmod 0660 /sys/devices/omapdss/display0/secret_off
+    chown system system /sys/devices/omapdss/display0/secret_off
+    # SGX
     chown system system /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit
     chmod 0666 /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit
     write /sys/devices/platform/omap/pvrsrvkm.0/sgxfreq/frequency_limit 153600000
+
+    # Temp. sensor
+    chown system system /sys/devices/platform/omap/pcb_temp_sensor.0/temp1_input
 
     #Hardware tunables
     chown root system /sys/devices/platform/omapdss/manager0/cpr_coef
@@ -151,38 +248,23 @@ on fs
 
     # Change the permissions for flashless download app
     chmod 0660 /sys/devices/virtual/usbswitch/usbsw/swstate
-    chown radio radio /sys/devices/virtual/usbswitch/usbsw/swstate
+    chown system system /sys/devices/virtual/usbswitch/usbsw/swstate
 
     # Radio
-    chmod 0660 /modem/modem_image/HWT6260.fls
-    chmod 0660 /modem/nvm1/calib.nvm
-    chmod 0660 /modem/nvm1/dynamic.nvm
-    chmod 0660 /modem/nvm1/static.nvm
-    chmod 0660 /modem/modem_image/HWT6260.fls.fls
-
-    chown system radio /modem/nvm1
-    chown system radio /modem/nvm2
-    chown system radio /modem/modem_image
-    chown system radio /modem/modem_image/HWT6260.fls
-    chown system radio /modem/nvm1/calib.nvm
-    chown system radio /modem/nvm1/dynamic.nvm
-    chown system radio /modem/nvm1/static.nvm
-    chown system radio /modem/modem_image/HWT6260.fls.fls
-
     chmod 0664 /sys/devices/platform/xmm_boot/state
     chmod 0660 /sys/devices/platform/xmm_boot/io
     chmod 0660 /sys/devices/platform/xmm_boot/power
-    chown system radio /sys/devices/platform/xmm_boot/state
-    chown system radio /sys/devices/platform/xmm_boot/io
-    chown system radio /sys/devices/platform/xmm_boot/power
+    chown radio radio /sys/devices/platform/xmm_boot/state
+    chown radio radio /sys/devices/platform/xmm_boot/io
+    chown radio radio /sys/devices/platform/xmm_boot/power
     chmod 0660 /sys/devices/platform/xmm_boot/cp_shutdown
-    chown system radio /sys/devices/platform/xmm_boot/cp_shutdown
+    chown radio radio /sys/devices/platform/xmm_boot/cp_shutdown
     chmod 0660 /sys/devices/platform/xmm_boot/flashless
     chmod 0660 /sys/devices/platform/xmm_boot/hsimode
     chmod 0660 /sys/devices/platform/xmm_boot/hsi_drvmode
-    chown system radio /sys/devices/platform/xmm_boot/flashless
-    chown system radio /sys/devices/platform/xmm_boot/hsimode
-    chown system radio /sys/devices/platform/xmm_boot/hsi_drvmode
+    chown radio radio /sys/devices/platform/xmm_boot/flashless
+    chown radio radio /sys/devices/platform/xmm_boot/hsimode
+    chown radio radio /sys/devices/platform/xmm_boot/hsi_drvmode
 
     chown system system /sys/bus/i2c/drivers/cma3000_accl/4-001c
     chown system system /sys/bus/i2c/drivers/cma3000_accl/4-001c/enable
@@ -328,13 +410,14 @@ on fs
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/state
     chmod 0664 /sys/bus/i2c/drivers/bq27510-battery/gaugelog
 
+    chmod 0644 /sys/devices/system/cpu/cpu0/cpufreq/screen_off_max_freq
+
+    # Average brightness on boot
     write /sys/class/backlight/lcd/brightness 126
 
-   # access to frame buffers and corresponding overlays
-   chown system system /sys/devices/platform/omapfb/graphics/fb0/overlays
-   chown system system /sys/devices/platform/omapfb/graphics/fb1/overlays
-   # Give TCMD write access to graphic fb0 file for hdmi rendering path setting on ICS
-   chmod 0660 /sys/devices/platform/omapfb/graphics/fb0/overlays
+    # Vibrator
+    chown system system /sys/class/timed_output/vibrator/enable
+    chmod 0664 /sys/class/timed_output/vibrator/enable
 
     start postinit
 

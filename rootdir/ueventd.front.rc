@@ -3,7 +3,7 @@
 
 #for DSSCOMP
 /dev/dsscomp           0666  system      system
-/dev/tiler             0666  system      system
+/dev/tiler             0777  system      system
 
 # for SYSLINK
 /dev/rpmsg-omx0        0660  drmrpc      drmrpc
@@ -28,7 +28,7 @@
 # fuse
 /dev/fuse              0660  system      system
 
-/dev/xmd-tty0          0660  system      radio
+/dev/xmd-tty0          0660  radio       radio
 /dev/xmd-tty1          0660  radio       radio
 /dev/xmd-tty2          0660  radio       radio
 /dev/xmd-tty3          0660  radio       radio
@@ -41,10 +41,10 @@
 /dev/xmd-tty10         0660  radio       radio
 /dev/xmd-tty11         0660  radio       radio
 
-/dev/ttyO0             0660  system      radio
-/dev/xmd-boot0         0660  system      radio
+/dev/ttyO0             0660  media       media
+/dev/xmd-boot0         0660  radio       radio
 
-/dev/nve0              0660  system      radio
+/dev/nve0              0660  system      system
 
 # change permissions for ION driver
 /dev/ion               0777  root        root
@@ -56,9 +56,9 @@
 /dev/i2c-2             0660  media       media
 
 # nvm
-/modem/modem_image/*   0660  system      radio
-/modem/nvm1/*          0660  system      radio
-/modem/nvm2/*          0660  system      radio
+/modem/modem_image/*   0660  radio       radio
+/modem/nvm1/*          0660  radio       radio
+/modem/nvm2/*          0660  radio       radio
 
 /dev/bus/usb/*         0660  system      usb
 
