@@ -175,9 +175,6 @@ ADDITIONAL_BUILD_PROPERTIES += \
     ro.config.max_starting_bg=8 \
     ro.sys.fw.bg_apps_limit=16
 
-# we have enough storage space to hold precise GC data
-PRODUCT_TAGS += dalvik.gc.type-precise
-
 # Disabling strict mode
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.visual=0 \
