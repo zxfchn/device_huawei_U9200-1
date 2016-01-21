@@ -370,7 +370,7 @@ service smc_pa_wvdrm /system/bin/smc_pa_ctrl \
         oneshot
         disabled
 
-service battery_charger /sbin/healthd -c
+service charger /sbin/healthd -c
     class charger
     critical
     seclabel u:r:healthd:s0
