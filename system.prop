@@ -31,7 +31,6 @@ telephony.lteOnGsmDevice=0
 ro.use_data_netmgrd=true
 persist.data.netmgrd.qos.enable=false
 persist.radio.add_power_save=1
-persist.radio.apm_sim_not_pwdn=1
 ro.ril.disable.power.collapse=0
 #
 # Huawei RIL
