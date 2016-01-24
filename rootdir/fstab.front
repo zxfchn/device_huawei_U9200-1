@@ -23,7 +23,7 @@
 #/dev/block/platform/omap/omap_hsmmc.1/by-name/modemnvm2   /modem/nvm2        ext4  noatime,nosuid,nodev,nomblk_io_submit            wait
 
 # zRAM
-/dev/block/zram0                                          none         swap  defaults  zramsize=67108864
+/dev/block/zram0                                          none         swap  defaults  zramsize=268435456,zramstreams=2
 
 # VOLD mount points
 /devices/platform/omap/omap_hsmmc.0/mmc_host/mmc1*        auto         auto  defaults  voldmanaged=sdcard1:auto,noemulatedsd
