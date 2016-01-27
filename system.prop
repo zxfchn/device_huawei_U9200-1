@@ -13,11 +13,6 @@ ro.config.sim_hot_swap=true
 audioril.lib=libhuawei-audio-ril.so
 modem.audio=1
 #
-# Default network type.
-# 0 => WCDMA preferred.
-# 2 => WCDMA only
-ro.telephony.default_network=2
-#
 # hsdpa+
 ro.config.hspap_hsdpa_open=1
 ro.ril.hsxpa=2
