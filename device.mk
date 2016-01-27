@@ -166,6 +166,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.disable_scissor_opt=true
 
+# I/O Scheduler
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.io.scheduler=bfq
+
 # Low-RAM optimizations
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.config.low_ram=true \
