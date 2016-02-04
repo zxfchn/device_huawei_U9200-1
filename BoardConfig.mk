@@ -88,7 +88,7 @@ BOARD_KERNEL_PAGESIZE := 2048
 TARGET_KERNEL_CONFIG := front_defconfig
 TARGET_KERNEL_SOURCE := kernel/huawei/front
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/../../linaro-4.9/bin/
-#BOARD_KERNEL_CMDLINE += enforcing=0 androidboot.selinux=permissive
+#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 
 # Use dlmalloc
 MALLOC_IMPL := dlmalloc
