@@ -18,4 +18,6 @@
 <resources>
     <!-- Disable search bar -->
     <bool name="preferences_interface_homescreen_search_default">false</bool>
+    <!-- Expand statusbar when sweep down on screen -->
+    <bool name="preferences_interface_homescreen_expand_statusbar_default">true</bool>
 </resources>
