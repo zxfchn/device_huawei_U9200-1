@@ -1,0 +1,41 @@
+
+project packages/apps/Trebuchet/
+diff --git a/packages/apps/Trebuchet/res/xml/default_workspace_4x4.xml b/packages/apps/Trebuchet/res/xml/default_workspace_4x4.xml
+index 5970f12..f0173ad 100644
+--- a/packages/apps/Trebuchet/res/xml/default_workspace_4x4.xml
++++ b/packages/apps/Trebuchet/res/xml/default_workspace_4x4.xml
+@@ -208,7 +208,7 @@
+             launcher:packageName="com.cyngn.cameranext"
+             launcher:className="com.android.camera.CameraLauncher" />
+         <favorite
+-            launcher:packageName="com.android.camera2"
++            launcher:packageName="org.cyanogenmod.snap"
+             launcher:className="com.android.camera.CameraLauncher" />
+     </resolve>
+ 
+diff --git a/packages/apps/Trebuchet/res/xml/default_workspace_5x5.xml b/packages/apps/Trebuchet/res/xml/default_workspace_5x5.xml
+index 5839438..c4244ed 100644
+--- a/packages/apps/Trebuchet/res/xml/default_workspace_5x5.xml
++++ b/packages/apps/Trebuchet/res/xml/default_workspace_5x5.xml
+@@ -208,7 +208,7 @@
+             launcher:packageName="com.cyngn.cameranext"
+             launcher:className="com.android.camera.CameraLauncher" />
+         <favorite
+-            launcher:packageName="com.android.camera2"
++            launcher:packageName="org.cyanogenmod.snap"
+             launcher:className="com.android.camera.CameraLauncher" />
+     </resolve>
+ 
+diff --git a/packages/apps/Trebuchet/res/xml/default_workspace_5x6.xml b/packages/apps/Trebuchet/res/xml/default_workspace_5x6.xml
+index 81a1ef7..5ed75cd 100644
+--- a/packages/apps/Trebuchet/res/xml/default_workspace_5x6.xml
++++ b/packages/apps/Trebuchet/res/xml/default_workspace_5x6.xml
+@@ -208,7 +208,7 @@
+             launcher:packageName="com.cyngn.cameranext"
+             launcher:className="com.android.camera.CameraLauncher" />
+         <favorite
+-            launcher:packageName="com.android.camera2"
++            launcher:packageName="org.cyanogenmod.snap"
+             launcher:className="com.android.camera.CameraLauncher" />
+     </resolve>
+ 
