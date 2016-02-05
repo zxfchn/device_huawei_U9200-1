@@ -48,6 +48,10 @@ PRODUCT_PACKAGES += \
     memtrack.omap4 \
     power.front
 
+# Replace Camera2 to Snap from CM13
+PRODUCT_PACKAGES += \
+    Snap
+
 # Init scripts
 PRODUCT_COPY_FILES += \
     $(COMMON_FOLDER)/rootdir/init.front.rc:root/init.front.rc \
