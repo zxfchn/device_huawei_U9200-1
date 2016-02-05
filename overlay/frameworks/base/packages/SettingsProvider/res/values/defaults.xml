@@ -38,4 +38,8 @@
 
     <bool name="def_wifi_on">false</bool>
 
+    <!-- Comma-separated list of bluetooth, wifi, and cell. -->
+    <string name="def_airplane_mode_radios" translatable="false">cell,bluetooth,wifi</string>
+    <string name="airplane_mode_toggleable_radios" translatable="false">bluetooth,wifi</string>
+
 </resources>
