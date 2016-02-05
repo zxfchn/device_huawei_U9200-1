@@ -18,4 +18,6 @@
 <resources>
     <!-- Default large icons -->
     <bool name="config_largeIcons">true</bool>
+    <!-- Show unread number -->
+    <bool name="config_launcher_show_unread_number">true</bool>
 </resources>
