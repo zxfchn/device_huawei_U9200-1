@@ -16,5 +16,11 @@
         "repository": "ShevT/vendor_huawei_U9500",
         "revision": "cm-12.1",
         "target_path": "vendor/huawei/front"
+    },
+    {
+        "remote": "github",
+        "repository": "CyanogenMod/android_packages_apps_Snap",
+        "revision": "cm-13.0",
+        "target_path": "packages/apps/Snap"
     }
 ]
