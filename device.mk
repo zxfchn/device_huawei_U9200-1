@@ -48,7 +48,7 @@ PRODUCT_PACKAGES += \
     memtrack.omap4 \
     power.front
 
-# Replace Camera2 to Snap from CM13
+# Replace Camera2 to Snap
 PRODUCT_PACKAGES += \
     Snap
 
