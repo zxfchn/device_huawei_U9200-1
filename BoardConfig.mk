@@ -154,6 +154,7 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
     akmd8975.te \
     bluetooth.te \
+    debuggerd.te \
     device.te \
     domain.te \
     file_contexts \
