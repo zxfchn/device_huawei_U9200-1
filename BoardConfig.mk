@@ -100,8 +100,8 @@ WITH_DEXPREOPT_PIC := true
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
-# Use a small subset of system fonts to keep image size lower
-SMALLER_FONT_FOOTPRINT := true
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
 
 # Wifi related defines
 BOARD_WLAN_DEVICE                := bcmdhd
