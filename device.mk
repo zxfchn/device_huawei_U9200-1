@@ -192,11 +192,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.visual=0 \
     persist.sys.strictmode.disable=1
 
-# Use awesome player for now
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.media.use-awesome=true \
-    media.stagefright.use-awesome=true
-
 # supolicy
 PRODUCT_PACKAGES += \
     supolicy \
