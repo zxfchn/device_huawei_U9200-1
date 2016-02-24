@@ -95,7 +95,7 @@ MALLOC_IMPL := dlmalloc
 
 # Enable dex-preoptimization to speed up first boot sequence
 WITH_DEXPREOPT := true
-WITH_DEXPREOPT_PIC := true
+WITH_DEXPREOPT_BOOT_IMG_ONLY := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
