@@ -18,7 +18,7 @@
 #
 COMMON_FOLDER := device/huawei/viva
 
-$(call inherit-product, hardware/ti/omap4_front/omap4.mk)
+$(call inherit-product, hardware/ti/huawei-omap4/omap4.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 PRODUCT_CHARACTERISTICS := default
@@ -46,6 +46,10 @@ PRODUCT_PACKAGES += \
     camera.omap4 \
     memtrack.omap4 \
     power.front
+
+# Replace Camera2 to Snap
+PRODUCT_PACKAGES += \
+    Snap
 
 # Init scripts
 PRODUCT_COPY_FILES += \
@@ -167,14 +171,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hwui.disable_scissor_opt=true
 
+# I/O Scheduler
+PRODUCT_PROPERTY_OVERRIDES += \
+    sys.io.scheduler=bfq
+
 # Low-RAM optimizations
 ADDITIONAL_BUILD_PROPERTIES += \
     ro.config.low_ram=true \
     dalvik.vm.jit.codecachesize=0 \
     persist.sys.force_highendgfx=true \
     config.disable_atlas=true \
-    ro.config.max_starting_bg=8 \
-    ro.sys.fw.bg_apps_limit=16 \
     dalvik.vm.dex2oat-flags=--no-watch-dog
 
 ADDITIONAL_BUILD_PROPERTIES += \
@@ -186,17 +192,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.strictmode.visual=0 \
     persist.sys.strictmode.disable=1
 
-# Use awesome player for now
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.media.use-awesome=true \
-    media.stagefright.use-awesome=true
-
-$(call inherit-product, vendor/huawei/viva/viva-vendor.mk)
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
-
 # supolicy
 PRODUCT_PACKAGES += \
     supolicy \
     libsupol.so
 
+$(call inherit-product, vendor/huawei/viva/viva-vendor.mk)
+$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, hardware/broadcom/wlan/bcmdhd/firmware/bcm4330/device-bcm.mk)

@@ -2,8 +2,8 @@
 /dev/pvrsrvkm          0666  system      system
 
 #for DSSCOMP
-/dev/dsscomp           0666  system      system
-/dev/tiler             0777  system      system
+/dev/dsscomp           0660  system      system
+/dev/tiler             0660  system      system
 
 # for SYSLINK
 /dev/rpmsg-omx0        0660  drmrpc      drmrpc
@@ -47,7 +47,7 @@
 /dev/nve0              0660  system      system
 
 # change permissions for ION driver
-/dev/ion               0777  root        root
+/dev/ion               0770  media       graphics
 
 # change permissions for mtd device
 /dev/mtd/mtd0          0660  media       media

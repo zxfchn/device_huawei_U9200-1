@@ -21,7 +21,7 @@ COMMON_FOLDER := device/huawei/viva
 VENDOR_DIR := vendor/huawei/viva/proprietary
 
 # inherit from omap4
--include hardware/ti/omap4_front/BoardConfigCommon.mk
+-include hardware/ti/huawei-omap4/BoardConfigCommon.mk
 
 # inherit from the proprietary version
 -include vendor/huawei/viva/BoardConfigVendor.mk
@@ -29,10 +29,11 @@ VENDOR_DIR := vendor/huawei/viva/proprietary
 BOARD_HARDWARE_CLASS := $(OMAP4_NEXT_FOLDER)/cmhw/
 
 # Camera
+CAMERAHAL_HUAWEI_OMAP4 := true
+COMMON_GLOBAL_CFLAGS += -DCAMERAHAL_HUAWEI_OMAP4
 TI_CAMERAHAL_USES_LEGACY_DOMX_DCC := true
 TI_CAMERAHAL_MAX_CAMERAS_SUPPORTED := 2
 #TI_CAMERAHAL_DEBUG_ENABLED := true
-USE_CAMERA_STUB := false
 
 # OMX buffer reallocate
 BOARD_CANT_REALLOCATE_OMX_BUFFERS := true
@@ -96,13 +97,13 @@ MALLOC_IMPL := dlmalloc
 
 # Enable dex-preoptimization to speed up first boot sequence
 WITH_DEXPREOPT := true
-WITH_DEXPREOPT_PIC := true
+WITH_DEXPREOPT_BOOT_IMG_ONLY := true
 
 # Lights
 TARGET_PROVIDES_LIBLIGHTS := true
 
-# Use a small subset of system fonts to keep image size lower
-SMALLER_FONT_FOOTPRINT := true
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
 
 # Wifi related defines
 BOARD_WLAN_DEVICE                := bcmdhd
@@ -155,6 +156,7 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
     akmd8975.te \
     bluetooth.te \
+    debuggerd.te \
     device.te \
     domain.te \
     file_contexts \

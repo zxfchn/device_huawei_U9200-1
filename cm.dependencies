@@ -7,14 +7,20 @@
     },
     {
         "remote": "github",
-        "repository": "ShevT/android_hardware_ti_omap4",
+        "repository": "ShevT/android_hardware_ti_huawei-omap4",
         "revision": "cm-12.1",
-        "target_path": "hardware/ti/omap4_front"
+        "target_path": "hardware/ti/huawei-omap4"
     },
     {
         "remote": "github",
         "repository": "ShevT/vendor_huawei_U9500",
         "revision": "cm-12.1",
         "target_path": "vendor/huawei/front"
+    },
+    {
+        "remote": "github",
+        "repository": "ShevT/android_packages_apps_Snap",
+        "revision": "cm-12.1",
+        "target_path": "packages/apps/Snap"
     }
 ]
