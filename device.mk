@@ -46,7 +46,8 @@ PRODUCT_PACKAGES += \
     gralloc.omap4.so \
     camera.omap4 \
     memtrack.omap4 \
-    power.front
+    power.front \
+    lights.omap4
 
 # Replace Camera2 to Snap
 PRODUCT_PACKAGES += \
