@@ -2,6 +2,3 @@
 # Modem
 ro.config.hw_flashless=true
 rild.libargs=-d /dev/xmd-tty0
-#
-# GPS
-ro.config.hw_gps=47511

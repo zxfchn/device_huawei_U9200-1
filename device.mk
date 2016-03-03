@@ -52,6 +52,10 @@ PRODUCT_PACKAGES += \
     supolicy \
     libsupol.so
 
+# GPS
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.config.hw_gps=47511
+
 # LCD density
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=320
