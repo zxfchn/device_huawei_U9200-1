@@ -52,4 +52,8 @@ PRODUCT_PACKAGES += \
     supolicy \
     libsupol.so
 
+# LCD density
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=320
+
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
