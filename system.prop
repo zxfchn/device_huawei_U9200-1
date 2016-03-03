@@ -1,35 +1,7 @@
 #
 # Modem
 ro.config.hw_flashless=true
-ro.telephony.ril_class=RIL
-rild.libpath=/system/lib/libxgold-ril.so
 rild.libargs=-d /dev/xmd-tty0
-mobiledata.interfaces=rmnet0
-ro.ril.enable.dtm=1
-gsm.sim.num.pin2=3
-gsm.sim.num.puk2=10
-ro.config.endstksession=true
-ro.config.sim_hot_swap=true
-audioril.lib=libhuawei-audio-ril.so
-modem.audio=1
-#
-# hsdpa+
-ro.config.hspap_hsdpa_open=1
-ro.ril.hsxpa=2
-ro.ril.gprsclass=10
-ro.ril.hsdpa.category=14
-#
-# Other phone network
-ro.telephony.call_ring.delay=1
-ring.delay=1
-telephony.lteOnGsmDevice=0
-ro.use_data_netmgrd=true
-persist.data.netmgrd.qos.enable=false
-persist.radio.add_power_save=1
-ro.ril.disable.power.collapse=0
-#
-# Huawei RIL
-ro.config.hw_gcf_mms = true
 #
 # GPS
 ro.config.hw_gps=47511
