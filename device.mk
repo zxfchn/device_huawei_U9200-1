@@ -25,7 +25,9 @@ $(call inherit-product, hardware/ti/huawei-omap4/omap4.mk)
 $(call inherit-product, $(DEVCOMMON_PATH)/device-common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/overlay \
+    $(DEVCOMMON_PATH)/overlay/cm
 
 # Device uses high-density artwork where available
 PRODUCT_AAPT_CONFIG := normal
