@@ -14,9 +14,6 @@ dolby.audio.hdmi.channels=0
 #
 ro.sf.lcd_density=320
 #
-wifi.interface=wlan0
-wlan.wfd.hdcp=disable
-#
 # fix deaf microphone
 ro.config.dualmic=true
 #
