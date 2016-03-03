@@ -5,7 +5,6 @@ rild.libargs=-d /dev/xmd-tty0
 #
 # GPS
 ro.config.hw_gps=47511
-ro.ril.def.agps.mode=2
 #
 # LCD density
 ro.sf.lcd_density=320
