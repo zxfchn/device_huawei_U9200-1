@@ -15,9 +15,6 @@ dolby.audio.hdmi.channels=0
 ro.sf.lcd_density=320
 ro.opengles.version=131072
 #
-ro.config.hw_proximitySensor=true
-ro.config.hw_GSensorOptimize=true
-#
 wifi.interface=wlan0
 wlan.wfd.hdcp=disable
 #
