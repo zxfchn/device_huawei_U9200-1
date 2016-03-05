@@ -47,40 +47,6 @@ BOARD_SYSTEMIMAGE_PARTITION_SIZE := 939524096
 # 6329204736 - 16384 <encryption footer>
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 6329188352
 
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-    $(DEVICE_PATH)/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    akmd8975.te \
-    bluetooth.te \
-    debuggerd.te \
-    device.te \
-    domain.te \
-    file_contexts \
-    file.te \
-    genfs_contexts \
-    gpsd.te \
-    imcdownload_app.te \
-    init.te \
-    injection_nv.te \
-    kernel.te \
-    mediaserver.te \
-    netd.te \
-    postinit.te \
-    pvrsrvinit.te \
-    rild.te \
-    servicemanager.te \
-    setup_fs.te \
-    shell.te \
-    smc_pa.te \
-    system_app.te \
-    system_server.te \
-    uim_sysfs.te \
-    untrusted_app.te \
-    wpa_supplicant.te \
-    zygote.te
-
 # Recovery
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.front

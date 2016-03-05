@@ -1,2 +1,0 @@
-# Device types
-type rfkill_device, dev_type;
