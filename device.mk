@@ -47,15 +47,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
     $(LOCAL_PATH)/configs/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf
 
-# Post init script
-PRODUCT_PACKAGES += \
-    post-init.sh
-
-# supolicy
-PRODUCT_PACKAGES += \
-    supolicy \
-    libsupol.so
-
 # GPS
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.config.hw_gps=47511
