@@ -24,35 +24,15 @@ $(call inherit-product, vendor/huawei/front/front-vendor.mk)
 $(call inherit-product, hardware/ti/huawei-omap4/omap4.mk)
 $(call inherit-product, $(DEVCOMMON_PATH)/device-common.mk)
 $(call inherit-product, $(DEVCOMMON_PATH)/device-common_cm.mk)
+$(call inherit-product, $(DEVCOMMON_PATH)/front-common/device-common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 DEVICE_PACKAGE_OVERLAYS += \
     $(LOCAL_PATH)/overlay \
     $(DEVCOMMON_PATH)/overlay/cm
 
-# Device uses high-density artwork where available
-PRODUCT_AAPT_CONFIG := normal
-PRODUCT_AAPT_PREF_CONFIG := xhdpi
-
-# Init scripts
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/init.front.rc:root/init.front.rc \
-    $(LOCAL_PATH)/rootdir/init.front.usb.rc:root/init.front.usb.rc \
-    $(LOCAL_PATH)/rootdir/ueventd.front.rc:root/ueventd.front.rc \
-    $(LOCAL_PATH)/rootdir/fstab.front:root/fstab.front
-
 # Media / Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf \
-    $(LOCAL_PATH)/configs/audio/front_audio_config.conf:system/etc/huawei/audio/front_audio_config.conf \
-    $(LOCAL_PATH)/configs/audio/front_factory_audio_config.conf:system/etc/huawei/audio/front_factory_audio_config.conf
-
-# GPS
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.hw_gps=47511
-
-# LCD density
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=320
+    $(DEVCOMMON_PATH)/front-common/configs/audio/front_audio_config.conf:system/etc/huawei/audio/cm_front_audio_config.conf
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)

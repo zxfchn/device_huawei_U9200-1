@@ -26,30 +26,13 @@ VENDOR_DIR := vendor/huawei/front/proprietary
 -include hardware/ti/huawei-omap4/BoardConfigCommon.mk
 # inherit from common
 -include device/huawei/omap4-common/BoardConfigCommon.mk
+# inherit from front common
+-include device/huawei/omap4-common/front-common/BoardConfigCommon.mk
 
 BOARD_HARDWARE_CLASS := $(OMAP4_NEXT_FOLDER)/cmhw/
 
-# Platform
-TARGET_BOOTLOADER_BOARD_NAME := front
-
-# Kernel/Ramdisk
-TARGET_KERNEL_CONFIG := front_defconfig
-TARGET_KERNEL_SOURCE := kernel/huawei/front
-
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := $(DEVICE_PATH)/bluetooth/vnd_front.txt
-
-# fix this up by examining /proc/partitions on a running device. (value * 1024)
-BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 8388608
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 939524096
-# 6329204736 - 16384 <encryption footer>
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 6329188352
-
 # Recovery
 RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.front
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 BOARD_RECOVERY_SWIPE := true
 BOARD_HAS_NO_SELECT_BUTTON := true
