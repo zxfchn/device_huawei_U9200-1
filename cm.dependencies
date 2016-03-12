@@ -22,5 +22,11 @@
         "repository": "ShevT/android_packages_apps_Snap",
         "revision": "cm-12.1",
         "target_path": "packages/apps/Snap"
+    },
+    {
+        "remote": "github",
+        "repository": "ShevT/device_huawei_omap4-common",
+        "revision": "cm-12.1",
+        "target_path": "device/huawei/omap4-common"
     }
 ]
