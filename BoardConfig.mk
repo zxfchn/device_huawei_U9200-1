@@ -26,8 +26,8 @@ VENDOR_DIR := vendor/huawei/viva/proprietary
 -include hardware/ti/huawei-omap4/BoardConfigCommon.mk
 # inherit from common
 -include device/huawei/omap4-common/BoardConfigCommon.mk
-# inherit from front common
--include device/huawei/omap4-common/front-common/BoardConfigCommon.mk
+# inherit from viva common
+-include device/huawei/omap4-common/viva-common/BoardConfigCommon.mk
 
 BOARD_HARDWARE_CLASS := $(OMAP4_NEXT_FOLDER)/cmhw/
 
