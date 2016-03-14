@@ -22,4 +22,7 @@
 
 add_lunch_combo cm_front-userdebug
 add_lunch_combo cm_front-eng
+
+sh device/huawei/omap4-common/patches-common/applypatch.sh
+sh device/huawei/omap4-common/patches-cm/applypatch.sh
 sh device/huawei/viva/patches/applypatch.sh
