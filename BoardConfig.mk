@@ -30,10 +30,3 @@ VENDOR_DIR := vendor/huawei/front/proprietary
 -include device/huawei/omap4-common/front-common/BoardConfigCommon.mk
 
 BOARD_HARDWARE_CLASS := $(OMAP4_NEXT_FOLDER)/cmhw/
-
-# Recovery
-RECOVERY_FSTAB_VERSION := 2
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-BOARD_RECOVERY_SWIPE := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
