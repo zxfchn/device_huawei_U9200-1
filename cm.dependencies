@@ -3,7 +3,7 @@
         "remote": "github",
         "repository": "ShevT/android_kernel_d1_p1",
         "revision": "cm-12.1",
-        "target_path": "kernel/huawei/front"
+        "target_path": "kernel/huawei/viva"
     },
     {
         "remote": "github",
@@ -13,9 +13,9 @@
     },
     {
         "remote": "github",
-        "repository": "ShevT/vendor_huawei_U9500",
+        "repository": "d1z/vendor_huawei_U9200",
         "revision": "cm-12.1",
-        "target_path": "vendor/huawei/front"
+        "target_path": "vendor/huawei/viva"
     },
     {
         "remote": "github",
@@ -30,3 +30,4 @@
         "target_path": "device/huawei/omap4-common"
     }
 ]
+
