@@ -1,9 +1,9 @@
 #!/bin/sh
-#
-# applypatch.sh
-# apply patches
-#
 
+echo ""
+echo "***********************"
+echo "* Device tree patches *"
+echo "***********************"
 
 dir=`cd $(dirname $0) && pwd`
 top=$dir/../../../..
