@@ -35,4 +35,4 @@ DEVICE_PACKAGE_OVERLAYS += \
 PRODUCT_COPY_FILES += \
     $(DEVCOMMON_PATH)/viva-common/configs/audio/viva_audio_config.conf:system/etc/huawei/audio/cm_viva_audio_config.conf
 
-$(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
