@@ -1,10 +1,10 @@
 
 project vendor/cm/
 diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
-index 7f24319..04fc7ae 100644
+index b86ffee..2686562 100644
 --- a/vendor/cm/config/common.mk
 +++ b/vendor/cm/config/common.mk
-@@ -250,11 +250,6 @@ ifndef CM_BUILDTYPE
+@@ -249,11 +249,6 @@ ifndef CM_BUILDTYPE
      endif
  endif
  

@@ -14,10 +14,10 @@ Change-Id: I8c39b54a3aefc03513d30c6478bca9bbe3ddbe04
 
 project frameworks/base/
 diff --git a/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java b/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-index 5b54511..5bedad9 100644
+index 1ef905f..da1ef39 100644
 --- a/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
 +++ b/frameworks/base/policy/src/com/android/internal/policy/impl/PhoneWindowManager.java
-@@ -20,7 +20,7 @@ import android.app.ActivityManager;
+@@ -19,7 +19,7 @@ import android.app.ActivityManager;
  import android.app.ActivityManagerNative;
  import android.app.AppOpsManager;
  import android.app.IUiModeManager;
@@ -26,7 +26,7 @@ index 5b54511..5bedad9 100644
  import android.app.SearchManager;
  import android.app.StatusBarManager;
  import android.app.UiModeManager;
-@@ -6686,7 +6686,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+@@ -6640,7 +6640,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
          screenTurningOn(null);
      }
  
@@ -35,7 +35,7 @@ index 5b54511..5bedad9 100644
  
      /** {@inheritDoc} */
      @Override
-@@ -6705,7 +6705,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+@@ -6659,7 +6659,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                          theme = 0;
                      }
  
@@ -44,16 +44,16 @@ index 5b54511..5bedad9 100644
                          // This dialog will consume all events coming in to
                          // it, to avoid it trying to do things too early in boot.
                          @Override public boolean dispatchKeyEvent(KeyEvent event) {
-@@ -6733,8 +6733,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+@@ -6687,8 +6687,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                      } else {
-                         mBootMsgDialog.setTitle(R.string.android_start_mk_title);
+                         mBootMsgDialog.setTitle(R.string.android_start_title);
                      }
 -                    mBootMsgDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
 -                    mBootMsgDialog.setIndeterminate(true);
                      mBootMsgDialog.getWindow().setType(
                              WindowManager.LayoutParams.TYPE_BOOT_PROGRESS);
                      mBootMsgDialog.getWindow().addFlags(
-@@ -6745,6 +6743,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
+@@ -6699,6 +6697,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                      lp.screenOrientation = ActivityInfo.SCREEN_ORIENTATION_NOSENSOR;
                      mBootMsgDialog.getWindow().setAttributes(lp);
                      mBootMsgDialog.setCancelable(false);
