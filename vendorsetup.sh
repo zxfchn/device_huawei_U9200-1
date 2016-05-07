@@ -20,8 +20,8 @@
 # In particular, you can add lunch options with the add_lunch_combo
 # function: add_lunch_combo generic-eng
 
-add_lunch_combo cm_front-userdebug
-add_lunch_combo cm_front-eng
+add_lunch_combo cm_viva-userdebug
+add_lunch_combo cm_viva-eng
 
 sh device/huawei/omap4-common/patches-common/applypatch.sh
 sh device/huawei/omap4-common/patches-cm/applypatch.sh
