@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-COMMON_FOLDER := device/huawei/viva
+COMMON_FOLDER := device/huawei/omap4-common
 VENDOR_DIR := vendor/huawei/viva/proprietary
 
 # inherit from the proprietary version
@@ -25,8 +25,8 @@ VENDOR_DIR := vendor/huawei/viva/proprietary
 # inherit from omap4
 -include hardware/ti/huawei-omap4/BoardConfigCommon.mk
 # inherit from common
--include device/huawei/omap4-common/BoardConfigCommon.mk
+-include $(COMMON_FOLDER)/BoardConfigCommon.mk
 # inherit from viva common
--include device/huawei/omap4-common/viva-common/BoardConfigCommon.mk
+-include $(COMMON_FOLDER)/viva-common/BoardConfigCommon.mk
 
 BOARD_HARDWARE_CLASS := $(OMAP4_NEXT_FOLDER)/cmhw/
