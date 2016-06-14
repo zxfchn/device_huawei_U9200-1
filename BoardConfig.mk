@@ -30,3 +30,10 @@ VENDOR_DIR := vendor/huawei/viva/proprietary
 -include $(COMMON_FOLDER)/viva-common/BoardConfigCommon.mk
 
 BOARD_HARDWARE_CLASS := $(OMAP4_NEXT_FOLDER)/cmhw/
+
+# SELinux
+BOARD_SEPOLICY_DIRS += \
+    $(COMMON_PATH)/sepolicy-cm
+
+BOARD_SEPOLICY_UNION += \
+    untrusted_app-cm.te
