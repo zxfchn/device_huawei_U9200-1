@@ -36,4 +36,5 @@ BOARD_SEPOLICY_DIRS += \
     $(COMMON_PATH)/sepolicy-cm
 
 BOARD_SEPOLICY_UNION += \
+    recovery-cm.te \
     untrusted_app-cm.te
