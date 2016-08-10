@@ -1,0 +1,13 @@
+project vendor/cm/
+diff --git a/vendor/cm/config/common.mk b/vendor/cm/config/common.mk
+index 01c9c90..23c0f4f 100644
+--- a/vendor/cm/config/common.mk
++++ b/vendor/cm/config/common.mk
+@@ -151,7 +151,6 @@ PRODUCT_PACKAGES += \
+     CMFileManager \
+     Eleven \
+     LockClock \
+-    CMUpdater \
+     CMHome \
+     CyanogenSetupWizard \
+     CMSettingsProvider
