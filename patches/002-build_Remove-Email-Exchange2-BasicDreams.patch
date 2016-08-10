@@ -1,0 +1,24 @@
+I never used, and the place is occupied.
+
+project build/
+diff --git a/build/target/product/core.mk b/build/target/product/core.mk
+index a871780..5a48631 100644
+--- a/build/target/product/core.mk
++++ b/build/target/product/core.mk
+@@ -21,7 +21,6 @@
+ # core_tiny.mk in addition to core_minimal.mk.
+ 
+ PRODUCT_PACKAGES += \
+-    BasicDreams \
+     Browser \
+     Calculator \
+     Calendar \
+@@ -32,8 +31,6 @@ PRODUCT_PACKAGES += \
+     DeskClock \
+     DocumentsUI \
+     DownloadProviderUi \
+-    Email \
+-    Exchange2 \
+     ExternalStorageProvider \
+     FusedLocation \
+     InputDevices \
