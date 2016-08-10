@@ -25,3 +25,5 @@ else
 fi
 
 find . -name "*.orig" -delete
+
+chmod 0755 $top/vendor/cm/tools/*

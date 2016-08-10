@@ -1,0 +1,34 @@
+From 34d9f796ae3b0c53439a4c7018301e747728d7cc Mon Sep 17 00:00:00 2001
+From: Chet Kener <Cl3Kener@gmail.com>
+Date: Wed, 3 Dec 2014 21:17:26 -0500
+Subject: [PATCH] Introduce New Squisher/Opticharger for Lollipop (2/2)
+
+Signed-off-by: Chet Kener <Cl3Kener@gmail.com>
+Change-Id: I02b41274179cdc1793794fb11780ea60774e6e41
+---
+ core/Makefile | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+project build/
+diff --git a/build/core/Makefile b/build/core/Makefile
+index 9ab196a..d768c42 100644
+--- a/build/core/Makefile
++++ b/build/core/Makefile
+@@ -1038,7 +1038,14 @@ INTERNAL_SYSTEMIMAGE_FILES := $(filter $(TARGET_OUT)/%, \
+     $(PDK_FUSION_SYSIMG_FILES) \
+     $(RECOVERY_RESOURCE_ZIP))
+ 
+-FULL_SYSTEMIMAGE_DEPS := $(INTERNAL_SYSTEMIMAGE_FILES) $(INTERNAL_USERIMAGES_DEPS)
++systemimage-squisher: $(INTERNAL_SYSTEMIMAGE_FILES)
++	@echo -e "Optimizing PNG's to Shrink LP ROM Size !!"
++	$(hide) APKCERTS=$(APKCERTS_FILE) vendor/cm/tools/squisher
++
++.PHONY: systemimage-squisher
++
++FULL_SYSTEMIMAGE_DEPS := $(INTERNAL_SYSTEMIMAGE_FILES) $(INTERNAL_USERIMAGES_DEPS) systemimage-squisher
++
+ # -----------------------------------------------------------------
+ # installed file list
+ # Depending on anything that $(BUILT_SYSTEMIMAGE) depends on.
+--
+2.9.2
