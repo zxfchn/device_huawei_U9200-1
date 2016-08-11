@@ -1,0 +1,138 @@
+From 5ca616279d8c59511e5f6fbecee79d2b20fe92be Mon Sep 17 00:00:00 2001
+From: Elliott Hughes <enh@google.com>
+Date: Wed, 20 Aug 2014 13:11:58 -0700
+Subject: [PATCH] Simplify _ALIGN_TEXT.
+
+Bug: 16872067
+Change-Id: I2b622f252c21ce1b344c040f828ab3f4bf9b6c0a
+
+project bionic/
+diff --git a/bionic/libc/arch-arm/bionic/sigsetjmp.S b/bionic/libc/arch-arm/bionic/sigsetjmp.S
+index 7016f50..c0641c7 100644
+--- a/bionic/libc/arch-arm/bionic/sigsetjmp.S
++++ b/bionic/libc/arch-arm/bionic/sigsetjmp.S
+@@ -33,8 +33,6 @@
+  * SUCH DAMAGE.
+  */
+ 
+-#define _ALIGN_TEXT .align 0
+-
+ #include <private/bionic_asm.h>
+ #include <machine/setjmp.h>
+ 
+diff --git a/bionic/libc/arch-arm/include/machine/asm.h b/bionic/libc/arch-arm/include/machine/asm.h
+index 7954f05..3523268 100644
+--- a/bionic/libc/arch-arm/include/machine/asm.h
++++ b/bionic/libc/arch-arm/include/machine/asm.h
+@@ -38,9 +38,7 @@
+ #ifndef _ARM32_ASM_H_
+ #define _ARM32_ASM_H_
+ 
+-#ifndef _ALIGN_TEXT
+-# define _ALIGN_TEXT .align 0
+-#endif
++#define __bionic_asm_align 0
+ 
+ #undef __bionic_asm_custom_entry
+ #undef __bionic_asm_custom_end
+diff --git a/bionic/libc/arch-arm64/include/machine/asm.h b/bionic/libc/arch-arm64/include/machine/asm.h
+index 4bfabaf..d023e9d 100644
+--- a/bionic/libc/arch-arm64/include/machine/asm.h
++++ b/bionic/libc/arch-arm64/include/machine/asm.h
+@@ -38,9 +38,7 @@
+ #ifndef _AARCH64_ASM_H_
+ #define _AARCH64_ASM_H_
+ 
+-#ifndef _ALIGN_TEXT
+-# define _ALIGN_TEXT .align 0
+-#endif
++#define __bionic_asm_align 0
+ 
+ #undef __bionic_asm_function_type
+ #define __bionic_asm_function_type %function
+diff --git a/bionic/libc/arch-mips/include/machine/asm.h b/bionic/libc/arch-mips/include/machine/asm.h
+index 5eacde3..cdc7914 100644
+--- a/bionic/libc/arch-mips/include/machine/asm.h
++++ b/bionic/libc/arch-mips/include/machine/asm.h
+@@ -28,9 +28,7 @@
+ #ifndef _MIPS64_ASM_H
+ #define _MIPS64_ASM_H
+ 
+-#ifndef _ALIGN_TEXT
+-# define _ALIGN_TEXT .align 4
+-#endif
++#define __bionic_asm_align 4
+ 
+ #undef __bionic_asm_custom_entry
+ #undef __bionic_asm_custom_end
+diff --git a/bionic/libc/arch-mips64/include/machine/asm.h b/bionic/libc/arch-mips64/include/machine/asm.h
+index 5eacde3..cdc7914 100644
+--- a/bionic/libc/arch-mips64/include/machine/asm.h
++++ b/bionic/libc/arch-mips64/include/machine/asm.h
+@@ -28,9 +28,7 @@
+ #ifndef _MIPS64_ASM_H
+ #define _MIPS64_ASM_H
+ 
+-#ifndef _ALIGN_TEXT
+-# define _ALIGN_TEXT .align 4
+-#endif
++#define __bionic_asm_align 4
+ 
+ #undef __bionic_asm_custom_entry
+ #undef __bionic_asm_custom_end
+diff --git a/bionic/libc/arch-x86/include/machine/asm.h b/bionic/libc/arch-x86/include/machine/asm.h
+index 672493d..943f9dd 100644
+--- a/bionic/libc/arch-x86/include/machine/asm.h
++++ b/bionic/libc/arch-x86/include/machine/asm.h
+@@ -49,15 +49,6 @@
+ #define PIC_GOT(x)	x@GOT(%ebx)
+ #define PIC_GOTOFF(x)	x@GOTOFF(%ebx)
+ 
+-/* let kernels and others override entrypoint alignment */
+-#if !defined(_ALIGN_TEXT) && !defined(_KERNEL)
+-# ifdef _STANDALONE
+-#  define _ALIGN_TEXT .align 1
+-# elif defined __ELF__
+-#  define _ALIGN_TEXT .align 16
+-# else
+-#  define _ALIGN_TEXT .align 4
+-# endif
+-#endif
++#define __bionic_asm_align 16
+ 
+ #endif /* !_I386_ASM_H_ */
+diff --git a/bionic/libc/arch-x86_64/include/machine/asm.h b/bionic/libc/arch-x86_64/include/machine/asm.h
+index 06da39a..28cd08f 100644
+--- a/bionic/libc/arch-x86_64/include/machine/asm.h
++++ b/bionic/libc/arch-x86_64/include/machine/asm.h
+@@ -40,13 +40,6 @@
+ #define PIC_PLT(x)	x@PLT
+ #define PIC_GOT(x)	x@GOTPCREL(%rip)
+ 
+-/* let kernels and others override entrypoint alignment */
+-#ifndef _ALIGN_TEXT
+-# ifdef _STANDALONE
+-#  define _ALIGN_TEXT .align 4
+-# else
+-#  define _ALIGN_TEXT .align 16
+-# endif
+-#endif
++#define __bionic_asm_align 16
+ 
+ #endif /* !_AMD64_ASM_H_ */
+diff --git a/bionic/libc/private/bionic_asm.h b/bionic/libc/private/bionic_asm.h
+index 7c2686f..d53ebba 100644
+--- a/bionic/libc/private/bionic_asm.h
++++ b/bionic/libc/private/bionic_asm.h
+@@ -41,7 +41,7 @@
+ #define ENTRY(f) \
+     .text; \
+     .globl f; \
+-    _ALIGN_TEXT; \
++    .align __bionic_asm_align; \
+     .type f, __bionic_asm_function_type; \
+     f: \
+     __bionic_asm_custom_entry(f); \
+-- 
+2.9.2
+
