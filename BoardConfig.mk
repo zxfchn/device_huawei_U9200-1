@@ -29,7 +29,7 @@ VENDOR_DIR := vendor/huawei/viva/proprietary
 # inherit from viva common
 -include $(COMMON_FOLDER)/viva-common/BoardConfigCommon.mk
 
-BOARD_HARDWARE_CLASS := $(OMAP4_NEXT_FOLDER)/cmhw/
+BOARD_HARDWARE_CLASS := hardware/ti/huawei-omap4/cmhw/
 
 # SELinux
 BOARD_SEPOLICY_DIRS += \
