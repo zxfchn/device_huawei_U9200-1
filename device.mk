@@ -21,8 +21,8 @@ LOCAL_PATH := device/huawei/viva
 DEVCOMMON_PATH := device/huawei/omap4-common
 
 $(call inherit-product, vendor/huawei/viva/viva-vendor.mk)
-$(call inherit-product, hardware/ti/huawei-omap4/omap4.mk)
 $(call inherit-product, $(DEVCOMMON_PATH)/device-common.mk)
+$(call inherit-product, hardware/ti/huawei-omap4/omap4.mk)
 $(call inherit-product, $(DEVCOMMON_PATH)/device-common_cm.mk)
 $(call inherit-product, $(DEVCOMMON_PATH)/viva-common/device-common.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
