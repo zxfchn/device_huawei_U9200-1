@@ -3,7 +3,7 @@
         "remote": "github",
         "repository": "ShevT/android_kernel_d1_p1",
         "revision": "cm-12.1",
-        "target_path": "kernel/huawei/viva"
+        "target_path": "kernel/huawei/omap4"
     },
     {
         "remote": "github",
